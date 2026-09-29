@@ -1,0 +1,45 @@
+% ダイオード 課題（ワークシート，学生配布用）
+% 解答例版は 03_diode_worksheet_answer.tex をコンパイルしてください。
+\documentclass[student]{experimentguide}
+
+\usepackage{tikz}
+\usepackage{multirow}
+
+\coursename{電気電子工学実験 I}
+\graphicspath{{contents/03_diode/figures/}}
+
+\makeatletter
+% 解答（instructor オプション時のみ表示）
+\ifeg@instructor
+  \newcommand{\answer}[1]{\textcolor{EGWarn}{#1}}
+  \newcommand{\ifanswer}[2]{#1}
+\else
+  \newcommand{\answer}[1]{}
+  \newcommand{\ifanswer}[2]{#2}
+\fi
+\makeatother
+
+% オシロスコープ画面の記入欄（横10 DIV × 縦8 DIV，1 DIV = 5 mm）
+\newcommand{\scopegrid}{%
+  \begin{tikzpicture}
+    \draw[very thin,black!45,step=5mm] (0,0) grid (50mm,40mm);
+    \draw[black!75] (0,20mm) -- (50mm,20mm);
+    \draw[black!75] (25mm,0) -- (25mm,40mm);
+    \draw[thick] (0,0) rectangle (50mm,40mm);
+  \end{tikzpicture}%
+}
+
+\newcommand{\wavebox}[2]{% #1: 解答写真, #2: 見出し
+  \begin{minipage}[t]{0.32\linewidth}
+    \centering
+    \ifanswer{\includegraphics[width=50mm,height=40mm,keepaspectratio]{#1}}{\scopegrid}\par
+    \vspace{0.3\baselineskip}
+    \small #2
+  \end{minipage}%
+}
+
+\pagestyle{empty}
+
+\begin{document}
+\input{contents/03_diode/diode_worksheet_body}
+\end{document}

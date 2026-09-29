@@ -1,0 +1,94 @@
+# 電気電子工学実験 I 手引書
+
+## フォルダ構成
+
+```
+main.tex                        全テーマをまとめた1冊（配布用）
+01_tester.tex, 02_oscilloscope.tex, 03_diode.tex
+                                テーマ単体の確認用（中身は1行 \input するだけ）
+02_oscilloscope_worksheet.tex   オシロスコープ 記録用紙（学生配布用）
+03_diode_worksheet.tex          ダイオード課題（学生配布用）
+03_diode_worksheet_answer.tex   同 解答例版
+experimentguide.cls             共通スタイル（取りまとめ担当のみ編集）
+latexmkrc                       LuaLaTeX でコンパイルする設定
+contents/
+  01_tester/
+    tester_body.tex             ← 本文（担当の先生が編集）
+    figures/                    ← 図
+    changes_from_original.md    ← Word 原本からの変更点と要確認事項
+  02_oscilloscope/
+    oscilloscope_body.tex
+    oscilloscope_worksheet_body.tex ← 記録用紙本文
+    figures/
+  03_diode/
+    diode_body.tex
+    diode_worksheet_body.tex    ← 課題シート本文
+    figures/
+```
+
+テーマの順番（ファイル名の番号）：
+01 テスター → 02 オシロスコープ → 03 ダイオード → 04 トランジスタ → 05 電圧波
+（04_transistor, 05_voltagewave は未作成）
+
+## 編集するのはどこか
+
+- 各テーマの担当の先生は **`contents/<番号>_<テーマ>/` の中だけ** を編集してください。
+- 見た目（色・余白・見出しの形など）を変えたいときは，本文で直接指定せず取りまとめ担当に相談してください（`experimentguide.cls` で全テーマ一括で変更します）。
+
+## Overleaf での使い方
+
+1. 左上メニュー → **Compiler** を `LuaLaTeX` にする（`latexmkrc` でも指定済み）
+2. 同じメニュー → **Main document** で，確認したいファイルを選ぶ
+   - 自分のテーマだけ確認：`03_diode.tex` など
+   - 全体を確認：`main.tex`
+3. `contents/<番号>_<テーマ>/<テーマ>_body.tex` を編集して Recompile
+
+※ Overleaf ではメインファイルをプロジェクト最上位に置く必要があるため，テーマ単体用のファイルも最上位にあります。
+
+## ローカルでの一括コンパイル（取りまとめ担当向け）
+
+`lab-manual` で引数なしの `latexmk` を実行すると，`latexmkrc` の `@default_files` に並べたファイルがまとめてコンパイルされます。テーマやワークシートを追加したら，`main.tex` の `\input` と `latexmkrc` の `@default_files` の両方に1行足してください。中間ファイルの削除は `latexmk -c` です。
+
+Overleaf では Main document に指定した1ファイルだけがコンパイルされます。
+
+## 表記ルール
+
+| 項目 | ルール | 例 |
+|---|---|---|
+| 句読点 | 全角コンマ「，」と全角まる「。」 | 電圧を測定し，記録します。 |
+| 文体 | です・ます調 | ～を測定します。～してください。 |
+| 単位付きの数値 | `\SI{数値}{単位}` | `\SI{100}{\ohm}`，`\SI{10}{\micro F}`，`\SI{2.00}{V}/DIV` |
+| 変数・記号 | 数式モードで | `$V$`，`$R_0$` |
+| 見出し | `\section`，`\subsection`，`\subsubsection`（番号は自動） | 「２.１.」などの手書き番号は付けない |
+| 実験手順 | `procedure` 環境（番号付き） | |
+| 強調 | 太字は `\important{}`，下線は `\wave{}` | |
+
+## 図の入れ方
+
+- 図ファイルは `contents/<番号>_<テーマ>/figures/` に置き，ファイル名はテーマ名で始める（例：`diode_rectifier.pdf`）
+- ラベルは `fig:<テーマ>-○○` の形にする（1冊にまとめたときの重複防止）
+
+```latex
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\linewidth]{diode_rectifier.pdf}
+  \caption{整流回路}
+  \label{fig:diode-rectifier}
+\end{figure}
+図\ref{fig:diode-rectifier}に示すように……
+```
+
+- 図番号は自動で振られます。本文中で「図3」と直接書かず，必ず `\ref` を使ってください。
+
+## 課題シート（ワークシート）
+
+- 学生が記入するものは手引書本文とは別ファイルにします（例：`diode_worksheet_body.tex`）。
+- 解答は `\answer{...}` で書くと，解答例版（`*_worksheet_answer.tex`）にだけ赤字で表示されます。
+
+## 原本からの変更点
+
+各テーマのフォルダにある `changes_from_original.md` に，Word 原本から変えた点（構成・表記・図・内容の修正）と，担当の先生に確認してほしい点（チェックボックス付き）をまとめています。校正のときはまずこのファイルを確認してください。確認が済んだ項目は `- [x]` にしてください。
+
+## 原本
+
+Word の原本は Overleaf には置かず，取りまとめ担当のローカル（`原本wordファイル/`）で保管しています。
