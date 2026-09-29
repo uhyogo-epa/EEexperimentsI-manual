@@ -1,4 +1,4 @@
-# 電気電子工学実験 I 手引書
+# 電気電子工学実験 I 手引書（Experiments on Electrical and Electronic Engineering I）
 
 ## フォルダ構成
 
@@ -47,7 +47,7 @@ contents/
 
 ## ローカルでの一括コンパイル（取りまとめ担当向け）
 
-`lab-manual` で引数なしの `latexmk` を実行すると，`latexmkrc` の `@default_files` に並べたファイルがまとめてコンパイルされます。テーマやワークシートを追加したら，`main.tex` の `\input` と `latexmkrc` の `@default_files` の両方に1行足してください。中間ファイルの削除は `latexmk -c` です。
+`EEexperimentsI-manual` で引数なしの `latexmk` を実行すると，`latexmkrc` の `@default_files` に並べたファイルがまとめてコンパイルされます。テーマやワークシートを追加したら，`main.tex` の `\input` と `latexmkrc` の `@default_files` の両方に1行足してください。中間ファイルの削除は `latexmk -c` です。
 
 Overleaf では Main document に指定した1ファイルだけがコンパイルされます。
 
