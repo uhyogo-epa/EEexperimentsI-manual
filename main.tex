@@ -1,12 +1,25 @@
 % 電気電子工学実験 I 手引書（全テーマ）
 % Overleaf では メニュー → Main document に main.tex，Compiler に LuaLaTeX を指定
-% テーマを追加するときは contents/<番号>_<テーマ名>/ を作り，下の \input のコメントを外してください。
+% テーマを追加するときは contents/<番号>_<テーマ名>/ を作り，下に \input を1行足してください。
 \documentclass[student]{experimentguide}
 
 \coursename{電気電子工学実験 I}
+\courseenglish{Experiments on Electrical and Electronic Engineering I}
+\academicyear{令和8年度（2026年度）}
+\organization{兵庫県立大学}
 
 \begin{document}
 
+% 表紙・目次・注意事項（ページ番号はローマ数字）
+\pagenumbering{Alph}% 表紙（リンク先の名前がテーマの 1 ページ目と重ならないように）
+\makecover
+\pagenumbering{roman}
+\experimenttoc
+\input{contents/00_introduction/introduction_body}
+
+% 各テーマ（ページ番号は 1 から）
+\clearpage
+\pagenumbering{arabic}
 \input{contents/01_tester/tester_body}
 \input{contents/02_oscilloscope/oscilloscope_body}
 \input{contents/03_diode/diode_body}

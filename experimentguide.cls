@@ -46,6 +46,7 @@
 \RequirePackage{comment}
 \RequirePackage{hyperref}
 \RequirePackage{caption}
+\RequirePackage{tikz}
 
 \tcbuselibrary{breakable,skins}
 
@@ -84,6 +85,16 @@
 \newcommand{\coursename}[1]{\renewcommand{\eg@coursename}{#1}}
 \newcommand{\experimentnumber}[1]{\renewcommand{\eg@experimentnumber}{#1}}
 
+% 表紙用（main.tex で指定）
+\newcommand{\eg@courseenglish}{}
+\newcommand{\eg@academicyear}{}
+\newcommand{\eg@organization}{}
+\newcommand{\eg@documenttitle}{実験手引書}
+\newcommand{\courseenglish}[1]{\renewcommand{\eg@courseenglish}{#1}}
+\newcommand{\academicyear}[1]{\renewcommand{\eg@academicyear}{#1}}
+\newcommand{\organization}[1]{\renewcommand{\eg@organization}{#1}}
+\newcommand{\documenttitle}[1]{\renewcommand{\eg@documenttitle}{#1}}
+
 % ------------------------------------------------------------
 % Experiment title
 % ------------------------------------------------------------
@@ -97,13 +108,8 @@
   \renewcommand{\theHequation}{\arabic{eg@experiment}.\arabic{equation}}%
 }
 
-\newcommand{\experimenttitle}[1]{%
-  \clearpage
-  \stepcounter{eg@experiment}%
-  \setcounter{section}{0}%
-  \setcounter{figure}{0}%
-  \setcounter{table}{0}%
-  \setcounter{equation}{0}%
+% タイトルと下線（テーマの見出し・前付けの見出しで共通）
+\newcommand{\eg@titleblock}[1]{%
   \renewcommand{\eg@experimentname}{#1}%
   \markboth{#1}{#1}%
   \thispagestyle{fancy}%
@@ -121,6 +127,83 @@
     \noindent{\color{EGMain}\rule{\linewidth}{1.2pt}}\par
   \endgroup
   \vspace{0.4\baselineskip}%
+}
+
+% 各テーマの見出し（番号をリセットし，目次にテーマ名を載せる）
+\newcommand{\experimenttitle}[1]{%
+  \clearpage
+  \stepcounter{eg@experiment}%
+  \setcounter{section}{0}%
+  \setcounter{figure}{0}%
+  \setcounter{table}{0}%
+  \setcounter{equation}{0}%
+  \phantomsection
+  \addcontentsline{toc}{egexperiment}{#1}%
+  \eg@titleblock{#1}%
+}
+
+% 前付け（注意事項など）の見出し（番号は付けない）
+\newcommand{\introtitle}[1]{%
+  \clearpage
+  \phantomsection
+  \addcontentsline{toc}{egexperiment}{#1}%
+  \eg@titleblock{#1}%
+}
+
+% ------------------------------------------------------------
+% Table of contents
+% ------------------------------------------------------------
+% 目次はテーマ名（egexperiment）と節（section）まで
+\setcounter{tocdepth}{1}
+\newcommand*{\toclevel@egexperiment}{0}% PDF のしおりでテーマの下に節を並べる
+\newcommand*{\l@egexperiment}[2]{%
+  \addpenalty{-\@highpenalty}%
+  \vskip 0.8\baselineskip plus 2pt
+  \begingroup
+    \setlength{\parskip}{0pt}%
+    \noindent{\sffamily\gtfamily\bfseries\large\color{EGMain}#1}%
+    \nobreak\hfill{\sffamily\bfseries #2}\par
+  \endgroup
+  \nobreak\vskip 0.15\baselineskip
+}
+
+\newcommand{\experimenttoc}{%
+  \clearpage
+  \eg@titleblock{目次}%
+  \begingroup
+    \setlength{\parskip}{0pt}% 目次の中は段落間の空きをなくして1ページに収める
+    \@starttoc{toc}%
+  \endgroup
+}
+
+% ------------------------------------------------------------
+% Cover
+% ------------------------------------------------------------
+\newcommand{\makecover}{%
+  \begin{titlepage}
+    \thispagestyle{empty}%
+    \begin{tikzpicture}[remember picture, overlay]
+      % 上部の帯
+      \fill[EGMain] (current page.north west) rectangle ([yshift=-118mm]current page.north east);
+      \fill[EGMain!55] ([yshift=-118mm]current page.north west) rectangle ([yshift=-121mm]current page.north east);
+      % 年度
+      \node[anchor=north west, text=white, font=\sffamily\gtfamily\large]
+        at ([xshift=24mm, yshift=-26mm]current page.north west) {\eg@academicyear};
+      % タイトル
+      \node[anchor=south west, text=white, align=left, inner sep=0pt]
+        at ([xshift=24mm, yshift=-100mm]current page.north west)
+        {{\sffamily\gtfamily\bfseries\fontsize{30}{40}\selectfont \eg@coursename}\\[6mm]
+         {\sffamily\gtfamily\bfseries\fontsize{22}{30}\selectfont \eg@documenttitle}};
+      % 英語名
+      \node[anchor=north west, text=EGMain, font=\sffamily\large, inner sep=0pt]
+        at ([xshift=24mm, yshift=-132mm]current page.north west) {\eg@courseenglish};
+      % 所属
+      \node[anchor=south west, text=black, font=\sffamily\gtfamily\large, inner sep=0pt]
+        at ([xshift=24mm, yshift=30mm]current page.south west) {\eg@organization};
+      \draw[EGMain, line width=1.2pt]
+        ([xshift=24mm, yshift=24mm]current page.south west) -- ([xshift=-24mm, yshift=24mm]current page.south east);
+    \end{tikzpicture}
+  \end{titlepage}
 }
 
 % ------------------------------------------------------------

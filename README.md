@@ -3,7 +3,7 @@
 ## フォルダ構成
 
 ```
-main.tex                        全テーマをまとめた1冊（配布用）
+main.tex                        全テーマをまとめた1冊（配布用。表紙・目次・注意事項付き）
 01_tester.tex ～ 05_voltagewave.tex
                                 テーマ単体の確認用（中身は1行 \input するだけ）
 02_oscilloscope_worksheet.tex   オシロスコープ 記録用紙（学生配布用）
@@ -14,6 +14,8 @@ main.tex                        全テーマをまとめた1冊（配布用）
 experimentguide.cls             共通スタイル（取りまとめ担当のみ編集）
 latexmkrc                       LuaLaTeX でコンパイルする設定
 contents/
+  00_introduction/
+    introduction_body.tex       ← 注意事項（手引書のはじめに入る）
   01_tester/
     tester_body.tex             ← 本文（担当の先生が編集）
     figures/                    ← 図
@@ -54,6 +56,14 @@ contents/
 `EEexperimentsI-manual` で引数なしの `latexmk` を実行すると，`latexmkrc` の `@default_files` に並べたファイルがまとめてコンパイルされます。テーマやワークシートを追加したら，`main.tex` の `\input` と `latexmkrc` の `@default_files` の両方に1行足してください。中間ファイルの削除は `latexmk -c` です。
 
 Overleaf では Main document に指定した1ファイルだけがコンパイルされます。
+
+## 表紙・目次・注意事項（main.tex のみ）
+
+- 表紙の文字は `main.tex` の冒頭で指定します。
+  - `\coursename{...}`（科目名），`\courseenglish{...}`（英語名），`\academicyear{...}`（年度），`\organization{...}`（大学名など）
+- 目次は自動で作られます（テーマ名と節まで）。
+- 注意事項は `contents/00_introduction/introduction_body.tex` を編集してください。
+- ページ番号は，目次と注意事項がローマ数字（i, ii），各テーマが 1 からです。
 
 ## 表記ルール
 
