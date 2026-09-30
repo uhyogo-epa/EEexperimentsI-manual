@@ -61,7 +61,7 @@ Overleaf では Main document に指定した1ファイルだけがコンパイ�
 
 - 表紙の文字は `main.tex` の冒頭で指定します。
   - `\coursename{...}`（科目名），`\courseenglish{...}`（英語名），`\academicyear{...}`（年度），`\organization{...}`（大学名など）
-- 目次は自動で作られます（テーマ名と節まで）。
+- 目次は自動で作られます（テーマ名のみ。PDF のしおりには節まで出ます）。
 - 注意事項は `contents/00_introduction/introduction_body.tex` を編集してください。
 - ページ番号は，目次と注意事項がローマ数字（i, ii），各テーマが 1 からです。
 

@@ -153,18 +153,20 @@
 % ------------------------------------------------------------
 % Table of contents
 % ------------------------------------------------------------
-% 目次はテーマ名（egexperiment）と節（section）まで
-\setcounter{tocdepth}{1}
+% 目次はテーマ名（egexperiment）のみ。PDF のしおりには節まで出す
+\setcounter{tocdepth}{0}
+\hypersetup{bookmarksdepth=1}
 \newcommand*{\toclevel@egexperiment}{0}% PDF のしおりでテーマの下に節を並べる
 \newcommand*{\l@egexperiment}[2]{%
   \addpenalty{-\@highpenalty}%
-  \vskip 0.8\baselineskip plus 2pt
+  \vskip 1.1\baselineskip plus 2pt
   \begingroup
     \setlength{\parskip}{0pt}%
     \noindent{\sffamily\gtfamily\bfseries\large\color{EGMain}#1}%
-    \nobreak\hfill{\sffamily\bfseries #2}\par
+    \nobreak\hskip 1em
+    {\color{black!40}\leaders\hbox to 0.9em{\hss.\hss}\hfill}%
+    \nobreak\hskip 1em{\sffamily\bfseries\large #2}\par
   \endgroup
-  \nobreak\vskip 0.15\baselineskip
 }
 
 \newcommand{\experimenttoc}{%
