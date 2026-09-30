@@ -13,4 +13,8 @@ $lualatex = 'lualatex -interaction=nonstopmode -file-line-error -synctex=1 %O %S
   '03_diode.tex',
   '03_diode_worksheet.tex',
   '03_diode_worksheet_answer.tex',
+  '04_transistor.tex',
+  '04_transistor_worksheet.tex',
+  '05_voltagewave.tex',
+  '05_voltagewave_worksheet.tex',
 );

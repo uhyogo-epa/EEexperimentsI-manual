@@ -4,11 +4,13 @@
 
 ```
 main.tex                        全テーマをまとめた1冊（配布用）
-01_tester.tex, 02_oscilloscope.tex, 03_diode.tex
+01_tester.tex ～ 05_voltagewave.tex
                                 テーマ単体の確認用（中身は1行 \input するだけ）
 02_oscilloscope_worksheet.tex   オシロスコープ 記録用紙（学生配布用）
 03_diode_worksheet.tex          ダイオード課題（学生配布用）
 03_diode_worksheet_answer.tex   同 解答例版
+04_transistor_worksheet.tex     トランジスタ ワークシート（学生配布用）
+05_voltagewave_worksheet.tex    伝送線路 ワークシート（学生配布用）
 experimentguide.cls             共通スタイル（取りまとめ担当のみ編集）
 latexmkrc                       LuaLaTeX でコンパイルする設定
 contents/
@@ -24,11 +26,13 @@ contents/
     diode_body.tex
     diode_worksheet_body.tex    ← 課題シート本文
     figures/
+  04_transistor/                （同様：transistor_body.tex，transistor_worksheet_body.tex，figures/）
+  05_voltagewave/               （同様：voltagewave_body.tex，voltagewave_worksheet_body.tex，figures/）
 ```
+各フォルダに changes_from_original.md（原本からの変更点）があります。
 
 テーマの順番（ファイル名の番号）：
 01 テスター → 02 オシロスコープ → 03 ダイオード → 04 トランジスタ → 05 電圧波
-（04_transistor, 05_voltagewave は未作成）
 
 ## 編集するのはどこか
 
