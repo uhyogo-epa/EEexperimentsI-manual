@@ -10,7 +10,7 @@ main.tex                        全テーマをまとめた1冊（配布用。�
 03_diode_worksheet.tex          ダイオード課題（学生配布用）
 03_diode_worksheet_answer.tex   同 解答例版
 04_transistor_worksheet.tex     トランジスタ ワークシート（学生配布用）
-05_voltagewave_worksheet.tex    伝送線路 ワークシート（学生配布用）
+05_voltagewave_worksheet.tex    電圧波の観測 ワークシート（学生配布用）
 experimentguide.cls             共通スタイル（取りまとめ担当のみ編集）
 latexmkrc                       LuaLaTeX でコンパイルする設定
 contents/
