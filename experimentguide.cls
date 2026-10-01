@@ -326,14 +326,16 @@
   arc=1mm,
   left=2.5mm,
   right=2.5mm,
-  top=1.5mm,
-  bottom=1.5mm,
+  top=2.5mm,% 枠の内側の上下の余白
+  bottom=2.5mm,
   fonttitle=\sffamily\gtfamily\bfseries,
   toptitle=1mm,
   bottomtitle=1mm,
   coltitle=white,
   colbacktitle=EGMain,
   title={#1},
+  % 枠の中の箇条書きは項目の間を詰める
+  before upper={\setlength{\parskip}{0pt}\setlist[itemize]{itemsep=0pt, parsep=0pt, topsep=0pt}},
   before skip=0.7\baselineskip,
   after skip=0.7\baselineskip
 }
