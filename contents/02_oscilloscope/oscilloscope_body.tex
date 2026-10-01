@@ -118,8 +118,10 @@ f_0=\frac{1}{2\pi\sqrt{LC}}
 
 \begin{equipment}
 \begin{itemize}
-  \item オシロスコープ
-  \item 交流電源（信号発生器）
+  \item デジタルオシロスコープ（KEYSIGHT EDUX1052A，帯域幅 \SI{50}{MHz}，サンプリングレート \SI{1}{GSa/s}）
+  \item オシロスコープ用プローブ
+  \item ファンクションジェネレータ（交流電源）（MCP SG1638B，周波数レンジ \SI{2}{Hz}～\SI{2}{MHz}）
+  \item ファンクションジェネレータ用プローブ（同軸ケーブル）
   \item 抵抗（\SI{100}{\ohm}×1，\SI{1}{k\ohm}×1）
   \item コンデンサ（\SI{0.1}{\micro F}×1，\SI{1}{\micro F}×1）
   \item コイル（\SI{10}{mH}×1）
@@ -127,34 +129,24 @@ f_0=\frac{1}{2\pi\sqrt{LC}}
 \end{itemize}
 \end{equipment}
 
-
 % ============================================================
 \section{オシロスコープとファンクションジェネレータの使い方}
 
-オシロスコープ（oscilloscope）とは，電気信号（電圧）の時間経過に対する変動を測って波形として画面に表示して観測する測定器です。ここでは本実験で必要な操作の要点をまとめます。詳しくは実験時の説明資料を参照してください。
+ここでは，本実験で使用する機器の操作の要点をまとめます。詳しくは実験時の説明資料を参照してください。
 
 % ------------------------------------------------------------
-\subsection{使用する機器}
+\subsection{オシロスコープ}
 
-\begin{itemize}
-  \item \important{デジタルオシロスコープ}（\cref{fig:oscilloscope-scope}）：KEYSIGHT EDUX1052A（帯域幅 \SI{50}{MHz}，サンプリングレート \SI{1}{GSa/s}）
-    \begin{itemize}
-      \item 帯域幅 \SI{50}{MHz}：\SI{50}{MHz}の正弦波を入力すると，表示される振幅が\SI{3}{dB}減衰する（振幅が約\SI{70.7}{\percent}になる）ことを意味します。
-      \item \SI{1}{GSa/s}：1秒間に $10^9$ 点（10億点）のサンプルを取得します。
-    \end{itemize}
-  \item \important{ファンクションジェネレータ}（交流信号発生器）：MCP SG1638B（周波数レンジ \SI{2}{Hz}～\SI{2}{MHz}）
-  \item \important{同軸ケーブル}：中心導体，絶縁体，外部導体（シールド）からなり，外部からの電磁ノイズの干渉を防ぎます。
-\end{itemize}
+オシロスコープ（oscilloscope）とは，電気信号（電圧）の時間経過に対する変動を測って波形として画面に表示して観測する測定器です（\cref{fig:oscilloscope-scope}）。本実験で使用するデジタルオシロスコープの仕様のうち，帯域幅 \SI{50}{MHz} は，\SI{50}{MHz}の正弦波を入力すると表示される振幅が\SI{3}{dB}減衰する（振幅が約\SI{70.7}{\percent}になる）ことを意味します。また，サンプリングレート \SI{1}{GSa/s} は，1秒間に $10^9$ 点（10億点）のサンプルを取得することを意味します。
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.55\linewidth]{oscilloscope_scope_front.pdf}
-  \caption{デジタルオシロスコープ（KEYSIGHT EDUX1052A）}
+  \caption{デジタルオシロスコープ}
   \label{fig:oscilloscope-scope}
 \end{figure}
 
-% ------------------------------------------------------------
-\subsection{プローブの準備と接続}
+プローブは，次の手順で準備し，オシロスコープに接続します。
 
 \begin{procedure}
   \item （新品の場合）プローブの保護キャップ（黄色）を外し，プローブキャップを取り付けます。
@@ -179,9 +171,9 @@ f_0=\frac{1}{2\pi\sqrt{LC}}
 \end{caution}
 
 % ------------------------------------------------------------
-\subsection{ファンクションジェネレータの使い方}
+\subsection{ファンクションジェネレータ}
 
-ファンクションジェネレータ（MCP SG1638B）の各部の役割を\cref{fig:oscilloscope-fg}に示します。
+ファンクションジェネレータは，正弦波・方形波・三角波などの交流信号を発生させる装置で，本実験では交流電源として使用します。出力は同軸ケーブルで取り出します。同軸ケーブルは中心導体，絶縁体，外部導体（シールド）からなり，外部からの電磁ノイズの干渉を防ぎます。各部の役割を\cref{fig:oscilloscope-fg}に示します。
 
 \begin{figure}[htbp]
   \centering
@@ -201,7 +193,6 @@ f_0=\frac{1}{2\pi\sqrt{LC}}
 \begin{kakunin}[練習]
 \SI{60}{Hz}の正弦波を出力し，オシロスコープで確認してください（ファンクションジェネレータの表示は 0.06 kHz になります）。
 \end{kakunin}
-
 
 % ============================================================
 \section{実験方法}
