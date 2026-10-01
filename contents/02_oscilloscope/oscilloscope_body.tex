@@ -11,91 +11,18 @@
 % ============================================================
 \section{目的}
 
-本実験では，交流信号の観測に欠かせない測定器であるオシロスコープと，交流信号を発生させるファンクションジェネレータの基本的な使い方を習得します。さらに，これらの機器を用いて基本的なフィルタ回路の周波数特性を測定し，その動作原理を理解します。フィルタ（filter）とは，特定の条件に合うものだけを選別・抽出するもので，電気回路では，必要な周波数成分の信号だけを取り出すために用いられます。
+本実験では，交流信号の観測に欠かせない測定器であるオシロスコープと，交流信号を発生させるファンクションジェネレータの基本的な使い方を習得します。さらに，これらの機器を用いて基本的なフィルタ回路の周波数特性を測定し，その動作原理を理解します。フィルタ（Filter）とは，特定の条件に合うものだけを選別・抽出するもので，電気回路では，必要な周波数成分の信号だけを取り出すために用いられます。
 
 % 趣旨（原本の「実用例」を書き直したもの。担当の先生に確認）
-フィルタ回路の1つにローパスフィルタがあります。この回路は高い周波数成分を遮断する機能を有するため，音楽などに含まれる高音成分を取り除くことが可能です。本実験では，オシロスコープを用いてローパスフィルタなどのフィルタ回路の周波数特性を測定します。最後に，自作したローパスフィルタを音源（PC）とスピーカーの間に接続し（図\ref{fig:oscilloscope-demo}），高音成分が取り除かれる様子を実際の音で確認します。
+フィルタ回路の1つにローパスフィルタがあります。この回路は高い周波数成分を遮断する機能を有するため，音楽などに含まれる高音成分を取り除くことが可能です。本実験では，オシロスコープを用いてローパスフィルタなどのフィルタ回路の周波数特性を測定します。最後に，自作したローパスフィルタを音源（PC）とスピーカーの間に接続し（図\,\ref{fig:oscilloscope-demo}），高音成分が取り除かれる様子を実際の音で確認します。
 
 \begin{figure}[htbp]
   \centering
+  \vspace{5mm}
   \includegraphics[width=0.85\linewidth]{oscilloscope_demo_setup.pdf}
   \caption{フィルタ回路を使用したデモ実験}
   \label{fig:oscilloscope-demo}
 \end{figure}
-
-% ============================================================
-\section{オシロスコープとファンクションジェネレータの使い方}
-
-オシロスコープ（oscilloscope）とは，電気信号（電圧）の時間経過に対する変動を測って波形として画面に表示して観測する測定器です。ここでは本実験で必要な操作の要点をまとめます。詳しくは実験時の説明資料を参照してください。
-
-% ------------------------------------------------------------
-\subsection{使用する機器}
-
-\begin{itemize}
-  \item \important{デジタルオシロスコープ}（図\ref{fig:oscilloscope-scope}）：KEYSIGHT EDUX1052A（帯域幅 \SI{50}{MHz}，サンプリングレート \SI{1}{GSa/s}）
-    \begin{itemize}
-      \item 帯域幅 \SI{50}{MHz}：\SI{50}{MHz}の正弦波を入力すると，表示される振幅が\SI{3}{dB}減衰する（振幅が約\SI{70.7}{\percent}になる）ことを意味します。
-      \item \SI{1}{GSa/s}：1秒間に $10^9$ 点（10億点）のサンプルを取得します。
-    \end{itemize}
-  \item \important{ファンクションジェネレータ}（交流信号発生器）：MCP SG1638B（周波数レンジ \SI{2}{Hz}～\SI{2}{MHz}）
-  \item \important{同軸ケーブル}：中心導体，絶縁体，外部導体（シールド）からなり，外部からの電磁ノイズの干渉を防ぎます。
-\end{itemize}
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.55\linewidth]{oscilloscope_scope_front.pdf}
-  \caption{デジタルオシロスコープ（KEYSIGHT EDUX1052A）}
-  \label{fig:oscilloscope-scope}
-\end{figure}
-
-% ------------------------------------------------------------
-\subsection{プローブの準備と接続}
-
-\begin{procedure}
-  \item （新品の場合）プローブの保護キャップ（黄色）を外し，プローブキャップを取り付けます。
-  \item プローブにグランド・リード（接地端子，ワニ口）を取り付けます。プローブの先端を押し下げるとフックが出てきます。
-  \item オシロスコープのCH1のBNC端子にプローブを接続します（図\ref{fig:oscilloscope-probe}左）。端子の上下の突起にプローブ側コネクタの凹部を合わせ，時計回りにひねりながら差し込みます。
-  \item オシロスコープの校正端子（Demo端子）のうち，左の端子にプローブのフック・チップをかけ，右の接地端子をプローブの接地ワニ口ではさみます（図\ref{fig:oscilloscope-probe}右）。
-  \item 「Auto Scale」ボタンを押し，校正信号の波形が表示されることを確認します。
-\end{procedure}
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.95\linewidth]{oscilloscope_probe_connect.pdf}
-  \caption{プローブの接続（左：CH1 の BNC 端子への接続，右：校正端子（Demo）への接続）}
-  \label{fig:oscilloscope-probe}
-\end{figure}
-
-\begin{caution}
-\begin{itemize}
-  \item プローブとファンクションジェネレータのケーブルをつなぐときは，\wave{必ずグランド（接地）側（黒いワニ口）同士をつないでください。}感電や機器の破損を防ぐためです。間違えると測定信号にノイズが乗ることがあります。
-  \item プローブには 1:1（×1）と 10:1（×10）の切り替えがあります。10:1 は入力インピーダンスを大きくして測定する回路への影響を抑えるためによく使われますが，減衰回路の調整（補正）が必要です。\wave{特別に指示がない場合は，10:1（×10）を使わず，1:1（×1）で使用してください。}
-\end{itemize}
-\end{caution}
-
-% ------------------------------------------------------------
-\subsection{ファンクションジェネレータの使い方}
-
-ファンクションジェネレータ（MCP SG1638B）の各部の役割を図\ref{fig:oscilloscope-fg}に示します。
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.95\linewidth]{oscilloscope_fg_panel.pdf}
-  \caption{ファンクションジェネレータの各部}
-  \label{fig:oscilloscope-fg}
-\end{figure}
-
-\begin{description}[leftmargin=2\zw, style=nextline]
-  \item[FREQUENCY] 発振周波数の数値を 0.1～1.0 の範囲で変更します。RANGE との掛け算の結果がパネルに表示されます。
-  \item[RANGE] レンジ（倍率）を切り替えます。各レンジの周波数範囲は図\ref{fig:oscilloscope-fg}を参照してください。
-  \item[AMPLITUDE] 出力振幅を変更します。
-  \item[FUNCTION] 出力波形（正弦波・方形波・三角波）を切り替えます。
-  \item[ATTENUATOR] 減衰器です。通常は使用しません。$-$\SI{20}{dB} を押し込むと振幅が 1/10，$-$\SI{40}{dB} を押し込むと 1/100，両方押すと $-$\SI{60}{dB}（1/1000）になります。
-\end{description}
-
-\begin{kakunin}[練習]
-\SI{60}{Hz}の正弦波を出力し，オシロスコープで確認してください（ファンクションジェネレータの表示は 0.06 kHz になります）。
-\end{kakunin}
 
 % ============================================================
 \section{原理}
@@ -195,6 +122,82 @@ $RC$ローパスフィルタは，低い周波数は通して，高い周波数�
   \item ブレッドボード，ジャンパ線
 \end{itemize}
 \end{equipment}
+
+
+% ============================================================
+\section{オシロスコープとファンクションジェネレータの使い方}
+
+オシロスコープ（oscilloscope）とは，電気信号（電圧）の時間経過に対する変動を測って波形として画面に表示して観測する測定器です。ここでは本実験で必要な操作の要点をまとめます。詳しくは実験時の説明資料を参照してください。
+
+% ------------------------------------------------------------
+\subsection{使用する機器}
+
+\begin{itemize}
+  \item \important{デジタルオシロスコープ}（図\ref{fig:oscilloscope-scope}）：KEYSIGHT EDUX1052A（帯域幅 \SI{50}{MHz}，サンプリングレート \SI{1}{GSa/s}）
+    \begin{itemize}
+      \item 帯域幅 \SI{50}{MHz}：\SI{50}{MHz}の正弦波を入力すると，表示される振幅が\SI{3}{dB}減衰する（振幅が約\SI{70.7}{\percent}になる）ことを意味します。
+      \item \SI{1}{GSa/s}：1秒間に $10^9$ 点（10億点）のサンプルを取得します。
+    \end{itemize}
+  \item \important{ファンクションジェネレータ}（交流信号発生器）：MCP SG1638B（周波数レンジ \SI{2}{Hz}～\SI{2}{MHz}）
+  \item \important{同軸ケーブル}：中心導体，絶縁体，外部導体（シールド）からなり，外部からの電磁ノイズの干渉を防ぎます。
+\end{itemize}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.55\linewidth]{oscilloscope_scope_front.pdf}
+  \caption{デジタルオシロスコープ（KEYSIGHT EDUX1052A）}
+  \label{fig:oscilloscope-scope}
+\end{figure}
+
+% ------------------------------------------------------------
+\subsection{プローブの準備と接続}
+
+\begin{procedure}
+  \item （新品の場合）プローブの保護キャップ（黄色）を外し，プローブキャップを取り付けます。
+  \item プローブにグランド・リード（接地端子，ワニ口）を取り付けます。プローブの先端を押し下げるとフックが出てきます。
+  \item オシロスコープのCH1のBNC端子にプローブを接続します（図\ref{fig:oscilloscope-probe}左）。端子の上下の突起にプローブ側コネクタの凹部を合わせ，時計回りにひねりながら差し込みます。
+  \item オシロスコープの校正端子（Demo端子）のうち，左の端子にプローブのフック・チップをかけ，右の接地端子をプローブの接地ワニ口ではさみます（図\ref{fig:oscilloscope-probe}右）。
+  \item 「Auto Scale」ボタンを押し，校正信号の波形が表示されることを確認します。
+\end{procedure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.95\linewidth]{oscilloscope_probe_connect.pdf}
+  \caption{プローブの接続（左：CH1 の BNC 端子への接続，右：校正端子（Demo）への接続）}
+  \label{fig:oscilloscope-probe}
+\end{figure}
+
+\begin{caution}
+\begin{itemize}
+  \item プローブとファンクションジェネレータのケーブルをつなぐときは，\wave{必ずグランド（接地）側（黒いワニ口）同士をつないでください。}感電や機器の破損を防ぐためです。間違えると測定信号にノイズが乗ることがあります。
+  \item プローブには 1:1（×1）と 10:1（×10）の切り替えがあります。10:1 は入力インピーダンスを大きくして測定する回路への影響を抑えるためによく使われますが，減衰回路の調整（補正）が必要です。\wave{特別に指示がない場合は，10:1（×10）を使わず，1:1（×1）で使用してください。}
+\end{itemize}
+\end{caution}
+
+% ------------------------------------------------------------
+\subsection{ファンクションジェネレータの使い方}
+
+ファンクションジェネレータ（MCP SG1638B）の各部の役割を図\ref{fig:oscilloscope-fg}に示します。
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.95\linewidth]{oscilloscope_fg_panel.pdf}
+  \caption{ファンクションジェネレータの各部}
+  \label{fig:oscilloscope-fg}
+\end{figure}
+
+\begin{description}[leftmargin=2\zw, style=nextline]
+  \item[FREQUENCY] 発振周波数の数値を 0.1～1.0 の範囲で変更します。RANGE との掛け算の結果がパネルに表示されます。
+  \item[RANGE] レンジ（倍率）を切り替えます。各レンジの周波数範囲は図\ref{fig:oscilloscope-fg}を参照してください。
+  \item[AMPLITUDE] 出力振幅を変更します。
+  \item[FUNCTION] 出力波形（正弦波・方形波・三角波）を切り替えます。
+  \item[ATTENUATOR] 減衰器です。通常は使用しません。$-$\SI{20}{dB} を押し込むと振幅が 1/10，$-$\SI{40}{dB} を押し込むと 1/100，両方押すと $-$\SI{60}{dB}（1/1000）になります。
+\end{description}
+
+\begin{kakunin}[練習]
+\SI{60}{Hz}の正弦波を出力し，オシロスコープで確認してください（ファンクションジェネレータの表示は 0.06 kHz になります）。
+\end{kakunin}
+
 
 % ============================================================
 \section{実験方法}
