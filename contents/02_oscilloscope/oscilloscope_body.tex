@@ -31,6 +31,7 @@
 \subsection{交流}
 
 交流（AC：alternating current）とは，電圧や電流の大きさと向きが時間とともに周期的に変化するものです。代表的な交流波形を図\ref{fig:oscilloscope-waveforms}に示します。
+図\ref{fig:oscilloscope-waveforms}の(a)に示す波形を\important{正弦波}(sinusoidal wave)，(b)に示す波形を\important{三角波}(triangular wave)，(c)に示す波形を\important{方形波}または\important{矩形波}(rectangular wave)といいます。このうち，(a)のように電圧や電流が正弦波状に変化する交流を\important{正弦波交流}といいます。正弦波交流は，交流波形のなかで最も基本となる波形です。
 
 \begin{figure}[htbp]
   \centering
@@ -39,16 +40,17 @@
   \label{fig:oscilloscope-waveforms}
 \end{figure}
 
-図\ref{fig:oscilloscope-waveforms}の(a)を正弦波（sinusoidal wave），(b)を三角波（triangular wave），(c)を方形波または矩形波（rectangular wave）といいます。このうち(a)のように，電圧や電流が正弦波状に変化する交流を\important{正弦波交流}といいます。正弦波交流は，交流波形のなかで最も基本となる波形です。
+図\ref{fig:oscilloscope-instantaneous}に示すように，任意の時刻 $t$ における電圧や電流の値を\important{瞬時値}（instantaneous value）といい，電圧の場合は $v(t)$，電流の場合は $i(t)$ で表します。瞬時値のうち絶対値が最も大きいものを\important{最大値}（maximum value）といい，電圧の場合は $V_\mathrm{m}$，電流の場合は $I_\mathrm{m}$ で表します。最大値は\important{振幅}（amplitude）とも呼ばれます。また，最大値と最小値の差を\important{ピークピーク値}（peak-to-peak value）といい，電圧の場合は $V_\mathrm{pp}$，電流の場合は $I_\mathrm{pp}$ で表します。正弦波交流では，ピークピーク値は最大値の2倍（$V_\mathrm{pp}=2V_\mathrm{m}$）になります。
 
 \begin{figure}[htbp]
   \centering
+  \vspace{5mm}
   \includegraphics[width=0.7\linewidth]{oscilloscope_instantaneous.png}
-  \caption{瞬時値と最大値}
+  \caption{正弦波交流電圧の瞬時値，最大値，ピークピーク値}
   \label{fig:oscilloscope-instantaneous}
 \end{figure}
 
-図\ref{fig:oscilloscope-instantaneous}に示すように，任意の時刻 $t$ における電圧や電流の値を\important{瞬時値}（instantaneous value）といい，電圧の場合は $v$，電流の場合は $i$ で表します。瞬時値のうち絶対値が最も大きいものを\important{最大値}（maximum value）といい，電圧の場合は $V_\mathrm{m}$，電流の場合は $I_\mathrm{m}$ で表します。最大値は\important{振幅}（amplitude）とも呼ばれます。また，最大値と最小値の差を\important{ピークピーク値}（peak-to-peak value）といい，電圧の場合は $V_\mathrm{pp}$，電流の場合は $I_\mathrm{pp}$ で表します。正弦波交流では，ピークピーク値は最大値の2倍（$V_\mathrm{pp}=2V_\mathrm{m}$）になります。
+
 
 % ------------------------------------------------------------
 \subsection{$RC$回路（ローパスフィルタ）}
