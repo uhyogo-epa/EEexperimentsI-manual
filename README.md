@@ -89,10 +89,10 @@ Overleaf では Main document に指定した1ファイルだけがコンパイ�
   \caption{整流回路}
   \label{fig:diode-rectifier}
 \end{figure}
-図\ref{fig:diode-rectifier}に示すように……
+\cref{fig:diode-rectifier}に示すように……   % →「図 3 に示すように」
 ```
 
-- 図番号は自動で振られます。本文中で「図3」と直接書かず，必ず `\ref` を使ってください。
+- 図番号は自動で振られます。本文中で「図3」と直接書かず，`\cref{ラベル}` を使ってください。「図」「表」「式」と番号の間の細い空きも自動で入ります（`図\ref{...}` と書く必要はありません）。
 - 簡単な回路図は，画像の代わりに `circuitikz` で本文中に直接描けます（例：`contents/02_oscilloscope/oscilloscope_body.tex` の RC ローパスフィルタの図）。
 
 ## 課題シート（ワークシート）

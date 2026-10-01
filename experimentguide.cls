@@ -46,6 +46,20 @@
 \RequirePackage{comment}
 \RequirePackage{hyperref}
 \RequirePackage{caption}
+\RequirePackage{cleveref}% hyperref の後に読み込む
+% \cref{ラベル} で「図\,3」「表\,1」「式\,(1)」のように名前と番号を細い空きでつなぐ
+\crefformat{figure}{図\,#2#1#3}
+\Crefformat{figure}{図\,#2#1#3}
+\crefrangeformat{figure}{図\,#3#1#4～#5#2#6}
+\crefmultiformat{figure}{図\,#2#1#3}{，#2#1#3}{，#2#1#3}{，#2#1#3}
+\crefformat{table}{表\,#2#1#3}
+\Crefformat{table}{表\,#2#1#3}
+\crefrangeformat{table}{表\,#3#1#4～#5#2#6}
+\crefmultiformat{table}{表\,#2#1#3}{，#2#1#3}{，#2#1#3}{，#2#1#3}
+\crefformat{equation}{式\,#2(#1)#3}
+\Crefformat{equation}{式\,#2(#1)#3}
+\crefrangeformat{equation}{式\,#3(#1)#4～#5(#2)#6}
+\crefmultiformat{equation}{式\,#2(#1)#3}{，#2(#1)#3}{，#2(#1)#3}{，#2(#1)#3}
 \RequirePackage{tikz}
 \RequirePackage[siunitx, european resistors, american inductors]{circuitikz}% 回路図用
 
