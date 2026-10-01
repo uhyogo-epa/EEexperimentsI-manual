@@ -1,6 +1,8 @@
 % ============================================================
 % 交流回路（オシロスコープを用いた測定） 記録用ワークシート本文
 % 原本: 実験手引書_交流回路(オシロスコープを用いた測定).docx の末尾の記録表
+% (a) 指定の測定点：教員が測定する周波数を指定する部分（行を足す・消すのはここ）
+% (b) 追加の測定点：学生がグラフを見ながら周波数を決めて書き込む空欄
 % ============================================================
 
 \begin{center}
@@ -12,17 +14,18 @@
   氏名：\underline{\hspace{12\zw}}
 \end{flushright}
 
-% TODO(原文確認): 手順では 20 Hz～1 kHz だが，表は 1 Hz から
-\begin{table}[h]
-  \centering
-  \caption{実験1：$RC$ローパスフィルタの特性}
+\section*{実験1：$RC$ローパスフィルタの特性}
+
+\begin{center}
+  \captionof{table}{実験1：$RC$ローパスフィルタの特性}
   \label{tab:oscilloscope-rc}
-  \renewcommand{\arraystretch}{1.45}
-  \begin{tabular}{|c|>{\centering\arraybackslash}p{8\zw}|>{\centering\arraybackslash}p{8\zw}|>{\centering\arraybackslash}p{8\zw}|}
+  \renewcommand{\arraystretch}{1.4}
+  \begin{tabular}{|>{\centering\arraybackslash}p{6\zw}|>{\centering\arraybackslash}p{8\zw}|>{\centering\arraybackslash}p{8\zw}|>{\centering\arraybackslash}p{8\zw}|}
     \hline
     周波数 [Hz] & 入力電圧 $V_\mathrm{in}$ [V] & 出力電圧 $V_\mathrm{out}$ [V] & 入出力比 $V_\mathrm{out}/V_\mathrm{in}$ \\ \hline\hline
-    1 & & & \\ \hline
-    10 & & & \\ \hline
+    \multicolumn{4}{|l|}{\small\sffamily\gtfamily (a) 指定の測定点} \\ \hline
+    20 & & & \\ \hline
+    50 & & & \\ \hline
     100 & & & \\ \hline
     200 & & & \\ \hline
     300 & & & \\ \hline
@@ -33,19 +36,31 @@
     800 & & & \\ \hline
     900 & & & \\ \hline
     1000 & & & \\ \hline
+    \hline
+    \multicolumn{4}{|l|}{\small\sffamily\gtfamily (b) 追加の測定点（グラフを見ながら，変化の大きいところに周波数を決めて追加）} \\ \hline
+    & & & \\ \hline
+    & & & \\ \hline
+    & & & \\ \hline
+    & & & \\ \hline
+    & & & \\ \hline
+    & & & \\ \hline
   \end{tabular}
-\end{table}
+\end{center}
+
+\noindent 1-2\quad カットオフ周波数 $f_\mathrm{c}$ = \underline{\hspace{8\zw}} Hz
 
 \clearpage
 
-\begin{table}[h]
-  \centering
-  \caption{実験2：$RLC$直列共振フィルタの特性}
+\section*{実験2：$RLC$直列共振フィルタの特性}
+
+\begin{center}
+  \captionof{table}{実験2：$RLC$直列共振フィルタの特性}
   \label{tab:oscilloscope-rlc}
-  \renewcommand{\arraystretch}{1.45}
-  \begin{tabular}{|c|>{\centering\arraybackslash}p{8\zw}|>{\centering\arraybackslash}p{8\zw}|>{\centering\arraybackslash}p{8\zw}|}
+  \renewcommand{\arraystretch}{1.4}
+  \begin{tabular}{|>{\centering\arraybackslash}p{6\zw}|>{\centering\arraybackslash}p{8\zw}|>{\centering\arraybackslash}p{8\zw}|>{\centering\arraybackslash}p{8\zw}|}
     \hline
     周波数 [Hz] & 入力電圧 $V_\mathrm{in}$ [V] & 出力電圧 $V_\mathrm{out}$ [V] & 入出力比 $V_\mathrm{out}/V_\mathrm{in}$ \\ \hline\hline
+    \multicolumn{4}{|l|}{\small\sffamily\gtfamily (a) 指定の測定点} \\ \hline
     2000 & & & \\ \hline
     2500 & & & \\ \hline
     3000 & & & \\ \hline
@@ -59,5 +74,15 @@
     7000 & & & \\ \hline
     7500 & & & \\ \hline
     8000 & & & \\ \hline
+    \hline
+    \multicolumn{4}{|l|}{\small\sffamily\gtfamily (b) 追加の測定点（グラフを見ながら，変化の大きいところに周波数を決めて追加）} \\ \hline
+    & & & \\ \hline
+    & & & \\ \hline
+    & & & \\ \hline
+    & & & \\ \hline
+    & & & \\ \hline
+    & & & \\ \hline
   \end{tabular}
-\end{table}
+\end{center}
+
+\noindent 2-2\quad 共振周波数 $f_0$ = \underline{\hspace{8\zw}} Hz

@@ -303,9 +303,9 @@
   after skip=0.8\baselineskip
 }
 
+% 使用器具の一覧は短いので，ページをまたがせない
 \newtcolorbox{equipment}[1][使用器具]{
   enhanced,
-  breakable,
   colback=EGSub,
   colframe=EGMain,
   boxrule=0.6pt,
