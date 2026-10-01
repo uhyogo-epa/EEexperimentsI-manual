@@ -392,7 +392,18 @@
 % ------------------------------------------------------------
 \newcommand{\important}[1]{\textbf{#1}}
 \newcommand{\keyword}[1]{{\sffamily\gtfamily\bfseries #1}}
-\newcommand{\wave}[1]{\uwave{#1}}
+% 波線：LuaLaTeX では lua-ul で引く（日本語の文中でも行末で折り返せる）
+\ifLuaTeX
+  \RequirePackage{lua-ul}
+  \newunderlinetype\eg@beginwave[\number\dimexpr 1ex]{%
+    \cleaders\hbox to 3pt{\raisebox{-2.6pt}[0pt][0pt]{%
+      \tikz[x=1pt, y=1pt, line width=0.45pt]
+        \draw (0,0) .. controls (0.75,0.9) and (0.75,0.9) .. (1.5,0)
+                    .. controls (2.25,-0.9) and (2.25,-0.9) .. (3,0);}\hss}}
+  \NewDocumentCommand\wave{+m}{{\eg@beginwave#1}}
+\else
+  \newcommand{\wave}[1]{\uwave{#1}}
+\fi
 
 % ------------------------------------------------------------
 % Instructor-only notes
