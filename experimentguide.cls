@@ -326,8 +326,8 @@
   arc=1mm,
   left=2.5mm,
   right=2.5mm,
-  top=2.5mm,% 枠の内側の上下の余白
-  bottom=2.5mm,
+  top=4mm,% 枠の内側の上の余白
+  bottom=2.5mm,% 枠の内側の下の余白
   fonttitle=\sffamily\gtfamily\bfseries,
   toptitle=1mm,
   bottomtitle=1mm,
