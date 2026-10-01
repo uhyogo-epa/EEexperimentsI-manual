@@ -93,6 +93,7 @@ Overleaf では Main document に指定した1ファイルだけがコンパイ�
 ```
 
 - 図番号は自動で振られます。本文中で「図3」と直接書かず，必ず `\ref` を使ってください。
+- 簡単な回路図は，画像の代わりに `circuitikz` で本文中に直接描けます（例：`contents/02_oscilloscope/oscilloscope_body.tex` の RC ローパスフィルタの図）。
 
 ## 課題シート（ワークシート）
 

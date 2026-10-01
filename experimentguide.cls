@@ -47,6 +47,7 @@
 \RequirePackage{hyperref}
 \RequirePackage{caption}
 \RequirePackage{tikz}
+\RequirePackage[siunitx, european resistors, american inductors]{circuitikz}% 回路図用
 
 \tcbuselibrary{breakable,skins}
 
@@ -412,7 +413,9 @@
 % ------------------------------------------------------------
 \sisetup{
   detect-all,
-  per-mode=symbol
+  per-mode=symbol,
+  range-phrase={～},% 範囲は「2～20 Hz」の形で表示
+  range-units=single
 }
 
 \hypersetup{
