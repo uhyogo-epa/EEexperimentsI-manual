@@ -32,7 +32,7 @@
     ]
     % ===== 左：電圧を測る =====
     \draw[EGMain, rounded corners=4pt] (-0.3,-2.1) rectangle (7.3,2.2);
-    \node[ttl, anchor=north west] at (-0.1,2.1) {電圧を測る（実験A，B）};
+    \node[ttl, anchor=north west] at (-0.1,2.1) {電圧を測る（実験1，2）};
     \pic at (0.8,0.1) {tester};
     \node[lbl] at (0.8,-1.45) {デジタル\\テスター};
     % プローブ
@@ -68,7 +68,7 @@
     \end{scope}
     % ===== 右：抵抗を測る =====
     \draw[EGMain, rounded corners=4pt] (7.7,-2.1) rectangle (15.0,2.2);
-    \node[ttl, anchor=north west] at (7.9,2.1) {抵抗を測る（実験C，D）};
+    \node[ttl, anchor=north west] at (7.9,2.1) {抵抗を測る（実験3，4）};
     \pic at (8.7,0.1) {tester};
     \node[lbl] at (8.7,-1.45) {デジタル\\テスター};
     % 方眼紙と鉛筆の線
@@ -232,89 +232,77 @@
 となり，抵抗値は $10\times 100 = \SI{1000}{\ohm}$（\SI{1}{k\ohm}）$\pm\SI{5}{\percent}$ となります。実験では，\SI{100}{\ohm}，\SI{200}{\ohm}，\SI{1}{k\ohm}の抵抗を使用します。
 
 % ============================================================
-\section{実験内容・方法}
+\section{実験方法}
 
 % ------------------------------------------------------------
-\subsection{デジタルテスターによる電圧測定}
+\subsection{実験1：身近な電圧を測る}
 
-\subsubsection{事前確認（テスターの設定）}
-
-\begin{itemize}
+\begin{procedure}[label=\textbf{1.\arabic*}, ref=1.\arabic*, leftmargin=*, labelsep=0.8em]
   \item テスターを直流電圧（DCV）に設定し，黒プローブをCOM，赤プローブをV/$\Omega$端子へ接続します。
-  \item 交流測定を行う際は交流電圧（ACV）に切り替えます。プローブ端子の差し替えは不要です。
-\end{itemize}
-
-\subsubsection{実験A：身近な電圧を測る}
-
-\begin{itemize}
   \item \important{乾電池：}電池ボックスの$+$と$-$にプローブを当て，端子電圧 $V_0$ を測定します。
   \item \important{USBポート：}通常のUSBコネクタは端子間が狭く，\wave{テスターのプローブを直接当てるとショートの危険があります。}そのため，本実験では，あらかじめ準備した「測定用USBケーブル」を使用し，端子部分にプローブを当てて，USB電圧を測定します。
   \item \important{DCアダプタ：}DCアダプタの出力端子にプローブを当て，出力電圧を測定します。
-  \item \important{コンセント（AC）：}\wave{教員立会いのもと}，ACVにして商用電源の電圧を測定します。
-\end{itemize}
+  \item \important{コンセント（AC）：}テスターを交流電圧（ACV）に切り替えます（プローブ端子の差し替えは不要です）。\wave{教員立会いのもと}，商用電源の電圧を測定します。
+\end{procedure}
 
-\subsubsection{実験B：負荷をつないだときの電圧}
+% ------------------------------------------------------------
+\subsection{実験2：負荷をつないだときの電圧}
 
-\begin{procedure}
+\begin{procedure}[label=\textbf{2.\arabic*}, ref=2.\arabic*, leftmargin=*, labelsep=0.8em]
+  \item テスターを直流電圧（DCV）に戻します。
   \item ブレッドボード上で乾電池と\SI{1}{k\ohm}の抵抗を直列に接続し，乾電池の両端の電圧 $V_{1\,\mathrm{k\Omega}}$ を測定します。
   \item 抵抗を\SI{200}{\ohm}や\SI{100}{\ohm}に取り替え，同様に乾電池の両端の電圧 $V_{200\,\Omega}$ および $V_{100\,\Omega}$ をそれぞれ測定します。
   \item それぞれの抵抗値・電圧値をまとめます。さらに，抵抗値から電流を計算し，電流と電圧の関係を確認します。
 \end{procedure}
 
 % ------------------------------------------------------------
-\subsection{デジタルテスターによる抵抗測定}
-
-\subsubsection{事前確認（テスターの設定）}
-
-\begin{itemize}
-  \item テスターを抵抗測定（$\Omega$）に設定し，黒プローブをCOM，赤プローブをV/$\Omega$端子へ接続します（プローブの差し替えは不要です）。
-\end{itemize}
-
-\subsubsection{実験C：鉛筆で書いた線の長さ・幅と抵抗値の関係}
+\subsection{実験3：鉛筆で書いた線の長さ・幅と抵抗値の関係}
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.47\linewidth]{tester_expC_5mm.png}\hfill
   \includegraphics[width=0.47\linewidth]{tester_expC_10mm.png}
   \caption{鉛筆で書いた線の長さ・幅と抵抗値の関係の実験}
-  \label{fig:tester-expC}
+  \label{fig:tester-exp3}
 \end{figure}
 
-\begin{procedure}
-  \item 方眼紙に鉛筆で，線幅\SI{5}{mm}，長さ\SI{12}{cm}の線を書き，内部を濃く，均等に塗りつぶします（\cref{fig:tester-expC}左）。
+\begin{procedure}[label=\textbf{3.\arabic*}, ref=3.\arabic*, leftmargin=*, labelsep=0.8em]
+  \item テスターを抵抗測定（$\Omega$）に設定し，黒プローブをCOM，赤プローブをV/$\Omega$端子へ接続します（プローブの差し替えは不要です）。
+  \item 方眼紙に鉛筆で，線幅\SI{5}{mm}，長さ\SI{12}{cm}の線を書き，内部を濃く，均等に塗りつぶします（\cref{fig:tester-exp3}左）。
   \item 長さ\SI{12}{cm}のうち内部\SI{10}{cm}の部分について，\SI{1}{cm}ごとに長さと抵抗の関係を測定します。この際，塗りムラや濃さにより抵抗値が変わり得るので，測定値を観察しながら必要に応じて線を塗り足すなど工夫してかまいません。
-  \item 次に，線幅を\SI{10}{mm}として同様の実験を行います（\cref{fig:tester-expC}右）。
+  \item 次に，線幅を\SI{10}{mm}として同様の実験を行います（\cref{fig:tester-exp3}右）。
 \end{procedure}
 
-\subsubsection{実験D：鉛筆で書いた線の曲げ方向と抵抗値の関係}
+% ------------------------------------------------------------
+\subsection{実験4：鉛筆で書いた線の曲げ方向と抵抗値の関係}
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.47\linewidth]{tester_expD_cut.png}\hfill
   \includegraphics[width=0.47\linewidth]{tester_expD_bend.png}
   \caption{鉛筆で書いた線の曲げ方向と抵抗値の関係の実験}
-  \label{fig:tester-expD}
+  \label{fig:tester-exp4}
 \end{figure}
 
-\begin{procedure}
-  \item 方眼紙に鉛筆で，幅\SI{10}{mm}，間隔\SI{5}{mm}，長さ\SI{3}{cm}程度のコ字型の図形を書き，内部を塗りつぶします（\cref{fig:tester-expD}左）。
+\begin{procedure}[label=\textbf{4.\arabic*}, ref=4.\arabic*, leftmargin=*, labelsep=0.8em]
+  \item 方眼紙に鉛筆で，幅\SI{10}{mm}，間隔\SI{5}{mm}，長さ\SI{3}{cm}程度のコ字型の図形を書き，内部を塗りつぶします（\cref{fig:tester-exp4}左）。
   \item コ字部分が入った部分を切り抜きます。
   \item コ字をまっすぐ伸ばし，コ字両端部で測定した抵抗値 $R_0$ を記録します。
-  \item 次に，机の端や台などを使用して，コ字部分を上下方向に曲げられるようにして，上下に曲げた時の抵抗値 $R_1$，$R_2$ を測定します（\cref{fig:tester-expD}右）。
+  \item 次に，机の端や台などを使用して，コ字部分を上下方向に曲げられるようにして，上下に曲げた時の抵抗値 $R_1$，$R_2$ を測定します（\cref{fig:tester-exp4}右）。
 \end{procedure}
 
 % ============================================================
 \section{考察と課題}
 
-\subsection{乾電池の特性について（実験A・B）}
+\subsection{乾電池の特性について（実験1・2）}
 
-実験Aおよび実験Bの結果から，乾電池から出力する電流の大きさと電圧の関係をグラフにまとめてください。得られたデータに対して最小二乗法を用いて近似直線を引き，その結果から\cref{fig:tester-battery}を参考に乾電池の等価回路を作成してください。
+実験1および実験2の結果から，乾電池から出力する電流の大きさと電圧の関係をグラフにまとめてください。得られたデータに対して最小二乗法を用いて近似直線を引き，その結果から\cref{fig:tester-battery}を参考に乾電池の等価回路を作成してください。
 
-\subsection{鉛筆で書いた線の抵抗値について（実験C）}
+\subsection{鉛筆で書いた線の抵抗値について（実験3）}
 
 鉛筆で描いた線について，長さと抵抗値の関係をグラフにまとめてください。得られたデータに対して最小二乗法を用いて近似直線を引き，線幅および長さと抵抗値の関係を考察してください。それらが比例関係にない場合，その理由を考察してください。
 
-\subsection{線の曲げと抵抗値の関係について（実験D）}
+\subsection{線の曲げと抵抗値の関係について（実験4）}
 
 鉛筆で描いたコ字型の線を曲げる前後の抵抗値の変化率 $(R_1-R_0)/R_0$（\si{\percent}）を計算してください。曲げ方向（引っ張り方向・圧縮方向）によって抵抗がどのように変化したかを整理し，黒鉛粒子の接触状態の変化など，背後でどのような物理的現象が起きているかを考察してください。また，この現象がどのような応用に利用できるかを考えてください。
 
