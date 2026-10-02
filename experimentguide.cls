@@ -420,6 +420,10 @@
 % ------------------------------------------------------------
 \newcommand{\important}[1]{\textbf{#1}}
 \newcommand{\keyword}[1]{{\sffamily\gtfamily\bfseries #1}}
+
+% 編集用のメモ（青字）。気になる点などを本文中に残すときに使う
+% 例：\chk{ここは担当の先生に確認}
+\newcommand{\chk}[1]{{\color{blue}#1}}
 % 波線：LuaLaTeX では lua-ul で引く（日本語の文中でも行末で折り返せる）
 \ifLuaTeX
   \RequirePackage{lua-ul}

@@ -122,7 +122,18 @@
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[scale=1.2]{tester_battery_equiv.pdf}
+  \begin{circuitikz}
+    % 乾電池（点線の枠の中）
+    \draw[dashed, EGMain, rounded corners=3pt] (-2.4,-0.5) rectangle (3.0,3.2);
+    \node[font=\sffamily\gtfamily\small, text=EGMain, anchor=south west] at (-2.4,3.22) {乾電池};
+    \draw (0,0) to[battery1, l={起電力 $E$}] (0,2.4)
+          to[R, l={内部抵抗 $r$}, i>_=$I$] (2.6,2.4) to[short, -o] (3.0,2.4);
+    \draw (0,0) to[short, -o] (3.0,0);
+    % 負荷
+    \draw (3.0,2.4) -- (5.3,2.4) to[R, l_=$R$] (5.3,0) -- (3.0,0);
+    \draw[-latex] (3.35,0.2) -- node[right, align=left] {端子\\電圧 $V$} (3.35,2.2);
+    \node[font=\sffamily\gtfamily\footnotesize, align=center, anchor=west] at (5.65,1.2) {負荷\\（抵抗器）};
+  \end{circuitikz}
   \caption{乾電池の等価回路}
   \label{fig:tester-battery}
 \end{figure}

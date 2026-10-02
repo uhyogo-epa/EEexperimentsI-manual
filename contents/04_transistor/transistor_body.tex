@@ -55,7 +55,7 @@
     \draw[big] (ac.south) -- (8.4,0.95);
     \draw[big] (7.4,0) -- node[above=2pt, text=EGWarn, font=\small] {大きな電流} (5.4,0);
   \end{tikzpicture}
-  \caption{本実験の概要（小さな入力でファンを駆動する）{\color{blue}まだいまいち}}
+  \caption{本実験の概要（小さな入力でファンを駆動する）\chk{まだいまいち}}
   \label{fig:transistor-overview}
 \end{figure}
 
@@ -68,7 +68,7 @@
 トランジスタは，さまざまな電気・電子機器に広く用いられている基本的な半導体素子で，
 主な役割は「\important{増幅}」と「\important{スイッチング}」です。
 増幅の例としては，音声信号を大きくするオーディオアンプや，センサから得られる微弱な信号を扱いやすい大きさにするアナログ回路などがあります。
-スイッチングの例としては，コンピュータの中央処理装置（CPU：Central Processing Unit）やメモリなどのデジタル回路があり，そこでは集積された{\color{blue}数十億個}以上のトランジスタが高速にオン・オフを繰り返すことで情報処理を行っています。
+スイッチングの例としては，コンピュータの中央処理装置（CPU：Central Processing Unit）やメモリなどのデジタル回路があり，そこでは集積された\chk{数十億個}以上のトランジスタが高速にオン・オフを繰り返すことで情報処理を行っています。
 また，電源回路やモータ駆動回路などでも，精密な制御基盤との絶縁を保ちながら大電流・大電力を制御するためにトランジスタが広く利用されています。
 このようにトランジスタは「電気信号や電力を制御する素子」として，さまざまな電気・電子機器の心臓部を担っています。
 
@@ -127,7 +127,7 @@ FETは，\important{ゲート（G）}，\important{ドレイン（D）}，\impor
 \subsection{BJTの特性と基本的な使い方}
 
 BJTにはNPN型とPNP型があり，本実験ではNPN型のBJTを使います。
-{\color{blue}電子の流れの説明を入れるかどうかダイオードとのバランスも見て検討。}
+\chk{電子の流れの説明を入れるかどうかダイオードとのバランスも見て検討。}
 NPN型BJTのベース（B）とエミッタ（E）の間に約\SI{0.7}{V}以上の電圧を加えると，ベースからエミッタへ小さな\important{ベース電流} $I_\mathrm{B}$ が流れ，同時にコレクタ（C）からエミッタへ大きな\important{コレクタ電流} $I_\mathrm{C}$ が流れます。コレクタ電流はベース電流に比例し，
 \begin{equation}
   I_\mathrm{C} = \beta I_\mathrm{B}
@@ -175,7 +175,7 @@ BJTの最も基本的な使い方は，\cref{fig:transistor-ce}のようにBJT�
     \draw (c) to[short, -o] (5.4,2.8) node[right] {$V_\mathrm{OUT}$};
     \draw (3.8,0) node[circ] {} node[below right] {E} node[ground] {};
   \end{circuitikz}
-  \caption{エミッタ接地増幅回路の等価回路 {\color{blue}もうちょっときれいに}}
+  \caption{エミッタ接地増幅回路の等価回路 \chk{もうちょっときれいに}}
   \label{fig:transistor-equiv}
 \end{figure}
 
@@ -184,7 +184,7 @@ BJTの最も基本的な使い方は，\cref{fig:transistor-ce}のようにBJT�
 
 \begin{equipment}
 \begin{itemize}
-  \item トランジスタ（NPN型） {\color{blue}型番？}
+  \item トランジスタ（NPN型） \chk{型番？}
   \item 抵抗器（\SI{1}{k\ohm}×2）
   \item ファン（\SI{12}{V}）
   \item ACアダプタ（\SI{12}{V}），DCジャック
@@ -204,7 +204,7 @@ BJTの最も基本的な使い方は，\cref{fig:transistor-ce}のようにBJT�
 
 \begin{caution}
 \begin{itemize}
-  \item トランジスタの端子は，\cref{fig:transistor-dcjack}右のように{\color{blue}1がコレクタ（C），2がベース（B），3がエミッタ（E）}です。\wave{各端子を間違えないように接続してください。}
+  \item トランジスタの端子は，\cref{fig:transistor-dcjack}右のように\chk{1がコレクタ（C），2がベース（B），3がエミッタ（E）}です。\wave{各端子を間違えないように接続してください。}
   \item DCジャックは，\cref{fig:transistor-dcjack}左のように中心ピンが$+$，外側が$-$です。\wave{極性（$+$・$-$）を間違えないように接続してください。}
 \end{itemize}
 \end{caution}
@@ -289,5 +289,5 @@ BJTの最も基本的な使い方は，\cref{fig:transistor-ce}のようにBJT�
   \item \label{item:transistor-graph} \wave{ファンを抵抗器\SI{1}{k\ohm}（茶黒赤金）のコレクタ抵抗 $R_\mathrm{c}$ に置き換えます}。
   \item 入力電圧$V_\mathrm{in}$ を\SI{0}{V}から\SI{1.0}{V}まで\SI{0.05}{V}ずつ変化させ，抵抗の両端電圧 $V_{R_\mathrm{c}}$ をテスターで測定します。横軸を $V_\mathrm{in}$，縦軸を $V_{R_\mathrm{c}}$ としてグラフを作成します。
   \item 出力電圧 $V_\mathrm{OUT}$ を，コレクタ端子とGNDとの間の電圧として測定します。$V_\mathrm{in}$ を\SI{0}{V}から\SI{1.0}{V}まで\SI{0.05}{V}ずつ変化させ，横軸を $V_\mathrm{in}$，縦軸を $V_\mathrm{OUT}$ として，\ref{item:transistor-graph}で作成したグラフ上にプロットします。
-  {\color{blue}2.4とまとめるより別々のほうが好ましい？}
+  \chk{2.4とまとめるより別々のほうが好ましい？}
 \end{procedure}
