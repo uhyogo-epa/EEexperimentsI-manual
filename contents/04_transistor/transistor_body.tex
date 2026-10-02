@@ -11,7 +11,52 @@
 % ============================================================
 \section{目的}
 
-BJTの基本動作を理解し，エミッタ接地増幅回路を用いて小さな入力信号により大きな電流を制御できることを確認します。また，トランジスタを用いた増幅により負荷（ファン）の駆動が可能であることを確かめるとともに，電圧−電流特性および反転動作について理解を深めることを目的とします。
+トランジスタは，小さな電気信号を用いてより大きな電流を制御できる電子素子であり，信号の増幅やスイッチングなど，さまざまな電子回路に広く利用されています。本実験では，トランジスタを用いてファンを駆動する回路を作製し，小さな入力によって負荷に流れる大きな電流を制御できることを確認します（\cref{fig:transistor-overview}）。さらに，入力電圧を変化させたときの電流や出力電圧を測定し，トランジスタの基本的な特性について理解します。
+
+\begin{figure}[htbp]
+  \centering
+  % 本実験の概要図（TikZ で作成。原本にはない図）
+  \begin{tikzpicture}[
+      font=\small,
+      lbl/.style={font=\sffamily\gtfamily\small, align=center},
+      small/.style={-latex, line width=0.6pt, EGMain!70},
+      big/.style={-{Latex[length=3.2mm,width=3.2mm]}, line width=3pt, EGWarn!80},
+    ]
+    % ---- 入力：乾電池 ----
+    \begin{scope}[shift={(0,0)}]
+      \draw[fill=black!8, rounded corners=1pt] (-0.35,-0.75) rectangle (0.35,0.75);
+      \fill[black!55] (-0.35,0.45) rectangle (0.35,0.75);
+      \draw[fill=black!35] (-0.12,0.75) rectangle (0.12,0.88);
+      \node at (0,0.0) {\scriptsize 1.5 V};
+      \node[lbl] at (0,-1.55) {入力\\（乾電池）};
+    \end{scope}
+    % ---- トランジスタ ----
+    \begin{scope}[shift={(4.2,0)}]
+      \draw[fill=EGSub, draw=EGMain, rounded corners=3pt] (-1.1,-1.0) rectangle (1.1,1.0);
+      \draw (0,0) node[npn, scale=1.2] (Q) {};
+      \node[lbl] at (0,-1.55) {トランジスタ\\（増幅）};
+    \end{scope}
+    % ---- 負荷：ファン ----
+    \begin{scope}[shift={(8.4,0)}]
+      \draw[fill=black!8, rounded corners=4pt] (-0.9,-0.9) rectangle (0.9,0.9);
+      \draw[fill=white] (0,0) circle (0.78);
+      \foreach \a in {0,120,240}
+        \fill[black!60, rotate=\a] (0,0) .. controls (0.25,0.15) and (0.55,0.45) .. (0.15,0.7)
+                                          .. controls (0.05,0.45) and (-0.05,0.2) .. (0,0);
+      \fill[black!80] (0,0) circle (0.14);
+      \node[lbl] at (0,-1.55) {負荷\\（ファン）};
+    \end{scope}
+    % ---- ACアダプタ ----
+    \node[draw, fill=black!8, rounded corners=2pt, lbl, minimum width=2.2cm, minimum height=0.8cm]
+      (ac) at (8.4,2.5) {ACアダプタ（12 V）};
+    % ---- 電流の矢印 ----
+    \draw[small] (0.5,0) -- node[above, text=EGMain, font=\small] {小さな電流} (3.0,0);
+    \draw[big] (ac.south) -- (8.4,0.95);
+    \draw[big] (7.4,0) -- node[above=2pt, text=EGWarn, font=\small] {大きな電流} (5.4,0);
+  \end{tikzpicture}
+  \caption{本実験の概要（小さな入力でファンを駆動する）}
+  \label{fig:transistor-overview}
+\end{figure}
 
 % ============================================================
 \section{原理}
