@@ -10,7 +10,90 @@
 % ============================================================
 \section{目的}
 
-デジタルテスターは，電圧や抵抗などを手軽に測定できる計測器で，電気回路の実験や電気機器の点検に欠かせない道具です。本実験では，デジタルテスターの基本的な使い方を学び，乾電池，USBポート，DCアダプタ，コンセントなど家庭にあるさまざまな電源の電圧を測定して，電圧源の特徴を理解します。さらに，鉛筆で紙に書いた線を抵抗体として利用し，線の長さ・幅・形状と抵抗値の関係を調べます。
+デジタルテスターは，電圧や抵抗などを手軽に測定できる計測器で，電気回路の実験や電気機器の点検に欠かせない道具です。本実験では，デジタルテスターの基本的な使い方を学び，乾電池，USBポート，DCアダプタ，コンセントなど家庭にあるさまざまな電源の電圧を測定して，電圧源の特徴を理解します。さらに，鉛筆で紙に書いた線を抵抗体として利用し，線の長さ・幅・形状と抵抗値の関係を調べます。本実験の概要を\cref{fig:tester-overview}に示します。
+
+\begin{figure}[htbp]
+  \centering
+  % 本実験の概要図（TikZ で作成。原本にはない図）
+  \begin{tikzpicture}[
+      font=\small,
+      lbl/.style={font=\sffamily\gtfamily\footnotesize, align=center},
+      ttl/.style={font=\sffamily\gtfamily\bfseries\small, text=EGMain},
+      tester/.pic={
+        \draw[fill=black!75, rounded corners=3pt] (-0.6,-1.0) rectangle (0.6,1.0);
+        \draw[fill=black!8] (-0.45,0.35) rectangle (0.45,0.8);
+        \node[font=\scriptsize\bfseries] at (0,0.575) {1.50};
+        \draw[fill=black!40, draw=black!20] (0,-0.2) circle (0.3);
+        \draw[white, line width=0.8pt] (0,-0.2) -- (0.2,0.0);
+        \fill[red!70!black] (-0.3,-0.78) circle (0.08);
+        \fill[black] (0.3,-0.78) circle (0.08);
+        \draw[black!20] (0.3,-0.78) circle (0.08);
+      },
+    ]
+    % ===== 左：電圧を測る =====
+    \draw[EGMain, rounded corners=4pt] (-0.3,-2.1) rectangle (7.3,2.2);
+    \node[ttl, anchor=north west] at (-0.1,2.1) {電圧を測る（実験A，B）};
+    \pic at (0.8,0.1) {tester};
+    \node[lbl] at (0.8,-1.45) {デジタル\\テスター};
+    % プローブ
+    \draw[red!70!black, line width=1pt] (0.5,-0.68) .. controls (1.4,-1.6) and (1.7,1.3) .. (2.85,0.9);
+    \fill[red!70!black] (2.85,0.9) circle (0.06);
+    \draw[black, line width=1pt] (1.1,-0.68) .. controls (1.6,-1.1) and (2.2,-0.9) .. (2.85,-0.5);
+    \fill[black] (2.85,-0.5) circle (0.06);
+    % 乾電池
+    \begin{scope}[shift={(2.85,0.15)}]
+      \draw[fill=black!8, rounded corners=1pt] (-0.25,-0.6) rectangle (0.25,0.6);
+      \fill[black!55] (-0.25,0.35) rectangle (0.25,0.6);
+      \draw[fill=black!35] (-0.08,0.6) rectangle (0.08,0.7);
+      \node[lbl] at (0,-1.25) {乾電池};
+    \end{scope}
+    % USB
+    \begin{scope}[shift={(4.0,0.15)}]
+      \draw[fill=black!8, rounded corners=2pt] (-0.4,-0.3) rectangle (0.4,0.3);
+      \draw[fill=black!60] (-0.25,-0.08) rectangle (0.25,0.12);
+      \node[lbl] at (0,-1.25) {USB};
+    \end{scope}
+    % DCアダプタ
+    \begin{scope}[shift={(5.2,0.15)}]
+      \draw[fill=black!15, rounded corners=2pt] (-0.35,-0.45) rectangle (0.35,0.45);
+      \draw[line width=1.2pt, black!70] (0,-0.45) -- (0,-0.7);
+      \node[lbl] at (0,-1.25) {DC\\アダプタ};
+    \end{scope}
+    % コンセント
+    \begin{scope}[shift={(6.5,0.15)}]
+      \draw[fill=white, rounded corners=4pt] (-0.4,-0.5) rectangle (0.4,0.5);
+      \fill[black!70] (-0.14,0.0) rectangle (-0.08,0.25);
+      \fill[black!70] (0.08,0.0) rectangle (0.14,0.25);
+      \node[lbl] at (0,-1.25) {コンセント\\（交流）};
+    \end{scope}
+    % ===== 右：抵抗を測る =====
+    \draw[EGMain, rounded corners=4pt] (7.7,-2.1) rectangle (15.0,2.2);
+    \node[ttl, anchor=north west] at (7.9,2.1) {抵抗を測る（実験C，D）};
+    \pic at (8.7,0.1) {tester};
+    \node[lbl] at (8.7,-1.45) {デジタル\\テスター};
+    % 方眼紙と鉛筆の線
+    \begin{scope}[shift={(10.0,-1.2)}]
+      \fill[EGSub] (0,0) rectangle (4.6,2.4);
+      \draw[step=0.2, EGMain!25, very thin] (0,0) grid (4.6,2.4);
+      \draw[EGMain!60] (0,0) rectangle (4.6,2.4);
+      \fill[black!80] (0.4,0.9) rectangle (4.2,1.25);
+      \node[lbl, anchor=north] at (2.3,-0.05) {方眼紙に鉛筆で書いた線};
+    \end{scope}
+    % 鉛筆
+    \begin{scope}[shift={(13.3,0.75)}, rotate=25]
+      \fill[orange!80!black] (0,0) rectangle (1.4,0.18);
+      \fill[yellow!60!orange] (-0.3,0) -- (0,0) -- (0,0.18) -- (-0.3,0.09) -- cycle;
+      \fill[black] (-0.3,0.09) -- (-0.2,0.04) -- (-0.2,0.14) -- cycle;
+    \end{scope}
+    % プローブ
+    \draw[red!70!black, line width=1pt] (8.4,-0.68) .. controls (9.2,-1.4) and (10.0,-0.6) .. (10.6,-0.12);
+    \fill[red!70!black] (10.6,-0.12) circle (0.06);
+    \draw[black, line width=1pt] (9.0,-0.68) .. controls (10.5,-1.6) and (12.6,-0.9) .. (13.6,-0.12);
+    \fill[black] (13.6,-0.12) circle (0.06);
+  \end{tikzpicture}
+  \caption{本実験の概要}
+  \label{fig:tester-overview}
+\end{figure}
 
 
 % ============================================================
