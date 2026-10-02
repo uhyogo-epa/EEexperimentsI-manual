@@ -216,7 +216,59 @@ BJTの最も基本的な使い方は，エミッタを接地（グラウンドGN
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.95\linewidth]{transistor_fan_circuit.pdf}
+  % 実物（電池BOX，ファン，DCジャック，ACアダプタ）のアイコンを使った回路図（TikZ）
+  \begin{circuitikz}[lbl/.style={font=\sffamily\gtfamily\small, align=center}]
+    % トランジスタ
+    \draw (3.6,1.6) node[npn, anchor=B, scale=1.1] (Q) {};
+    \draw (Q.B) node[above left] {B};
+    \draw (Q.C) node[right] {C};
+    \draw (Q.E) node[right] {E};
+    % ---- 入力側：電池BOX ----
+    \begin{scope}[shift={(0,0.8)}]
+      \draw[fill=black!10, rounded corners=2pt] (-0.55,-0.9) rectangle (0.55,0.9);
+      \draw[fill=black!8, rounded corners=1pt] (-0.28,-0.62) rectangle (0.28,0.5);
+      \fill[black!55] (-0.28,0.25) rectangle (0.28,0.5);
+      \draw[fill=black!35] (-0.09,0.5) rectangle (0.09,0.6);
+      \node[font=\tiny] at (0,-0.15) {1.5 V};
+      \node[font=\small] at (0.38,1.1) {$+$};
+      \node[font=\small] at (0.38,-1.12) {$-$};
+    \end{scope}
+    \node[lbl, anchor=east] at (-0.7,0.8) {電池BOX\\（乾電池）\\$V_\mathrm{in}$};
+    \draw (0,1.7) |- (0.6,2.2) to[R, l=$R_\mathrm{B}$] (2.6,2.2) |- (Q.B);
+    \draw (0,-0.1) -- (0,-0.6);
+    % ---- 出力側：ファン ----
+    \begin{scope}[shift={(Q.C |- 0,3.9)}]
+      \draw[fill=black!8, rounded corners=3pt] (-0.75,-0.75) rectangle (0.75,0.75);
+      \draw[fill=white] (0,0) circle (0.62);
+      \foreach \a in {0,120,240}
+        \fill[black!60, rotate=\a] (0,0) .. controls (0.2,0.12) and (0.44,0.36) .. (0.12,0.56)
+                                          .. controls (0.04,0.36) and (-0.04,0.16) .. (0,0);
+      \fill[black!80] (0,0) circle (0.11);
+    \end{scope}
+    \node[lbl, anchor=east] at ($(Q.C |- 0,3.9)+(-0.9,0)$) {ファン\\（12 V）};
+    \draw (Q.C) -- (Q.C |- 0,3.15);
+    \draw (Q.C |- 0,4.65) -- (Q.C |- 0,5.4);
+    % ---- 電源：DCジャック と ACアダプタ ----
+    \draw[fill=black!15, rounded corners=1pt] (7.9,1.7) rectangle (8.5,3.7);
+    \node[font=\small] at (8.2,3.35) {$+$};
+    \node[font=\small] at (8.2,2.05) {$-$};
+    \node[lbl, anchor=south] at (8.2,3.75) {DCジャック};
+    \draw (Q.C |- 0,5.4) -- (8.2,5.4) -- (8.2,3.7);
+    \draw (8.2,1.7) -- (8.2,-0.6);
+    \draw[line width=1.6pt, black!70] (8.5,2.7) -- (9.9,2.7);
+    \begin{scope}[shift={(10.8,2.7)}]
+      \draw[fill=black!10, rounded corners=3pt] (-0.9,-0.75) rectangle (0.9,0.75);
+      \node[lbl] at (0,0) {ACアダプタ\\（12 V）};
+      \draw[line width=1.2pt, black!70] (0,-0.75) -- (0,-1.3);
+      \draw[fill=black!30] (-0.25,-1.6) rectangle (0.25,-1.3);
+      \draw[line width=1pt] (-0.12,-1.6) -- (-0.12,-1.85) (0.12,-1.6) -- (0.12,-1.85);
+      \node[lbl, anchor=west] at (0.35,-1.6) {コンセントへ};
+    \end{scope}
+    \node[font=\small, anchor=south] at (9.2,2.75) {$V_\mathrm{CC}$};
+    % ---- GND ----
+    \draw (0,-0.6) -- (8.2,-0.6);
+    \draw (Q.E) -- (Q.E |- 0,-0.6) node[circ] {} node[ground] {};
+  \end{circuitikz}
   \caption{ファン駆動用エミッタ接地増幅回路}
   \label{fig:transistor-fan}
 \end{figure}
