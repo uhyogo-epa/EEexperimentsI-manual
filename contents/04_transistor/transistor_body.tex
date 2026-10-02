@@ -75,30 +75,48 @@
 % ------------------------------------------------------------
 \subsection{トランジスタの種類}
 
+トランジスタは，大きく「バイポーラトランジスタ（BJT：Bipolar Junction Transistor）」と「電界効果トランジスタ（FET：Field-Effect Transistor）」に分類され，動作原理や特性に違いがあります。
+
 \begin{figure}[htbp]
   \centering
-  \includegraphics[height=40mm]{transistor_npn_structure.png}\hspace{10mm}
-  \includegraphics[height=30mm]{transistor_npn_symbol.png}
-  \caption{バイポーラトランジスタ（BJT）}
-  \label{fig:transistor-bjt}
+  \begin{minipage}[b]{0.48\linewidth}
+    \centering
+    \includegraphics[height=36mm]{transistor_npn_structure.png}\hspace{6mm}
+    \includegraphics[height=27mm]{transistor_npn_symbol.png}
+    \caption{バイポーラトランジスタ（BJT）}
+    \label{fig:transistor-bjt}
+  \end{minipage}\hfill
+  \begin{minipage}[b]{0.48\linewidth}
+    \centering
+    \includegraphics[height=32mm]{transistor_fet_structure.png}
+    \caption{電界効果トランジスタ（FET）}
+    \label{fig:transistor-fet}
+  \end{minipage}
 \end{figure}
 
-トランジスタは，大きく「バイポーラトランジスタ（BJT：Bipolar Junction Transistor）」と「電界効果トランジスタ（FET：Field-Effect Transistor）」に分類され，動作原理や特性に違いがあります。
+% BJT と FET の説明を左右に並べる（枠の高さはそろえる）
+\noindent
+\begin{minipage}[t]{0.49\linewidth}
+\begin{tcolorbox}[enhanced, equal height group=transistor-types, colback=white, colframe=EGMain,
+    boxrule=0.6pt, arc=1mm, left=2mm, right=2mm, top=2mm, bottom=2mm,
+    fonttitle=\sffamily\gtfamily\bfseries, toptitle=1mm, bottomtitle=1mm,
+    coltitle=white, colbacktitle=EGMain, title={バイポーラトランジスタ（BJT）}]
 BJTは，ベース（B），コレクタ（C），エミッタ（E）の3つの端子を持つトランジスタです（\cref{fig:transistor-bjt}）。
 ベースに流す小さな電流によって，コレクタとエミッタの間に流れる大きな電流を制御することから，「電流で電流を制御する素子」と考えることができます。
 BJTは，小さな入力に対して大きな電流変化を得やすく，音声信号やセンサ信号などを扱うアナログ増幅回路で用いられることが多いトランジスタです。
-一方，FETは，ゲート（G），ドレイン（D），ソース（S）の3つの端子を持つトランジスタです（\cref{fig:transistor-fet}）。
+\end{tcolorbox}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.49\linewidth}
+\begin{tcolorbox}[enhanced, equal height group=transistor-types, colback=white, colframe=EGMain,
+    boxrule=0.6pt, arc=1mm, left=2mm, right=2mm, top=2mm, bottom=2mm,
+    fonttitle=\sffamily\gtfamily\bfseries, toptitle=1mm, bottomtitle=1mm,
+    coltitle=white, colbacktitle=EGMain, title={電界効果トランジスタ（FET）}]
+FETは，ゲート（G），ドレイン（D），ソース（S）の3つの端子を持つトランジスタです（\cref{fig:transistor-fet}）。
 ゲートに加える電圧によって，ドレインとソースの間に流れる電流を制御することから，「電圧で電流を制御する素子」と考えることができます。
 FETは，入力側に流れる電流が非常に小さく，小型化や高集積化にも適していることから，CPUやメモリなどのデジタル回路に広く用いられています。
 また，大きな電力を扱う電源回路などのスイッチングにも多く利用されています。
-
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[height=35mm]{transistor_fet_structure.png}
-  \caption{電界効果トランジスタ（FET）}
-  \label{fig:transistor-fet}
-\end{figure}
+\end{tcolorbox}
+\end{minipage}
 
 % ------------------------------------------------------------
 \subsection{バイポーラトランジスタの基本的な性能}
