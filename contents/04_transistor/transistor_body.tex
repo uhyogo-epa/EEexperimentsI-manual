@@ -177,7 +177,6 @@ BJTの最も基本的な使い方は，エミッタを接地（グラウンドGN
   \label{fig:transistor-equiv}
 \end{figure}
 
-
 % ============================================================
 \section{使用器具}
 
@@ -214,8 +213,11 @@ BJTの最も基本的な使い方は，エミッタを接地（グラウンドGN
 % ------------------------------------------------------------
 \subsection{実験1：乾電池（小さな入力信号）を用いてファンを回そう！}
 
-\begin{figure}[htbp]
-  \centering
+\begin{procedure}[label=\textbf{1.\arabic*}, ref=1.\arabic*, leftmargin=*, labelsep=0.8em]
+  \item はじめに，ブレッドボード上で，乾電池入り電池BOXとファンを直接接続し，ファンが駆動するかどうかを確認します。回ったかどうかをワークシートに記入してください。
+  \item ブレッドボード上に\cref{fig:transistor-fan}のように，エミッタ接地増幅回路を組み立てます。このときの $R_\mathrm{c}$ はファン，$V_\mathrm{cc}$ はACアダプタ，$V_\mathrm{in}$ は乾電池入り電池BOXです。ベース抵抗 $R_\mathrm{B}$ には\wave{抵抗器\SI{1}{k\ohm}（茶黒赤金）}を使用します。トランジスタの各端子とDCジャックの極性は，使用器具の注意（\cref{fig:transistor-dcjack}）を参考にして正しく接続してください。
+
+    \begin{center}
   % 実物（電池BOX，ファン，DCジャック，ACアダプタ）のアイコンを使った回路図（TikZ）
   \begin{circuitikz}[lbl/.style={font=\sffamily\gtfamily\small, align=center}]
     % トランジスタ
@@ -262,20 +264,16 @@ BJTの最も基本的な使い方は，エミッタを接地（グラウンドGN
       \draw[line width=1.2pt, black!70] (0,-0.75) -- (0,-1.3);
       \draw[fill=black!30] (-0.25,-1.6) rectangle (0.25,-1.3);
       \draw[line width=1pt] (-0.12,-1.6) -- (-0.12,-1.85) (0.12,-1.6) -- (0.12,-1.85);
-      \node[lbl, anchor=west] at (0.35,-1.6) {コンセントへ};
+      \node[lbl, anchor=north] at (0,-1.9) {コンセントへ};
     \end{scope}
     \node[font=\small, anchor=south] at (9.2,2.75) {$V_\mathrm{CC}$};
     % ---- GND ----
     \draw (0,-0.6) -- (8.2,-0.6);
     \draw (Q.E) -- (Q.E |- 0,-0.6) node[circ] {} node[ground] {};
   \end{circuitikz}
-  \caption{ファン駆動用エミッタ接地増幅回路}
+  \captionof{figure}{ファン駆動用エミッタ接地増幅回路}
   \label{fig:transistor-fan}
-\end{figure}
-
-\begin{procedure}[label=\textbf{1.\arabic*}, ref=1.\arabic*, leftmargin=*, labelsep=0.8em]
-  \item はじめに，ブレッドボード上で，乾電池入り電池BOXとファンを直接接続し，ファンが駆動するかどうかを確認します。回ったかどうかをワークシートに記入してください。
-  \item ブレッドボード上に\cref{fig:transistor-fan}のように，エミッタ接地増幅回路を組み立てます。このときの $R_\mathrm{c}$ はファン，$V_\mathrm{cc}$ はACアダプタ，$V_\mathrm{in}$ は乾電池入り電池BOXです。ベース抵抗 $R_\mathrm{B}$ には\wave{抵抗器\SI{1}{k\ohm}（茶黒赤金）}を使用します。トランジスタの各端子とDCジャックの極性は，使用器具の注意（\cref{fig:transistor-dcjack}）を参考にして正しく接続してください。
+    \end{center}
   \item 接続を確認した後，電池BOXのスイッチをオンにし，増幅回路を用いてファンを駆動します。\wave{ファンが回転したら教員の確認を受け}，実験2に進みます。
 \end{procedure}
 
