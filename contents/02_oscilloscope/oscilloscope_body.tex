@@ -11,7 +11,7 @@
 % ============================================================
 \section{目的}
 
-本実験では，交流信号の観測に欠かせない測定器であるオシロスコープと，交流信号を発生させるファンクションジェネレータの基本的な使い方を習得します。さらに，これらの機器を用いて基本的なフィルタ回路の周波数特性を測定し，その動作原理を理解します。フィルタ（filter）とは，特定の条件に合うものだけを選別・抽出するもので，電気回路では，必要な周波数成分の信号だけを取り出すために用いられます。
+本実験では，交流信号の観測に欠かせない測定器であるオシロスコープと，交流信号を発生させるファンクションジェネレータの基本的な使い方を習得します。さらに，これらの機器を用いて基本的なフィルタ回路の周波数特性を測定し，その動作原理を理解します。フィルタ（Filter）とは，特定の条件に合うものだけを選別・抽出するもので，電気回路では，必要な周波数成分の信号だけを取り出すために用いられます。
 
 % 趣旨（原本の「実用例」を書き直したもの。担当の先生に確認）
 フィルタ回路の1つにローパスフィルタがあります。この回路は高い周波数成分を遮断する機能を有するため，音楽などに含まれる高音成分を取り除くことが可能です。本実験では，オシロスコープを用いてローパスフィルタなどのフィルタ回路の周波数特性を測定します。最後に，自作したローパスフィルタを音源（PC）とスピーカーの間に接続し（\cref{fig:oscilloscope-demo}），高音成分が取り除かれる様子を実際の音で確認します。
@@ -30,8 +30,8 @@
 % ------------------------------------------------------------
 \subsection{交流}
 
-交流（AC：alternating current）とは，電圧や電流の大きさと向きが時間とともに周期的に変化するものです。代表的な交流波形を\cref{fig:oscilloscope-waveforms}に示します。
-\cref{fig:oscilloscope-waveforms}の(a)に示す波形を\important{正弦波}（sinusoidal wave），(b)に示す波形を\important{三角波}（triangular wave），(c)に示す波形を\important{方形波}または\important{矩形波}（rectangular wave）といいます。このうち，(a)のように電圧や電流が正弦波状に変化する交流を\important{正弦波交流}といいます。正弦波交流は，交流波形のなかで最も基本となる波形です。
+交流（AC：Alternating Current）とは，電圧や電流の大きさと向きが時間とともに周期的に変化するものです。代表的な交流波形を\cref{fig:oscilloscope-waveforms}に示します。
+\cref{fig:oscilloscope-waveforms}の(a)に示す波形を\important{正弦波}（Sinusoidal Wave），(b)に示す波形を\important{三角波}（Triangular Wave），(c)に示す波形を\important{方形波}または\important{矩形波}（Rectangular Wave）といいます。このうち，(a)のように電圧や電流が正弦波状に変化する交流を\important{正弦波交流}といいます。正弦波交流は，交流波形のなかで最も基本となる波形です。
 
 \begin{figure}[htbp]
   \centering
@@ -40,7 +40,7 @@
   \label{fig:oscilloscope-waveforms}
 \end{figure}
 
-\cref{fig:oscilloscope-instantaneous}に示すように，任意の時刻 $t$ における電圧や電流の値を\important{瞬時値}（instantaneous value）といい，電圧の場合は $v(t)$，電流の場合は $i(t)$ で表します。瞬時値のうち絶対値が最も大きいものを\important{最大値}（maximum value）といい，電圧の場合は $V_\mathrm{m}$，電流の場合は $I_\mathrm{m}$ で表します。最大値は\important{振幅}（amplitude）とも呼ばれます。また，最大値と最小値の差を\important{ピークピーク値}（peak-to-peak value）といい，電圧の場合は $V_\mathrm{pp}$，電流の場合は $I_\mathrm{pp}$ で表します。正弦波交流では，ピークピーク値は最大値の2倍（$V_\mathrm{pp}=2V_\mathrm{m}$）になります。
+\cref{fig:oscilloscope-instantaneous}に示すように，任意の時刻 $t$ における電圧や電流の値を\important{瞬時値}（Instantaneous Value）といい，電圧の場合は $v(t)$，電流の場合は $i(t)$ で表します。瞬時値のうち絶対値が最も大きいものを\important{最大値}（Maximum Value）といい，電圧の場合は $V_\mathrm{m}$，電流の場合は $I_\mathrm{m}$ で表します。最大値は\important{振幅}（Amplitude）とも呼ばれます。また，最大値と最小値の差を\important{ピークピーク値}（Peak-to-Peak Value）といい，電圧の場合は $V_\mathrm{pp}$，電流の場合は $I_\mathrm{pp}$ で表します。正弦波交流では，ピークピーク値は最大値の2倍（$V_\mathrm{pp}=2V_\mathrm{m}$）になります。
 
 \begin{figure}[htbp]
   \centering
@@ -132,7 +132,7 @@ f_0=\frac{1}{2\pi\sqrt{LC}}
 % ------------------------------------------------------------
 \subsection{オシロスコープの使い方}
 
-オシロスコープ（oscilloscope）は，電気信号の電圧を時間とともに測定し，その波形を画面に表示する測定器です（\cref{fig:oscilloscope-scope}）。本実験で使用するKEYSIGHT EDUX1052Aでは，帯域幅が\SI{50}{MHz}，サンプリングレートが\SI{1}{GS/s}（1ギガサンプル毎秒）です。帯域幅\SI{50}{MHz}は，\SI{50}{MHz}の正弦波を入力すると，表示される振幅が\SI{3}{dB}減衰する（振幅が約\SI{70.7}{\percent}になる）ことを意味します。また，サンプリングレート\SI{1}{GS/s}は，1秒間に $10^9$ 点（10億点）のサンプルを取得することを意味します。
+オシロスコープ（Oscilloscope）は，電気信号の電圧を時間とともに測定し，その波形を画面に表示する測定器です（\cref{fig:oscilloscope-scope}）。本実験で使用するKEYSIGHT EDUX1052Aでは，帯域幅が\SI{50}{MHz}，サンプリングレートが\SI{1}{GS/s}（1ギガサンプル毎秒）です。帯域幅\SI{50}{MHz}は，\SI{50}{MHz}の正弦波を入力すると，表示される振幅が\SI{3}{dB}減衰する（振幅が約\SI{70.7}{\percent}になる）ことを意味します。また，サンプリングレート\SI{1}{GS/s}は，1秒間に $10^9$ 点（10億点）のサンプルを取得することを意味します。
 
 \begin{figure}[htbp]
   \centering
