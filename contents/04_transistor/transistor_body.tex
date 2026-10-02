@@ -88,13 +88,14 @@
     fonttitle=\sffamily\gtfamily\bfseries, toptitle=1.7mm, bottomtitle=0.3mm,
     coltitle=white, colbacktitle=EGMain, title={バイポーラトランジスタ（BJT）}]
 \begin{center}
-  \includegraphics[height=32mm]{transistor_npn_structure.png}\hspace{5mm}
-  \begin{circuitikz}[baseline={(0,-0.4)}]
+  % 構造の図と回路記号の上下の中心をそろえる（図全体の高さは右の FET の図と同じ 32 mm）
+  \raisebox{-0.5\height}{\includegraphics[height=32mm]{transistor_npn_structure.png}}\hspace{5mm}
+  \raisebox{-0.5\height}{\begin{circuitikz}
     \draw (0,0) node[npn, scale=1.1] (Qs) {};
     \draw (Qs.B) node[left] {B};
     \draw (Qs.C) node[above] {C};
     \draw (Qs.E) node[below] {E};
-  \end{circuitikz}
+  \end{circuitikz}}
   \captionof{figure}{バイポーラトランジスタ（BJT）}
   \label{fig:transistor-bjt}
 \end{center}
@@ -111,7 +112,7 @@ BJTは，\important{ベース（B）}，\important{コレクタ（C）}，\impor
     fonttitle=\sffamily\gtfamily\bfseries, toptitle=1.7mm, bottomtitle=0.3mm,
     coltitle=white, colbacktitle=EGMain, title={電界効果トランジスタ（FET）}]
 \begin{center}
-  \includegraphics[height=32mm]{transistor_fet_structure.png}
+  \raisebox{-0.5\height}{\includegraphics[height=32mm]{transistor_fet_structure.png}}
   \captionof{figure}{電界効果トランジスタ（FET）}
   \label{fig:transistor-fet}
 \end{center}
