@@ -168,14 +168,26 @@ BJTの最も基本的な使い方は，エミッタを接地（グラウンドGN
 \end{figure}
 
 % ============================================================
+\section{使用器具}
+
+\begin{equipment}
+\begin{itemize}
+  \item トランジスタ（NPN型）
+  \item 抵抗器（\SI{1}{k\ohm}×2）
+  \item ファン（\SI{12}{V}）
+  \item ACアダプタ（\SI{12}{V}），DCジャック
+  \item 乾電池（\SI{1.5}{V}），電池BOX
+  \item 直流電源
+  \item テスター
+  \item ブレッドボード，ジャンパー線
+\end{itemize}
+\end{equipment}
+
+% ============================================================
 \section{実験}
 
 % ------------------------------------------------------------
 \subsection{実験1：乾電池（小さな入力信号）を用いてファンを回そう！}
-
-\begin{equipment}[準備物]
-ブレッドボード，ジャンパー線，ファン（\SI{12}{V}），乾電池（\SI{1.5}{V}），電池BOX，DCジャック，トランジスタ，ACアダプタ（\SI{12}{V}），抵抗（\SI{1}{k\ohm}）
-\end{equipment}
 
 \begin{figure}[htbp]
   \centering
@@ -193,19 +205,15 @@ BJTの最も基本的な使い方は，エミッタを接地（グラウンドGN
 
 \begin{procedure}[label=\textbf{1.\arabic*}, ref=1.\arabic*, leftmargin=*, labelsep=0.8em]
   \item ブレッドボード上で，乾電池入り電池BOXとファンを直列に接続し，ファンが駆動するか確認します。回ったかどうかをワークシートに記入してください。
-  \item 乾電池でファンを回してみます。\cref{fig:transistor-fan}の回路図のように，ブレッドボード上に増幅回路を組み立てます。このときの $R_\mathrm{c}$ はファン，$V_\mathrm{cc}$ はACアダプタ，$V_\mathrm{in}$ は乾電池入り電池BOXです。\wave{トランジスタのエミッタ，コレクタ，ベースの各端子，およびDCジャックの極性（$+$・$-$）を，\cref{fig:transistor-dcjack}を参考にして正しく接続します。}
+  \item 乾電池でファンを回してみます。\cref{fig:transistor-fan}の回路図のように，ブレッドボード上に増幅回路を組み立てます。このときの $R_\mathrm{c}$ はファン，$V_\mathrm{cc}$ はACアダプタ，$V_\mathrm{in}$ は乾電池入り電池BOXです。ベース抵抗 $R_\mathrm{B}$ には\wave{抵抗器\SI{1}{k\ohm}（茶黒赤金）}を使用します。\wave{トランジスタのエミッタ，コレクタ，ベースの各端子，およびDCジャックの極性（$+$・$-$）を，\cref{fig:transistor-dcjack}を参考にして正しく接続します。}
   \item 接続を確認した後，電池BOXのスイッチをオンにし，増幅回路を用いてファンを駆動します。\wave{ファンが回転したら教員の確認を受け}，実験2に進みます。
 \end{procedure}
 
 % ------------------------------------------------------------
 \subsection{実験2：電圧−電流の関係やコレクタ電圧の変化を測定しよう！}
 
-\begin{equipment}[準備物]
-ブレッドボード，ジャンパー線，ファン（\SI{12}{V}），DCジャック，トランジスタ，ACアダプタ（\SI{12}{V}），抵抗（\SI{1}{k\ohm}×2個），直流電源，テスター
-\end{equipment}
-
 \begin{procedure}[label=\textbf{2.\arabic*}, ref=2.\arabic*, leftmargin=*, labelsep=0.8em]
   \item ファンが回り始める入力電圧のしきい値を確認します。増幅回路の入力電圧源 $V_\mathrm{in}$ を乾電池から直流電源に変更します。$V_\mathrm{in}$ を\SI{0}{V}から\SI{1.0}{V}まで\SI{0.05}{V}ずつ上昇させ，ファンが回り始めたときの電圧をワークシートに記録します。
-  \item \label{item:transistor-graph} ファンを\SI{1}{k\ohm}のコレクタ抵抗 $R_\mathrm{c}$ に置き換え，抵抗の両端電圧 $V_{R_\mathrm{c}}$ をテスターで測定します。$V_\mathrm{in}$ を\SI{0}{V}から\SI{1.0}{V}まで\SI{0.05}{V}ずつ変化させ，横軸を $V_\mathrm{in}$，縦軸を $V_{R_\mathrm{c}}$ としてグラフを作成します。
+  \item \label{item:transistor-graph} ファンを\wave{抵抗器\SI{1}{k\ohm}（茶黒赤金）}のコレクタ抵抗 $R_\mathrm{c}$ に置き換え，抵抗の両端電圧 $V_{R_\mathrm{c}}$ をテスターで測定します。$V_\mathrm{in}$ を\SI{0}{V}から\SI{1.0}{V}まで\SI{0.05}{V}ずつ変化させ，横軸を $V_\mathrm{in}$，縦軸を $V_{R_\mathrm{c}}$ としてグラフを作成します。
   \item 出力電圧 $V_\mathrm{OUT}$ を，コレクタ端子とGNDとの間の電圧として測定します。$V_\mathrm{in}$ を\SI{0}{V}から\SI{1.0}{V}まで\SI{0.05}{V}ずつ変化させ，横軸を $V_\mathrm{in}$，縦軸を $V_\mathrm{OUT}$ として，\ref{item:transistor-graph}で作成したグラフ上にプロットします。
 \end{procedure}
