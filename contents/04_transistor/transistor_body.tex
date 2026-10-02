@@ -118,23 +118,120 @@ FETは，\important{ゲート（G）}，\important{ドレイン（D）}，\impor
 \end{minipage}
 
 % ------------------------------------------------------------
-\subsection{バイポーラトランジスタの基本的な性能}
+\subsection{BJTの特性と基本的な使い方}
 
-本実験ではBJTを扱っていきます。BJTは主にPNP型とNPN型があり，ここではNPN型について説明します。NPN型のトランジスタは，\cref{fig:transistor-bjt}のような記号で表され，ベース（B）に小さな電流を流すことで，エミッタ（E）からコレクタ（C）へ流れる大きな電流を制御できる素子です。すなわち「小さい入力電流で大きな出力電流を操る」増幅作用を持ちます。
+BJTにはNPN型とPNP型があり，ここではNPN型について説明します。
 
-NPN型では，ベース-エミッタ間に電圧（約\SI{0.7}{V}以上）を与えると，エミッタからベースへ電子が流れ込みます。ベースは非常に薄いため，その電子の一部のみが正孔と再結合してベース電流となり，残りのほとんどの電子はそのままコレクタへ引き抜かれます（コレクタ電流）。この結果，小さなベース電流に対して大きなコレクタ電流が流れます。この関係は $I_\mathrm{C}=\beta I_\mathrm{B}$（$\beta$ は電流増幅率）で表され，$\beta$ は一般に数十から数百の値をとります。また，コレクタ-エミッタ間に適切な電圧を与えることで，トランジスタはアナログ信号の増幅素子としてだけでなく，デジタル回路におけるスイッチとしても利用されます。
+\subsubsection{BJTのはたらき}
 
-% ------------------------------------------------------------
-\subsection{エミッタ接地増幅回路}
+NPN型BJTのベース（B）とエミッタ（E）の間に約\SI{0.7}{V}以上の電圧を加えると，ベースからエミッタへ小さな電流が流れます。これを\important{ベース電流} $I_\mathrm{B}$ といいます。このとき，コレクタ（C）からエミッタへ，ベース電流よりはるかに大きな電流が流れます。これを\important{コレクタ電流} $I_\mathrm{C}$ といいます。コレクタ電流はベース電流に比例し，
+\begin{equation}
+  I_\mathrm{C} = \beta I_\mathrm{B}
+  \label{eq:transistor-beta}
+\end{equation}
+の関係があります。$\beta$ は\important{電流増幅率}と呼ばれ，一般に数十から数百の値をとります。つまり，BJTは小さなベース電流によって大きなコレクタ電流を制御する素子です。
+
+このはたらきは，次のようにして生じます。ベース–エミッタ間に電圧を加えると，エミッタからベースへ電子が流れ込みます。ベースは非常に薄いため，流れ込んだ電子の一部だけが正孔と再結合してベース電流となり，残りのほとんどの電子はそのままコレクタへ引き抜かれてコレクタ電流となります。
+
+\subsubsection{理想的な等価回路}
+
+BJTを使った回路の動作を考えるときは，BJTを\cref{fig:transistor-equiv}のような\important{理想的な等価回路}で表すと便利です。
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[height=45mm]{transistor_ce_amplifier.png}
-  \caption{エミッタ接地増幅回路}
+  \begin{circuitikz}
+    \draw (0,0) node[npn, scale=1.3] (Q) {};
+    \draw (Q.B) node[left] {B};
+    \draw (Q.C) node[above] {C};
+    \draw (Q.E) node[below] {E};
+  \end{circuitikz}
+  \hspace{18mm}
+  \begin{circuitikz}
+    \draw (0,1.8) node[left] {B} to[short, o-, i=$I_\mathrm{B}$] (1.4,1.8)
+          to[D, l_={$V_\mathrm{BE}\approx\SI{0.7}{V}$}] (1.4,0) -- (3.4,0);
+    \draw (3.4,3.6) node[above] {C} to[short, o-] (3.4,3.0)
+          to[american controlled current source, l={$I_\mathrm{C}=\beta I_\mathrm{B}$}] (3.4,0);
+    \draw (2.4,0) to[short, -o] (2.4,-0.6) node[below] {E};
+  \end{circuitikz}
+    \caption{NPN型BJTの記号（左）と理想的な等価回路（右）}
+  \label{fig:transistor-equiv}
+\end{figure}
+
+\begin{itemize}
+  \item \important{ベース–エミッタ間}は，ダイオードとして考えます。ベース–エミッタ間の電圧 $V_\mathrm{BE}$ が約\SI{0.7}{V}より小さいときはベース電流は流れず，ベース電流が流れているときは $V_\mathrm{BE}$ はほぼ\SI{0.7}{V}で一定とみなします。
+  \item \important{コレクタ–エミッタ間}は，ベース電流で大きさが決まる電流源として考えます。この電流源は，\cref{eq:transistor-beta}の電流 $I_\mathrm{C}=\beta I_\mathrm{B}$ を流そうとします。
+\end{itemize}
+このように考えると，BJTは「ベースに流す小さな電流 $I_\mathrm{B}$ に応じて，コレクタ側を流れる大きな電流 $I_\mathrm{C}$ の量を調節する蛇口」のようなものとみなせます。
+
+\subsubsection{エミッタ接地増幅回路}
+
+BJTの最も基本的な使い方は，エミッタを接地（グラウンドGNDに接続）して使う方法です。\cref{fig:transistor-ce}のように，エミッタをGNDに接続し，入力電圧 $V_\mathrm{in}$ を抵抗 $R_\mathrm{B}$ を通してベースに加え，電源電圧 $V_\mathrm{CC}$ から抵抗 $R_\mathrm{C}$ を通してコレクタに電流を流す回路を\important{エミッタ接地増幅回路}といいます。出力電圧 $V_\mathrm{OUT}$ は，コレクタとGNDの間の電圧です。
+
+\begin{figure}[htbp]
+  \centering
+  \begin{circuitikz}
+    \draw (4,1.5) node[npn, scale=1.2] (Q) {};
+    \draw (0,0) node[ground] {} to[battery1, l=$V_\mathrm{in}$] (0,1.5)
+          to[R, l=$R_\mathrm{B}$, i>^=$I_\mathrm{B}$] (2.6,1.5) -- (Q.B);
+    \draw (Q.E) -- (Q.E |- 0,0) node[ground] {};
+    \draw (Q.C) to[short, -*] (Q.C |- 0,2.6) coordinate (c) to[R, l_=$R_\mathrm{C}$, i<^=$I_\mathrm{C}$] (Q.C |- 0,4.6) node[vcc] {$V_\mathrm{CC}$};
+    \draw (c) to[short, -o] (6.2,2.6) node[right] {$V_\mathrm{OUT}$};
+  \end{circuitikz}
+    \caption{エミッタ接地増幅回路}
   \label{fig:transistor-ce}
 \end{figure}
 
-エミッタ接地増幅回路は，エミッタ端子を接地（GND）に接続し，ベースに直流電圧を加えてコレクタ電流を制御する回路です（\cref{fig:transistor-ce}）。ベース−エミッタ間にはおよそ\SI{0.7}{V}程度の電圧が必要であり，このとき流れるベース電流に比例してコレクタ電流が流れます。コレクタ電流が大きくなるとコレクタ抵抗にかかる電圧降下も大きくなり，その結果コレクタ電圧（$V_\mathrm{OUT}$）は低下します。このように入力側のベース電圧を変化させると，出力側のコレクタ電圧が反対方向に変化するため「反転動作」と呼ばれます。直流の実験では，この電圧−電流関係やコレクタ電圧の変化を測定し，トランジスタの基本特性と動作点の決まり方を確認できます。
+理想的な等価回路を使うと，$V_\mathrm{in}$ が約\SI{0.7}{V}より大きいとき，この回路の電流と電圧は次の順に求められます。
+\begin{enumerate}[label=(\arabic*)]
+  \item \important{ベース電流}：$R_\mathrm{B}$ には $V_\mathrm{in}-\SI{0.7}{V}$ の電圧がかかるので，
+    \[
+      I_\mathrm{B} = \frac{V_\mathrm{in}-0.7}{R_\mathrm{B}}
+    \]
+  \item \important{コレクタ電流}：$I_\mathrm{C}=\beta I_\mathrm{B}$
+  \item \important{$R_\mathrm{C}$ の両端電圧と出力電圧}：
+    \[
+      V_{R_\mathrm{C}} = R_\mathrm{C} I_\mathrm{C}, \qquad V_\mathrm{OUT} = V_\mathrm{CC} - R_\mathrm{C} I_\mathrm{C}
+    \]
+\end{enumerate}
+
+\subsubsection{入力電圧と出力電圧の関係}
+
+$V_\mathrm{in}$ を\SI{0}{V}から少しずつ大きくしていくと，回路の動作は\cref{fig:transistor-vinvout}のように3つの領域に分かれます。
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[x=1cm, y=0.32cm, font=\small]
+    \fill[black!6] (0,0) rectangle (3,13);
+    \fill[EGSub] (3,0) rectangle (4.2,13);
+    \fill[black!6] (4.2,0) rectangle (7,13);
+    \node at (1.5,13.8) {遮断};
+    \node at (3.6,13.8) {増幅};
+    \node at (5.6,13.8) {飽和};
+    \draw[-latex] (0,0) -- (7.4,0) node[below left] {入力電圧 $V_\mathrm{in}$};
+    \draw[-latex] (0,0) -- (0,14.6) node[above] {電圧};
+    \draw (3,0.15) -- (3,-0.15) node[below] {約\SI{0.7}{V}};
+    \draw (-0.08,12) -- (0.08,12) node[left=2pt] {$V_\mathrm{CC}$};
+    \draw[EGMain, line width=1.2pt] (0,12) -- (3,12) -- (4.2,0.4) -- (7,0.4);
+    \draw[EGWarn, line width=1.2pt, dashed] (0,0) -- (3,0) -- (4.2,11.6) -- (7,11.6);
+    \node[EGMain, anchor=west] at (4.5,1.6) {出力電圧 $V_\mathrm{OUT}$};
+    \node[EGWarn, anchor=west] at (4.5,10.3) {$R_\mathrm{C}$ の両端電圧 $V_{R_\mathrm{C}}$};
+  \end{tikzpicture}
+    \caption{入力電圧と出力電圧の関係（模式図）}
+  \label{fig:transistor-vinvout}
+\end{figure}
+
+\begin{itemize}
+  \item \important{遮断領域}（$V_\mathrm{in}$ が約\SI{0.7}{V}より小さいとき）：ベース電流が流れないため $I_\mathrm{C}=0$ となり，$V_{R_\mathrm{C}}=0$，$V_\mathrm{OUT}=V_\mathrm{CC}$ です。トランジスタはスイッチが切れた（OFF）状態です。
+  \item \important{増幅領域}：$V_\mathrm{in}$ が約\SI{0.7}{V}を超えると，$V_\mathrm{in}$ の増加に応じて $I_\mathrm{C}$ が増え，$V_{R_\mathrm{C}}$ は大きく，$V_\mathrm{OUT}$ は小さくなります。入力電圧のわずかな変化で出力電圧が大きく変化するので，信号を増幅できます。また，入力電圧が大きくなると出力電圧が小さくなるので，この動作を\important{反転動作}といいます。
+  \item \important{飽和領域}：$I_\mathrm{C}$ が大きくなり，$V_\mathrm{OUT}$ が\SI{0}{V}近く（約\SI{0.2}{V}）まで下がると，それ以上 $I_\mathrm{C}$ は増えません。$R_\mathrm{C}$ にはほぼ電源電圧 $V_\mathrm{CC}$ がかかり，トランジスタはスイッチが入った（ON）状態になります。
+\end{itemize}
+
+実験1では，ファンを $R_\mathrm{C}$ として使い，乾電池（\SI{1.5}{V}）を入力としてトランジスタを飽和領域で動作させることで，ファンにほぼ電源電圧をかけて回します。実験2では，$V_\mathrm{in}$ を変化させながら $V_{R_\mathrm{C}}$ と $V_\mathrm{OUT}$ を測定し，この関係を確かめます。
+
+% 計算例（原本の「以下は削除」の部分にあった理論値の計算をもとにした例）
+\begin{hosoku}[計算例]
+$V_\mathrm{CC}=\SI{12}{V}$，$R_\mathrm{B}=R_\mathrm{C}=\SI{1}{k\ohm}$，$\beta=200$ のとき，飽和するときのコレクタ電流はおよそ $V_\mathrm{CC}/R_\mathrm{C}=\SI{12}{mA}$ で，そのときのベース電流は $I_\mathrm{B}=\SI{12}{mA}/200=\SI{0.06}{mA}$ です。$R_\mathrm{B}$ にかかる電圧は $\SI{0.06}{mA}\times\SI{1}{k\ohm}=\SI{0.06}{V}$ なので，$V_\mathrm{in}$ が約 $0.7+0.06=\SI{0.76}{V}$ を超えると飽和します。このように増幅領域は約\SI{0.70}{V}～\SI{0.76}{V}と狭いので，実験2ではこの付近の変化に注意して測定してください。
+\end{hosoku}
 
 % ============================================================
 \section{実験}
