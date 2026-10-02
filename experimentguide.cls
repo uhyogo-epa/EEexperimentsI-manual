@@ -253,6 +253,14 @@
   after_space=0.3\baselineskip
 }
 
+% 見出しが本文をはさまずに続くとき（例：「2 原理」の直後に「2.1 …」）は，
+% 見出しどうしの間を，見出しと本文の間と同じくらいに詰める
+\SetBlockHeadingSpaces{
+  {_section{before_space=1.3\baselineskip},0.55\baselineskip,_subsection,0.4\baselineskip}
+  {_subsection{before_space=1.0\baselineskip},0.4\baselineskip,_subsubsection,0.3\baselineskip}
+  {_section{before_space=1.3\baselineskip},0.55\baselineskip,_subsection,0.4\baselineskip,_subsubsection,0.3\baselineskip}
+}
+
 % ------------------------------------------------------------
 % Figures and tables
 % ------------------------------------------------------------
