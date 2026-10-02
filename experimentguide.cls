@@ -308,8 +308,8 @@
   top=2mm,
   bottom=2mm,
   fonttitle=\sffamily\gtfamily\bfseries,
-  toptitle=1mm,
-  bottomtitle=1mm,
+  toptitle=1.7mm,% 日本語の見出しは下側に余白が出やすいので上を多めに
+  bottomtitle=0.3mm,
   coltitle=white,
   colbacktitle=EGMain,
   title={#1},
@@ -329,8 +329,8 @@
   top=4mm,% 枠の内側の上の余白
   bottom=2.5mm,% 枠の内側の下の余白
   fonttitle=\sffamily\gtfamily\bfseries,
-  toptitle=1mm,
-  bottomtitle=1mm,
+  toptitle=1.7mm,% 日本語の見出しは下側に余白が出やすいので上を多めに
+  bottomtitle=0.3mm,
   coltitle=white,
   colbacktitle=EGMain,
   title={#1},
@@ -352,8 +352,8 @@
   top=1.5mm,
   bottom=1.5mm,
   fonttitle=\sffamily\gtfamily\bfseries,
-  toptitle=1mm,
-  bottomtitle=1mm,
+  toptitle=1.7mm,% 日本語の見出しは下側に余白が出やすいので上を多めに
+  bottomtitle=0.3mm,
   coltitle=white,
   colbacktitle=EGWarn,
   title={\(\blacktriangle\)\ #1},
@@ -373,8 +373,8 @@
   top=1.5mm,
   bottom=1.5mm,
   fonttitle=\sffamily\gtfamily\bfseries,
-  toptitle=1mm,
-  bottomtitle=1mm,
+  toptitle=1.7mm,% 日本語の見出しは下側に余白が出やすいので上を多めに
+  bottomtitle=0.3mm,
   title={#1},
   before skip=0.7\baselineskip,
   after skip=0.7\baselineskip
@@ -392,8 +392,8 @@
   top=1.5mm,
   bottom=1.5mm,
   fonttitle=\sffamily\gtfamily\bfseries,
-  toptitle=1mm,
-  bottomtitle=1mm,
+  toptitle=1.7mm,% 日本語の見出しは下側に余白が出やすいので上を多めに
+  bottomtitle=0.3mm,
   coltitle=black,
   colbacktitle=black!12,
   title={#1},
