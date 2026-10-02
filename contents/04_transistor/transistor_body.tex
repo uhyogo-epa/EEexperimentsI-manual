@@ -183,6 +183,20 @@ BJTの最も基本的な使い方は，エミッタを接地（グラウンドGN
 \end{itemize}
 \end{equipment}
 
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.7\linewidth]{transistor_dcjack_pinout.pdf}
+  \caption{本実験で使用するDCジャック（左）とトランジスタ（右）}
+  \label{fig:transistor-dcjack}
+\end{figure}
+
+\begin{caution}
+\begin{itemize}
+  \item トランジスタの端子は，\cref{fig:transistor-dcjack}右のように1がコレクタ（C），2がベース（B），3がエミッタ（E）です。\wave{各端子を間違えないように接続してください。}
+  \item DCジャックは，\cref{fig:transistor-dcjack}左のように中心ピンが$+$，外側が$-$です。\wave{極性（$+$・$-$）を間違えないように接続してください。}
+\end{itemize}
+\end{caution}
+
 % ============================================================
 \section{実験}
 
@@ -196,16 +210,9 @@ BJTの最も基本的な使い方は，エミッタを接地（グラウンドGN
   \label{fig:transistor-fan}
 \end{figure}
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.7\linewidth]{transistor_dcjack_pinout.pdf}
-  \caption{本実験で使用するDCジャックとトランジスタ}
-  \label{fig:transistor-dcjack}
-\end{figure}
-
 \begin{procedure}[label=\textbf{1.\arabic*}, ref=1.\arabic*, leftmargin=*, labelsep=0.8em]
   \item ブレッドボード上で，乾電池入り電池BOXとファンを直列に接続し，ファンが駆動するか確認します。回ったかどうかをワークシートに記入してください。
-  \item 乾電池でファンを回してみます。\cref{fig:transistor-fan}の回路図のように，ブレッドボード上に増幅回路を組み立てます。このときの $R_\mathrm{c}$ はファン，$V_\mathrm{cc}$ はACアダプタ，$V_\mathrm{in}$ は乾電池入り電池BOXです。ベース抵抗 $R_\mathrm{B}$ には\wave{抵抗器\SI{1}{k\ohm}（茶黒赤金）}を使用します。\wave{トランジスタのエミッタ，コレクタ，ベースの各端子，およびDCジャックの極性（$+$・$-$）を，\cref{fig:transistor-dcjack}を参考にして正しく接続します。}
+  \item 乾電池でファンを回してみます。\cref{fig:transistor-fan}の回路図のように，ブレッドボード上に増幅回路を組み立てます。このときの $R_\mathrm{c}$ はファン，$V_\mathrm{cc}$ はACアダプタ，$V_\mathrm{in}$ は乾電池入り電池BOXです。ベース抵抗 $R_\mathrm{B}$ には\wave{抵抗器\SI{1}{k\ohm}（茶黒赤金）}を使用します。トランジスタの各端子とDCジャックの極性は，使用器具の注意（\cref{fig:transistor-dcjack}）を参考にして正しく接続します。
   \item 接続を確認した後，電池BOXのスイッチをオンにし，増幅回路を用いてファンを駆動します。\wave{ファンが回転したら教員の確認を受け}，実験2に進みます。
 \end{procedure}
 
