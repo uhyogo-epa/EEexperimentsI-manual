@@ -134,7 +134,7 @@ NPN型BJTのベース（B）とエミッタ（E）の間に約\SI{0.7}{V}以上�
 \end{equation}
 の関係があります。$\beta$ は\important{電流増幅率}と呼ばれ，一般に数十から数百の値をとります。つまり，BJTは小さなベース電流で大きなコレクタ電流を制御する素子です。
 
-BJTの最も基本的な使い方は，エミッタを接地（グラウンドGNDに接続）して使う方法で，\cref{fig:transistor-ce}の回路を\important{エミッタ接地増幅回路}といいます。入力電圧 $V_\mathrm{in}$ を抵抗 $R_\mathrm{B}$ を通してベースに加えるとベース電流 $I_\mathrm{B}$ が流れ，その $\beta$ 倍のコレクタ電流 $I_\mathrm{C}$ が，電源 $V_\mathrm{CC}$ から抵抗 $R_\mathrm{C}$ を通って流れます。出力電圧 $V_\mathrm{OUT}$（コレクタとGNDの間の電圧）は $V_\mathrm{OUT}=V_\mathrm{CC}-R_\mathrm{C}I_\mathrm{C}$ となるので，入力電圧を大きくして $I_\mathrm{C}$ が増えると，出力電圧は小さくなります。これを\important{反転動作}といいます。本実験では，$R_\mathrm{C}$ の位置にファンをつなぎ，小さな入力でファンを回します。
+BJTの最も基本的な使い方は，エミッタを接地（グラウンドGNDに接続）して使う方法で，\cref{fig:transistor-ce}の回路を\important{エミッタ接地増幅回路}といいます。この回路は，図の左側の\important{入力側}と右側の\important{出力側}に分けて考えることができます。入力側では，入力電圧 $V_\mathrm{in}$ から抵抗 $R_\mathrm{B}$ を通してベースに小さなベース電流 $I_\mathrm{B}$ を流します。出力側では，電源 $V_\mathrm{CC}$ から抵抗 $R_\mathrm{C}$ を通してコレクタに大きなコレクタ電流 $I_\mathrm{C}$ が流れます。エミッタは入力側と出力側に共通で，GNDにつながっています。つまり，入力側の小さな信号によって，出力側の大きな電流を制御する回路です。本実験では，$R_\mathrm{C}$ の位置にファンをつなぎ，小さな入力でファンを回します。
 
 \begin{figure}[htbp]
   \centering
@@ -155,7 +155,7 @@ BJTの最も基本的な使い方は，エミッタを接地（グラウンドGN
   \label{fig:transistor-ce}
 \end{figure}
 
-このような回路の動作を考えるときは，BJTを理想的な\important{等価回路}に置き換えると便利です。ベース–エミッタ間を約\SI{0.7}{V}で電流が流れ始めるダイオード，コレクタ–エミッタ間を $I_\mathrm{C}=\beta I_\mathrm{B}$ の電流を流す電流源とみなすと，\cref{fig:transistor-ce}の回路は\cref{fig:transistor-equiv}のように表せます。この等価回路では，$V_\mathrm{in}$ が\SI{0.7}{V}より大きいとき，$R_\mathrm{B}$ には $V_\mathrm{in}-0.7$ の電圧がかかるので $I_\mathrm{B}=(V_\mathrm{in}-0.7)/R_\mathrm{B}$ となり，これに $\beta$ をかければ $I_\mathrm{C}$ が求められます。ただし，$I_\mathrm{C}$ は $V_\mathrm{CC}/R_\mathrm{C}$ より大きくなることはできず，そのとき $V_\mathrm{OUT}$ はほぼ\SI{0}{V}になります（これを\important{飽和}といいます）。このとき $R_\mathrm{C}$（ファン）にはほぼ電源電圧 $V_\mathrm{CC}$ がかかります。
+実際のBJTの電圧と電流の関係は複雑ですが，回路の基本的な動作を理解するためには，BJTの\important{理想的な動作}だけを考えれば十分です。理想的には，ベース–エミッタ間は約\SI{0.7}{V}で電流が流れ始めるダイオード，コレクタ–エミッタ間は $I_\mathrm{C}=\beta I_\mathrm{B}$ の電流を流す電流源とみなせます。このようにBJTを理想的な\important{等価回路}に置き換えると，\cref{fig:transistor-ce}の回路は\cref{fig:transistor-equiv}のように表せます。この等価回路から，$V_\mathrm{in}$ が\SI{0.7}{V}より大きいとき，$R_\mathrm{B}$ には $V_\mathrm{in}-0.7$ の電圧がかかるので $I_\mathrm{B}=(V_\mathrm{in}-0.7)/R_\mathrm{B}$ となり，コレクタ電流は $I_\mathrm{C}=\beta I_\mathrm{B}$ と求められます。
 
 \begin{figure}[htbp]
   \centering
@@ -173,6 +173,8 @@ BJTの最も基本的な使い方は，エミッタを接地（グラウンドGN
   \caption{エミッタ接地増幅回路の等価回路}
   \label{fig:transistor-equiv}
 \end{figure}
+
+出力電圧 $V_\mathrm{OUT}$（コレクタとGNDの間の電圧）は，電源電圧 $V_\mathrm{CC}$ から $R_\mathrm{C}$ での電圧降下 $R_\mathrm{C}I_\mathrm{C}$ を引いた $V_\mathrm{OUT}=V_\mathrm{CC}-R_\mathrm{C}I_\mathrm{C}$ となります。したがって，入力電圧を大きくして $I_\mathrm{C}$ が増えると，出力電圧は小さくなります。これを\important{反転動作}といいます。ただし，$I_\mathrm{C}$ は $V_\mathrm{CC}/R_\mathrm{C}$ より大きくなることはできず，そのとき $V_\mathrm{OUT}$ はほぼ\SI{0}{V}になります（これを\important{飽和}といいます）。このとき $R_\mathrm{C}$（ファン）にはほぼ電源電圧 $V_\mathrm{CC}$ がかかり，ファンが回ります。
 
 % ============================================================
 \section{使用器具}
