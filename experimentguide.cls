@@ -293,7 +293,9 @@
   label=\textbf{\arabic*.},
   leftmargin=2.6em,
   itemsep=0.55\baselineskip,
-  topsep=0.45\baselineskip
+  topsep=0.45\baselineskip,
+  % 見出しの直後に手順が来るときは，項目の間隔に合わせて少し空ける
+  before={\if@nobreak\vspace{0.4\baselineskip}\fi}
 }
 \setlist[procedure,2]{
   label=(\arabic*),
