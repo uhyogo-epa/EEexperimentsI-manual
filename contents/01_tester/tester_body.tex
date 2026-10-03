@@ -117,7 +117,7 @@
 % ------------------------------------------------------------
 \subsection{電源の電圧降下と等価回路}
 
-電源が電流を供給する能力には限界があり，実際に電流を取り出すと，電源の端子間の電圧（\important{端子電圧}）は，何もつながない状態で測定される電圧（\important{開放電圧}）よりも低下してしまいます。このような電圧降下を説明するために，電源は「理想的な電圧源に対して直列に小さな抵抗が入っている」と考えて表すことができます。乾電池の場合の例を\cref{fig:tester-battery}に示します。この直列の抵抗を\important{内部抵抗}（あるいは\important{出力インピーダンス}）と呼びます。
+電源が電流を供給する能力には限界があり，実際に電流を取り出すと，電源の端子間の電圧（\important{端子電圧}）は，何もつながない状態で測定される電圧（\important{開放電圧}）よりも低下してしまいます。このような電圧降下を説明するために，電源は「理想的な電圧源に対して直列に小さな抵抗が入っている」と考えて表すことができます。この直列の抵抗を\important{内部抵抗}（あるいは\important{出力インピーダンス}）と呼びます。このように，実際の電源や素子の働きを，理想的な電圧源や抵抗などの基本的な要素を組み合わせた回路で表したものを\important{等価回路}といいます。乾電池の等価回路を\cref{fig:tester-battery}に示します。
 
 \begin{figure}[htbp]
   \centering
@@ -125,13 +125,13 @@
     % 乾電池（点線の枠の中）
     \draw[dashed, EGMain, rounded corners=3pt] (-2.4,-0.5) rectangle (3.0,3.2);
     \node[font=\sffamily\gtfamily\small, text=EGMain, anchor=south west] at (-2.4,3.22) {乾電池};
-    \draw (0,0) to[battery1, l={起電力 $E$}] (0,2.4)
+    \draw (0,0) to[battery1, l={起電力 $E$}, invert] (0,2.4)
           to[R, l={内部抵抗 $r$}, i>_=$I$] (2.6,2.4) to[short, -o] (3.0,2.4);
     \draw (0,0) to[short, -o] (3.0,0);
     % 負荷
-    \draw (3.0,2.4) -- (5.3,2.4) to[R, l_=$R$] (5.3,0) -- (3.0,0);
+    \draw (3.0,2.4) -- (6.0,2.4) to[R, l_=$R$] (6.0,0) -- (3.0,0);
     \draw[-latex] (3.35,0.2) -- node[right, align=left] {端子\\電圧 $V$} (3.35,2.2);
-    \node[font=\sffamily\gtfamily\footnotesize, align=center, anchor=west] at (5.65,1.2) {負荷\\（抵抗器）};
+    \node[font=\sffamily\gtfamily\footnotesize, align=center, anchor=west] at (6.35,1.2) {負荷\\（抵抗器）};
   \end{circuitikz}
   \caption{乾電池の等価回路}
   \label{fig:tester-battery}
