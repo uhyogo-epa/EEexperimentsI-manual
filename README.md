@@ -16,7 +16,8 @@ experimentguide.cls             共通スタイル（取りまとめ担当のみ
 latexmkrc                       LuaLaTeX でコンパイルする設定
 contents/
   00_introduction/
-    introduction_body.tex       ← 注意事項（手引書のはじめに入る）
+    purpose_body.tex            ← 実験の目的（手引書のはじめに入る）
+    introduction_body.tex       ← 注意事項（実験の目的の次に入る）
     report_guide_body.tex       ← レポートの書き方（注意事項の次に入る）
   01_tester/
     tester_body.tex             ← 本文（担当の先生が編集）
