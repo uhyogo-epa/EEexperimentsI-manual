@@ -7,6 +7,7 @@ $lualatex = 'lualatex -interaction=nonstopmode -file-line-error -synctex=1 %O %S
 # テーマを追加したらここにも1行足してください。
 @default_files = (
   'main.tex',
+  '00_report_guide.tex',
   '01_tester.tex',
   '02_oscilloscope.tex',
   '02_oscilloscope_worksheet.tex',

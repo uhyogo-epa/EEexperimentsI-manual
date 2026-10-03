@@ -4,6 +4,7 @@
 
 ```
 main.tex                        全テーマをまとめた1冊（配布用。表紙・目次・注意事項付き）
+00_report_guide.tex             レポートの書き方（単体で確認するとき用）
 01_tester.tex ～ 05_voltagewave.tex
                                 テーマ単体の確認用（中身は1行 \input するだけ）
 02_oscilloscope_worksheet.tex   オシロスコープ 記録用紙（学生配布用）
@@ -16,6 +17,7 @@ latexmkrc                       LuaLaTeX でコンパイルする設定
 contents/
   00_introduction/
     introduction_body.tex       ← 注意事項（手引書のはじめに入る）
+    report_guide_body.tex       ← レポートの書き方（注意事項の次に入る）
   01_tester/
     tester_body.tex             ← 本文（担当の先生が編集）
     figures/                    ← 図

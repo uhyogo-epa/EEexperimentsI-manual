@@ -60,7 +60,15 @@
 \Crefformat{equation}{式\,#2(#1)#3}
 \crefrangeformat{equation}{式\,#3(#1)#4～#5(#2)#6}
 \crefmultiformat{equation}{式\,#2(#1)#3}{，#2(#1)#3}{，#2(#1)#3}{，#2(#1)#3}
+\crefformat{section}{#2#1#3節}
+\Crefformat{section}{#2#1#3節}
+\crefformat{subsection}{#2#1#3節}
+\Crefformat{subsection}{#2#1#3節}
+\crefformat{subsubsection}{#2#1#3節}
+\Crefformat{subsubsection}{#2#1#3節}
 \RequirePackage{tikz}
+\RequirePackage{pgfplots}% グラフ用
+\pgfplotsset{compat=1.18}
 \RequirePackage[siunitx, european resistors, american inductors]{circuitikz}% 回路図用
 
 \tcbuselibrary{breakable,skins}
