@@ -198,45 +198,50 @@ Webページを参考文献とする場合，個人のブログなど信頼性�
 
 % ------------------------------------------------------------
 % 表紙例（1ページ）。基礎ゼミ実験配布テキスト.pdf の p.8「実験報告書の表紙例」をもとに作成
-% 枠は A4 と同じ縦横比（120 mm × 169.7 mm = 1 : 1.414）
+% 枠は A4 と同じ縦横比（124 mm × 175.3 mm = 1 : 1.414）。
+% 各要素の位置と文字の大きさは参考資料 p.8 に合わせた（座標は枠の左上からの距離，単位 mm）
 \clearpage
 \phantomsection
 \label{page:report-cover}
 \noindent{\sffamily\gtfamily\bfseries\large 実験報告書の表紙例}
 
-\vspace{1.0\baselineskip}
+\vspace{0.8\baselineskip}
 \begin{center}
-\begin{tikzpicture}[
-    lb/.style={anchor=west, font=\normalsize},
+\begin{tikzpicture}[x=1mm, y=-1mm,
+    lb/.style={anchor=base west, font=\small, inner sep=0pt},
     ln/.style={line width=0.5pt},
   ]
-  \draw[line width=0.6pt] (0,0) rectangle (120mm,169.7mm);
-  \node[font=\sffamily\gtfamily\LARGE] at (60mm,158mm) {実験報告書};
+  \draw[line width=0.6pt] (0,0) rectangle (124,175.3);
+  % タイトル
+  \node[anchor=base, font=\sffamily\gtfamily\Large, inner sep=0pt] at (62,15) {電気電子工学実験I\quad 実験報告書};
   % 実験題目
-  \node[lb] at (12mm,139mm) {実験題目};
-  \draw[ln] (20mm,128mm) -- (108mm,128mm);
+  \node[lb] at (9,29) {実験題目};
+  \draw[ln] (21.5,37) -- (108.5,37);
   % 日付
-  \foreach \y/\t in {114/実験開始日, 105/実験終了日, 96/報告書提出日, 87/{\llap{*}報告書再提出日}} {
-    \node[lb] at (32mm,\y mm) {\t};
-    \node[lb] at (66mm,\y mm) {令和\hspace{2.2em}年\hspace{2.2em}月\hspace{2.2em}日};
+  \foreach \y/\lab in {48.5/実験開始日, 55.8/実験終了日, 63.1/報告書提出日, 70.4/{\llap{*}報告書再提出日}} {
+    \node[lb] at (29,\y) {\lab};
+    \node[lb] at (63,\y) {令和};
+    \node[lb] at (78,\y) {年};
+    \node[lb] at (89.5,\y) {月};
+    \node[lb] at (100.8,\y) {日};
   }
-  \node[lb, font=\footnotesize] at (32mm,80mm) {（*必要に応じて記入する）};
+  \node[lb, font=\footnotesize] at (30,77) {（*必要に応じて記入する）};
   % 班
-  \draw[ln] (14mm,66mm) -- (32mm,66mm);
-  \node[lb] at (32.5mm,67.2mm) {班};
+  \draw[ln] (17.5,93.6) -- (36,93.6);
+  \node[lb] at (36.5,93.2) {班};
   % 報告者
-  \node[lb] at (12mm,54mm) {報告者};
-  \node[lb] at (16mm,47mm) {学籍番号};
-  \node[lb] at (60mm,47mm) {氏名};
-  \draw[ln] (14mm,39mm) -- (48mm,39mm);
-  \draw[ln] (60mm,39mm) -- (108mm,39mm);
+  \node[lb] at (9,101.5) {報告者};
+  \node[lb] at (13,108.8) {学籍番号};
+  \node[lb] at (58.5,108.8) {氏名};
+  \draw[ln] (11.5,122) -- (42,122);
+  \draw[ln] (61,122) -- (111.8,122);
   % 共同実験者
-  \node[lb] at (12mm,30mm) {共同実験者};
-  \node[lb] at (16mm,23mm) {学籍番号};
-  \node[lb] at (60mm,23mm) {氏名};
-  \foreach \y in {16,10} {
-    \draw[ln] (14mm,\y mm) -- (48mm,\y mm);
-    \draw[ln] (60mm,\y mm) -- (108mm,\y mm);
+  \node[lb] at (9,130) {共同実験者};
+  \node[lb] at (13,137.3) {学籍番号};
+  \node[lb] at (58.5,137.3) {氏名};
+  \foreach \y in {143.6,150.2,156.8,163.2} {
+    \draw[ln] (11.5,\y) -- (42,\y);
+    \draw[ln] (61,\y) -- (111.8,\y);
   }
 \end{tikzpicture}
 \end{center}
