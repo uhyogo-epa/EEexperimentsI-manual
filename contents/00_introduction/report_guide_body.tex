@@ -30,28 +30,25 @@
 
 \begin{figure}[htbp]
   \centering
-  \fbox{\begin{minipage}[t][96mm][t]{92mm}
-    \vspace{6mm}
-    \centering
-    {\sffamily\gtfamily\bfseries\Large 実験報告書}\par
-    \vspace{8mm}
-    \small
-    \renewcommand{\arraystretch}{1.55}
-    \begin{tabular}{@{}l@{\hspace{1.2em}}l@{}}
-      実験題目     & \underline{\hspace{40mm}} \\[2mm]
-      実験開始日   & 令和\hspace{2em}年\hspace{2em}月\hspace{2em}日 \\
-      実験終了日   & 令和\hspace{2em}年\hspace{2em}月\hspace{2em}日 \\
-      報告書提出日 & 令和\hspace{2em}年\hspace{2em}月\hspace{2em}日 \\
-      報告書再提出日\textsuperscript{*} & 令和\hspace{2em}年\hspace{2em}月\hspace{2em}日 \\
-      班           & \underline{\hspace{12mm}}\,班 \\[2mm]
-      報告者       & 学籍番号\ \underline{\hspace{15mm}}\ \ 氏名\ \underline{\hspace{15mm}} \\
-      共同実験者   & 学籍番号\ \underline{\hspace{15mm}}\ \ 氏名\ \underline{\hspace{15mm}} \\
-                   & 学籍番号\ \underline{\hspace{15mm}}\ \ 氏名\ \underline{\hspace{15mm}} \\
-    \end{tabular}
-    \par\vfill
-    \raggedleft\footnotesize *\,再提出のときに記入する\quad
-    \vspace{2mm}
-  \end{minipage}}
+  % 枠は A4 と同じ縦横比（84 mm × 118.8 mm = 1 : 1.414）。紙面では 0.83 倍（約 70 mm × 99 mm）で表示
+  \scalebox{0.83}{\begin{tikzpicture}
+    \draw (0,0) rectangle (84mm,118.8mm);
+    \node[anchor=north] at (42mm,106mm) {\sffamily\gtfamily\bfseries\Large 実験報告書};
+    \node[anchor=north, font=\small] at (42mm,90mm) {%
+      \renewcommand{\arraystretch}{1.45}%
+      \begin{tabular}{@{}l@{\hspace{1em}}l@{}}
+        実験題目     & \underline{\hspace{38mm}} \\[3mm]
+        実験開始日   & 令和\hspace{1.8em}年\hspace{1.8em}月\hspace{1.8em}日 \\
+        実験終了日   & 令和\hspace{1.8em}年\hspace{1.8em}月\hspace{1.8em}日 \\
+        報告書提出日 & 令和\hspace{1.8em}年\hspace{1.8em}月\hspace{1.8em}日 \\
+        報告書再提出日\textsuperscript{*} & 令和\hspace{1.8em}年\hspace{1.8em}月\hspace{1.8em}日 \\
+        班           & \underline{\hspace{12mm}}\,班 \\[3mm]
+        報告者       & 学籍番号\,\underline{\hspace{12mm}}\ 氏名\,\underline{\hspace{12mm}} \\
+        共同実験者   & 学籍番号\,\underline{\hspace{12mm}}\ 氏名\,\underline{\hspace{12mm}} \\
+                     & 学籍番号\,\underline{\hspace{12mm}}\ 氏名\,\underline{\hspace{12mm}} \\
+      \end{tabular}};
+    \node[anchor=south east, font=\footnotesize] at (80mm,3mm) {*\,再提出のときに記入する};
+  \end{tikzpicture}}
   \caption{レポートの表紙の例}
   \label{fig:report-cover}
 \end{figure}
