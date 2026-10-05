@@ -20,38 +20,13 @@
   \item 考察は必ず自分自身で考えて書いてください。レポートは自分の著作物です。他人のレポートや文章をそのまま写すことは認められません。
   \item 生成系AIのみを用いて作成したレポートを提出してはいけません。\wave{生成系AIによる出力をそのまま提出したことが判明した場合は，単位を認定しない，または認定を取り消すことがあります。}
   \item レポートの文章は「〜である」「〜だ」の調子（である調）で書きます。手引書は「〜します」「〜してください」と書いていますが，レポートとしては不適切です。
-  \item 用紙はA4のレポート用紙とします。報告書には表紙を付けてください（表紙の書き方は\cref{fig:report-cover}を参照）。表紙以外の各ページにはページ番号を入れます。
+  \item 用紙はA4のレポート用紙とします。報告書には表紙を付けてください（表紙の書き方は\pageref{page:report-cover}ページの表紙例を参照）。表紙以外の各ページにはページ番号を入れます。
 \end{itemize}
 
 % ------------------------------------------------------------
 \section{レポートの構成}
 
-レポートは，表紙と本文からなります。表紙には，実験題目，実験日，報告書の提出日，班，報告者の学籍番号と氏名，共同実験者の学籍番号と氏名を，\cref{fig:report-cover}のように記入します。再提出するときは，報告書再提出日も記入します。
-
-\begin{figure}[htbp]
-  \centering
-  % 枠は A4 と同じ縦横比（84 mm × 118.8 mm = 1 : 1.414）。紙面では 0.83 倍（約 70 mm × 99 mm）で表示
-  \scalebox{0.83}{\begin{tikzpicture}
-    \draw (0,0) rectangle (84mm,118.8mm);
-    \node[anchor=north] at (42mm,106mm) {\sffamily\gtfamily\bfseries\Large 実験報告書};
-    \node[anchor=north, font=\small] at (42mm,90mm) {%
-      \renewcommand{\arraystretch}{1.45}%
-      \begin{tabular}{@{}l@{\hspace{1em}}l@{}}
-        実験題目     & \underline{\hspace{38mm}} \\[3mm]
-        実験開始日   & 令和\hspace{1.8em}年\hspace{1.8em}月\hspace{1.8em}日 \\
-        実験終了日   & 令和\hspace{1.8em}年\hspace{1.8em}月\hspace{1.8em}日 \\
-        報告書提出日 & 令和\hspace{1.8em}年\hspace{1.8em}月\hspace{1.8em}日 \\
-        報告書再提出日\textsuperscript{*} & 令和\hspace{1.8em}年\hspace{1.8em}月\hspace{1.8em}日 \\
-        班           & \underline{\hspace{12mm}}\,班 \\[3mm]
-        報告者       & 学籍番号\,\underline{\hspace{12mm}}\ 氏名\,\underline{\hspace{12mm}} \\
-        共同実験者   & 学籍番号\,\underline{\hspace{12mm}}\ 氏名\,\underline{\hspace{12mm}} \\
-                     & 学籍番号\,\underline{\hspace{12mm}}\ 氏名\,\underline{\hspace{12mm}} \\
-      \end{tabular}};
-    \node[anchor=south east, font=\footnotesize] at (80mm,3mm) {*\,再提出のときに記入する};
-  \end{tikzpicture}}
-  \caption{レポートの表紙の例}
-  \label{fig:report-cover}
-\end{figure}
+レポートは，表紙と本文からなります。表紙には，実験題目，実験日，報告書の提出日，班，報告者の学籍番号と氏名，共同実験者の学籍番号と氏名を記入します（\pageref{page:report-cover}ページの表紙例を参照）。再提出するときは，報告書再提出日も記入します。
 
 本文は，\cref{tab:report-structure}のような章に分けて，順序よく書きます。必要に応じて節（2.1節，2.1.1節など）に分けると，内容がわかりやすくなります。
 
@@ -205,3 +180,48 @@
 \end{minipage}
 \end{center}
 \chk{Webページを参考文献として認めるか（基礎ゼミの資料では不可，もう一方の資料では「著者：URL」の形で可）}
+
+% ------------------------------------------------------------
+% 表紙例（1ページ）。基礎ゼミ実験配布テキスト.pdf の p.8「実験報告書の表紙例」をもとに作成
+% 枠は A4 と同じ縦横比（120 mm × 169.7 mm = 1 : 1.414）
+\clearpage
+\phantomsection
+\label{page:report-cover}
+\noindent{\sffamily\gtfamily\bfseries\large 実験報告書の表紙例}
+
+\vspace{1.0\baselineskip}
+\begin{center}
+\begin{tikzpicture}[
+    lb/.style={anchor=west, font=\normalsize},
+    ln/.style={line width=0.5pt},
+  ]
+  \draw[line width=0.6pt] (0,0) rectangle (120mm,169.7mm);
+  \node[font=\sffamily\gtfamily\LARGE] at (60mm,158mm) {実験報告書};
+  % 実験題目
+  \node[lb] at (12mm,139mm) {実験題目};
+  \draw[ln] (20mm,128mm) -- (108mm,128mm);
+  % 日付
+  \foreach \y/\t in {114/実験開始日, 105/実験終了日, 96/報告書提出日, 87/{\llap{*}報告書再提出日}} {
+    \node[lb] at (32mm,\y mm) {\t};
+    \node[lb] at (66mm,\y mm) {令和\hspace{2.2em}年\hspace{2.2em}月\hspace{2.2em}日};
+  }
+  \node[lb, font=\footnotesize] at (32mm,80mm) {（*必要に応じて記入する）};
+  % 班
+  \draw[ln] (14mm,66mm) -- (32mm,66mm);
+  \node[lb] at (32.5mm,67.2mm) {班};
+  % 報告者
+  \node[lb] at (12mm,54mm) {報告者};
+  \node[lb] at (16mm,47mm) {学籍番号};
+  \node[lb] at (60mm,47mm) {氏名};
+  \draw[ln] (14mm,39mm) -- (48mm,39mm);
+  \draw[ln] (60mm,39mm) -- (108mm,39mm);
+  % 共同実験者
+  \node[lb] at (12mm,30mm) {共同実験者};
+  \node[lb] at (16mm,23mm) {学籍番号};
+  \node[lb] at (60mm,23mm) {氏名};
+  \foreach \y in {16,10} {
+    \draw[ln] (14mm,\y mm) -- (48mm,\y mm);
+    \draw[ln] (60mm,\y mm) -- (108mm,\y mm);
+  }
+\end{tikzpicture}
+\end{center}
