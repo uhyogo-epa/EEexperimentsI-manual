@@ -178,9 +178,9 @@ V = E - rI
 \begin{equipment}
 \begin{itemize}
   \item デジタルテスター \chk{型番}
-  \item ブレッドボード・リード線
   \item 乾電池・電池ボックス・USBポート・USB測定用ケーブル，ACアダプタ
-  \item 抵抗（\SI{100}{\ohm}，\SI{200}{\ohm}，\SI{1}{k\ohm}）
+  \item ブレッドボード・リード線
+  \item 可変抵抗器（\chk{\SI{100}{\ohm}～\SI{1}{k\ohm}}）
   \item 鉛筆（4Bもしくは6B）
 \end{itemize}
 \end{equipment}
@@ -260,28 +260,29 @@ V = E - rI
 \section{実験方法}
 
 % ------------------------------------------------------------
-\subsection{実験1：身近な電圧を測る}
+\subsection{実験1：身近な電圧を測ろう！}
 
 \begin{procedure}[label=\textbf{1-\arabic*}, ref=1-\arabic*, leftmargin=*, labelsep=0.8em]
-  \item テスターを直流電圧（DCV）に設定し，黒プローブをCOM，赤プローブをV/$\Omega$端子へ接続します。
+  \item 黒プローブをCOM，赤プローブをV/$\Omega$端子へ接続して，\wave{テスターの測定モードを直流電圧（DCV）に設定します}。
   \item \important{乾電池：}電池ボックスの$+$と$-$にプローブを当て，端子電圧 $V_0$ を測定します。
   \item \important{USBポート：}通常のUSBコネクタは端子間が狭く，\wave{テスターのプローブを直接当てるとショートの危険があります。}そのため，本実験では，あらかじめ準備した「測定用USBケーブル」を使用し，端子部分にプローブを当てて，USB電圧を測定します。
   \item \important{ACアダプタ：}ACアダプタの出力端子にプローブを当て，出力電圧を測定します。
-  \item \important{コンセント（AC）：}テスターを交流電圧（ACV）に切り替えます（プローブ端子の差し替えは不要です）。\wave{教員立会いのもと}，商用電源の電圧を測定します。
+  \item \wave{テスターの測定モードを交流電圧（ACV）に切り替えます}（プローブ端子の差し替えは不要です）。
+  \item \important{コンセント（AC）：}\wave{教員立会いのもと}，商用電源の電圧を測定します。
 \end{procedure}
 
 % ------------------------------------------------------------
-\subsection{実験2：負荷をつないだときの電圧}
+\subsection{実験2：乾電池の電圧降下を確かめよう！}
 
 \begin{procedure}[label=\textbf{2-\arabic*}, ref=2-\arabic*, leftmargin=*, labelsep=0.8em]
-  \item テスターを直流電圧（DCV）に戻します。
+  \item テスターの測定モードを直流電圧（DCV）にします。
   \item ブレッドボード上で乾電池と\SI{1}{k\ohm}の抵抗を直列に接続し，乾電池の両端の電圧 $V_{1\,\mathrm{k\Omega}}$ を測定します。
   \item 抵抗を\SI{200}{\ohm}や\SI{100}{\ohm}に取り替え，同様に乾電池の両端の電圧 $V_{200\,\Omega}$ および $V_{100\,\Omega}$ をそれぞれ測定します。
   \item それぞれの抵抗値・電圧値をまとめます。さらに，抵抗値から電流を計算し，電流と電圧の関係を確認します。
 \end{procedure}
 
 % ------------------------------------------------------------
-\subsection{実験3：鉛筆で書いた線の長さ・幅と抵抗値の関係}
+\subsection{実験3：鉛筆で書いた線の長さ・幅と抵抗値の関係を調べよう！}
 
 \begin{figure}[htbp]
   \centering
@@ -299,7 +300,7 @@ V = E - rI
 \end{procedure}
 
 % ------------------------------------------------------------
-\subsection{実験4：鉛筆で書いた線の曲げ方向と抵抗値の関係}
+\subsection{実験4：鉛筆で書いた線を曲げた際の抵抗値の変化を調べよう！}
 
 \begin{figure}[htbp]
   \centering
