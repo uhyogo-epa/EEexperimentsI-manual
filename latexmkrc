@@ -9,6 +9,8 @@ $lualatex = 'lualatex -interaction=nonstopmode -file-line-error -synctex=1 %O %S
   'main.tex',
   '00_report_guide.tex',
   '01_tester.tex',
+  '01_tester_worksheet.tex',
+  '01_tester_worksheet_answer.tex',
   '02_oscilloscope.tex',
   '02_oscilloscope_worksheet.tex',
   '03_diode.tex',

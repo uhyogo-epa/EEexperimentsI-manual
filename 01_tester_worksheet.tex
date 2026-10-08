@@ -1,0 +1,25 @@
+% 直流回路（テスターによる電気測定） ワークシート（学生配布用）
+% 本文は contents/01_tester/tester_worksheet_body.tex を編集してください。
+% 実施例版は 01_tester_worksheet_answer.tex をコンパイルしてください。
+\documentclass[student]{experimentguide}
+
+\usepackage{multirow}
+
+\coursename{電気電子工学実験 I}
+
+\makeatletter
+% 実施例の値（instructor オプション時のみ表示）
+\ifeg@instructor
+  \newcommand{\answer}[1]{\textcolor{EGWarn}{#1}}
+  \newcommand{\ifanswer}[2]{#1}
+\else
+  \newcommand{\answer}[1]{}
+  \newcommand{\ifanswer}[2]{#2}
+\fi
+\makeatother
+
+\pagestyle{empty}
+
+\begin{document}
+\input{contents/01_tester/tester_worksheet_body}
+\end{document}

@@ -7,6 +7,8 @@ main.tex                        全テーマをまとめた1冊（配布用。�
 00_report_guide.tex             レポートの書き方（単体で確認するとき用）
 01_tester.tex ～ 05_voltagewave.tex
                                 テーマ単体の確認用（中身は1行 \input するだけ）
+01_tester_worksheet.tex         直流回路 ワークシート（学生配布用）
+01_tester_worksheet_answer.tex  同 実施例版（TA の予備測定データ入り）
 02_oscilloscope_worksheet.tex   オシロスコープ 記録用紙（学生配布用）
 03_diode_worksheet.tex          ダイオード課題（学生配布用）
 03_diode_worksheet_answer.tex   同 解答例版

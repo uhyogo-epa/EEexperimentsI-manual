@@ -1,0 +1,148 @@
+% ============================================================
+% 直流回路（テスターによる電気測定） ワークシート本文
+% \answer{...} の中身は実施例版（01_tester_worksheet_answer.tex）だけに表示されます。
+% 実施例の値は TA による予備測定（原本wordファイル/TA_hoshino.xlsx）より。
+%   実験2：新品の乾電池（開放電圧 1.57 V）のデータ
+%   実験3：線幅 5 mm は 4B の 2 回目のデータ，線幅 10 mm は 6B のデータ
+%   実験4：コの字は切り取らずに測定したデータ（上に曲げた時を R1，下に曲げた時を R2）
+% ============================================================
+
+\begin{center}
+  {\sffamily\gtfamily\bfseries\Large 電気電子工学実験　直流回路（テスター）ワークシート%
+    \ifanswer{（実施例）}{}}
+\end{center}
+
+\vspace{0.6\baselineskip}
+\begin{flushright}
+  学籍番号：\underline{\hspace{12\zw}}\quad
+  氏名：\underline{\hspace{12\zw}}
+\end{flushright}
+\vspace{0.8\baselineskip}
+
+\renewcommand{\arraystretch}{1.35}
+
+% ------------------------------------------------------------
+\section*{実験1：身近な電圧を測ろう！}
+
+\begin{center}
+  \begin{tabular}{|l|c|>{\centering\arraybackslash}p{8\zw}|}
+    \hline
+    測定対象 & 測定モード & 電圧 (V) \\ \hline\hline
+    乾電池（端子電圧 $V_0$） & DCV & \answer{1.57} \\ \hline
+    USBポート              & DCV & \\ \hline
+    ACアダプタ              & DCV & \\ \hline
+    コンセント              & ACV & \\ \hline
+  \end{tabular}
+\end{center}
+
+% ------------------------------------------------------------
+\section*{実験2：乾電池の電圧降下を確かめよう！}
+
+\begin{center}
+  \begin{tabular}{|>{\centering\arraybackslash}p{8\zw}|>{\centering\arraybackslash}p{8\zw}|>{\centering\arraybackslash}p{9\zw}|}
+    \hline
+    抵抗値 $R$ ($\Omega$) & 端子電圧 $V$ (V) & 電流 $I=V/R$ (mA) \\ \hline\hline
+    1000 & \answer{1.567} & \answer{1.57} \\ \hline
+     900 & \answer{1.567} & \answer{1.74} \\ \hline
+     800 & \answer{1.567} & \answer{1.96} \\ \hline
+     700 & \answer{1.567} & \answer{2.24} \\ \hline
+     600 & \answer{1.566} & \answer{2.61} \\ \hline
+     500 & \answer{1.566} & \answer{3.13} \\ \hline
+     400 & \answer{1.565} & \answer{3.91} \\ \hline
+     300 & \answer{1.564} & \answer{5.21} \\ \hline
+     200 & \answer{1.562} & \answer{7.81} \\ \hline
+     100 & \answer{1.557} & \answer{15.6} \\ \hline
+  \end{tabular}
+\end{center}
+
+\clearpage
+% ------------------------------------------------------------
+\section*{実験3：鉛筆で書いた線の長さ・幅と抵抗値の関係を調べよう！}
+
+\begin{center}
+  \begin{tabular}{|>{\centering\arraybackslash}p{7\zw}|>{\centering\arraybackslash}p{9\zw}|>{\centering\arraybackslash}p{9\zw}|}
+    \hline
+    \multirow{2}{*}{長さ $L$ (cm)} & \multicolumn{2}{c|}{抵抗 $R$ (k$\Omega$)} \\ \cline{2-3}
+                                   & 線幅 \SI{5}{mm} & 線幅 \SI{10}{mm} \\ \hline
+    使用した鉛筆 & \answer{4B} & \answer{6B} \\ \hline\hline
+     1 & \answer{21.1} & \answer{2.60} \\ \hline
+     2 & \answer{36.8} & \answer{3.52} \\ \hline
+     3 & \answer{49.2} & \answer{4.62} \\ \hline
+     4 & \answer{63.7} & \answer{5.64} \\ \hline
+     5 & \answer{73.8} & \answer{6.22} \\ \hline
+     6 & \answer{89.7} & \answer{7.04} \\ \hline
+     7 & \answer{104.6} & \answer{7.78} \\ \hline
+     8 & \answer{116.1} & \answer{8.73} \\ \hline
+     9 & \answer{135.8} & \answer{10.23} \\ \hline
+    10 & \answer{155.0} & \answer{11.30} \\ \hline
+  \end{tabular}
+\end{center}
+
+% ------------------------------------------------------------
+\section*{実験4：鉛筆で書いた線を曲げた際の抵抗値の変化を調べよう！}
+
+\begin{center}
+  \begin{tabular}{|l|>{\centering\arraybackslash}p{8\zw}|>{\centering\arraybackslash}p{13\zw}|}
+    \hline
+    状態 & 抵抗 (k$\Omega$) & 変化率 (\%) \\ \hline\hline
+    まっすぐ（$R_0$）     & \answer{13.30} & --- \\ \hline
+    上に曲げた時（$R_1$） & \answer{13.21} & $(R_1-R_0)/R_0=$ \answer{$-0.68$} \\ \hline
+    下に曲げた時（$R_2$） & \answer{14.04} & $(R_2-R_0)/R_0=$ \answer{$+5.6$} \\ \hline
+  \end{tabular}
+\end{center}
+
+% ------------------------------------------------------------
+% 実施例版だけに，参考としてグラフを載せる
+\ifanswer{%
+\clearpage
+\section*{参考：実施例のデータのグラフ}
+
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[
+        width=0.7\linewidth, height=0.42\linewidth,
+        xmin=0, xmax=16, ymin=1.550, ymax=1.570,
+        xlabel={電流 $I$ (mA)}, ylabel={端子電圧 $V$ (V)},
+        yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},
+        tick align=inside, axis on top,
+        legend pos=south west, legend cell align=left,
+        legend style={font=\footnotesize, draw=none, fill=none},
+      ]
+      \addplot[only marks, mark=o, mark size=2pt, thick]
+        coordinates {(1.567,1.567) (1.741,1.567) (1.959,1.567) (2.239,1.567) (2.610,1.566)
+                     (3.132,1.566) (3.913,1.565) (5.213,1.564) (7.810,1.562) (15.57,1.557)};
+      \addlegendentry{測定値}
+      \addplot[domain=0:16, samples=2, black]{1.5682-0.00074*x};
+      \addlegendentry{近似直線 $V=1.568-0.74\times10^{-3}\,I$}
+    \end{axis}
+  \end{tikzpicture}
+
+  {\small 実験2：乾電池の電流と端子電圧の関係（起電力 $E\approx\SI{1.568}{V}$，内部抵抗 $r\approx\SI{0.74}{\ohm}$）}
+\end{center}
+
+\vspace{1.0\baselineskip}
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[
+        width=0.7\linewidth, height=0.42\linewidth,
+        xmin=0, xmax=11, ymin=0, ymax=160,
+        xtick={0,2,...,10},
+        xlabel={長さ $L$ (cm)}, ylabel={抵抗 $R$ (k$\Omega$)},
+        tick align=inside, axis on top,
+        legend pos=north west, legend cell align=left,
+        legend style={font=\footnotesize, draw=none, fill=none},
+      ]
+      \addplot[only marks, mark=o, mark size=2pt, thick]
+        coordinates {(1,21.14) (2,36.8) (3,49.2) (4,63.7) (5,73.8) (6,89.7) (7,104.6) (8,116.1) (9,135.8) (10,155)};
+      \addlegendentry{線幅 \SI{5}{mm}（4B）}
+      \addplot[only marks, mark=triangle, mark size=2.4pt, thick]
+        coordinates {(1,2.596) (2,3.52) (3,4.62) (4,5.64) (5,6.22) (6,7.04) (7,7.78) (8,8.73) (9,10.23) (10,11.3)};
+      \addlegendentry{線幅 \SI{10}{mm}（6B）}
+      \addplot[domain=0.5:10.5, samples=2, black]{5.56+14.37*x};
+      \addplot[domain=0.5:10.5, samples=2, black, dashed]{1.66+0.928*x};
+    \end{axis}
+  \end{tikzpicture}
+
+  {\small 実験3：鉛筆で書いた線の長さと抵抗の関係（実線・破線は最小二乗法による近似直線）}
+\end{center}
+}{}
