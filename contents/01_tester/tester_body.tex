@@ -180,7 +180,7 @@ V = E - rI
   \item デジタルテスター \chk{型番}
   \item 乾電池・電池ボックス・USBポート・USB測定用ケーブル，ACアダプタ
   \item ブレッドボード・リード線
-  \item 可変抵抗器（\chk{\SI{100}{\ohm}～\SI{1}{k\ohm}}）
+  \item 可変抵抗器（FVR-01，\SIrange{0}{1110}{\ohm}）
   \item 鉛筆（4Bもしくは6B）
 \end{itemize}
 \end{equipment}
@@ -255,6 +255,34 @@ V = E - rI
   \item 第4帯（金）＝許容差 $\pm\SI{5}{\percent}$
 \end{itemize}
 となり，抵抗値は $10\times 100 = \SI{1000}{\ohm}$（\SI{1}{k\ohm}）$\pm\SI{5}{\percent}$ となります。実験では，\SI{100}{\ohm}，\SI{200}{\ohm}，\SI{1}{k\ohm}の抵抗を使用します。
+
+% ------------------------------------------------------------
+\subsection{可変抵抗器の使い方}
+
+本実験では，抵抗値をダイヤルで切り替えられる可変抵抗器（\cref{fig:tester-varres}）を使用します。3つのダイヤルはそれぞれ「×\SI{100}{\ohm}」「×\SI{10}{\ohm}」「×\SI{1}{\ohm}」の桁を表し，各ダイヤルを0～10に合わせることで，\SI{0}{\ohm}から\SI{1110}{\ohm}までの抵抗値を\SI{1}{\ohm}刻みで設定できます。2つの青い端子の間の抵抗値は，
+\begin{equation}
+  （抵抗値）= 100\times（×\SI{100}{\ohm}の目盛）+ 10\times（×\SI{10}{\ohm}の目盛）+ 1\times（×\SI{1}{\ohm}の目盛）\ \si{\ohm}
+  \label{eq:tester-varres}
+\end{equation}
+となります。例えば，ダイヤルを左から2，0，5に合わせると，抵抗値は \SI{205}{\ohm} です。
+
+可変抵抗器の内部では，\cref{fig:tester-varres}右のように，各ダイヤルのスイッチの周りに同じ値の抵抗器が並んでおり，ダイヤルの目盛の数だけ抵抗器が直列につながる仕組みになっています。
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.48\linewidth]{tester_varres_front.jpg}\hfill
+  \includegraphics[width=0.48\linewidth]{tester_varres_inside.jpg}
+  \caption{可変抵抗器（左：表面，右：内部）}
+  \label{fig:tester-varres}
+\end{figure}
+
+\begin{caution}
+\begin{itemize}
+  \item この可変抵抗器の抵抗精度は\SI{\pm5}{\percent}です。正確な抵抗値が必要なときは，テスターで測定して確かめてください。
+  \item 最大定格は\SI{1}{W}です。\wave{抵抗値を小さくしすぎると大きな電流が流れ，定格を超えて抵抗器が発熱・破損するおそれがあります。}電圧を加える前に，抵抗値の設定を確認してください。
+\end{itemize}
+\end{caution}
+\chk{赤い端子の役割（接地端子か）を確認して説明を加えるか。実験2の抵抗器（1 kΩ，200 Ω，100 Ω）をこの可変抵抗器で設定するのか}
 
 % ============================================================
 \section{実験方法}
