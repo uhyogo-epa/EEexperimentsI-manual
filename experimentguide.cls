@@ -168,6 +168,12 @@
 % 前付け（注意事項など）の見出し（番号は付けない）
 \newcommand{\introtitle}[1]{%
   \clearpage
+  % テーマと同じく，節・図・表・式の番号を 1 から振り直す
+  \stepcounter{eg@experiment}%
+  \setcounter{section}{0}%
+  \setcounter{figure}{0}%
+  \setcounter{table}{0}%
+  \setcounter{equation}{0}%
   \phantomsection
   \addcontentsline{toc}{egexperiment}{#1}%
   \eg@titleblock{#1}%
