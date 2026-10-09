@@ -216,7 +216,7 @@ BJTの最も基本的な使い方は，\cref{fig:transistor-ce}のようにBJT�
 \subsection{実験1：乾電池（小さな入力信号）を用いてファンを回そう！}
 
 \begin{procedure}[label=\textbf{1.\arabic*}, ref=1.\arabic*, leftmargin=*, labelsep=0.8em]
-  \item はじめに，ブレッドボード上で，乾電池入り電池BOXとファンを直接接続し，ファンが駆動するかどうかを確認します。回ったかどうかをワークシートに記入してください。
+  \item はじめに，ブレッドボード上で，乾電池入り電池BOXとファンを直接接続し，ファンが駆動するかどうかを確認します。回ったかどうかを記録します。
   \item ブレッドボード上に\cref{fig:transistor-fan}のように，エミッタ接地増幅回路を組み立てます。このときの $R_\mathrm{c}$ はファン，$V_\mathrm{cc}$ はACアダプタ，$V_\mathrm{in}$ は乾電池入り電池BOXです。ベース抵抗 $R_\mathrm{B}$ には\wave{抵抗器\SI{1}{k\ohm}（茶黒赤金）}を使用します。トランジスタの各端子とDCジャックの極性は，使用器具の注意（\cref{fig:transistor-dcjack}）を参考にして正しく接続してください。
 
     \begin{center}
@@ -285,7 +285,7 @@ BJTの最も基本的な使い方は，\cref{fig:transistor-ce}のようにBJT�
 
 \begin{procedure}[label=\textbf{2.\arabic*}, ref=2.\arabic*, leftmargin=*, labelsep=0.8em]
   \item \wave{増幅回路の入力電圧源 $V_\mathrm{in}$ を乾電池から直流電源に変更}します。
-  \item 入力電圧$V_\mathrm{in}$ を\SI{0}{V}から\SI{1.0}{V}まで\SI{0.05}{V}ずつ上昇させ，ファンが回り始める入力電圧のしきい値を確認します。ファンが回り始めたときの電圧をワークシートに記録します。
+  \item 入力電圧$V_\mathrm{in}$ を\SI{0}{V}から\SI{1.0}{V}まで\SI{0.05}{V}ずつ上昇させ，ファンが回り始める入力電圧のしきい値を確認します。ファンが回り始めたときの電圧を記録します。
   \item \label{item:transistor-graph} \wave{ファンを抵抗器\SI{1}{k\ohm}（茶黒赤金）のコレクタ抵抗 $R_\mathrm{c}$ に置き換えます}。
   \item 入力電圧$V_\mathrm{in}$ を\SI{0}{V}から\SI{1.0}{V}まで\SI{0.05}{V}ずつ変化させ，抵抗の両端電圧 $V_{R_\mathrm{c}}$ をテスターで測定します。横軸を $V_\mathrm{in}$，縦軸を $V_{R_\mathrm{c}}$ としてグラフを作成します。
   \item 出力電圧 $V_\mathrm{OUT}$ を，コレクタ端子とGNDとの間の電圧として測定します。$V_\mathrm{in}$ を\SI{0}{V}から\SI{1.0}{V}まで\SI{0.05}{V}ずつ変化させ，横軸を $V_\mathrm{in}$，縦軸を $V_\mathrm{OUT}$ として，\ref{item:transistor-graph}で作成したグラフ上にプロットします。
