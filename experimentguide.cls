@@ -434,6 +434,23 @@
 % 編集用のメモ（青字）。気になる点などを本文中に残すときに使う
 % 例：\chk{ここは担当の先生に確認}
 \newcommand{\chk}[1]{{\color{blue}#1}}
+
+% ワークシートの自由記入欄（新しいページに，残りいっぱいの 5 mm 方眼の枠を置く）
+% 例：ワークシート本文の最後に \freenotepage
+\newcommand{\freenotepage}{%
+  \clearpage
+  \section*{自由記入欄}
+  \noindent{\small メモ，計算，グラフの下書き，実験中に気づいたことなどを自由に書いてください。}\par
+  \vspace{0.5\baselineskip}
+  \noindent
+  \begin{tikzpicture}
+    % 高さは本文の高さから見出しと説明文の分を引き，5 mm の倍数に切り下げる
+    \pgfmathsetlengthmacro{\eg@fw}{5mm*floor(\linewidth/5mm)}
+    \pgfmathsetlengthmacro{\eg@fh}{5mm*floor((\textheight-6\baselineskip)/5mm)}
+    \draw[step=5mm, black!15, very thin] (0,0) grid (\eg@fw,\eg@fh);
+    \draw[black!60] (0,0) rectangle (\eg@fw,\eg@fh);
+  \end{tikzpicture}%
+}
 % 波線：LuaLaTeX では lua-ul で引く（日本語の文中でも行末で折り返せる）
 \ifLuaTeX
   \RequirePackage{lua-ul}

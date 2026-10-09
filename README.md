@@ -106,6 +106,7 @@ Overleaf では Main document に指定した1ファイルだけがコンパイ�
 
 - 学生が記入するものは手引書本文とは別ファイルにします（例：`diode_worksheet_body.tex`）。
 - 解答は `\answer{...}` で書くと，解答例版（`*_worksheet_answer.tex`）にだけ赤字で表示されます。
+- ワークシートの最後に `\freenotepage` と書くと，自由記入欄（5 mm 方眼の枠）のページが入ります。
 
 ## 原本からの変更点
 
