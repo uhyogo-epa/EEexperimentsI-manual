@@ -5,6 +5,7 @@
 ```
 main.tex                        全テーマをまとめた1冊（配布用。表紙・目次・注意事項付き）
 00_report_guide.tex             レポートの書き方（単体で確認するとき用）
+00_least_squares.tex            最小二乗法（単体で確認するとき用）
 01_tester.tex ～ 05_voltagewave.tex
                                 テーマ単体の確認用（中身は1行 \input するだけ）
 01_tester_worksheet.tex         直流回路 ワークシート（学生配布用）
@@ -21,6 +22,7 @@ contents/
     purpose_body.tex            ← 実験の目的（手引書のはじめに入る）
     introduction_body.tex       ← 注意事項（実験の目的の次に入る）
     report_guide_body.tex       ← レポートの書き方（注意事項の次に入る）
+    least_squares_body.tex      ← 最小二乗法（レポートの書き方の次に入る）
   01_tester/
     tester_body.tex             ← 本文（担当の先生が編集）
     figures/                    ← 図

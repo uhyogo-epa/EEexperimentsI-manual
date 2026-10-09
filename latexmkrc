@@ -8,6 +8,7 @@ $lualatex = 'lualatex -interaction=nonstopmode -file-line-error -synctex=1 %O %S
 @default_files = (
   'main.tex',
   '00_report_guide.tex',
+  '00_least_squares.tex',
   '01_tester.tex',
   '01_tester_worksheet.tex',
   '01_tester_worksheet_answer.tex',
