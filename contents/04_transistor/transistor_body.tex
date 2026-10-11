@@ -56,13 +56,14 @@
     \draw[wire] (0,1.076) |- (Q.west);
     \draw[wire] (0,-0.02) -- (0,-0.65);
     % ---- 電流の矢印 ----
-    \draw[big] (5.3,4.4) -- node[right=2pt, text=EGWarn, lbl] {大きな電流} (5.3,0.95);
+    \draw[big] (5.6,4.4) -- node[right=2pt, text=EGWarn, lbl] {大きな電流} (5.6,0.95);
     \draw[small] (0.6,1.65) -- node[above, text=EGMain, lbl] {小さな電流} (2.6,1.65);
-    % ---- 役割の説明 ----
-    \node[lbl, anchor=north] at (0,-0.95) {乾電池（1.5 V）\\制御のための小さな電流を流す};
-    \node[lbl, anchor=north] at (10.4,-0.95) {ACアダプタ（12 V）\\ファンを回す大きな電流を供給};
+    % ---- 説明 ----
+    \node[lbl, anchor=east] at (-0.75,0.5) {乾電池};
     \node[lbl, anchor=east] at (3.15,3.4) {ファン};
-    \node[lbl, anchor=north west] at (4.15,0.72) {小さな電流で\\大きな電流を制御};
+    \node[lbl, draw=EGMain, fill=white, rounded corners=2pt, inner sep=3pt, anchor=west]
+      (role) at (6.3,0.3) {小さな電流で\\大きな電流を制御};
+    \draw[EGMain, line width=0.6pt] (role.west) -- (Q.south east);
   \end{tikzpicture}
   \caption{本実験の概要（乾電池からの小さな電流で，ACアダプタからファンに流れる大きな電流を制御する）\chk{まだいまいち}}
   \label{fig:transistor-overview}
