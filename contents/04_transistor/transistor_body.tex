@@ -17,16 +17,19 @@
   \centering
   \vspace{5mm}
   % 本実験の概要図（TikZ で作成。原本にはない図）
-  % ACアダプタ → ファン → トランジスタ（C→E）の主回路を大きく描き，乾電池を横から接続する
-  \begin{circuitikz}[
+  % ACアダプタ → ファン → トランジスタの主回路を大きく描き，乾電池を横から接続する
+  % 初めて見る学生向けに，トランジスタは記号を使わず箱で表し，端子名（ベースなど）も書かない
+  \begin{tikzpicture}[
       lbl/.style={font=\sffamily\gtfamily\small, align=center},
       small/.style={-latex, line width=0.8pt, EGMain},
       big/.style={-{Latex[length=2.6mm,width=2.6mm]}, line width=2.4pt, EGWarn!80},
+      wire/.style={line width=0.9pt},
     ]
-    % ---- トランジスタ ----
-    \draw (4,1.2) node[npn, scale=1.2] (Q) {};
+    % ---- トランジスタ（箱で表す） ----
+    \node[draw=EGMain, fill=EGSub, line width=0.9pt, rounded corners=3pt, lbl,
+          minimum width=2.0cm, minimum height=1.1cm] (Q) at (4,1.0) {トランジスタ};
     % ---- 主回路：ACアダプタ → ファン → トランジスタ ----
-    \begin{scope}[shift={(Q.C |- 0,3.4)}]
+    \begin{scope}[shift={(4,3.4)}]
       \draw[fill=black!8, rounded corners=3pt] (-0.7,-0.7) rectangle (0.7,0.7);
       \draw[fill=white] (0,0) circle (0.58);
       \foreach \a in {0,120,240}
@@ -34,16 +37,16 @@
                                           .. controls (0.04,0.34) and (-0.04,0.15) .. (0,0);
       \fill[black!80] (0,0) circle (0.1);
     \end{scope}
-    \draw[line width=0.9pt] (Q.C) -- (Q.C |- 0,2.7);
-    \draw[line width=0.9pt] (Q.C |- 0,4.1) -- (Q.C |- 0,4.7) -- (10.4,4.7) -- (10.4,3.0);
+    \draw[wire] (Q.north) -- (4,2.7);
+    \draw[wire] (4,4.1) -- (4,4.7) -- (10.4,4.7) -- (10.4,3.0);
     \draw[fill=black!10, rounded corners=3pt] (9.2,1.4) rectangle (11.6,3.0);
     \node[lbl] at (10.4,2.2) {ACアダプタ\\（12 V）};
     \node[font=\small] at (10.65,3.2) {$+$};
     \node[font=\small] at (10.65,1.2) {$-$};
-    \draw[line width=0.9pt] (10.4,1.4) -- (10.4,-0.4) -- (0,-0.4);
-    \draw[line width=0.9pt] (Q.E) -- (Q.E |- 0,-0.4);
-    % ---- 入力：乾電池（横から接続） ----
-    \begin{scope}[shift={(0,0.55)}]
+    \draw[wire] (10.4,1.4) -- (10.4,-0.4) -- (0,-0.4);
+    \draw[wire] (Q.south) -- (4,-0.4);
+    % ---- 乾電池（横から接続） ----
+    \begin{scope}[shift={(0,0.25)}]
       \draw[fill=black!8, rounded corners=1pt] (-0.3,-0.65) rectangle (0.3,0.6);
       \fill[black!55] (-0.3,0.32) rectangle (0.3,0.6);
       \draw[fill=black!35] (-0.1,0.6) rectangle (0.1,0.72);
@@ -51,20 +54,19 @@
       \node[font=\small] at (-0.45,0.85) {$+$};
       \node[font=\small] at (-0.45,-0.75) {$-$};
     \end{scope}
-    \draw (0,1.27) |- (0.5,2.0) to[R, l=$R_\mathrm{B}$] (2.6,2.0) |- (Q.B);
-    \draw (0,-0.1) -- (0,-0.4);
+    \draw[wire] (0,0.97) |- (Q.west);
     % ---- 電流の矢印 ----
-    \draw[big] (9.6,5.0) -- node[above, text=EGWarn, lbl] {大きな電流（コレクタ電流）} (4.9,5.0);
-    \draw[big] (Q.C |- 0,4.5) ++(0.95,0) -- ++(0,-3.6);
+    \draw[big] (9.6,5.0) -- node[above, text=EGWarn, lbl] {大きな電流} (4.9,5.0);
+    \draw[big] (5.45,4.5) -- (5.45,0.3);
     \draw[big] (4.8,-0.75) -- (9.6,-0.75);
-    \draw[small] (0.9,1.65) -- node[below, text=EGMain, lbl] {小さな電流\\（ベース電流）} (2.4,1.65);
+    \draw[small] (0.6,1.25) -- node[above, text=EGMain, lbl] {小さな電流} (2.6,1.25);
     \draw[small] (3.2,-0.75) -- (0.6,-0.75);
     % ---- 役割の説明 ----
-    \node[lbl, anchor=north] at (0,-0.95) {乾電池（1.5 V）\\ベース電流を流す};
-    \node[lbl, anchor=north] at (10.4,-0.95) {ACアダプタ（12 V）\\ファンを回す電流を供給};
-    \node[lbl, anchor=west] at (5.25,3.4) {ファン};
-    \node[lbl, anchor=west] at (5.25,1.2) {トランジスタ\\ベース電流で\\コレクタ電流を制御};
-  \end{circuitikz}
+    \node[lbl, anchor=north] at (0,-0.95) {乾電池（1.5 V）\\制御のための小さな電流を流す};
+    \node[lbl, anchor=north] at (10.4,-0.95) {ACアダプタ（12 V）\\ファンを回す大きな電流を供給};
+    \node[lbl, anchor=west] at (5.8,3.4) {ファン};
+    \node[lbl, anchor=west] at (5.8,1.0) {小さな電流で\\大きな電流を制御};
+  \end{tikzpicture}
   \caption{本実験の概要（乾電池からの小さな電流で，ACアダプタからファンに流れる大きな電流を制御する）\chk{まだいまいち}}
   \label{fig:transistor-overview}
 \end{figure}
