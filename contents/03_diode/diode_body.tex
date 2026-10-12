@@ -137,8 +137,54 @@
 p型半導体とn型半導体が隣り合った構造を\important{pn接合}といいます。
 その境界付近では，n型側の自由電子とp型側の正孔が互いの側へ移動し，自由電子が正孔を埋めて，キャリアとして働かなくなります（これを\important{再結合}といいます）。
 その結果，境界付近にはキャリアがほとんど存在しない層（\important{空乏層}）ができ，正負のイオンが残ります。
-これらのイオンがつくる電界によって生じる電位差を\important{拡散電位}といい，キャリアがさらに互いの側へ移動するのを妨げます。
+これらのイオンがつくる電界によって生じる電位差を\important{拡散電位}といい，キャリアがさらに互いの側へ移動するのを妨げます（\cref{fig:diode-pn_builtin}）。
 ダイオードは，このpn接合を利用した素子で，p型側を\important{アノード}（A），n型側を\important{カソード}（K）と呼びます。
+
+\begin{center}
+  % pn接合の空乏層・電界・拡散電位（TikZ で作成）
+  \begin{tikzpicture}[
+      hole/.style={circle, draw, fill=white, inner sep=0pt, minimum size=3.6mm, font=\scriptsize},
+      elec/.style={circle, draw, fill=black!70, text=white, inner sep=0pt, minimum size=3.6mm, font=\scriptsize},
+      ion/.style={rectangle, draw=black!60, fill=black!10, inner sep=0pt, minimum size=3.2mm, font=\scriptsize},
+      lbl/.style={font=\sffamily\gtfamily\small, align=center},
+    ]
+    % ---- 上：pn接合 ----
+    \fill[black!8] (3.1,0) rectangle (4.9,2.2);
+    \draw (0,0) rectangle (8,2.2);
+    \draw[densely dashed, black!50] (4,0) -- (4,2.2);
+    \foreach \x/\y in {0.4/0.5, 0.7/1.6, 1.3/1.0, 1.9/0.4, 2.1/1.7, 2.6/1.0}
+      \node[hole] at (\x,\y) {$+$};
+    \foreach \x/\y in {5.4/1.0, 5.9/1.7, 6.1/0.4, 6.7/1.0, 7.3/1.6, 7.6/0.5}
+      \node[elec] at (\x,\y) {$-$};
+    \foreach \y in {0.45,1.1,1.75} {
+      \node[ion] at (3.35,\y) {$-$}; \node[ion] at (3.75,\y) {$-$};
+      \node[ion] at (4.25,\y) {$+$}; \node[ion] at (4.65,\y) {$+$};
+    }
+    % 電界（＋のイオンから－のイオンへ：n型側からp型側の向き）
+    \draw[-{Latex[length=2.4mm,width=2.4mm]}, line width=1.3pt, EGMain] (4.9,2.5) -- node[above, lbl, text=EGMain] {電界} (3.1,2.5);
+    \node[lbl, anchor=south] at (1.5,2.25) {p型（アノード側）};
+    \node[lbl, anchor=south] at (6.5,2.25) {n型（カソード側）};
+    \node[lbl, anchor=north] at (4,-0.05) {空乏層};
+    % ---- 下：電位 ----
+    \begin{scope}[shift={(0,-3.6)}]
+      \draw[black!50, -latex] (0,0) -- (8.3,0) node[right, lbl, text=black] {位置};
+      \draw[black!50, -latex] (0,0) -- (0,2.3) node[above, lbl, text=black] {電位};
+      \draw[EGWarn, line width=1.3pt] (0.1,0.5) -- (3.1,0.5)
+        -- plot[domain=3.1:4.9, samples=30, smooth] (\x, {0.5+1.2*(1-cos(180*(\x-3.1)/1.8))/2})
+        -- (7.9,1.7);
+      \draw[densely dashed, black!40] (3.1,0) -- (3.1,6.2);
+      \draw[densely dashed, black!40] (4.9,0) -- (4.9,6.2);
+      \draw[black!40, densely dotted] (3.1,0.5) -- (6.6,0.5);
+      \draw[{Latex[length=2mm]}-{Latex[length=2mm]}, line width=0.8pt] (6.4,0.5) -- node[right, lbl] {拡散電位} (6.4,1.7);
+    \end{scope}
+    % 凡例
+    \node[hole] at (0.4,-4.35) {$+$}; \node[lbl, anchor=west] at (0.6,-4.35) {正孔};
+    \node[elec] at (1.8,-4.35) {$-$}; \node[lbl, anchor=west] at (2.0,-4.35) {自由電子};
+    \node[ion]  at (4.1,-4.35) {$\pm$}; \node[lbl, anchor=west] at (4.3,-4.35) {動けないイオン};
+  \end{tikzpicture}
+  \captionof{figure}{pn接合の空乏層と拡散電位（空乏層に残ったイオンが電界をつくり，p型側とn型側の間に電位差が生じる）}
+  \label{fig:diode-pn_builtin}
+\end{center}
 
 
 
