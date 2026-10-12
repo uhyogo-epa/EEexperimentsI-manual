@@ -164,16 +164,16 @@ p型半導体とn型半導体が隣り合った構造を\important{pn接合}と�
     \draw[-{Latex[length=2.4mm,width=2.4mm]}, line width=1.3pt, EGMain] (4.9,1.9) -- node[above, lbl, text=EGMain] {電界} (3.1,1.9);
     \node[lbl, anchor=south] at (1.5,1.65) {p型（アノード側）};
     \node[lbl, anchor=south] at (6.5,1.65) {n型（カソード側）};
-    \node[lbl, anchor=north, fill=white, inner sep=1pt] at (4,-0.05) {空乏層（厚さ 10\,nm～1\,\textmu m程度）};
+    \node[lbl, anchor=north, fill=white, inner sep=1pt] at (4,-0.05) {空乏層\\（厚さ 10\,nm～1\,\textmu m程度）};
     % ---- 下：電位 ----
-    \begin{scope}[shift={(0,-2.25)}]
+    \begin{scope}[shift={(0,-2.5)}]
       \draw[black!50, -latex] (0,0) -- (8.3,0) node[right, lbl, text=black] {位置};
       \draw[black!50, -latex] (0,0) -- (0,1.45) node[above, lbl, text=black] {電位};
       \draw[EGWarn, line width=1.3pt] (0.1,0.3) -- (3.1,0.3)
         -- plot[domain=3.1:4.9, samples=30, smooth] (\x, {0.3+0.85*(1-cos(180*(\x-3.1)/1.8))/2})
         -- (7.9,1.15);
-      \draw[densely dashed, black!40] (3.1,0) -- (3.1,1.75);
-      \draw[densely dashed, black!40] (4.9,0) -- (4.9,1.75);
+      \draw[densely dashed, black!40] (3.1,0) -- (3.1,1.5);
+      \draw[densely dashed, black!40] (4.9,0) -- (4.9,1.5);
       \draw[black!40, densely dotted] (3.1,0.3) -- (6.6,0.3);
       \draw[{Latex[length=2mm]}-{Latex[length=2mm]}, line width=0.8pt] (6.4,0.3) -- node[right, lbl] {拡散電位} (6.4,1.15);
     \end{scope}
