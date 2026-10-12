@@ -16,7 +16,7 @@
   \centering
   \vspace{5mm}
   % 本実験の概要図（TikZ で作成。原本にはない図）
-  % 交流の電圧 → ダイオード → 整流された電圧
+  % 交流の電圧 → 整流回路（ダイオードと抵抗）→ 整流された電圧（抵抗の両端の電圧）
   \begin{circuitikz}[
       lbl/.style={font=\sffamily\gtfamily\small, align=center},
       flow/.style={-{Latex[length=3mm,width=3mm]}, line width=2pt, black!45},
@@ -29,14 +29,18 @@
         plot (\x, {0.8*sin(\x*257.1)});
       \node[lbl, anchor=north] at (1.4,-1.25) {交流の電圧\\（＋と－が入れ替わる）};
     \end{scope}
-    \draw[flow] (3.6,0) -- (5.1,0);
-    % ---- ダイオード ----
-    \draw[draw=EGMain, fill=EGSub, line width=0.9pt, rounded corners=3pt] (5.4,-0.85) rectangle (7.0,0.85);
-    \draw[line width=0.8pt] (6.2,0.75) to[D*] (6.2,-0.75);
-    \node[lbl, anchor=north] at (6.2,-1.25) {ダイオード\\（一方向にだけ電流を流す）};
-    \draw[flow] (7.3,0) -- (8.8,0);
+    \draw[flow] (3.4,0) -- (4.5,0);
+    % ---- 整流回路（ダイオードと抵抗。左が入力端子，右が出力端子） ----
+    \draw[draw=EGMain, fill=EGSub, line width=0.9pt, rounded corners=3pt] (4.7,-1.05) rectangle (8.7,1.05);
+    \draw[line width=0.8pt] (5.0,0.65) to[short, o-] (5.3,0.65) to[D*] (6.9,0.65) -- (8.4,0.65) node[ocirc] {};
+    \draw[line width=0.8pt] (7.2,0.65) to[R, l_=$R$] (7.2,-0.65);
+    \draw[line width=0.8pt] (5.0,-0.65) node[ocirc] {} -- (8.4,-0.65) node[ocirc] {};
+    \node[font=\footnotesize\sffamily\gtfamily, anchor=west] at (4.95,0) {入力};
+    \node[font=\footnotesize\sffamily\gtfamily, anchor=east] at (8.45,0) {出力};
+    \node[lbl, anchor=north] at (6.7,-1.25) {ダイオードを用いた整流回路\\（出力は抵抗 $R$ の両端の電圧）};
+    \draw[flow] (8.9,0) -- (10.0,0);
     % ---- 出力：整流された電圧 ----
-    \begin{scope}[shift={(9.4,0)}]
+    \begin{scope}[shift={(10.4,0)}]
       \draw[black!50, -latex] (0,-1.0) -- (0,1.1);
       \draw[black!50, -latex] (0,0) -- (3.0,0) node[right, font=\small, text=black] {$t$};
       \draw[EGWarn, line width=1.2pt, domain=0:2.8, samples=80, smooth]
