@@ -29,12 +29,12 @@
         plot (\x, {0.8*sin(\x*257.1)});
       \node[lbl, anchor=north] at (1.4,-1.25) {交流の電圧\\（＋と－が入れ替わる）};
     \end{scope}
-    \draw[flow] (3.5,0) -- (4.5,0);
+    \draw[flow] (3.6,0) -- (5.1,0);
     % ---- ダイオード ----
-    \draw[draw=EGMain, fill=EGSub, line width=0.9pt, rounded corners=3pt] (4.8,-0.75) rectangle (7.6,0.75);
-    \draw[line width=0.8pt] (5.0,0) to[D*] (7.4,0);
+    \draw[draw=EGMain, fill=EGSub, line width=0.9pt, rounded corners=3pt] (5.4,-0.85) rectangle (7.0,0.85);
+    \draw[line width=0.8pt] (6.2,0.75) to[D*] (6.2,-0.75);
     \node[lbl, anchor=north] at (6.2,-1.25) {ダイオード\\（一方向にだけ電流を流す）};
-    \draw[flow] (7.9,0) -- (8.9,0);
+    \draw[flow] (7.3,0) -- (8.8,0);
     % ---- 出力：整流された電圧 ----
     \begin{scope}[shift={(9.4,0)}]
       \draw[black!50, -latex] (0,-1.0) -- (0,1.1);
