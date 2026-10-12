@@ -78,9 +78,26 @@
 
 
 \begin{column}[コラム：ダイオードの中で電流が流れるしくみ]
-\textbf{キャリアとP型・N型半導体}\quad 電流は，電荷をもつ粒子が移動することで流れます。電流を運ぶ粒子を\important{キャリア}といいます。半導体のキャリアには，負の電荷をもつ\important{電子}と，電子が抜けた「穴」で，正の電荷をもつ粒子のようにふるまう\important{正孔}（ホール）の2種類があります。シリコンなどの半導体にごくわずかな不純物を加えると，電子が多い\important{N型半導体}や，正孔が多い\important{P型半導体}をつくることができます。ダイオードは，P型とN型をつなぎ合わせた構造（\important{PN接合}）をしており，アノード側がP型，カソード側がN型です。
+\textbf{N型半導体とP型半導体}\quad 電流は，電荷をもつ粒子が移動することで流れます。電流を運ぶ粒子を\important{キャリア}といいます。シリコンなどの半導体にごくわずかな不純物を加えると，キャリアの種類が異なる2種類の半導体をつくることができます。1つは，負の電荷をもつ\important{電子}がキャリアとしてたくさんある\important{N型半導体}です。もう1つは，電子が抜けた「穴」がたくさんある\important{P型半導体}です。この穴は正の電荷をもつ粒子のようにふるまうので\important{正孔}（ホール）と呼ばれ，P型半導体のキャリアになります。ダイオードは，P型とN型をつなぎ合わせた構造（\important{PN接合}）をしており，アノード側がP型，カソード側がN型です。つなぎ目には，キャリアがほとんどない薄い層（\important{空乏層}）があり，キャリアが通り抜けにくい「壁」の役割をしています。
 
-\textbf{拡散と再結合}\quad 水にインクを1滴落とすと，何もしなくてもインクは水全体に広がっていきます。このように，粒子が多いところから少ないところへ自然に広がっていく現象を\important{拡散}といいます。P型とN型をつなぎ合わせると，P型に多い正孔はN型の方へ，N型に多い電子はP型の方へ，それぞれ拡散していきます。つなぎ目を越えて相手側に入ったキャリアの周りには，反対のキャリアがたくさんあります（N型に入った正孔の周りには電子がたくさんあります）。やがて両者が出会うと，電子が正孔（電子の抜けた穴）に落ち込んで穴が埋まり，電子も正孔もキャリアとしては消えてしまいます。これを\important{再結合}といいます。キャリアはつなぎ目を越えてすぐに再結合するのではなく，相手側の領域の中をある程度の距離だけ拡散して進んでから再結合します（\cref{fig:diode-pn_junction}）。再結合のときには，そのエネルギーが熱や光として放出されます。
+\begin{center}
+  \begin{minipage}[b]{0.47\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{diode_pn_forward.pdf}
+    \captionof{figure}{順方向電圧を加えたとき}
+    \label{fig:diode-pn_forward}
+  \end{minipage}\hfill
+  \begin{minipage}[b]{0.47\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{diode_pn_reverse.pdf}
+    \captionof{figure}{逆方向電圧を加えたとき}
+    \label{fig:diode-pn_reverse}
+  \end{minipage}
+\end{center}
+
+\textbf{順方向電圧}\quad P型にプラス，N型にマイナスの電圧を加えると，P型の正孔とN型の電子はどちらもつなぎ目の方へ押し出され，空乏層は狭く，壁は低くなります（\cref{fig:diode-pn_forward}）。電圧がある大きさを超えると，キャリアが壁を越えて相手側へ次々に流れ込みます。電流が流れ始める電圧は，おおよそこの壁の高さで決まります。
+
+相手側に入ったキャリアは，そこで\important{拡散}と\important{再結合}をします（\cref{fig:diode-pn_junction}）。拡散とは，水に落としたインクが何もしなくても全体に広がっていくように，粒子が多いところから少ないところへ自然に広がっていく現象です。N型に入った正孔は，N型の中を拡散して進み，周りにたくさんある電子と出会うと，電子が正孔（電子の抜けた穴）に落ち込んで穴が埋まり，電子も正孔もキャリアとしては消えてしまいます。これを再結合といいます。P型に入った電子も同じように，P型の中を拡散して進み，正孔と再結合します。キャリアはつなぎ目を越えてすぐに再結合するのではなく，空乏層の幅よりずっと長い距離を拡散して進んでから再結合します。再結合で減った分のキャリアは電源から次々に補われるので，電流が流れ続けます。再結合のときには，そのエネルギーが熱や光として放出されます。LEDは，このエネルギーを光として取り出す素子です。
 
 \begin{center}
   \begin{tikzpicture}[
@@ -126,28 +143,9 @@
     \node[ion]  at (3.2,-0.85) {$\pm$}; \node[lbl, anchor=west] at (3.4,-0.85) {動けないイオン};
     \pic at (6.7,-0.85) {burst}; \node[lbl, anchor=west] at (6.95,-0.85) {再結合};
   \end{tikzpicture}
-  \captionof{figure}{PN接合での拡散と再結合（つなぎ目を越えたキャリアは，相手側の領域の中まで拡散してから再結合する）}
+  \captionof{figure}{順方向電圧を加えたときの拡散と再結合（つなぎ目を越えたキャリアは，相手側の領域の中まで拡散してから再結合する）}
   \label{fig:diode-pn_junction}
 \end{center}
-
-\textbf{空乏層}\quad 正孔と電子がつなぎ目から相手側へ出ていくと，つなぎ目の付近にはキャリアがほとんどない\important{空乏層}ができます。空乏層には，キャリアの代わりに，動くことのできない不純物の原子がイオンとして残ります（P型側は負，N型側は正）。このイオンがつくる電気的な「壁」が，それ以上の拡散を押し返すので，何もしなければ拡散はある程度で止まり，電流は流れません。空乏層はとても薄く，キャリアが拡散して進む距離に比べてずっと短い幅しかありません。
-
-\begin{center}
-  \begin{minipage}[b]{0.47\linewidth}
-    \centering
-    \includegraphics[width=\linewidth]{diode_pn_forward.pdf}
-    \captionof{figure}{順方向電圧を加えたとき}
-    \label{fig:diode-pn_forward}
-  \end{minipage}\hfill
-  \begin{minipage}[b]{0.47\linewidth}
-    \centering
-    \includegraphics[width=\linewidth]{diode_pn_reverse.pdf}
-    \captionof{figure}{逆方向電圧を加えたとき}
-    \label{fig:diode-pn_reverse}
-  \end{minipage}
-\end{center}
-
-\textbf{順方向電圧}\quad P型にプラス，N型にマイナスの電圧を加えると，正孔と電子はつなぎ目の方へ押し出され，空乏層は狭く，壁は低くなります（\cref{fig:diode-pn_forward}）。電圧がある大きさを超えると，キャリアが壁を越えて相手側へ次々に流れ込み，相手側の領域の中を拡散しながら進んで再結合します。再結合で減った分のキャリアは電源から補われるので，電流が流れ続けます。電流が流れ始める電圧は，おおよそこの壁の高さで決まります。また，LEDでは，再結合のときのエネルギーが光として放出されます。
 
 \textbf{逆方向電圧}\quad P型にマイナス，N型にプラスの電圧を加えると，正孔と電子はそれぞれ電極の方へ引き寄せられ，つなぎ目から離れます（\cref{fig:diode-pn_reverse}）。空乏層は広く，壁は高くなるので，キャリアはつなぎ目を通り抜けられず，電流はほとんど流れません。
 \end{column}
