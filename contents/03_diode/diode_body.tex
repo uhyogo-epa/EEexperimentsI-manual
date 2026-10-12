@@ -49,7 +49,10 @@
 \end{figure}
 
 % ============================================================
-\section{ダイオードについて}
+\section{原理}
+
+% ------------------------------------------------------------
+\subsection{ダイオードについて}
 
 ダイオードは，電流を一方向にだけ流す電子部品です。水の逆流を防ぐ弁のように，「電気の逆流防止弁」の働きをします。ダイオードには\important{アノード}（A）と\important{カソード}（K）の2つの端子があり，アノードにプラス，カソードにマイナスの電圧（\important{順方向電圧}）を加えると，アノードからカソードの向きに電流が流れます。反対に，アノードにマイナス，カソードにプラスの電圧（\important{逆方向電圧}）を加えても，電流はほとんど流れません。ダイオードの回路記号を\cref{fig:diode-symbol}に示します。記号の三角形が指す向きが，電流の流れる向きです。
 
@@ -65,7 +68,32 @@
 
 順方向電圧を加えても，電圧が小さいうちは電流はほとんど流れず，ある大きさの電圧を超えると急に電流が流れ始めます。電流が流れ始める電圧は，ダイオードの種類や材料によって異なります。
 
-ダイオードは，性質の異なる2種類の半導体（\important{P型半導体}と\important{N型半導体}）をつなぎ合わせた構造をしており，このつなぎ目を\important{PN接合}と呼びます。アノード側がP型，カソード側がN型です。ダイオードの中で電流が一方向にだけ流れるしくみについては，この節の最後のコラムで説明します。
+ダイオードは，性質の異なる2種類の半導体（\important{P型半導体}と\important{N型半導体}）をつなぎ合わせた構造をしており，このつなぎ目を\important{PN接合}と呼びます。アノード側がP型，カソード側がN型です。ダイオードの中で電流が一方向にだけ流れるしくみについては，次のコラムで説明します。
+
+\begin{hosoku}[コラム：ダイオードの中で電流が流れるしくみ]
+\textbf{キャリア}\quad 電流は，電荷をもつ粒子が移動することで流れます。電流を運ぶ粒子を\important{キャリア}といいます。半導体のキャリアには，負の電荷をもつ\important{電子}と，電子が抜けた跡で正の電荷をもつ粒子のようにふるまう\important{正孔}（ホール）の2種類があります。シリコンなどの半導体に，ごくわずかな不純物を加えると，電子が多い\important{N型半導体}や，正孔が多い\important{P型半導体}をつくることができます。
+
+\textbf{PN接合}\quad P型とN型を接合すると，つなぎ目の付近では，N型の電子とP型の正孔が出会って結びつき，打ち消し合って消えます。これを\important{再結合}といいます。その結果，つなぎ目にはキャリアがほとんどない\important{空乏層}という領域ができ，キャリアが通り抜けにくい「壁」の役割をします。
+
+\begin{center}
+  \begin{minipage}[b]{0.47\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{diode_pn_forward.pdf}
+    \captionof{figure}{順方向電圧を加えたとき}
+    \label{fig:diode-pn_forward}
+  \end{minipage}\hfill
+  \begin{minipage}[b]{0.47\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{diode_pn_reverse.pdf}
+    \captionof{figure}{逆方向電圧を加えたとき}
+    \label{fig:diode-pn_reverse}
+  \end{minipage}
+\end{center}
+
+\textbf{順方向電圧}\quad P型にプラス，N型にマイナスの電圧を加えると，P型の正孔はN型の方へ，N型の電子はP型の方へ押し出されます（\cref{fig:diode-pn_forward}）。電圧がある大きさを超えると，空乏層の壁を越えてキャリアがつなぎ目を通り抜け，相手側で次々に再結合します。再結合で減った分のキャリアは電源から補われるので，電流が流れ続けます。LEDでは，この再結合のときに放出されるエネルギーが光になります。
+
+\textbf{逆方向電圧}\quad P型にマイナス，N型にプラスの電圧を加えると，正孔と電子はそれぞれ電極の方へ引き寄せられ，つなぎ目から離れます（\cref{fig:diode-pn_reverse}）。空乏層が広がってキャリアがつなぎ目を通り抜けられないため，電流はほとんど流れません。
+\end{hosoku}
 
 \subsection{ダイオードの種類}
 
@@ -92,31 +120,6 @@
 \end{figure}
 
 \cref{fig:diode-led}に砲弾型のLEDの外観図を示します。金属線が長いほうがアノード（陽極：$+$），足が短いほうがカソード（陰極：$-$）となります。金属線の長さに違いがない場合は，LEDの発光部を横から見て判別します。ダイオードが乗っていない側（\cref{fig:diode-led}では左側）がアノード，ダイオードが乗っている側（\cref{fig:diode-led}では右側）がカソードとなります。LEDに順方向電圧を加えて電流を流すと発光します。LEDの発光色は使用されているダイオードの材料によって異なります。赤色にはアルミニウムガリウムヒ素（AlGaAs）やガリウムヒ素リン（GaAsP）など，黄緑色には窒化インジウムガリウム（InGaN）など，青色には窒化ガリウム（GaN）などが用いられています。
-
-\begin{hosoku}[コラム：ダイオードの中で電流が流れるしくみ]
-\textbf{キャリア}\quad 電流は，電荷をもつ粒子が移動することで流れます。電流を運ぶ粒子を\important{キャリア}といいます。半導体のキャリアには，負の電荷をもつ\important{電子}と，電子が抜けた跡で正の電荷をもつ粒子のようにふるまう\important{正孔}（ホール）の2種類があります。シリコンなどの半導体に，ごくわずかな不純物を加えると，電子が多い\important{N型半導体}や，正孔が多い\important{P型半導体}をつくることができます。
-
-\textbf{PN接合}\quad P型とN型を接合すると，つなぎ目の付近では，N型の電子とP型の正孔が出会って結びつき，打ち消し合って消えます。これを\important{再結合}といいます。その結果，つなぎ目にはキャリアがほとんどない\important{空乏層}という領域ができ，キャリアが通り抜けにくい「壁」の役割をします。
-
-\begin{center}
-  \begin{minipage}[b]{0.47\linewidth}
-    \centering
-    \includegraphics[width=\linewidth]{diode_pn_forward.pdf}
-    \captionof{figure}{順方向電圧を加えたとき}
-    \label{fig:diode-pn_forward}
-  \end{minipage}\hfill
-  \begin{minipage}[b]{0.47\linewidth}
-    \centering
-    \includegraphics[width=\linewidth]{diode_pn_reverse.pdf}
-    \captionof{figure}{逆方向電圧を加えたとき}
-    \label{fig:diode-pn_reverse}
-  \end{minipage}
-\end{center}
-
-\textbf{順方向電圧}\quad P型にプラス，N型にマイナスの電圧を加えると，P型の正孔はN型の方へ，N型の電子はP型の方へ押し出されます（\cref{fig:diode-pn_forward}）。電圧がある大きさを超えると，空乏層の壁を越えてキャリアがつなぎ目を通り抜け，相手側で次々に再結合します。再結合で減った分のキャリアは電源から補われるので，電流が流れ続けます。LEDでは，この再結合のときに放出されるエネルギーが光になります。
-
-\textbf{逆方向電圧}\quad P型にマイナス，N型にプラスの電圧を加えると，正孔と電子はそれぞれ電極の方へ引き寄せられ，つなぎ目から離れます（\cref{fig:diode-pn_reverse}）。空乏層が広がってキャリアがつなぎ目を通り抜けられないため，電流はほとんど流れません。
-\end{hosoku}
 
 % ============================================================
 \section{使用器具}
