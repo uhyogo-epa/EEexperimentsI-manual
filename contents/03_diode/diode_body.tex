@@ -29,16 +29,16 @@
         plot (\x, {0.8*sin(\x*257.1)});
       \node[lbl, anchor=north] at (1.4,-1.6) {交流の電圧\\（＋と－が入れ替わる）};
     \end{scope}
-    \draw[flow] (3.4,0) -- node[above=2pt, font=\footnotesize\sffamily\gtfamily, text=black] {入力} (4.6,0);
+    \draw[flow] (3.4,0) -- node[above=2pt, font=\footnotesize\sffamily\gtfamily, text=black] {入力} (4.45,0);
     % ---- 整流回路（ダイオードと抵抗。左が入力端子，右が出力端子） ----
-    \draw[draw=EGMain, fill=EGSub, line width=0.9pt, rounded corners=3pt] (4.85,-1.45) rectangle (9.45,1.45);
+    \draw[draw=EGMain, fill=EGSub, line width=0.9pt, rounded corners=3pt] (4.65,-1.45) rectangle (9.7,1.45);
     \draw[line width=0.8pt] (5.15,0.85) to[short, o-] (5.6,0.85) to[D*] (7.2,0.85) -- (9.15,0.85) node[ocirc] {};
     \draw[line width=0.8pt] (8.0,0.85) to[R, l_=$R$, resistors/scale=0.8] (8.0,-0.85);
     \draw[line width=0.8pt] (5.15,-0.85) node[ocirc] {} -- (9.15,-0.85) node[ocirc] {};
-    \node[font=\small, anchor=west] at (5.2,0) {$v_\mathrm{in}$};
-    \node[font=\small, anchor=east] at (9.1,0) {$v_\mathrm{out}$};
+    \node[font=\small] at (5.15,0) {$v_\mathrm{in}$};
+    \node[font=\small] at (9.15,0) {$v_\mathrm{out}$};
     \node[lbl, anchor=north] at (7.15,-1.6) {ダイオードを用いた整流回路};
-    \draw[flow] (9.7,0) -- node[above=2pt, font=\footnotesize\sffamily\gtfamily, text=black] {出力} (10.9,0);
+    \draw[flow] (9.9,0) -- node[above=2pt, font=\footnotesize\sffamily\gtfamily, text=black] {出力} (11.0,0);
     % ---- 出力：整流された電圧 ----
     \begin{scope}[shift={(11.3,0)}]
       \draw[black!50, -latex] (0,-1.0) -- (0,1.1) node[above, font=\small, text=black] {$v_\mathrm{out}$};
