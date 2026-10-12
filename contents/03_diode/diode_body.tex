@@ -33,7 +33,7 @@
     % ---- 整流回路（ダイオードと抵抗。左が入力端子，右が出力端子） ----
     \draw[draw=EGMain, fill=EGSub, line width=0.9pt, rounded corners=3pt] (4.65,-1.45) rectangle (9.7,1.45);
     \draw[line width=0.8pt] (5.15,0.85) to[short, o-] (5.6,0.85) to[D*] (7.2,0.85) -- (9.15,0.85) node[ocirc] {};
-    \draw[line width=0.8pt] (8.0,0.85) to[R, l_=$R$, resistors/scale=0.8] (8.0,-0.85);
+    \draw[line width=0.8pt] (8.0,0.85) to[R, resistors/scale=0.8] (8.0,-0.85);
     \draw[line width=0.8pt] (5.15,-0.85) node[ocirc] {} -- (9.15,-0.85) node[ocirc] {};
     \node[font=\small] at (5.15,0) {$v_\mathrm{in}$};
     \node[font=\small] at (9.15,0) {$v_\mathrm{out}$};
