@@ -429,6 +429,30 @@
   after skip=0.7\baselineskip
 }
 
+% 長いコラム用（hosoku と同じ見た目で，ページをまたいで分割できる）
+% 例：\begin{column}[コラム：○○] ... \end{column}
+\newtcolorbox{column}[1][コラム]{
+  enhanced,
+  breakable,
+  colback=white,
+  colframe=black!35,
+  boxrule=0.5pt,
+  arc=1mm,
+  left=2.5mm,
+  right=2.5mm,
+  top=4mm,% 枠の内側の上の余白（使用器具・注意と同じ）
+  bottom=2.5mm,% 枠の内側の下の余白
+  fonttitle=\sffamily\gtfamily\bfseries,
+  toptitle=1.7mm,% 日本語の見出しは下側に余白が出やすいので上を多めに
+  bottomtitle=0.3mm,
+  coltitle=black,
+  colbacktitle=black!12,
+  title={#1},
+  before upper={\setlength{\parskip}{0pt}\setlist[itemize]{itemsep=0pt, parsep=0pt, topsep=0pt}},
+  before skip=0.7\baselineskip,
+  after skip=0.7\baselineskip
+}
+
 % ------------------------------------------------------------
 % Local emphasis
 % These intentionally remain available so each experiment can

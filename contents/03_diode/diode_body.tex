@@ -68,12 +68,55 @@
 
 順方向電圧を加えても，電圧が小さいうちは電流はほとんど流れず，ある大きさの電圧を超えると急に電流が流れ始めます。電流が流れ始める電圧は，ダイオードの種類や材料によって異なります。
 
-ダイオードは，性質の異なる2種類の半導体（\important{P型半導体}と\important{N型半導体}）をつなぎ合わせた構造をしており，このつなぎ目を\important{PN接合}と呼びます。アノード側がP型，カソード側がN型です。ダイオードの中で電流が一方向にだけ流れるしくみについては，次のコラムで説明します。
+ダイオードの中で電流が一方向にだけ流れるしくみについては，次のコラムで説明します。
 
-\begin{hosoku}[コラム：ダイオードの中で電流が流れるしくみ]
-\textbf{キャリア}\quad 電流は，電荷をもつ粒子が移動することで流れます。電流を運ぶ粒子を\important{キャリア}といいます。半導体のキャリアには，負の電荷をもつ\important{電子}と，電子が抜けた跡で正の電荷をもつ粒子のようにふるまう\important{正孔}（ホール）の2種類があります。シリコンなどの半導体に，ごくわずかな不純物を加えると，電子が多い\important{N型半導体}や，正孔が多い\important{P型半導体}をつくることができます。
+\begin{column}[コラム：ダイオードの中で電流が流れるしくみ]
+\textbf{キャリアとP型・N型半導体}\quad 電流は，電荷をもつ粒子が移動することで流れます。電流を運ぶ粒子を\important{キャリア}といいます。半導体のキャリアには，負の電荷をもつ\important{電子}と，電子が抜けた「穴」で，正の電荷をもつ粒子のようにふるまう\important{正孔}（ホール）の2種類があります。シリコンなどの半導体にごくわずかな不純物を加えると，電子が多い\important{N型半導体}や，正孔が多い\important{P型半導体}をつくることができます。ダイオードは，P型とN型をつなぎ合わせた構造（\important{PN接合}）をしており，アノード側がP型，カソード側がN型です。
 
-\textbf{PN接合}\quad P型とN型を接合すると，つなぎ目の付近では，N型の電子とP型の正孔が出会って結びつき，打ち消し合って消えます。これを\important{再結合}といいます。その結果，つなぎ目にはキャリアがほとんどない\important{空乏層}という領域ができ，キャリアが通り抜けにくい「壁」の役割をします。
+\textbf{拡散と再結合}\quad 水にインクを1滴落とすと，何もしなくてもインクは水全体に広がっていきます。このように，粒子が多いところから少ないところへ自然に広がっていく現象を\important{拡散}といいます。P型とN型をつなぎ合わせると，P型に多い正孔はN型の方へ，N型に多い電子はP型の方へ，それぞれ拡散していきます（\cref{fig:diode-pn_junction}）。そして，つなぎ目の付近で電子と正孔が出会うと，電子が正孔（電子の抜けた穴）に落ち込んで穴が埋まり，電子も正孔もキャリアとしては消えてしまいます。これを\important{再結合}といいます。再結合のときには，そのエネルギーが熱や光として放出されます。
+
+\begin{center}
+  \begin{tikzpicture}[
+      hole/.style={circle, draw, fill=white, inner sep=0pt, minimum size=3.6mm, font=\scriptsize},
+      elec/.style={circle, draw, fill=black!70, text=white, inner sep=0pt, minimum size=3.6mm, font=\scriptsize},
+      ion/.style={rectangle, draw=black!60, fill=black!10, inner sep=0pt, minimum size=3.2mm, font=\scriptsize},
+      lbl/.style={font=\sffamily\gtfamily\small, align=center},
+      dif/.style={-{Latex[length=2.6mm,width=2.6mm]}, line width=1.6pt, EGWarn!80},
+    ]
+    \fill[black!8] (3.3,0) rectangle (4.7,2.2);
+    \draw (0,0) rectangle (8,2.2);
+    \draw (4,0) -- (4,2.2);
+    % 正孔（P型）と電子（N型）
+    \foreach \x/\y in {0.5/0.5, 0.9/1.6, 1.6/1.0, 2.2/0.4, 2.4/1.7, 2.9/1.0}
+      \node[hole] at (\x,\y) {$+$};
+    \foreach \x/\y in {5.1/1.0, 5.6/1.7, 5.8/0.4, 6.4/1.0, 7.1/1.6, 7.5/0.5}
+      \node[elec] at (\x,\y) {$-$};
+    % 空乏層に残る動けないイオン
+    \foreach \y in {0.45,1.1,1.75} {
+      \node[ion] at (3.65,\y) {$-$};
+      \node[ion] at (4.35,\y) {$+$};
+    }
+    % 拡散の矢印と再結合（図の上に，つなぎ目へ向かう流れとして描く）
+    \draw[dif] (0.6,2.65) -- node[above, lbl, text=EGWarn] {正孔が拡散} (3.55,2.65);
+    \draw[dif] (7.4,2.65) -- node[above, lbl, text=EGWarn] {電子が拡散} (4.45,2.65);
+    \fill[EGWarn!80] (4,2.65) circle (0.09);
+    \foreach \a in {0,45,...,315}
+      \draw[EGWarn!80, line width=0.9pt] ($(4,2.65)+(\a:0.16)$) -- ($(4,2.65)+(\a:0.3)$);
+    \node[lbl, text=EGWarn, anchor=south] at (4,2.95) {再結合};
+    % ラベル
+    \node[lbl, anchor=north] at (1.5,-0.1) {P型（正孔が多い）};
+    \node[lbl, anchor=north] at (6.5,-0.1) {N型（電子が多い）};
+    \node[lbl, anchor=north] at (4.0,-0.1) {空乏層};
+    % 凡例
+    \node[hole] at (0.6,-1.05) {$+$}; \node[lbl, anchor=west] at (0.85,-1.05) {正孔};
+    \node[elec] at (2.3,-1.05) {$-$}; \node[lbl, anchor=west] at (2.55,-1.05) {電子};
+    \node[ion]  at (4.0,-1.05) {$\pm$}; \node[lbl, anchor=west] at (4.25,-1.05) {動けないイオン（不純物の原子）};
+  \end{tikzpicture}
+  \captionof{figure}{PN接合のつなぎ目で起こる拡散と再結合}
+  \label{fig:diode-pn_junction}
+\end{center}
+
+\textbf{空乏層}\quad 再結合が起こった結果，つなぎ目の付近にはキャリアがほとんどない\important{空乏層}ができます。空乏層には，キャリアの代わりに，動くことのできない不純物の原子がイオンとして残ります（P型側は負，N型側は正）。このイオンがつくる電気的な「壁」が，それ以上の拡散を押し返すので，何もしなければ拡散はある程度で止まり，電流は流れません。
 
 \begin{center}
   \begin{minipage}[b]{0.47\linewidth}
@@ -90,10 +133,10 @@
   \end{minipage}
 \end{center}
 
-\textbf{順方向電圧}\quad P型にプラス，N型にマイナスの電圧を加えると，P型の正孔はN型の方へ，N型の電子はP型の方へ押し出されます（\cref{fig:diode-pn_forward}）。電圧がある大きさを超えると，空乏層の壁を越えてキャリアがつなぎ目を通り抜け，相手側で次々に再結合します。再結合で減った分のキャリアは電源から補われるので，電流が流れ続けます。LEDでは，この再結合のときに放出されるエネルギーが光になります。
+\textbf{順方向電圧}\quad P型にプラス，N型にマイナスの電圧を加えると，正孔と電子はつなぎ目の方へ押し出され，空乏層は狭く，壁は低くなります（\cref{fig:diode-pn_forward}）。電圧がある大きさを超えると，キャリアが壁を越えて相手側へ次々に流れ込み，相手側で拡散しながら進んで再結合します。再結合で減った分のキャリアは電源から補われるので，電流が流れ続けます。電流が流れ始める電圧は，おおよそこの壁の高さで決まります。また，LEDでは，再結合のときのエネルギーが光として放出されます。
 
-\textbf{逆方向電圧}\quad P型にマイナス，N型にプラスの電圧を加えると，正孔と電子はそれぞれ電極の方へ引き寄せられ，つなぎ目から離れます（\cref{fig:diode-pn_reverse}）。空乏層が広がってキャリアがつなぎ目を通り抜けられないため，電流はほとんど流れません。
-\end{hosoku}
+\textbf{逆方向電圧}\quad P型にマイナス，N型にプラスの電圧を加えると，正孔と電子はそれぞれ電極の方へ引き寄せられ，つなぎ目から離れます（\cref{fig:diode-pn_reverse}）。空乏層は広く，壁は高くなるので，キャリアはつなぎ目を通り抜けられず，電流はほとんど流れません。
+\end{column}
 
 \subsection{ダイオードの種類}
 
