@@ -27,25 +27,25 @@
       \draw[black!50, -latex] (0,0) -- (3.0,0) node[right, font=\small, text=black] {$t$};
       \draw[EGMain, line width=1.2pt, domain=0:2.8, samples=80, smooth]
         plot (\x, {0.8*sin(\x*257.1)});
-      \node[lbl, anchor=north] at (1.4,-1.25) {交流の電圧\\（＋と－が入れ替わる）};
+      \node[lbl, anchor=north] at (1.4,-1.35) {交流の電圧\\（＋と－が入れ替わる）};
     \end{scope}
-    \draw[flow] (3.4,0) -- (4.5,0);
+    \draw[flow] (3.4,0) -- (4.6,0);
     % ---- 整流回路（ダイオードと抵抗。左が入力端子，右が出力端子） ----
-    \draw[draw=EGMain, fill=EGSub, line width=0.9pt, rounded corners=3pt] (4.7,-1.05) rectangle (8.7,1.05);
-    \draw[line width=0.8pt] (5.0,0.65) to[short, o-] (5.3,0.65) to[D*] (6.9,0.65) -- (8.4,0.65) node[ocirc] {};
-    \draw[line width=0.8pt] (7.2,0.65) to[R, l_=$R$] (7.2,-0.65);
-    \draw[line width=0.8pt] (5.0,-0.65) node[ocirc] {} -- (8.4,-0.65) node[ocirc] {};
-    \node[font=\footnotesize\sffamily\gtfamily, anchor=west] at (4.95,0) {入力};
-    \node[font=\footnotesize\sffamily\gtfamily, anchor=east] at (8.45,0) {出力};
-    \node[lbl, anchor=north] at (6.7,-1.25) {ダイオードを用いた整流回路\\（出力は抵抗 $R$ の両端の電圧）};
-    \draw[flow] (8.9,0) -- (10.0,0);
+    \draw[draw=EGMain, fill=EGSub, line width=0.9pt, rounded corners=3pt] (4.85,-1.2) rectangle (9.45,1.2);
+    \draw[line width=0.8pt] (5.15,0.8) to[short, o-] (5.6,0.8) to[D*] (7.2,0.8) -- (9.15,0.8) node[ocirc] {};
+    \draw[line width=0.8pt] (8.0,0.8) to[R, l_=$R$] (8.0,-0.8);
+    \draw[line width=0.8pt] (5.15,-0.8) node[ocirc] {} -- (9.15,-0.8) node[ocirc] {};
+    \node[font=\footnotesize\sffamily\gtfamily, anchor=west] at (5.05,0) {入力};
+    \node[font=\footnotesize\sffamily\gtfamily, anchor=east] at (9.25,0) {出力};
+    \node[lbl, anchor=north] at (7.15,-1.35) {ダイオードを用いた整流回路};
+    \draw[flow] (9.7,0) -- (10.9,0);
     % ---- 出力：整流された電圧 ----
-    \begin{scope}[shift={(10.4,0)}]
+    \begin{scope}[shift={(11.3,0)}]
       \draw[black!50, -latex] (0,-1.0) -- (0,1.1);
       \draw[black!50, -latex] (0,0) -- (3.0,0) node[right, font=\small, text=black] {$t$};
       \draw[EGWarn, line width=1.2pt, domain=0:2.8, samples=80, smooth]
         plot (\x, {max(0.8*sin(\x*257.1),0)});
-      \node[lbl, anchor=north] at (1.4,-1.25) {整流された電圧\\（＋の向きだけになる）};
+      \node[lbl, anchor=north] at (1.4,-1.35) {整流された電圧\\（＋の向きだけになる）};
     \end{scope}
   \end{circuitikz}
   \caption{ダイオードによる交流の整流}
