@@ -353,7 +353,27 @@ LEDの発光色は使用されているダイオードの材料によって異�
 
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[scale=1.3]{diode_exp1_circuit.pdf}
+  % 実験1の回路（TikZ で描き直し。原本の画像 diode_exp1_circuit.pdf はアノード・カソードの表記に誤りがあった）
+  \begin{circuitikz}[lbl/.style={font=\sffamily\gtfamily\small, align=center}]
+    % (a) 逆方向接続：アノードが下（電源のマイナス側）
+    \begin{scope}
+      \draw (0,0) to[battery1, l={\sffamily\gtfamily\small 直流電源}] (0,2.4) -- (3,2.4);
+      \draw (3,0) to[leD*, o-o] (3,2.4);
+      \draw (3,0) -- (2.4,0) to[R, l_=$R$] (0.6,0) -- (0,0);
+      \node[lbl, anchor=west] at (3.25,2.0) {カソード};
+      \node[lbl, anchor=west] at (3.25,0.4) {アノード};
+      \node[lbl, anchor=north] at (1.6,-0.55) {(a)\ 逆方向接続};
+    \end{scope}
+    % (b) 順方向接続：アノードが上（電源のプラス側）
+    \begin{scope}[shift={(6.3,0)}]
+      \draw (0,0) to[battery1, l={\sffamily\gtfamily\small 直流電源}] (0,2.4) -- (3,2.4);
+      \draw (3,2.4) to[leD*, o-o] (3,0);
+      \draw (3,0) -- (2.4,0) to[R, l_=$R$] (0.6,0) -- (0,0);
+      \node[lbl, anchor=west] at (3.25,2.0) {アノード};
+      \node[lbl, anchor=west] at (3.25,0.4) {カソード};
+      \node[lbl, anchor=north] at (1.6,-0.55) {(b)\ 順方向接続};
+    \end{scope}
+  \end{circuitikz}
   \caption{実験1の回路図}
   \label{fig:diode-exp1}
 \end{figure}
@@ -389,18 +409,19 @@ LEDの整流性を利用し，正弦波交流波形の変化を観測します�
 
 \subsubsection{交流電源の準備}
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[scale=1.3]{diode_ac_setup.pdf}
-  \caption{交流電源設定回路}
-  \label{fig:diode-ac_setup}
-\end{figure}
-
 \begin{procedure}[leftmargin=*, labelsep=0.8em]
   \item 交流電源に電源ケーブルを接続し，出力ケーブルを接続します。
   \item 交流電源のAMPLが最小値（反時計回りに回りきっている状態），ATTが押されていない状況を確認し，交流電源をONします。
   \item 周波数を\SI{2}{Hz}（x20のボタンを押し，\SI{0.0020}{kHz}表示），正弦波形のボタンを押します。
   \item ブレッドボード上に\cref{fig:diode-ac_setup}の回路（固定抵抗 $R$（\SI{100}{\ohm}/\SI{1}{W}））を作製し，オシロスコープのCH1のプローブを\cref{fig:diode-ac_setup}のように接続します。
+  \begin{center}
+    \begin{minipage}{\linewidth}
+      \centering
+      \includegraphics[scale=1.3]{diode_ac_setup.pdf}
+      \captionof{figure}{交流電源設定回路}
+      \label{fig:diode-ac_setup}
+    \end{minipage}
+  \end{center}
   \item 交流電源のAMPLをゆっくりと増加（時計回りに回す）させ，オシロスコープのp-pがおよそ\SI{12.0}{V}となるように設定し，「トリガ」を回し，トリガの位置を\SI{2.00}{V}にします。
   % 原文はSymbolフォントで「200 μs/DIV」。2 Hzの観測なので ms と判断（要確認）
   \item オシロスコープで観察される電圧波形を課題2の図(a)に図示してください。（オシロスコープの表示設定は\SI{2.00}{V}/DIV，\SI{200}{ms}/DIVとなっています。）
