@@ -321,13 +321,13 @@ LEDの発光色は使用されているダイオードの材料によって異�
 
 \begin{equipment}
 \begin{itemize}
-  \item LED（赤色6個，黄緑色1個，青色1個，白色1個）\quad ※極性（向き）に注意
+  \item LED（赤色6個，黄緑色1個，青色1個，白色1個）\quad {\color{EGWarn}※極性（向き）に注意}
   \item 固定抵抗器 $R$（\SI{100}{\ohm}/\SI{1}{W}，\SI{1}{\mega\ohm}/\SI{0.25}{W}）\quad ※極性（向き）はありません
   \item セラミックコンデンサー $C$（\SI{10}{\micro F}）1個\quad ※極性（向き）はありません
   \item ブレッドボード 1個
   \item ジャンパー線 必要数
-  \item 直流電源（\chk{型番}？） \quad ※極性（向き）に注意
-  \item 交流電源（ファンクションジェネレータ，MCP SG1638B）\quad ※極性（向き）に注意
+  \item 直流電源（\chk{型番}？） \quad {\color{EGWarn}※極性（向き）に注意}
+  \item 交流電源（ファンクションジェネレータ，MCP SG1638B）\quad {\color{EGWarn}※極性（向き）に注意}
   \item デジタルオシロスコープ（KEYSIGHT EDUX1052A）
   \item オシロスコープ用プローブ 2本
 \end{itemize}
@@ -341,19 +341,19 @@ LEDの発光色は使用されているダイオードの材料によって異�
 
 赤色LEDの整流性を確認するため，逆方向接続もしくは順方向接続して電圧印加時の赤色LEDの点灯状態を確認します。
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[scale=1.3]{diode_exp1_circuit.pdf}
-  \caption{実験1の回路図}
-  \label{fig:diode-exp1}
-\end{figure}
-
 \begin{procedure}[label=\textbf{(\alph*)}]
   \item \keyword{逆方向接続}\\
     LEDの極性（アノードとカソードの向き）に気を付けて，逆方向電圧を印加する回路をブレッドボード上に作製します（\cref{fig:diode-exp1}(a)逆方向接続）。固定抵抗器 $R$（\SI{100}{\ohm}/\SI{1}{W}）は，LEDに電流が流れすぎないようにするために用います。出力をONした後，直流電源の電圧を\SI{0}{V}から\SI{3}{V}（実際には直流電源を逆に接続するため回路には\SI{0}{V}から\SI{-3}{V}）までゆっくりと印加し，直流電源に表示される電流と赤色LEDの発光状態を確認します。\wave{発光しないことを確認後，電圧を\mbox{\SI{0}{V}}にもどし，出力をOFFします。}
   \item \keyword{順方向電圧}\\
     LEDの極性に気を付けて，順方向電圧を印加する回路をブレッドボード上に作製します（\cref{fig:diode-exp1}(b)順方向接続）。出力をONした後，直流電源の電圧を\SI{0}{V}からゆっくりと印加し，直流電源に表示される電流表示が\SI{0.001}{A}となるときの電圧 $V$（V）を読み取り，課題1の表に記載します。\wave{発光確認後，電圧を\mbox{\SI{0}{V}}にもどし}，\wave{出力をOFFします。}
 \end{procedure}
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[scale=1.3]{diode_exp1_circuit.pdf}
+  \caption{実験1の回路図}
+  \label{fig:diode-exp1}
+\end{figure}
 
 % ------------------------------------------------------------
 \subsection{実験2：様々なLEDの点灯実験}
