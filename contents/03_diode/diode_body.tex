@@ -153,6 +153,11 @@ p型半導体とn型半導体が隣り合った構造を\important{pn接合}と�
     % ---- 上：pn接合 ----
     \fill[black!8] (3.1,0) rectangle (4.9,1.6);
     \draw (0,0) rectangle (8,1.6);
+    % 電極
+    \fill[black!45] (-0.3,0) rectangle (0,1.6);
+    \fill[black!45] (8,0) rectangle (8.3,1.6);
+    \node[lbl, anchor=south] at (-0.15,1.65) {アノード};
+    \node[lbl, anchor=south] at (8.15,1.65) {カソード};
     \draw[densely dashed, black!50] (4,0) -- (4,1.6);
     \foreach \x/\y in {0.4/0.4, 0.8/1.2, 1.4/0.75, 2.0/0.3, 2.2/1.25, 2.7/0.75}
       \node[hole] at (\x,\y) {$+$};
@@ -164,8 +169,8 @@ p型半導体とn型半導体が隣り合った構造を\important{pn接合}と�
     }
     % 電界（＋のイオンから－のイオンへ：n型側からp型側の向き）
     \draw[-{Latex[length=2.4mm,width=2.4mm]}, line width=1.3pt, EGMain] (4.9,1.9) -- node[above, lbl, text=EGMain] {電界} (3.1,1.9);
-    \node[lbl, anchor=south] at (1.5,1.65) {p型};
-    \node[lbl, anchor=south] at (6.5,1.65) {n型};
+    \node[lbl, anchor=south] at (1.8,1.65) {p型};
+    \node[lbl, anchor=south] at (6.2,1.65) {n型};
     \node[lbl, anchor=north, fill=white, inner sep=1pt] at (4,-0.05) {空乏層\\（厚さ 10\,nm～1\,\textmu m程度）};
     % ---- 下：電位 ----
     \begin{scope}[shift={(0,-2.5)}]
