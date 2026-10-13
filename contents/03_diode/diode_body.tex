@@ -413,11 +413,28 @@ LEDの整流性を利用し，正弦波交流波形の変化を観測します�
   \item 交流電源に電源ケーブルを接続し，出力ケーブルを接続します。
   \item 交流電源のAMPLが最小値（反時計回りに回りきっている状態），ATTが押されていない状況を確認し，交流電源をONします。
   \item 周波数を\SI{2}{Hz}（x20のボタンを押し，\SI{0.0020}{kHz}表示），正弦波形のボタンを押します。
-  \item ブレッドボード上に\cref{fig:diode-ac_setup}の回路（固定抵抗 $R$（\SI{100}{\ohm}/\SI{1}{W}））を作製し，オシロスコープのCH1のプローブを\cref{fig:diode-ac_setup}のように接続します。
+  \item ブレッドボード上に\cref{fig:diode-ac_setup}の回路（固定抵抗 $R$（\SI{100}{\ohm}/\SI{1}{W}））を作製し，オシロスコープのCH1のプローブを\cref{fig:diode-ac_setup}のように接続します。\cref{fig:diode-ac_setup}のGND，CH1は，オシロスコープのプローブ（GNDは接地側のワニ口クリップ，CH1はプローブの先端）をつなぐ位置を表します。以降の図のGND，CH1，CH2も同じ意味です。
   \begin{center}
     \begin{minipage}{\linewidth}
       \centering
-      \includegraphics[scale=1.3]{diode_ac_setup.pdf}
+      % 交流電源設定回路（TikZ で描き直し。GND，CH1 がオシロスコープの端子であることがわかるようにした）
+      \begin{circuitikz}[scale=1.35, lbl/.style={font=\sffamily\gtfamily\small, align=center},
+                         term/.style={draw, fill=white, font=\sffamily\footnotesize, inner sep=2pt, minimum width=9mm}]
+        % 回路
+        \draw (0,0) to[sV] (0,2.4) -- (3.6,2.4) -- (3.6,0);
+        \node[font=\small] at (-0.4,1.85) {$+$};
+        \node[font=\small] at (-0.4,0.55) {$-$};
+        \node[lbl, anchor=east] at (-0.6,1.2) {交流電源};
+        \draw (0,0) -- (0.9,0) node[circ] (nl) {} to[R, l=$R$] (2.7,0) node[circ] (nr) {} -- (3.6,0);
+        % オシロスコープとプローブ
+        \draw[fill=black!8, rounded corners=3pt] (0.2,-2.7) rectangle (3.4,-1.5);
+        \node[lbl] at (1.8,-2.25) {オシロスコープ};
+        \node[term] (tg) at (0.9,-1.5) {GND};
+        \node[term] (tc) at (2.7,-1.5) {CH1};
+        \draw[EGMain, line width=1.2pt] (nl) -- (tg.north);
+        \draw[EGMain, line width=1.2pt] (nr) -- (tc.north);
+        \node[lbl, text=EGMain, anchor=west, font=\sffamily\gtfamily\footnotesize] at (2.8,-0.75) {プローブ};
+      \end{circuitikz}
       \captionof{figure}{交流電源設定回路}
       \label{fig:diode-ac_setup}
     \end{minipage}
