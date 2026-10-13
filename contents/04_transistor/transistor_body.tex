@@ -123,7 +123,14 @@ BJTは，\important{ベース（B）}，\important{コレクタ（C）}，\impor
     fonttitle=\sffamily\gtfamily\bfseries, toptitle=1.7mm, bottomtitle=0.3mm,
     coltitle=white, colbacktitle=EGMain, title={電界効果トランジスタ（FET）}]
 \begin{center}
-  \raisebox{-0.5\height}{\includegraphics[height=32mm]{transistor_fet_structure.png}}
+  % 構造の図と回路記号（nチャネルMOSFET）の上下の中心をそろえる
+  \raisebox{-0.5\height}{\includegraphics[height=32mm]{transistor_fet_structure.png}}\hspace{5mm}
+  \raisebox{-0.5\height}{\begin{circuitikz}
+    \draw (0,0) node[nmos, scale=1.1] (Ms) {};
+    \draw (Ms.G) node[left] {G};
+    \draw (Ms.D) node[above] {D};
+    \draw (Ms.S) node[below] {S};
+  \end{circuitikz}}
   \captionof{figure}{電界効果トランジスタ（FET）}
   \label{fig:transistor-fet}
 \end{center}
