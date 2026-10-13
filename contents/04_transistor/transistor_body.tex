@@ -145,7 +145,7 @@ FETは，\important{ゲート（G）}，\important{ドレイン（D）}，\impor
 \subsection{BJTの特性と基本的な使い方}
 
 BJTにはnpn型とpnp型がありますが，本実験ではnpn型を使います。
-NPN型BJTの各端子に流れる電流の向きを\cref{fig:transistor-currents}に示します。
+npn型BJTの各端子に流れる電流の向きを\cref{fig:transistor-currents}に示します。
 ベース–エミッタ間はダイオードと同じようにふるまい，ベース側をプラスにして約\SI{0.7}{V}以上の電圧を加えると，小さな\important{ベース電流} $I_\mathrm{B}$ が流れます。
 このとき，コレクタからエミッタへ大きな\important{コレクタ電流} $I_\mathrm{C}$ が流れ，ベース電流との間に
 \begin{equation}
@@ -165,7 +165,7 @@ NPN型BJTの各端子に流れる電流の向きを\cref{fig:transistor-currents
     \draw[-{Latex[length=2.2mm]}, line width=1.4pt, EGWarn!80] ($(Q.C)+(0.3,0.8)$) -- node[right, text=EGWarn] {$I_\mathrm{C}$} ($(Q.C)+(0.3,0.15)$);
     \draw[-{Latex[length=2.2mm]}, line width=1.4pt, black!70] ($(Q.E)+(0.3,-0.15)$) -- node[right] {$I_\mathrm{E}=I_\mathrm{B}+I_\mathrm{C}$} ($(Q.E)+(0.3,-0.8)$);
   \end{circuitikz}
-  \caption{NPN型BJTの回路記号と電流の向き}
+  \caption{npn型BJTの回路記号と電流の向き}
   \label{fig:transistor-currents}
 \end{figure}
 
@@ -226,8 +226,8 @@ BJTの最も基本的な使い方は，\cref{fig:transistor-ce}のようにBJT�
 \end{center}
 
 \begin{column}[コラム：トランジスタの中で電流が流れるしくみ]
-\textbf{NPN型BJTの構造：}\quad
-NPN型BJTは，n型半導体，p型半導体，n型半導体の3つの層を重ねた構造をしており，それぞれの層に付けた電極がエミッタ，ベース，コレクタです（\cref{fig:transistor-npn-flow}）。
+\textbf{npn型BJTの構造：}\quad
+npn型BJTは，n型半導体，p型半導体，n型半導体の3つの層を重ねた構造をしており，それぞれの層に付けた電極がエミッタ，ベース，コレクタです（\cref{fig:transistor-npn-flow}）。
 エミッタとベースの間，ベースとコレクタの間にはそれぞれpn接合があり，BJTはダイオードを2つ向かい合わせにつないだような構造になっています。
 ただし，ベースの層はとても薄く，含まれる不純物も少なくつくられています。一方，エミッタには不純物が多く含まれ，自由電子がたくさんあります。
 この構造の違いによって，BJTは2つのダイオードをつないだだけでは得られない働きをします。
@@ -250,7 +250,7 @@ NPN型BJTは，n型半導体，p型半導体，n型半導体の3つの層を重�
 \begin{center}
   \begin{minipage}{\linewidth}
   \centering
-  % NPN型BJTの中のキャリアの動き（TikZ で作成。ベースの厚さは見やすいように誇張している）
+  % npn型BJTの中のキャリアの動き（TikZ で作成。ベースの厚さは見やすいように誇張している）
   \begin{tikzpicture}[scale=1.2,
       hole/.style={circle, draw, fill=white, inner sep=0pt, minimum size=3.4mm, font=\scriptsize},
       elec/.style={circle, draw, fill=black!70, text=white, inner sep=0pt, minimum size=3.4mm, font=\scriptsize},
@@ -297,7 +297,7 @@ NPN型BJTは，n型半導体，p型半導体，n型半導体の3つの層を重�
     \node[sm, text=EGWarn, anchor=west] at (5.45,0.45) {ベースで再結合（わずか）};
     \draw[EGWarn, line width=0.4pt] (5.45,0.45) -- (4.2,0.45);
   \end{tikzpicture}
-  \captionof{figure}{NPN型BJTの中の自由電子の流れ}
+  \captionof{figure}{npn型BJTの中の自由電子の流れ}
   \label{fig:transistor-npn-flow}
   \end{minipage}
 \end{center}
@@ -308,7 +308,7 @@ NPN型BJTは，n型半導体，p型半導体，n型半導体の3つの層を重�
 
 \begin{equipment}
 \begin{itemize}
-  \item トランジスタ（NPN型） \chk{型番？}
+  \item トランジスタ（npn型） \chk{型番？}
   \item 抵抗器（\SI{1}{k\ohm}×2）
   \item ファン（\SI{12}{V}）
   \item ACアダプタ（\SI{12}{V}），DCジャック
