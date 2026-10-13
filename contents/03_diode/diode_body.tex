@@ -360,7 +360,7 @@ LEDの発光色は使用されているダイオードの材料によって異�
 
 異なる色のLEDが点灯する電圧（電流表示が\SI{0.001}{A}になる電圧）を調べます。
 
-\begin{procedure}
+\begin{procedure}[label=\textbf{2-\arabic*}, leftmargin=*, labelsep=0.8em]
   \item\label{item:diode-exp2-first} 黄緑色LEDの極性に気を付けて，順方向電圧を印加する回路をブレッドボード上に作製します（\cref{fig:diode-exp1}(b)順方向接続）。
   \item 直流電源の出力をONした後，電圧を\SI{0}{V}からゆっくりと上げ，直流電源の電流表示が\SI{0.001}{A}となるときのLEDの電圧 $V$（V）を読み取り，課題1の表に記載します。
   \item\label{item:diode-exp2-last} \wave{発光を確認した後，電圧を\mbox{\SI{0}{V}}にもどし，出力をOFFします。}
@@ -374,7 +374,7 @@ LEDの整流性を利用し，正弦波交流波形の変化を観測します�
 
 \subsubsection{オシロスコープの準備}
 
-\begin{procedure}
+\begin{procedure}[leftmargin=*, labelsep=0.8em]
   \item オシロスコープに電源ケーブルを接続し，主電源を入れてオシロスコープが起動するのを待ちます。
   \item 起動後，「Default Setup」ボタンを押し，オシロスコープの設定を初期化します。初期化によって電圧軸は\SI{5.00}{V}/DIV，時間軸は\SI{100.0}{\micro s}/DIVに設定されます。
   \item CH1にオシロスコープのプローブを接続し，CH1の測定端子をオシロスコープのDemo端子に接続します。
@@ -393,7 +393,7 @@ LEDの整流性を利用し，正弦波交流波形の変化を観測します�
   \label{fig:diode-ac_setup}
 \end{figure}
 
-\begin{procedure}
+\begin{procedure}[leftmargin=*, labelsep=0.8em]
   \item 交流電源に電源ケーブルを接続し，出力ケーブルを接続します。
   \item 交流電源のAMPLが最小値（反時計回りに回りきっている状態），ATTが押されていない状況を確認し，交流電源をONします。
   \item 周波数を\SI{2}{Hz}（x20のボタンを押し，\SI{0.0020}{kHz}表示），正弦波形のボタンを押します。
@@ -413,7 +413,7 @@ LEDの整流性を利用し，正弦波交流波形の変化を観測します�
   \label{fig:diode-led_ac}
 \end{figure}
 
-\begin{procedure}
+\begin{procedure}[leftmargin=*, labelsep=0.8em]
   \item LEDの極性に気を付けて\cref{fig:diode-led_ac}(a)に示す回路をブレッドボード上に作製します。
   \item オシロスコープのCH1のプローブを\cref{fig:diode-led_ac}(a)のように接続したのち，交流電源をONにして，LED(1)の点灯状態とオシロスコープで抵抗器 $R$ の電圧波形を確認します。（LED(1)が点滅します。）
   \item 確認後，交流電源の電源をOFFにします。
@@ -431,7 +431,7 @@ LEDの整流性を利用し，正弦波交流波形の変化を観測します�
   \label{fig:diode-rectifier}
 \end{figure}
 
-\begin{procedure}
+\begin{procedure}[leftmargin=*, labelsep=0.8em]
   \item \cref{fig:diode-rectifier}(a)の回路をブレッドボード上に作製します。\wave{固定抵抗 \mbox{$R$} は\mbox{\SI{1}{\mega\ohm}}/\mbox{\SI{0.25}{W}}を使用します。}
   \item 交流電源をONにし，LEDの点灯状態を確認します。正電圧印加時にLED(1)，LED(3)，LED(5)が点灯し，負電圧印加時にLED(2)，LED(4)，LED(5)が点灯するため，正しく回路が接続されていれば，LED(1)，LED(3)，LED(5)とLED(2)，LED(4)，LED(5)が交互に点灯し，LED(6)は点灯しません。
   \item 確認後，交流電源の電源をOFFします。
@@ -446,7 +446,7 @@ LEDの整流性を利用し，正弦波交流波形の変化を観測します�
 
 \subsubsection{整流回路2}
 
-\begin{procedure}
+\begin{procedure}[leftmargin=*, labelsep=0.8em]
   \item \cref{fig:diode-rectifier}(b)に示す回路をブレッドボード上に作製します。
   % 原文はSymbolフォントで「200 μs/DIV」。ms と判断（要確認）
   \item 交流電源をONにし，オシロスコープで観察されるCH1$-$CH2のMathの電圧波形を課題2の図(c)に図示します。（オシロスコープの表示設定は\SI{2.00}{V}/DIV，\SI{200}{ms}/DIVとします。）
@@ -455,7 +455,7 @@ LEDの整流性を利用し，正弦波交流波形の変化を観測します�
 
 \subsubsection{実験終了後}
 
-\begin{procedure}
+\begin{procedure}[leftmargin=*, labelsep=0.8em]
   \item オシロスコープの「Default Setup」ボタンを押し，オシロスコープの設定を初期化後，オシロスコープの電源をOFFします。
   \item オシロスコープと交流電源の電源ケーブルをはずします。また，実験に使用したLED，抵抗器，セラミックコンデンサーは袋にしまい，接続ケーブル等はプラスチックのケースに戻します。
 \end{procedure}
