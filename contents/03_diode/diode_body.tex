@@ -98,7 +98,7 @@
       \node[circle, draw, fill=white, inner sep=0pt, minimum size=6.2mm, font=\scriptsize] at (\x,\y) {Si};
     \node[circle, draw, fill=EGSub, line width=0.8pt, inner sep=0pt, minimum size=6.2mm, font=\scriptsize, inner sep=0pt] at (0,0) {#1};
   }
-  \begin{tikzpicture}[scale=1.3, lbl/.style={font=\sffamily\gtfamily\small, align=center}]
+  \begin{tikzpicture}[scale=1.2, lbl/.style={font=\sffamily\gtfamily\small, align=center}]
     % (a) N型：リンを加える（余った電子が離れて自由電子に，リンは P+ に）
     \begin{scope}
       \eglattice{P$^{+}$}
@@ -138,11 +138,13 @@ p型半導体とn型半導体が隣り合った構造を\important{pn接合}と�
 その境界付近では，n型側の自由電子とp型側の正孔が互いの側へ移動し，自由電子が正孔を埋めて，キャリアとして働かなくなります（これを\important{再結合}といいます）。
 その結果，境界付近にはキャリアがほとんど存在しない層（\important{空乏層}）ができ，正負のイオン（P$^{+}$やB$^{-}$）が残ります。
 これらのイオンがつくる電界によって生じる電位差を\important{拡散電位}といい，キャリアがさらに互いの側へ移動するのを妨げます（\cref{fig:diode-pn_builtin}）。
-ダイオードは，このpn接合を利用した素子で，p型側を\important{アノード}（A），n型側を\important{カソード}（K）と呼びます。
+ダイオードは，このpn接合の両端に電極を付けた素子で，p型側の電極を\important{アノード}（A），n型側の電極を\important{カソード}（K）と呼びます。
 
 \begin{center}
+  \begin{minipage}{\linewidth}
+  \centering
   % pn接合の空乏層・電界・拡散電位（TikZ で作成）
-  \begin{tikzpicture}[yscale=1.1,
+  \begin{tikzpicture}[yscale=1.0,
       hole/.style={circle, draw, fill=white, inner sep=0pt, minimum size=3.6mm, font=\scriptsize},
       elec/.style={circle, draw, fill=black!70, text=white, inner sep=0pt, minimum size=3.6mm, font=\scriptsize},
       ion/.style={rectangle, draw=black!60, fill=black!10, inner sep=0pt, minimum size=3.2mm, font=\scriptsize},
@@ -180,6 +182,7 @@ p型半導体とn型半導体が隣り合った構造を\important{pn接合}と�
   \end{tikzpicture}
   \captionof{figure}{pn接合の空乏層と拡散電位}
   \label{fig:diode-pn_builtin}
+  \end{minipage}
 \end{center}
 \end{column}
 
@@ -192,57 +195,76 @@ p型半導体とn型半導体が隣り合った構造を\important{pn接合}と�
 これにより電位の障壁が低くなると, 正孔はn型へ，自由電子はp型へ，空乏層をこえて次々に流れ込むようになります。
 相手側に入ったキャリアは，周囲に広がり（\important{拡散}），n型側では自由電子と，p型側では正孔と再結合します（\cref{fig:diode-forward}）。
 こうして失われたキャリアは，電源によって補われます。
-カソード側の電極からは自由電子が供給され，アノード側の電極では電子が引き抜かれて正孔が生じ，キャリアの移動と再結合が絶え間なく続くので，回路に電流が流れ続けます。
+カソード（n型側の電極）からはn型に自由電子が供給され，アノード（p型側の電極）ではp型から電子が引き抜かれて正孔が生じ，キャリアの移動と再結合が絶え間なく続くので，回路に電流が流れ続けます。
 また，再結合のときには，そのエネルギーが熱や光として放出されます。LEDは，このエネルギーを光として取り出す素子です。
 
 \begin{center}
   \begin{minipage}{\linewidth}
   \centering
+  % 順方向電圧を加えたときのキャリアの移動と再結合（TikZ で作成）
   \begin{tikzpicture}[
       hole/.style={circle, draw, fill=white, inner sep=0pt, minimum size=3.6mm, font=\scriptsize},
       elec/.style={circle, draw, fill=black!70, text=white, inner sep=0pt, minimum size=3.6mm, font=\scriptsize},
       ion/.style={rectangle, draw=black!60, fill=black!10, inner sep=0pt, minimum size=3.2mm, font=\scriptsize},
       lbl/.style={font=\sffamily\gtfamily\small, align=center},
       dif/.style={-{Latex[length=2.4mm,width=2.4mm]}, line width=1.4pt, EGWarn!80},
+      sup/.style={-{Latex[length=2mm,width=2mm]}, line width=1.0pt, EGMain},
       burst/.pic={\fill[EGWarn!80] (0,0) circle (0.07);
                   \foreach \a in {0,45,...,315} \draw[EGWarn!80, line width=0.8pt] (\a:0.13) -- (\a:0.25);},
     ]
-    % 半導体（空乏層は薄い）
-    \fill[black!8] (4.15,0) rectangle (4.85,2.6);
-    \draw (0,0) rectangle (9,2.6);
-    \draw (4.5,0) -- (4.5,2.6);
-    % 空乏層に残る動けないイオン
-    \foreach \y in {0.95,1.65} {
-      \node[ion] at (4.32,\y) {$-$};
-      \node[ion] at (4.68,\y) {$+$};
-    }
+    % 半導体（順方向電圧で空乏層は狭くなる）と電極
+    \fill[black!8] (4.2,0) rectangle (4.8,2.2);
+    \draw (0,0) rectangle (9,2.2);
+    \draw[densely dashed, black!50] (4.5,0) -- (4.5,2.2);
+    \fill[black!45] (-0.3,0) rectangle (0,2.2);
+    \fill[black!45] (9,0) rectangle (9.3,2.2);
+    \node[ion] at (4.33,1.1) {$-$};
+    \node[ion] at (4.67,1.1) {$+$};
     % 正孔（p型）と自由電子（n型）
-    \foreach \x/\y in {0.5/0.9, 0.6/2.15, 1.1/1.6, 1.8/1.0, 2.7/1.5, 3.5/0.95, 3.4/1.85}
+    \foreach \x/\y in {1.3/0.9, 1.6/1.5, 2.4/0.85, 3.1/1.45, 3.6/0.8}
       \node[hole] at (\x,\y) {$+$};
-    \foreach \x/\y in {5.5/1.3, 6.1/0.9, 6.9/1.55, 7.7/0.95, 8.4/1.8, 8.5/0.45, 5.6/1.95}
+    \foreach \x/\y in {5.4/1.3, 5.9/0.8, 6.6/1.4, 7.2/0.8, 7.8/1.5}
       \node[elec] at (\x,\y) {$-$};
-    % 正孔：つなぎ目を越えて N 型の中まで拡散し，電子と再結合
-    \node[hole] at (2.0,2.25) {$+$};
-    \draw[dif] (2.25,2.25) -- (6.35,2.25);
-    \pic at (6.6,2.25) {burst};
-    \node[elec] at (6.9,2.25) {$-$};
-    % 電子：つなぎ目を越えて P 型の中まで拡散し，正孔と再結合
-    \node[elec] at (7.0,0.35) {$-$};
-    \draw[dif] (6.75,0.35) -- (2.65,0.35);
-    \pic at (2.4,0.35) {burst};
-    \node[hole] at (2.1,0.35) {$+$};
+    % 正孔：空乏層を越えて n型の中まで拡散し，自由電子と再結合
+    \node[hole] at (2.0,1.9) {$+$};
+    \draw[dif] (2.25,1.9) -- (6.35,1.9);
+    \pic at (6.6,1.9) {burst};
+    \node[elec] at (6.9,1.9) {$-$};
+    % 自由電子：空乏層を越えて p型の中まで拡散し，正孔と再結合
+    \node[elec] at (7.0,0.3) {$-$};
+    \draw[dif] (6.75,0.3) -- (2.65,0.3);
+    \pic at (2.4,0.3) {burst};
+    \node[hole] at (2.1,0.3) {$+$};
+    % 電極でのキャリアの補給
+    \draw[sup] (0.75,1.1) -- (0.05,1.1);
+    \fill (0.85,1.1) circle (0.06);
+    \node[hole] at (0.45,0.5) {$+$};
+    \draw[sup] (8.95,1.1) -- (8.35,1.1);
+    \node[elec] at (8.15,1.1) {$-$};
+    % 電源（アノードにプラス，カソードにマイナス）
+    \draw (-0.3,1.1) -- (-0.8,1.1) -- (-0.8,-1.0) -- (4.38,-1.0);
+    \draw (4.62,-1.0) -- (9.8,-1.0) -- (9.8,1.1) -- (9.3,1.1);
+    \draw[line width=1.2pt] (4.38,-1.3) -- (4.38,-0.7);
+    \draw[line width=1.2pt] (4.62,-1.15) -- (4.62,-0.85);
+    \node[font=\small] at (4.15,-0.62) {$+$};
+    \node[font=\small] at (4.85,-0.62) {$-$};
+    \node[lbl, anchor=north] at (4.5,-1.35) {順方向電圧};
     % ラベル
-    \node[lbl, anchor=south] at (2.0,2.65) {p型（正孔が多い）};
-    \node[lbl, anchor=south] at (7.0,2.65) {n型（自由電子が多い）};
-    \node[lbl, anchor=north] at (4.5,-0.05) {空乏層};
+    \node[lbl, anchor=south] at (2.3,2.25) {p型};
+    \node[lbl, anchor=south] at (6.7,2.25) {n型};
+    \node[lbl, anchor=south, font=\sffamily\gtfamily\footnotesize] at (4.5,2.25) {空乏層（狭くなる）};
+    \node[lbl, anchor=south] at (-0.15,2.25) {アノード};
+    \node[lbl, anchor=south] at (9.15,2.25) {カソード};
+    \node[lbl, anchor=north, font=\sffamily\gtfamily\footnotesize] at (1.0,-0.05) {電子が引き抜かれ\\正孔が生じる};
+    \node[lbl, anchor=north, font=\sffamily\gtfamily\footnotesize] at (8.0,-0.05) {自由電子が\\供給される};
     % 凡例
-    \node[hole] at (0.4,-0.85) {$+$}; \node[lbl, anchor=west] at (0.6,-0.85) {正孔};
-    \node[elec] at (1.8,-0.85) {$-$}; \node[lbl, anchor=west] at (2.0,-0.85) {自由電子};
-    \node[ion]  at (4.1,-0.85) {$\pm$}; \node[lbl, anchor=west] at (4.3,-0.85) {動けないイオン};
-    \pic at (7.3,-0.85) {burst}; \node[lbl, anchor=west] at (7.55,-0.85) {再結合};
+    \node[hole] at (0.2,-2.3) {$+$}; \node[lbl, anchor=west] at (0.4,-2.3) {正孔};
+    \node[elec] at (1.6,-2.3) {$-$}; \node[lbl, anchor=west] at (1.8,-2.3) {自由電子};
+    \node[ion]  at (3.7,-2.3) {$\pm$}; \node[lbl, anchor=west] at (3.9,-2.3) {動けないイオン};
+    \pic at (6.9,-2.3) {burst}; \node[lbl, anchor=west] at (7.15,-2.3) {再結合};
   \end{tikzpicture}
-  \captionof{figure}{順方向電圧を加えたときの拡散と再結合}
-  \label{fig:diode-pn_junction}
+  \captionof{figure}{順方向電圧を加えたときのキャリアの移動と再結合}
+  \label{fig:diode-forward}
   \end{minipage}
 \end{center}
 
