@@ -33,6 +33,7 @@
 % ------------------------------------------------------------
 \RequirePackage{iftex}
 \RequirePackage{graphicx}
+\RequirePackage{wrapfig}% 図の横に文章を回り込ませる（例：ダイオードのLEDの外観図）
 \RequirePackage{xcolor}
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
