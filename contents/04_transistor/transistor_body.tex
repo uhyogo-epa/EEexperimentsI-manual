@@ -137,8 +137,16 @@ FETは，\important{ゲート（G）}，\important{ドレイン（D）}，\impor
 % ------------------------------------------------------------
 \subsection{BJTの特性と基本的な使い方}
 
-BJTにはNPN型とPNP型があり，本実験ではNPN型を使います。NPN型BJTの各端子に流れる電流の向きを\cref{fig:transistor-currents}に示します。
-
+BJTにはnpn型とpnp型がありますが，本実験ではnpn型を使います。
+NPN型BJTの各端子に流れる電流の向きを\cref{fig:transistor-currents}に示します。
+ベース–エミッタ間はダイオードと同じようにふるまい，ベース側をプラスにして約\SI{0.7}{V}以上の電圧を加えると，小さな\important{ベース電流} $I_\mathrm{B}$ が流れます。
+このとき，コレクタからエミッタへ大きな\important{コレクタ電流} $I_\mathrm{C}$ が流れ，ベース電流との間に
+\begin{equation}
+  I_\mathrm{C} = \beta I_\mathrm{B}
+  \label{eq:transistor-beta}
+\end{equation}
+の関係があります。$\beta$ は\important{電流増幅率}と呼ばれ，一般に数十から数百の値をとります。また，エミッタからは $I_\mathrm{E}=I_\mathrm{B}+I_\mathrm{C}$ が流れ出します。
+このように，BJTはベースに流す小さな電流で大きなコレクタ電流を制御する素子です（BJTの中で電流が流れるしくみは，この節の最後のコラムで説明します）。
 \begin{figure}[htbp]
   \centering
   \begin{circuitikz}[lbl/.style={font=\sffamily\gtfamily\small, align=center}]
@@ -154,14 +162,6 @@ BJTにはNPN型とPNP型があり，本実験ではNPN型を使います。NPN�
   \label{fig:transistor-currents}
 \end{figure}
 
-ベース–エミッタ間はダイオードと同じようにふるまい，ベース側をプラスにして約\SI{0.7}{V}以上の電圧を加えると，小さな\important{ベース電流} $I_\mathrm{B}$ が流れます。
-このとき，コレクタからエミッタへ大きな\important{コレクタ電流} $I_\mathrm{C}$ が流れ，ベース電流との間に
-\begin{equation}
-  I_\mathrm{C} = \beta I_\mathrm{B}
-  \label{eq:transistor-beta}
-\end{equation}
-の関係があります。$\beta$ は\important{電流増幅率}と呼ばれ，一般に数十から数百の値をとります。また，エミッタからは $I_\mathrm{E}=I_\mathrm{B}+I_\mathrm{C}$ が流れ出します。
-このように，BJTはベースに流す小さな電流で大きなコレクタ電流を制御する素子です（BJTの中で電流が流れるしくみは，この節の最後のコラムで説明します）。
 
 BJTの最も基本的な使い方は，\cref{fig:transistor-ce}のようにBJTのエミッタを接地（グラウンドGNDに接続）して使う方法です。
 この回路は\important{エミッタ接地増幅回路}といい，図の左側の入力側と右側の出力側に分けて考えることができます。入力側では，入力電圧 $V_\mathrm{in}$ から抵抗 $R_\mathrm{B}$ を通してベースに小さなベース電流 $I_\mathrm{B}$ を流します。出力側では，電源 $V_\mathrm{CC}$ から抵抗 $R_\mathrm{C}$ を通してコレクタに大きなコレクタ電流 $I_\mathrm{C}$ が流れます。エミッタは入力側と出力側に共通で，GNDにつながっています。つまり，入力側の小さな信号によって，出力側の大きな電流を制御する回路です。本実験では，$R_\mathrm{C}$ の位置にファンをつなぎ，小さな入力でファンを回します。
