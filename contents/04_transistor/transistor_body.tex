@@ -416,7 +416,67 @@ npn型のBJTは，n型半導体，p型半導体，n型半導体の3つの層を�
 \begin{procedure}[label=\textbf{2.\arabic*}, ref=2.\arabic*, leftmargin=*, labelsep=0.8em]
   \item \wave{増幅回路の入力電圧源 $V_\mathrm{in}$ を乾電池から直流電源に変更}します。
   \item 入力電圧$V_\mathrm{in}$ を\SI{0}{V}から\SI{1.0}{V}まで\SI{0.05}{V}ずつ上昇させ，ファンが回り始める入力電圧のしきい値を確認します。ファンが回り始めたときの電圧を記録します。
-  \item \label{item:transistor-graph} \wave{ファンを抵抗器\SI{1}{k\ohm}（茶黒赤金）のコレクタ抵抗 $R_\mathrm{c}$ に置き換えます}。
+  \item \label{item:transistor-graph} \wave{ファンを抵抗器\SI{1}{k\ohm}（茶黒赤金）のコレクタ抵抗 $R_\mathrm{c}$ に置き換えます}（\cref{fig:transistor-exp2}）。
+  \begin{center}
+    \begin{minipage}{\linewidth}
+    \centering
+  % 実験2の回路図（図9と同じ描き方。入力を直流電源に，ファンをコレクタ抵抗 R_c に置き換え，テスターで V_Rc を測る）
+  \begin{circuitikz}[lbl/.style={font=\sffamily\gtfamily\small, align=center}]
+    % トランジスタ
+    \draw (3.6,1.6) node[npn, anchor=B, scale=1.1] (Q) {};
+    \draw (Q.B) node[above left] {B};
+    \draw (Q.C) node[right] {C};
+    \draw (Q.E) node[right] {E};
+    % ---- 入力側：直流電源 ----
+    \begin{scope}[shift={(0,0.2)}]
+      \draw[fill=black!10, rounded corners=2pt] (-0.6,-0.9) rectangle (0.6,0.9);
+      \draw[fill=white] (-0.42,0.2) rectangle (0.42,0.65);
+      \node[font=\sffamily\tiny] at (0,0.43) {0.50 V};
+      \draw[fill=black!40] (-0.25,-0.45) circle (0.12);
+      \draw[fill=black!40] (0.25,-0.45) circle (0.12);
+      \node[font=\small] at (0.38,1.1) {$+$};
+      \node[font=\small] at (0.38,-1.12) {$-$};
+    \end{scope}
+    \node[lbl, anchor=east] at (-0.75,0.2) {直流電源\\$V_\mathrm{in}$};
+    \draw (0,1.1) |- (0.6,1.6) to[R, l=$R_\mathrm{B}$] (2.6,1.6) -- (Q.B);
+    \draw (0,-0.7) -- (0,-1.2);
+    % ---- 出力側：コレクタ抵抗 R_c ----
+    \draw (Q.C) -- (Q.C |- 0,2.8) node[circ] (nc) {}
+          to[R, l_={$R_\mathrm{c}$（\SI{1}{k\ohm}）}] (Q.C |- 0,4.9) node[circ] (nt) {} -- (Q.C |- 0,5.6);
+    \draw (nc) to[short, -o] ($(nc)+(1.3,0)$) node[right] {$V_\mathrm{OUT}$};
+    % テスター（R_c の両端の電圧 V_Rc を測る）
+    \begin{scope}[shift={($(Q.C |- 0,3.85)+(-2.5,0)$)}]
+      \draw[fill=yellow!35, rounded corners=3pt] (-0.5,-0.75) rectangle (0.5,0.75);
+      \draw[fill=white] (-0.35,0.15) rectangle (0.35,0.55);
+      \node[font=\sffamily\tiny] at (0,0.35) {DCV};
+      \draw[fill=black!40] (0,-0.3) circle (0.18);
+      \coordinate (tr) at (0.5,0.4);
+      \coordinate (tb) at (0.5,-0.4);
+    \end{scope}
+    \draw[red!70!black, line width=0.8pt] (tr) -- ++(0.5,0) |- (nt);
+    \draw[black, line width=0.8pt] (tb) -- ++(0.5,0) |- (nc);
+    \node[lbl, anchor=east] at ($(Q.C |- 0,3.85)+(-3.05,0)$) {テスター\\$V_{R_\mathrm{c}}$};
+    % ---- 電源：DCジャック と ACアダプタ ----
+    \draw[fill=black!15, rounded corners=1pt] (7.9,1.7) rectangle (8.5,3.7);
+    \node[font=\small] at (8.2,3.35) {$+$};
+    \node[font=\small] at (8.2,2.05) {$-$};
+    \node[lbl, anchor=south] at (8.2,3.75) {DCジャック};
+    \draw (Q.C |- 0,5.6) -- (8.2,5.6) -- (8.2,3.7);
+    \draw (8.2,1.7) -- (8.2,-1.2);
+    \draw[line width=1.6pt, black!70] (8.5,2.7) -- (9.9,2.7);
+    \begin{scope}[shift={(11.1,2.7)}]
+      \draw[fill=black!10, rounded corners=3pt] (-1.2,-0.75) rectangle (1.2,0.75);
+      \node[lbl] at (0,0) {ACアダプタ\\（12 V）};
+    \end{scope}
+    \node[font=\small, anchor=south] at (9.2,2.75) {$V_\mathrm{CC}$};
+    % ---- GND ----
+    \draw (0,-1.2) -- (8.2,-1.2);
+    \draw (Q.E) -- (Q.E |- 0,-1.2) node[circ] {} node[ground] {};
+  \end{circuitikz}
+    \captionof{figure}{実験2の回路（入力を直流電源に，ファンをコレクタ抵抗 $R_\mathrm{c}$ に置き換える）}
+    \label{fig:transistor-exp2}
+    \end{minipage}
+  \end{center}
   \item 入力電圧$V_\mathrm{in}$ を\SI{0}{V}から\SI{1.0}{V}まで\SI{0.05}{V}ずつ変化させ，抵抗の両端電圧 $V_{R_\mathrm{c}}$ をテスターで測定します。横軸を $V_\mathrm{in}$，縦軸を $V_{R_\mathrm{c}}$ としてグラフを作成します。
   \item 出力電圧 $V_\mathrm{OUT}$ を，コレクタ端子とGNDとの間の電圧として測定します。$V_\mathrm{in}$ を\SI{0}{V}から\SI{1.0}{V}まで\SI{0.05}{V}ずつ変化させ，横軸を $V_\mathrm{in}$，縦軸を $V_\mathrm{OUT}$ として，\ref{item:transistor-graph}で作成したグラフ上にプロットします。
 \end{procedure}
