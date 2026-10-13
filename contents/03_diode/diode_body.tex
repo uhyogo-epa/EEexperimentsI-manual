@@ -322,8 +322,8 @@ LEDの発光色は使用されているダイオードの材料によって異�
 \begin{equipment}
 \begin{itemize}
   \item LED（赤色6個，黄緑色1個，青色1個，白色1個）\quad {\color{EGWarn}※極性（向き）に注意}
-  \item 固定抵抗器 $R$（\SI{100}{\ohm}/\SI{1}{W}，\SI{1}{\mega\ohm}/\SI{0.25}{W}）\quad ※極性（向き）はありません
-  \item セラミックコンデンサー $C$（\SI{10}{\micro F}）1個\quad ※極性（向き）はありません
+  \item 固定抵抗器 $R$（\SI{100}{\ohm}/\SI{1}{W}，\SI{1}{\mega\ohm}/\SI{0.25}{W}）\quad {\color{EGWarn}※極性（向き）はありません}
+  \item セラミックコンデンサー $C$（\SI{10}{\micro F}）1個\quad {\color{EGWarn}※極性（向き）はありません}
   \item ブレッドボード 1個
   \item ジャンパー線 必要数
   \item 直流電源（\chk{型番}？） \quad {\color{EGWarn}※極性（向き）に注意}
@@ -360,9 +360,12 @@ LEDの発光色は使用されているダイオードの材料によって異�
 
 異なる色のLEDが点灯する電圧（電流表示が\SI{0.001}{A}になる）を調べます。
 
-LED（黄緑色LED，青色LED，白色LED）の極性に気を付けて順方向電圧を印加する回路をブレッドボード上に作製します（\cref{fig:diode-exp1}(b)順方向接続）。出力をONした後，直流電源の電圧を\SI{0}{V}からゆっくりと印加し，電源電圧の電流表示が\SI{0.001}{A}となるとき，各LEDの電圧 $V$（V）を読み取り，課題1の表に記載します。\wave{発光確認後，電圧を\mbox{\SI{0}{V}}にもどし}，\wave{出力をOFFします。}
-% TODO(原文確認): 次の文は原文のまま。意味が通らないため要修正
-\wave{LEDを交換し，}\wave{電圧の出力とで電圧に気を付けLEDが点灯する電圧を調べます。}
+\begin{procedure}
+  \item\label{item:diode-exp2-first} 黄緑色LEDの極性に気を付けて，順方向電圧を印加する回路をブレッドボード上に作製します（\cref{fig:diode-exp1}(b)順方向接続）。
+  \item 直流電源の出力をONした後，電圧を\SI{0}{V}からゆっくりと上げ，直流電源の電流表示が\SI{0.001}{A}となるときのLEDの電圧 $V$（V）を読み取り，課題1の表に記載します。
+  \item\label{item:diode-exp2-last} \wave{発光を確認した後，電圧を\mbox{\SI{0}{V}}にもどし，出力をOFFします。}
+  \item LEDを青色LED，白色LEDに交換し，それぞれ手順\ref{item:diode-exp2-first}～\ref{item:diode-exp2-last}を繰り返します。
+\end{procedure}
 
 % ------------------------------------------------------------
 \subsection{実験3：赤色LEDの整流性を利用した電圧波形の変化}
