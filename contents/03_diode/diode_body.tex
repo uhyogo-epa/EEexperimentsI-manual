@@ -413,7 +413,7 @@ LEDの整流性を利用し，正弦波交流波形の変化を観測します�
   \item 交流電源に電源ケーブルを接続し，出力ケーブルを接続します。
   \item 交流電源のAMPLが最小値（反時計回りに回りきっている状態），ATTが押されていない状況を確認し，交流電源をONします。
   \item 周波数を\SI{2}{Hz}（x20のボタンを押し，\SI{0.0020}{kHz}表示），正弦波形のボタンを押します。
-  \item ブレッドボード上に\cref{fig:diode-ac_setup}の回路（固定抵抗 $R$（\SI{100}{\ohm}/\SI{1}{W}））を作製し，オシロスコープのCH1のプローブを\cref{fig:diode-ac_setup}のように接続します。\cref{fig:diode-ac_setup}のように，プローブの先端をCH1と書いた点に，プローブの接地クリップをGNDと書いた点につなぎます。以降の図のGND，CH1，CH2も，プローブをつなぐ位置を表します。
+  \item ブレッドボード上に\cref{fig:diode-ac_setup}の回路（固定抵抗 $R$（\SI{100}{\ohm}/\SI{1}{W}））を作製し，オシロスコープのCH1のプローブを接続します。\wave{\cref{fig:diode-ac_setup}のように，プローブの先端をCH1と書いた点に，プローブの接地クリップをGNDと書いた点につなぎます。以降の図のGND，CH1，CH2も，プローブをつなぐ位置を表します。}
   \begin{center}
     \begin{minipage}{\linewidth}
       \centering
@@ -431,7 +431,7 @@ LEDの整流性を利用し，正弦波交流波形の変化を観測します�
         % プローブ（先端を R の右端に当てる）
         \draw[line width=4pt, yellow!80!orange, line cap=round] (2.62,-0.25) -- (2.9,-0.85);
         \draw[line width=0.8pt] (nr) -- (2.62,-0.25);
-        \node[sm, anchor=west] at (2.95,-0.45) {プローブの先端（CH1）};
+        \node[sm, anchor=west] at (2.95,-0.45) {プローブの先端\\（CH1）};
         % 接地クリップ（R の左端へ）
         \draw[line width=0.8pt] (2.72,-0.5) .. controls (2.2,-1.3) and (1.0,-1.1) .. (nl);
         \node[sm, anchor=north east] at (0.75,-0.35) {接地クリップ\\（GND）};
@@ -479,6 +479,9 @@ LEDの整流性を利用し，正弦波交流波形の変化を観測します�
 
 \begin{procedure}[leftmargin=*, labelsep=0.8em]
   \item \cref{fig:diode-rectifier}(a)の回路をブレッドボード上に作製します。\wave{固定抵抗 \mbox{$R$} は\mbox{\SI{1}{\mega\ohm}}/\mbox{\SI{0.25}{W}}を使用します。}
+    \item 交流電源をONにし，LEDの点灯状態を確認します。正電圧印加時にLED(1)，LED(3)，LED(5)が点灯し，負電圧印加時にLED(2)，LED(4)，LED(5)が点灯するため，正しく回路が接続されていれば，LED(1)，LED(3)，LED(5)とLED(2)，LED(4)，LED(5)が交互に点灯し，LED(6)は点灯しません。
+  \item 確認後，交流電源の電源をOFFします。
+  \item オシロスコープのCH1とCH2のプローブを\cref{fig:diode-rectifier}(a)のように接続します。\chk{GNDは片方のプローブだけでOK？それとも両方？}
   \begin{center}
     \begin{minipage}{\linewidth}
       \centering
@@ -487,9 +490,6 @@ LEDの整流性を利用し，正弦波交流波形の変化を観測します�
       \label{fig:diode-rectifier}
     \end{minipage}
   \end{center}
-  \item 交流電源をONにし，LEDの点灯状態を確認します。正電圧印加時にLED(1)，LED(3)，LED(5)が点灯し，負電圧印加時にLED(2)，LED(4)，LED(5)が点灯するため，正しく回路が接続されていれば，LED(1)，LED(3)，LED(5)とLED(2)，LED(4)，LED(5)が交互に点灯し，LED(6)は点灯しません。
-  \item 確認後，交流電源の電源をOFFします。
-  \item オシロスコープのCH1とCH2のプローブを\cref{fig:diode-rectifier}(a)のように接続します。
   \item 「CH2」のボタンを押し，CH2を表示させ，CH2の電圧軸を\SI{2.00}{V}/DIVに設定します。
   \item 「Math」ボタンを押し，演算子を「$-$」に設定してCH1$-$CH2を表示させます。
   \item 「CH1」と「CH2」のボタンをそれぞれ2回押し，CH1とCH2の表示をOFFします。
