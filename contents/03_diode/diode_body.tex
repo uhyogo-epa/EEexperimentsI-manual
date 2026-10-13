@@ -144,7 +144,7 @@ p型半導体とn型半導体が隣り合った構造を\important{pn接合}と�
   \begin{minipage}{\linewidth}
   \centering
   % pn接合の空乏層・電界・拡散電位（TikZ で作成）
-  \begin{tikzpicture}[yscale=1.0,
+  \begin{tikzpicture}[yscale=1.1,
       hole/.style={circle, draw, fill=white, inner sep=0pt, minimum size=3.6mm, font=\scriptsize},
       elec/.style={circle, draw, fill=black!70, text=white, inner sep=0pt, minimum size=3.6mm, font=\scriptsize},
       ion/.style={rectangle, draw=black!60, fill=black!10, inner sep=0pt, minimum size=3.2mm, font=\scriptsize},
@@ -164,8 +164,8 @@ p型半導体とn型半導体が隣り合った構造を\important{pn接合}と�
     }
     % 電界（＋のイオンから－のイオンへ：n型側からp型側の向き）
     \draw[-{Latex[length=2.4mm,width=2.4mm]}, line width=1.3pt, EGMain] (4.9,1.9) -- node[above, lbl, text=EGMain] {電界} (3.1,1.9);
-    \node[lbl, anchor=south] at (1.5,1.65) {p型\\（アノード側）};
-    \node[lbl, anchor=south] at (6.5,1.65) {n型\\（カソード側）};
+    \node[lbl, anchor=south] at (1.5,1.65) {p型};
+    \node[lbl, anchor=south] at (6.5,1.65) {n型};
     \node[lbl, anchor=north, fill=white, inner sep=1pt] at (4,-0.05) {空乏層\\（厚さ 10\,nm～1\,\textmu m程度）};
     % ---- 下：電位 ----
     \begin{scope}[shift={(0,-2.5)}]
