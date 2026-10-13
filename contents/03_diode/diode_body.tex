@@ -430,15 +430,16 @@ LEDの整流性を利用し，正弦波交流波形の変化を観測します�
 
 \subsubsection{LEDを用いた点灯実験}
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[scale=1.3]{diode_led_ac.pdf}
-  \caption{LEDを用いた点灯実験}
-  \label{fig:diode-led_ac}
-\end{figure}
-
 \begin{procedure}[leftmargin=*, labelsep=0.8em]
   \item LEDの極性に気を付けて\cref{fig:diode-led_ac}(a)に示す回路をブレッドボード上に作製します。
+  \begin{center}
+    \begin{minipage}{\linewidth}
+      \centering
+      \includegraphics[scale=1.3]{diode_led_ac.pdf}
+      \captionof{figure}{LEDを用いた点灯実験}
+      \label{fig:diode-led_ac}
+    \end{minipage}
+  \end{center}
   \item オシロスコープのCH1のプローブを\cref{fig:diode-led_ac}(a)のように接続したのち，交流電源をONにして，LED(1)の点灯状態とオシロスコープで抵抗器 $R$ の電圧波形を確認します。（LED(1)が点滅します。）
   \item 確認後，交流電源の電源をOFFにします。
   \item LEDの極性に気を付けて\cref{fig:diode-led_ac}(b)に示す回路をブレッドボード上に作製します。
@@ -448,15 +449,16 @@ LEDの整流性を利用し，正弦波交流波形の変化を観測します�
 
 \subsubsection{整流回路1}
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.95\linewidth]{diode_rectifier.pdf}
-  \caption{整流回路}
-  \label{fig:diode-rectifier}
-\end{figure}
-
 \begin{procedure}[leftmargin=*, labelsep=0.8em]
   \item \cref{fig:diode-rectifier}(a)の回路をブレッドボード上に作製します。\wave{固定抵抗 \mbox{$R$} は\mbox{\SI{1}{\mega\ohm}}/\mbox{\SI{0.25}{W}}を使用します。}
+  \begin{center}
+    \begin{minipage}{\linewidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{diode_rectifier.pdf}
+      \captionof{figure}{整流回路}
+      \label{fig:diode-rectifier}
+    \end{minipage}
+  \end{center}
   \item 交流電源をONにし，LEDの点灯状態を確認します。正電圧印加時にLED(1)，LED(3)，LED(5)が点灯し，負電圧印加時にLED(2)，LED(4)，LED(5)が点灯するため，正しく回路が接続されていれば，LED(1)，LED(3)，LED(5)とLED(2)，LED(4)，LED(5)が交互に点灯し，LED(6)は点灯しません。
   \item 確認後，交流電源の電源をOFFします。
   \item オシロスコープのCH1とCH2のプローブを\cref{fig:diode-rectifier}(a)のように接続します。
