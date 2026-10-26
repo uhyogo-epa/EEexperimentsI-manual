@@ -40,7 +40,7 @@
   \label{fig:oscilloscope-waveforms}
 \end{figure}
 
-\cref{fig:oscilloscope-instantaneous}に示すように，任意の時刻 $t$ における電圧や電流の値を\important{瞬時値}（Instantaneous Value）といい，電圧の場合は $v(t)$，電流の場合は $i(t)$ で表します。瞬時値のうち絶対値が最も大きいものを\important{最大値}（Maximum Value）といい，電圧の場合は $V_\mathrm{m}$，電流の場合は $I_\mathrm{m}$ で表します。最大値は\important{振幅}（Amplitude）とも呼ばれます。また，最大値と最小値の差を\important{ピークピーク値}（Peak-to-Peak Value）といい，電圧の場合は $V_\mathrm{pp}$，電流の場合は $I_\mathrm{pp}$ で表します。正弦波交流では，ピークピーク値は最大値の2倍（$V_\mathrm{pp}=2V_\mathrm{m}$）になります。
+\cref{fig:oscilloscope-instantaneous}に示すように，任意の時刻 $t$ における電圧や電流の値を\important{瞬時値}（Instantaneous Value）といい，電圧の場合は $v(t)$，電流の場合は $i(t)$ で表します。瞬時値のうち絶対値が最も大きいもの{\color{red}（0が中心であることが前提でしょうか）}を\important{最大値}（Maximum Value）といい，電圧の場合は $V_\mathrm{m}$，電流の場合は $I_\mathrm{m}$ で表します。最大値は\important{振幅}（Amplitude）とも呼ばれます。また，最大値と最小値の差を\important{ピークピーク値}（Peak-to-Peak Value）といい，電圧の場合は $V_\mathrm{pp}$，電流の場合は $I_\mathrm{pp}$ で表します。正弦波交流では，ピークピーク値は最大値の2倍（$V_\mathrm{pp}=2V_\mathrm{m}$）になります。
 
 \begin{figure}[htbp]
   \centering
@@ -53,7 +53,7 @@
 
 
 % ------------------------------------------------------------
-\subsection{RC回路（ローパスフィルタ）}
+\subsection{RCローパスフィルタ}
 
 \begin{figure}[htbp]
   \centering
@@ -68,7 +68,7 @@
   \label{fig:oscilloscope-rc-lowpass}
 \end{figure}
 
-RC回路（ローパスフィルタ）は，低い周波数の信号を通し，高い周波数の信号を減衰させる回路です。\cref{fig:oscilloscope-rc-lowpass}に示すように，抵抗 $R$ とコンデンサ $C$ から構成され，入力電圧 $v_{\mathrm{in}}$ を加え，コンデンサの両端から出力電圧 $v_{\mathrm{out}}$ を取り出します。
+RCローパスフィルタは，低い周波数の信号を通し，高い周波数の信号を減衰させる回路です。\cref{fig:oscilloscope-rc-lowpass}に示すように，抵抗 $R$ とコンデンサ $C$ から構成され，入力電圧 $v_{\mathrm{in}}$ を加え，コンデンサの両端から出力電圧 $v_{\mathrm{out}}$ を取り出します。
 
 コンデンサには，電圧の変化が速いほど（周波数が高いほど），大きな電流が流れます。そのため，電圧がゆっくり変化する低周波信号では，コンデンサを通って流れる電流が小さく，抵抗による電圧の低下も小さくなるため，出力電圧は入力電圧に近くなります。一方，高周波信号ではコンデンサを通って流れる電流が大きくなり，抵抗による電圧の低下も大きくなるため，出力電圧は小さくなります。この性質により，高周波のノイズを除去し，滑らかな電圧波形を得ることができます。RCローパスフィルタは，ノイズ除去や平滑回路など，電子回路やパワーエレクトロニクスの分野で広く利用されています。
 
@@ -207,7 +207,7 @@ f_0=\frac{1}{2\pi\sqrt{LC}}
   % 原文は「図4に示すような回路」だが測定回路1（図6）を指すと判断
   \item ブレッドボード上に\cref{fig:oscilloscope-circuit1}に示す回路を作製します。素子は\wave{抵抗器\SI{1}{k\ohm}（茶黒赤金）}，\wave{コンデンサ\SI{1}{\micro F}}を使用します。
   \item オシロスコープのCH1（黄）にフィルタ入力$v_\mathrm{in}$，CH2（青）にフィルタ出力$v_\mathrm{out}$を表示します。入力電圧$v_\mathrm{in}$（ファンクションジェネレータの出力）は振幅\SI{10}{V}（ピークピーク値\SI{20}{V}）に設定します。
-  \item 交流源（ファンクションジェネレータ）の周波数を変化させて，周波数ごとにフィルタ出力$v_\mathrm{out}$の最大値 $V_\mathrm{m}$を記録します。周波数は\SI{20}{Hz}～\SI{1}{kHz}の範囲で変化させ，周波数特性を記録します。\wave{Excelを用いてグラフを作成し，測定点を追加するごとに傾向を確認しながら実験してください}。
+  \item 交流電源（ファンクションジェネレータ）の周波数を変化させて，周波数ごとにフィルタ出力$v_\mathrm{out}$の最大値 $V_\mathrm{m}$を記録します。周波数は\SI{20}{Hz}～\SI{1}{kHz}の範囲で変化させ，周波数特性を記録します。\wave{Excelを用いてグラフを作成し，測定点を追加するごとに傾向を確認しながら実験してください}。
   \item カットオフ周波数 $f_\mathrm{c}$ を確認します。
   \item 自作したローパスフィルタをPC（音源）とスピーカーに接続して機能を確認します。
 \end{procedure}
@@ -227,7 +227,7 @@ f_0=\frac{1}{2\pi\sqrt{LC}}
   % 原文は「図5に示すような回路」だが測定回路2（図7）を指すと判断
   \item ブレッドボード上に\cref{fig:oscilloscope-circuit2}に示す回路を作製します。素子は\wave{抵抗器\SI{100}{\ohm}（茶黒茶金）}，コイル\SI{10}{mH}，\wave{コンデンサ\SI{0.1}{\micro F}}を使用します。
   \item オシロスコープのCH1（黄）にフィルタ入力$v_\mathrm{in}$，CH2（青）にフィルタ出力$v_\mathrm{out}$を表示します。入力電圧$v_\mathrm{in}$（ファンクションジェネレータの出力）は振幅\SI{10}{V}（ピークピーク値\SI{20}{V}）に設定します。
-  \item 交流源（ファンクションジェネレータ）の周波数を変化させて，周波数ごとにフィルタ出力$v_\mathrm{out}$の最大値$V_\mathrm{m}$を記録します。
+  \item 交流電源（ファンクションジェネレータ）の周波数を変化させて，周波数ごとにフィルタ出力$v_\mathrm{out}$の最大値$V_\mathrm{m}$を記録します。
   周波数を\SI{2}{kHz}～\SI{8}{kHz}の範囲で変化させ，周波数特性を記録します。\wave{Excelを用いてグラフを作成し，測定点を追加するごとに傾向を確認しながら実験してください}。
   \item 測定した結果から共振周波数$f_0$を確認します。
 \end{procedure}

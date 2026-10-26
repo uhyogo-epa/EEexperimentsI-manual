@@ -147,12 +147,13 @@ FETは，\important{ゲート（G）}，\important{ドレイン（D）}，\impor
 BJTにはnpn型とpnp型がありますが，本実験ではnpn型を使います。
 npn型BJTの各端子に流れる電流の向きを\cref{fig:transistor-currents}に示します。
 ベース–エミッタ間はダイオードと同じようにふるまい，ベース側をプラスにして約\SI{0.7}{V}以上の電圧を加えると，小さな\important{ベース電流} $I_\mathrm{B}$ が流れます。
-このとき，コレクタからエミッタへ大きな\important{コレクタ電流} $I_\mathrm{C}$ が流れ，ベース電流との間に
+このとき，コレクタからエミッタへ大きな\important{コレクタ電流} $I_\mathrm{C}$ が流れます。
+コレクタ電流とベース電流との関係は
 \begin{equation}
   I_\mathrm{C} = \beta I_\mathrm{B}
   \label{eq:transistor-beta}
 \end{equation}
-の関係があります。$\beta$ は\important{電流増幅率}と呼ばれ，一般に数十から数百の値をとります。また，エミッタからは $I_\mathrm{E}=I_\mathrm{B}+I_\mathrm{C}$ が流れ出します。
+と表せます。$\beta$ は\important{電流増幅率}と呼ばれ，一般に数十から数百の値をとります。また，エミッタからは $I_\mathrm{E}=I_\mathrm{B}+I_\mathrm{C}$ が流れ出します。
 このように，BJTはベースに流す小さな電流で大きなコレクタ電流を制御する素子です（BJTの中で電流が流れるしくみは，この節の最後のコラムで説明します）。
 \begin{figure}[htbp]
   \centering
@@ -197,7 +198,7 @@ BJTの最も基本的な使い方は，\cref{fig:transistor-ce}のようにBJT�
   \label{fig:transistor-ce}
 \end{figure}
 
-実際のBJTの電圧と電流の関係は複雑ですが，回路の基本的な動作を理解するためには，BJTの\important{理想的な動作}だけを考えれば十分です。理想的には，ベース–エミッタ間は約\SI{0.7}{V}で電流が流れ始めるダイオード，コレクタ–エミッタ間は $I_\mathrm{C}=\beta I_\mathrm{B}$ の電流を流す電流源とみなせます。このようにBJTを理想的な\important{等価回路}に置き換えると，\cref{fig:transistor-ce}の回路は\cref{fig:transistor-equiv}のように表せます。この等価回路から，$V_\mathrm{in}$ が\SI{0.7}{V}より大きいとき，$R_\mathrm{B}$ には $V_\mathrm{in}-0.7$ の電圧がかかるので $I_\mathrm{B}=(V_\mathrm{in}-0.7)/R_\mathrm{B}$ となり，コレクタ電流は $I_\mathrm{C}=\beta I_\mathrm{B}$ と求められます。
+実際のBJTの電圧と電流の関係は複雑ですが，回路の基本的な動作を理解するためには，BJTの\important{理想的な動作}だけを考えれば十分です。理想的には，ベース–エミッタ間は約\SI{0.7}{V}で電流が流れ始めるダイオード，コレクタ–エミッタ間は $I_\mathrm{C}=\beta I_\mathrm{B}$ の電流を流す電流源とみなせます。このようにBJTを理想的な\important{等価回路}に置き換えると，\cref{fig:transistor-ce}の回路は\cref{fig:transistor-equiv}のように表せます。この等価回路から，$V_\mathrm{in}$ が\SI{0.7}{V}より大きいとき，$R_\mathrm{B}$ には $V_\mathrm{in}-0.7$\,Vの電圧がかかるので $I_\mathrm{B}=(V_\mathrm{in}-0.7)/R_\mathrm{B}$ となり，コレクタ電流は $I_\mathrm{C}=\beta I_\mathrm{B}$ と求められます。
 出力電圧 $V_\mathrm{OUT}$（コレクタとGNDの間の電圧）は，電源電圧 $V_\mathrm{CC}$ から $R_\mathrm{C}$ での電圧降下 $R_\mathrm{C}I_\mathrm{C}$ を引いた $V_\mathrm{OUT}=V_\mathrm{CC}-R_\mathrm{C}I_\mathrm{C}$ となります。したがって，入力電圧を大きくして $I_\mathrm{C}$ が増えると，出力電圧は小さくなります。これを\important{反転動作}といいます。ただし，$I_\mathrm{C}$ は $V_\mathrm{CC}/R_\mathrm{C}$ より大きくなることはできず，そのとき $V_\mathrm{OUT}$ はほぼ\SI{0}{V}になります（これを\important{飽和}といいます）。このとき $R_\mathrm{C}$（ファン）にはほぼ電源電圧 $V_\mathrm{CC}$ がかかり，ファンが回ります。
 
 \begin{center}
@@ -223,7 +224,7 @@ BJTの最も基本的な使い方は，\cref{fig:transistor-ce}のようにBJT�
     \draw (c) to[short, -o] (7.6,3.4) node[right] {$V_\mathrm{OUT}$};
     \draw (5.2,0) node[circ] {} node[above=2pt] {E} node[ground] {};
   \end{circuitikz}
-  \captionof{figure}{エミッタ接地増幅回路の等価回路}
+  \captionof{figure}{エミッタ接地増幅回路の（理想的な）等価回路}
   \label{fig:transistor-equiv}
   \end{minipage}
 \end{center}
@@ -404,7 +405,7 @@ npn型のBJTは，n型半導体，p型半導体，n型半導体の3つの層を�
     \draw (0,-1.2) -- (8.2,-1.2);
     \draw (Q.E) -- (Q.E |- 0,-1.2) node[circ] {} node[ground] {};
   \end{circuitikz}
-  \captionof{figure}{ファン駆動用エミッタ接地増幅回路}
+  \captionof{figure}{ファン駆動用エミッタ接地増幅回路の模式図}
   \label{fig:transistor-fan}
     \end{center}
   \item 接続を確認した後，電池BOXのスイッチをオンにし，増幅回路を用いてファンを駆動します。\wave{ファンが回転したら教員の確認を受け}，実験2に進みます。
