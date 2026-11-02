@@ -329,7 +329,7 @@ LEDの発光色は使用されているダイオードの材料によって異�
   \item セラミックコンデンサー $C$（\SI{10}{\micro F}）1個\quad {\color{EGWarn}※極性（向き）はありません}
   \item ブレッドボード 1個
   \item ジャンパー線 必要数
-  \item 直流電源（\chk{型番}？） \quad {\color{EGWarn}※極性（向き）に注意}
+  \item 直流電源（KIKUSUI PMX18-2A） \quad {\color{EGWarn}※極性（向き）に注意}
   \item 交流電源（ファンクションジェネレータ，MCP SG1638B）\quad {\color{EGWarn}※極性（向き）に注意}
   \item デジタルオシロスコープ（KEYSIGHT EDUX1052A）
   \item オシロスコープ用プローブ 2本
@@ -357,7 +357,7 @@ LEDの発光色は使用されているダイオードの材料によって異�
   \begin{circuitikz}[lbl/.style={font=\sffamily\gtfamily\small, align=center}]
     % (a) 逆方向接続：アノードが下（電源のマイナス側）
     \begin{scope}
-      \draw (0,0) to[battery1, l={\sffamily\gtfamily\small 直流電源}] (0,2.4) -- (3,2.4);
+      \draw (0,0) to[battery1, l={\sffamily\gtfamily\small 直流電源}, invert] (0,2.4) -- (3,2.4);
       \draw (3,0) to[D*, o-o] (3,2.4);
       \draw (3,0) -- (2.4,0) to[R, l_=$R$] (0.6,0) -- (0,0);
       \node[lbl, anchor=west] at (3.25,2.0) {カソード};
@@ -366,7 +366,7 @@ LEDの発光色は使用されているダイオードの材料によって異�
     \end{scope}
     % (b) 順方向接続：アノードが上（電源のプラス側）
     \begin{scope}[shift={(7.8,0)}]
-      \draw (0,0) to[battery1, l={\sffamily\gtfamily\small 直流電源}] (0,2.4) -- (3,2.4);
+      \draw (0,0) to[battery1, l={\sffamily\gtfamily\small 直流電源}, invert] (0,2.4) -- (3,2.4);
       \draw (3,2.4) to[D*, o-o] (3,0);
       \draw (3,0) -- (2.4,0) to[R, l_=$R$] (0.6,0) -- (0,0);
       \node[lbl, anchor=west] at (3.25,2.0) {アノード};
@@ -374,7 +374,7 @@ LEDの発光色は使用されているダイオードの材料によって異�
       \node[lbl, anchor=north] at (1.6,-0.55) {(b)\ 順方向接続};
     \end{scope}
   \end{circuitikz}
-  \caption{実験1の回路図\color{red}{（回路が逆になっています）}}
+  \caption{実験1の回路図}
   \label{fig:diode-exp1}
 \end{figure}
 
@@ -481,7 +481,7 @@ LEDの整流性を利用し，正弦波交流波形の変化を観測します�
   \item \cref{fig:diode-rectifier}(a)の回路をブレッドボード上に作製します。\wave{固定抵抗 \mbox{$R$} は\mbox{\SI{1}{\mega\ohm}}/\mbox{\SI{0.25}{W}}を使用します。}
     \item 交流電源をONにし，LEDの点灯状態を確認します。正電圧印加時にLED(1)，LED(3)，LED(5)が点灯し，負電圧印加時にLED(2)，LED(4)，LED(5)が点灯するため，正しく回路が接続されていれば，LED(1)，LED(3)，LED(5)とLED(2)，LED(4)，LED(5)が交互に点灯し，LED(6)は点灯しません。
   \item 確認後，交流電源をOFFにします。
-  \item オシロスコープのCH1とCH2のプローブを\cref{fig:diode-rectifier}(a)のように接続します。\chk{GNDは片方のプローブだけでOK？それとも両方？}
+  \item オシロスコープのCH1とCH2のプローブを\cref{fig:diode-rectifier}(a)のように接続します。2本のプローブの接地クリップ（GND）は，どちらも図のGNDの点に接続します（オシロスコープの内部でつながっているので片方だけでも測定できますが，本実験では両方接続します）。
   \begin{center}
     \begin{minipage}{\linewidth}
       \centering
