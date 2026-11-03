@@ -230,7 +230,7 @@ V = E - rI
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.8\linewidth]{tester_breadboard.jpg}
+  \includegraphics[width=0.62\linewidth]{tester_breadboard.jpg}
   \caption{ブレッドボード}
   \label{fig:tester-breadboard}
 \end{figure}
@@ -241,8 +241,29 @@ V = E - rI
   \item \important{両側の電源ライン（$+$，$-$の表示付き）：}横方向に長く連続して導通しています。電源のプラスとマイナスをここに配線しておくことで，どの位置からでも電源を取り出せます。
 \end{itemize}
 
-実際に回路を組むときには，乾電池ボックスなどの電源を$+$ラインと$-$ラインに接続し，抵抗やリード線を中央部分に差し込んで回路を構成します。抵抗を直列に接続する場合は，異なる縦列にまたがるように配置し，並列接続にする場合は同じ縦列に差し込みます。
-{\color{red}{（ここですが，わかりにくいと思うので，実際にブレッドボード上に組んだ回路の例を示した方が良いと思います．）}}
+実際に回路を組むときには，乾電池ボックスなどの電源を$+$ラインと$-$ラインに接続し，抵抗やリード線を中央部分に差し込んで回路を構成します。抵抗を直列に接続する場合は，異なる縦列にまたがるように配置し，並列接続にする場合は同じ縦列に差し込みます（\cref{fig:tester-breadboard-example}）。
+
+\begin{figure}[!htb]
+  \centering
+  % 写真の上に，つながっている縦列の帯を重ねている。座標は写真の幅と高さを1としたときの位置
+  \begin{tikzpicture}
+    \node[anchor=south west, inner sep=0] (photo) at (0,0) {\includegraphics[width=0.68\linewidth]{tester_breadboard_example.jpg}};
+    \begin{scope}[x={(photo.south east)}, y={(photo.north west)}]
+      % つながっている縦列（12，22，37，47，56列）
+      \fill[orange, fill opacity=0.5] (0.2004,0.3094) -- (0.2126,0.3110) -- (0.2252,0.5031) -- (0.2138,0.5019) -- cycle;
+      \fill[orange, fill opacity=0.5] (0.3582,0.3302) -- (0.3700,0.3317) -- (0.3726,0.5191) -- (0.3616,0.5179) -- cycle;
+      \fill[orange, fill opacity=0.5] (0.5838,0.3599) -- (0.5949,0.3613) -- (0.5839,0.5420) -- (0.5735,0.5409) -- cycle;
+      \fill[orange, fill opacity=0.5] (0.7273,0.3788) -- (0.7380,0.3802) -- (0.7187,0.5566) -- (0.7086,0.5555) -- cycle;
+      \fill[orange, fill opacity=0.5] (0.8520,0.3952) -- (0.8623,0.3966) -- (0.8361,0.5693) -- (0.8263,0.5683) -- cycle;
+      % 並列接続と直列接続の範囲
+      \draw[EGMain, thick] (0.2065,-0.03) -- (0.2065,-0.07) -- node[below, font=\sffamily\gtfamily\small, text=EGMain] {並列接続} (0.3641,-0.07) -- (0.3641,-0.03);
+      \draw[EGMain, thick] (0.5894,-0.03) -- (0.5894,-0.07) -- node[below, font=\sffamily\gtfamily\small, text=EGMain] {直列接続} (0.8571,-0.07) -- (0.8571,-0.03);
+    \end{scope}
+  \end{tikzpicture}
+  \caption{ブレッドボード上に組んだ回路の例（色を付けた縦列の5つの穴がつながっている）}
+  \label{fig:tester-breadboard-example}
+\end{figure}
+
 
 % ------------------------------------------------------------
 \subsection{抵抗器の表示}
