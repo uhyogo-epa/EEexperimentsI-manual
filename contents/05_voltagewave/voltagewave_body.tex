@@ -11,7 +11,64 @@
 % ============================================================
 \section{目的}
 
-電気信号伝搬の現象を観察し，理解を深めます。
+スイッチを入れるとすぐに照明がつくので，電気は一瞬で伝わるように感じます。しかし，実際には電気信号は波としてケーブルを伝わっていくため，伝わる速さには限りがあり，ケーブルの端で跳ね返ることもあります。高速なコンピュータや通信機器を設計するときには，電気信号のこのような波としての性質を考える必要があります。本実験では，電気信号伝搬の現象を観察し，理解を深めます。長い同軸ケーブルとオシロスコープを使って，電気信号の伝わる速さ，ケーブルの端での反射，定在波を順に観察します（\cref{fig:voltagewave-overview}）。
+
+\begin{figure}[htbp]
+  \centering
+  \vspace{5mm}
+  % 本実験の概要図（TikZ で作成。原本にはない図）
+  % 学生が予想してから実験できるよう，速さの値と反射波の形は描かない
+  \begin{tikzpicture}[
+      lbl/.style={font=\sffamily\gtfamily\footnotesize, align=center},
+      ttl/.style={font=\sffamily\gtfamily\bfseries\small, text=EGMain},
+      ask/.style={font=\sffamily\gtfamily\footnotesize, align=center, text=EGWarn},
+      panel/.style={draw=EGMain, rounded corners=4pt},
+      cable/.style={line width=3pt, black!55},
+      go/.style={-{Latex[length=2mm,width=2mm]}, line width=1pt, EGMain},
+      back/.style={-{Latex[length=2mm,width=2mm]}, line width=1pt, EGWarn},
+      probe/.style={circle, fill=white, draw=black!70, line width=0.7pt, inner sep=1.6pt},
+    ]
+    % ===== 実験1：片道 =====
+    \draw[panel] (0,-1.75) rectangle (5.0,2.0);
+    \node[ttl] at (2.5,1.65) {実験1：伝わる速さ};
+    \draw[cable] (0.5,0) -- (4.5,0);
+    \node[probe, label={[lbl]below:入口}] at (0.5,0) {};
+    \node[probe, label={[lbl]below:出口}] at (4.5,0) {};
+    \draw[EGMain, line width=1.2pt] (1.1,0.3) -- (2.2,0.3) -- (2.2,0.95) -- (2.9,0.95) -- (2.9,0.3) -- (3.6,0.3);
+    \draw[go] (3.15,0.75) -- (4.0,0.75);
+    \draw[latex-latex, black!60] (0.5,-0.78) -- node[fill=white, inner sep=1pt, lbl] {片道} (4.5,-0.78);
+    \node[ask] at (2.5,-1.3) {どのくらいの速さで伝わる？};
+    % ===== 実験2：往復 =====
+    \begin{scope}[shift={(5.2,0)}]
+      \draw[panel] (0,-1.75) rectangle (5.0,2.0);
+      \node[ttl] at (2.5,1.65) {実験2：端での反射};
+      \draw[cable] (0.5,0) -- (3.7,0);
+      \node[probe, label={[lbl]below:入口}] at (0.5,0) {};
+      \node[draw=EGMain, fill=EGSub, rounded corners=2pt, lbl, inner sep=2pt] at (4.25,0) {端の\\[-3pt]つなぎ方};
+      \draw[EGMain, line width=1.2pt] (0.9,0.3) -- (1.5,0.3) -- (1.5,0.8) -- (2.1,0.8) -- (2.1,0.3) -- (2.7,0.3);
+      \draw[go] (2.25,0.65) -- (3.0,0.65) node[right, lbl, text=EGMain] {入射波};
+      \draw[back] (3.4,-0.33) -- (2.35,-0.33);
+      \node[lbl, text=EGWarn, anchor=east] at (2.3,-0.33) {反射波？};
+      \draw[latex-latex, black!60] (0.5,-0.78) -- node[fill=white, inner sep=1pt, lbl] {往復} (3.7,-0.78);
+      \node[ask] at (2.5,-1.3) {端で信号はどうなる？};
+    \end{scope}
+    % ===== 実験3：重なり =====
+    \begin{scope}[shift={(10.4,0)}]
+      \draw[panel] (0,-1.75) rectangle (5.0,2.0);
+      \node[ttl] at (2.5,1.65) {実験3：定在波};
+      \draw[cable] (0.4,0) -- (4.6,0);
+      \foreach \x in {0.4,1.45,2.5,3.55,4.6} \node[probe] at (\x,0) {};
+      \draw[EGMain, line width=1.1pt, domain=0.4:4.6, samples=80, smooth]
+        plot (\x, {0.72+0.34*sin((\x-0.4)*180/1.05+90)});
+      \draw[EGMain, densely dashed, line width=0.8pt, domain=0.4:4.6, samples=80, smooth]
+        plot (\x, {0.72-0.34*sin((\x-0.4)*180/1.05+90)});
+      \node[lbl] at (2.5,-0.5) {各班のオシロスコープで観測};
+      \node[ask] at (2.5,-1.3) {場所によって電圧はどう変わる？};
+    \end{scope}
+  \end{tikzpicture}
+  \caption{同軸ケーブルを伝わる電気信号の速さ，反射，定在波の観察}
+  \label{fig:voltagewave-overview}
+\end{figure}
 
 % ============================================================
 \section{原理}
@@ -25,11 +82,70 @@
 \end{equation}
 と求めることができます。電気信号は速度を持つことから，電気信号が伝わる線（伝送線路）の長さによって信号の到達時間も変化します。
 
+本実験では，同軸ケーブルの入口と出口で電圧波形を測定します。ケーブルの長さを $L$，入口で信号が変化してから出口で同じ変化が現れるまでの時間を $\Delta t$ とすると，電気信号の伝搬速度は
+\begin{equation}
+  v = \frac{L}{\Delta t}
+  \label{eq:voltagewave-measure}
+\end{equation}
+と求められます。電気信号はどのくらいの速さで伝わるのでしょうか。実際に測定して確かめてみましょう。
+
 交流電源は電圧波高値と周波数があり，周波数 $f$（Hz）は1秒当たりの波の数であり，その逆数は周期 $T$（s）です。
 \begin{equation}
   T = \frac{1}{f}
   \label{eq:voltagewave-period}
 \end{equation}
+
+\begin{hosoku}[コラム：電気信号は電磁波として伝わる]
+電気信号が光に近い速さで伝わるのは，電子そのものが光の速さで移動しているからではありません。電圧や電流の変化が，電界と磁界の変化，すなわち\important{電磁波}として伝わるからです。
+
+\begin{center}
+  \begin{tikzpicture}[font=\sffamily\gtfamily\small]
+    \fill[black!45] (0,0) circle (1.45);
+    \fill[black!18] (0,0) circle (1.25);
+    \fill[EGSub] (0,0) circle (1.1);
+    \fill[black!60] (0,0) circle (0.28);
+    \draw[EGMain, densely dashed, thick] (0,0) circle (0.72);
+    \foreach \a in {0,45,...,315}{
+      \draw[-latex, EGWarn, thick] (\a:0.32) -- (\a:1.06);
+    }
+    \draw (0.1,0.1) -- (2.0,1.05) node[right] {中心導体};
+    \draw (0.65,0.72) -- (2.0,0.45) node[right] {絶縁体};
+    \draw (1.18,-0.1) -- (2.0,-0.15) node[right] {外側導体};
+    \draw (1.25,-0.75) -- (2.0,-0.75) node[right] {被覆};
+    \node[anchor=east, text=EGWarn] at (-1.7,0.4) {電界（矢印）};
+    \node[anchor=east, text=EGMain] at (-1.7,-0.4) {磁界（破線）};
+  \end{tikzpicture}
+  \captionof{figure}{同軸ケーブルの断面と，電界・磁界のイメージ}
+  \label{fig:voltagewave-coax}
+\end{center}
+
+同軸ケーブルは，中心導体とそれを取り囲む外側導体の間に絶縁体が入った構造をしています（\cref{fig:voltagewave-coax}）。信号を加えると2つの導体の間に電界と磁界が生じ，その変化がケーブルに沿って進んでいきます。電磁波は真空中では光速 $c$ で進みますが，同軸ケーブルの中では絶縁体の影響で遅くなり（\cref{eq:voltagewave-velocity}），RG-58A/Uではおよそ\SI{2.0e8}{m/s}です。ラジオやスマートフォンの電波と同じように，ケーブルの中を伝わる信号も電磁波として考えることができます。
+\end{hosoku}
+
+\subsection{電気信号の反射}
+
+水面の波が壁に当たると跳ね返るように，電気信号もケーブルの端で跳ね返ることがあります。これを\important{反射}といいます。ケーブルの端に向かって進む波を\important{入射波}，端で跳ね返って戻ってくる波を\important{反射波}といいます。
+
+反射波が発生すると，入射波と反射波が重なり合うので，ケーブルの端で観測される電圧が変化します。また，反射波はケーブルを戻っていくので，入口側で観測される電圧にも影響を与えます。
+
+反射の仕方は，ケーブルの端のつなぎ方によって変わります。本実験では，\SI{50}{\ohm}の抵抗をつないだ場合（\SI{50}{\ohm}終端），何もつながない場合（開放），中心の導体と外側の導体を直接つないだ場合（短絡）を比べます。ケーブルの端を変えると，電圧波形はどのように変わるのでしょうか。
+
+\begin{hosoku}[コラム：\SI{50}{\ohm}って何だろう？]
+同軸ケーブルには，信号が波として伝わるときの電圧と電流の関係から決まる\important{特性インピーダンス}という値があり，本実験で使用するケーブルでは\SI{50}{\ohm}です。これはケーブルの導体そのものの抵抗値ではありません。
+
+ケーブルの端に特性インピーダンスと同じ\SI{50}{\ohm}の抵抗をつなぐと，進んできた波のエネルギーが抵抗で消費され，反射がほとんど起こらなくなります。このような抵抗を\important{終端抵抗}といい，反射による信号の乱れを防ぐために使われています。高速な電気信号を正しく伝えるには，ケーブルの長さだけでなく，端をどのようにつなぐかも重要なのです。
+\end{hosoku}
+
+\subsection{定在波}
+
+正弦波を連続してケーブルに送ると，進む波と端で反射して戻ってくる波が重なり合い，場所によって強め合ったり弱め合ったりします。その結果，電圧の振幅が大きい場所と小さい場所が決まった位置に現れることがあります。このような波を\important{定在波}といいます。
+
+波が1周期の間に進む距離を\important{波長}といいます。波長 $\lambda$ は，伝搬速度 $v$ と周波数 $f$ から
+\begin{equation}
+  \lambda = \frac{v}{f}
+  \label{eq:voltagewave-wavelength}
+\end{equation}
+と表せます。本実験では，各班の同軸ケーブルをつなぎ合わせて部屋で1本の長いケーブルを作り，場所によって電圧の大きさがどのように変わるかを調べます。
 
 % ============================================================
 \section{使用器具}
@@ -43,6 +159,8 @@
   \item 同軸ケーブル（1本/班）
   \item BNC T字分岐コネクタ（1個/班）
   \item 終端抵抗（1個/班）
+  \item \chk{BNC T字分岐コネクタ（ch2側で追加，1個/班）}
+  \item \chk{BNC短絡コネクタ（1個/班）}
 \end{itemize}
 \end{equipment}
 
@@ -69,6 +187,8 @@
     測定結果：時間のずれ【　　　　】s
   \item 観測した時間から電気信号の進む速さを算出します。\\
     計算結果：電気信号伝搬速度【　　　　】m/s
+  \item 求めた速さを，真空中の光速 $c$（\SI{3e8}{m/s}）と比べます。\\
+    光速に対する比 $v/c$【　　　　】
 \end{procedure}
 
 ※SI接頭語（大きな数字を表すのに便利な文字）を使って適切に表しましょう（\cref{tab:voltagewave-prefix}）。
@@ -87,7 +207,64 @@
 \end{table}
 
 % ------------------------------------------------------------
-\subsection{実験2：定在波を見てみよう！}
+\subsection{実験2：電気信号は跳ね返る？反射波を見てみよう！}
+
+実験1では，ケーブルの端に終端抵抗をつないでいました。ここでは，端のつなぎ方を変えて，ch1とch2の電圧波形がどのように変わるかを観察します。ファンクションジェネレータの設定は，実験中に変更しないでください。オシロスコープの電圧軸も，比較しやすいようにできるだけ同じ設定にしてください。
+
+\begin{figure}[!htb]
+  \centering
+  \begin{tikzpicture}[font=\sffamily\gtfamily\footnotesize,
+      ch/.style={draw, minimum width=11mm, minimum height=6mm, fill=EGSub},
+      end/.style={draw, minimum height=6mm, inner sep=2pt, align=center}]
+    \foreach \x/\lbl in {0/{(a) \SI{50}{\ohm}終端},5.2/{(b) 開放},10.4/{(c) 短絡}}{
+      \begin{scope}[shift={(\x,0)}]
+        \node[ch] (c) at (0,1.15) {ch2};
+        \draw[very thick] (-1.7,0) -- (0.55,0);
+        \draw[very thick] (0,0) -- (c.south);
+        \node[anchor=north] at (-1.0,-0.08) {同軸ケーブル};
+        \node[anchor=north] at (0.2,-0.6) {\lbl};
+      \end{scope}
+    }
+    \node[end, anchor=west] at (0.55,0) {\SI{50}{\ohm}\\終端抵抗};
+    \draw[fill=white] (5.75,0) circle (0.07);
+    \node[anchor=west, align=left] at (5.85,0) {何も\\つながない};
+    \node[end, anchor=west] at (10.95,0) {短絡\\コネクタ};
+  \end{tikzpicture}
+  \caption{実験2のケーブルの端のつなぎ方（ch2にT字分岐コネクタを付ける）}
+  \label{fig:voltagewave-termination}
+\end{figure}
+
+\textbf{前半：3つのつなぎ方で波形を比べる}
+
+\begin{procedure}[label=\textbf{(\arabic*)}, ref=(\arabic*), leftmargin=*, labelsep=0.8em]
+  \item ファンクションジェネレータの出力を止め，ch2の接続を\cref{fig:voltagewave-termination}(a)のようにします。
+  \item 矩形波の周波数を\chk{\SI{500}{kHz}}，オシロスコープの時間軸を\chk{\SI{500}{ns}/Div}程度に設定して出力し，ch1とch2の波形を観察します。それぞれのピークピーク値と波形の特徴を表2に記録します。
+  \item 出力を止めて\cref{fig:voltagewave-termination}(b)の開放にし，再び出力して同じように記録します。\SI{50}{\ohm}終端のときと比べて，電圧はどう変わったでしょうか。
+  \item 出力を止めて\cref{fig:voltagewave-termination}(c)の短絡にし，再び出力して同じように記録します。開放のときと比べて，電圧はどう変わったでしょうか。
+\end{procedure}
+
+\textbf{後半：反射波が戻ってくる様子を見る}
+
+\begin{procedure}[label=\textbf{(\arabic*)}, ref=(\arabic*), leftmargin=*, labelsep=0.8em, start=5]
+  \item 短絡のまま，時間軸を\chk{\SIrange{20}{50}{ns}/Div}程度に拡大し，ch1の波形が立ち上がるところを観察します。立ち上がってから波形がもう一度変化するまでの時間を測定します。\\
+    短絡のときの時間【　　　　】s
+  \item 出力を止めて開放にし，再び出力して同じように測定します。短絡のときと比べて，ch1の変化の向きはどう違うでしょうか。\\
+    開放のときの時間【　　　　】s
+  \item 測定した時間を，実験1で測定した時間のずれ（片道の時間）と比べます。\\
+    実験1の時間のずれに対する比【　　　　】倍
+  \item 出力を止め，ch2のT字分岐コネクタと短絡コネクタを外して，実験1の接続に戻します。
+\end{procedure}
+
+\begin{kakunin}[考えてみよう]
+\begin{itemize}
+  \item 開放と短絡のどちらでも信号は反射しているのに，ch2の電圧の変わり方が違うのはなぜでしょうか。
+  \item 短絡するとケーブルの端の電圧はほぼ\SI{0}{V}になります。送った信号はどこへ行ったのでしょうか。
+  \item ch1の波形が変化するまでの時間は，実験1の時間のずれの何倍になりましたか。その理由も考えてみましょう。
+\end{itemize}
+\end{kakunin}
+
+% ------------------------------------------------------------
+\subsection{実験3：定在波を見てみよう！}
 
 \begin{figure}[htbp]
   \centering
@@ -99,10 +276,15 @@
 \begin{procedure}[label=\textbf{(\arabic*)}, ref=(\arabic*), leftmargin=*, labelsep=0.8em]
   \item 実験1でファンクションジェネレータにつないでいたBNCケーブルを外します。
   \item オシロスコープのch2に接続していた同軸ケーブルの端子を\cref{fig:voltagewave-circuit2}のように他の班のオシロスコープの送電端（ch1）に接続し，部屋で1つのケーブルになるように接続します。
-  \item 各班の同軸ケーブルの長さを表2に記録します。
+  \item 各班の同軸ケーブルの長さを表3に記録します。
   \item \label{item:voltagewave-freq} 各班の線の長さの合計【　　　　】mが波長になる周波数【　　　　】Hzを算出します。
-  \item \label{item:voltagewave-table2} ファンクションジェネレータの電源を入れ，電圧値\SI{2}{V}，周波数\SI{100}{kHz}に設定し，周波数を徐々に上げます。電圧値が初めて\SI{0.5}{V}を下回った位置の同軸ケーブル長を記録します。そのときの各オシロスコープの電圧値を表2に記録します。\\
+  \item \label{item:voltagewave-table2} ファンクションジェネレータの電源を入れ，電圧値\SI{2}{V}，周波数\SI{100}{kHz}に設定し，周波数を徐々に上げます。電圧値が初めて\SI{0.5}{V}を下回った位置の同軸ケーブル長を記録します。そのときの各オシロスコープの電圧値を表3に記録します。\\
     同軸ケーブル長【　　　　】m
   % 原文は「（3）で求めた値」だが，周波数を求めるのは（4）なので参照を修正
-  \item \label{item:voltagewave-table3} 周波数を\ref{item:voltagewave-freq}で求めた値まで上げた際の各班のオシロスコープの最大電圧値を表3に記録します。
+  \item \label{item:voltagewave-table3} 周波数を\ref{item:voltagewave-freq}で求めた値まで上げた際の各班のオシロスコープの最大電圧値を表4に記録します。
+  \item 表4の結果から，同軸ケーブル長を横軸，電圧値を縦軸にしたグラフを作成します。
 \end{procedure}
+
+\begin{kakunin}[考えてみよう]
+同じケーブルにつながっているのに，なぜ場所によって電圧が大きく違うのでしょうか。実験2で観察した反射波と関係づけて考えてみましょう。
+\end{kakunin}

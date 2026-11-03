@@ -1,7 +1,7 @@
 % ============================================================
 % 電圧波の観測 ワークシート本文
 % 原本: 伝送線路_改v2.docx の記入欄【　】と表2・表3
-% 表番号は手引書本文に合わせて 表2・表3 から始める（表1は本文の SI 接頭語）
+% 表番号は手引書本文に合わせて 表2 から始める（表1は本文の SI 接頭語）
 % ============================================================
 
 \begin{center}
@@ -16,7 +16,7 @@
 \vspace{0.8\baselineskip}
 
 \newcommand{\fillin}{【\hspace{6\zw}】}
-\renewcommand{\arraystretch}{1.6}
+\renewcommand{\arraystretch}{1.35}
 
 \section*{実験1：電気信号の進む速さを見てみよう！}
 
@@ -26,9 +26,31 @@
   (4) オシロスコープの時間軸 & \fillin\ s/Div \\
   \phantom{(4)} 測定結果：時間のずれ & \fillin\ s \\
   (5) 計算結果：電気信号伝搬速度 & \fillin\ m/s \\
+  (6) 光速に対する比 $v/c$ & \fillin \\
 \end{tabular}
 
-\section*{実験2：定在波を見てみよう！}
+\section*{実験2：電気信号は跳ね返る？反射波を見てみよう！}
+
+\setcounter{table}{1}
+\begin{center}
+  \captionof{table}{(2)〜(4) ケーブルの端のつなぎ方による波形の違い}
+  \label{tab:voltagewave-reflection}
+  \begin{tabular}{|c|c|c|p{11\zw}|}
+    \hline
+    端のつなぎ方 & ch1 の $V_\mathrm{pp}$ (V) & ch2 の $V_\mathrm{pp}$ (V) & 波形の特徴 \\ \hline\hline
+    \SI{50}{\ohm}終端 & & & \\[3mm] \hline
+    開放 & & & \\[3mm] \hline
+    短絡 & & & \\[3mm] \hline
+  \end{tabular}
+\end{center}
+
+\begin{tabular}{@{}ll@{}}
+  (5) 短絡のときの時間 & \fillin\ s \\
+  (6) 開放のときの時間 & \fillin\ s \\
+  (7) 実験1の時間のずれに対する比 & \fillin\ 倍 \\
+\end{tabular}
+
+\section*{実験3：定在波を見てみよう！}
 
 \begin{tabular}{@{}ll@{}}
   (4) 各班の線の長さの合計 & \fillin\ m \\
@@ -37,7 +59,6 @@
 \end{tabular}
 
 \clearpage
-\setcounter{table}{1}
 \noindent
 \begingroup
   \renewcommand{\arraystretch}{1.5}
