@@ -230,7 +230,7 @@ V = E - rI
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.62\linewidth]{tester_breadboard.jpg}
+  \includegraphics[width=0.74\linewidth]{tester_breadboard.jpg}
   \caption{ブレッドボード}
   \label{fig:tester-breadboard}
 \end{figure}
@@ -247,7 +247,7 @@ V = E - rI
   \centering
   % 写真の上に，つながっている縦列の帯を重ねている。座標は写真の幅と高さを1としたときの位置
   \begin{tikzpicture}
-    \node[anchor=south west, inner sep=0] (photo) at (0,0) {\includegraphics[width=0.68\linewidth]{tester_breadboard_example.jpg}};
+    \node[anchor=south west, inner sep=0] (photo) at (0,0) {\includegraphics[width=0.80\linewidth]{tester_breadboard_example.jpg}};
     \begin{scope}[x={(photo.south east)}, y={(photo.north west)}]
       % つながっている縦列（12，22，37，47，56列）
       \fill[orange, fill opacity=0.5] (0.2004,0.3094) -- (0.2126,0.3110) -- (0.2252,0.5031) -- (0.2138,0.5019) -- cycle;
@@ -268,13 +268,6 @@ V = E - rI
 % ------------------------------------------------------------
 \subsection{抵抗器の表示}
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.8\linewidth]{tester_colorcode.png}
-  \caption{カラーコードによる抵抗値の表示方法（JIS C 5062）}
-  \label{fig:tester-colorcode}
-\end{figure}
-
 市販の抵抗器には抵抗値が印刷されていないものも多く，その場合は「カラーコード」によって値が示されています。\cref{fig:tester-colorcode}に示すように，4本表示の場合には，第1帯および第2帯がそれぞれ抵抗値の第1数字および第2数字を表し，第3帯が乗数（10の何乗を掛けるか），第4帯が許容差（誤差範囲）を表します。例えば「茶--黒--赤--金」の場合は
 \begin{itemize}
   \item 第1帯（茶）＝1
@@ -283,6 +276,13 @@ V = E - rI
   \item 第4帯（金）＝許容差 $\pm\SI{5}{\percent}$
 \end{itemize}
 となり，抵抗値は $10\times 100 = \SI{1000}{\ohm}$（\SI{1}{k\ohm}）$\pm\SI{5}{\percent}$ となります。実験では，\SI{100}{\ohm}，\SI{200}{\ohm}，\SI{1}{k\ohm}の抵抗を使用します。
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.8\linewidth]{tester_colorcode.png}
+  \caption{カラーコードによる抵抗値の表示方法（JIS C 5062）}
+  \label{fig:tester-colorcode}
+\end{figure}
 
 % ------------------------------------------------------------
 \subsection{可変抵抗器の使い方}
@@ -294,15 +294,15 @@ V = E - rI
 \end{equation}
 となります。例えば，ダイヤルを左から2，0，5に合わせると，抵抗値は \SI{205}{\ohm} です。
 
-\begin{figure}[htbp]
+可変抵抗器の内部では，\cref{fig:tester-varres}右のように，各ダイヤルのスイッチの周りに同じ値の抵抗器が並んでおり，ダイヤルの目盛の数だけ抵抗器が直列につながる仕組みになっています。
+
+\begin{figure}[!htb]
   \centering
   \includegraphics[width=0.48\linewidth]{tester_varres_front.jpg}\hfill
   \includegraphics[width=0.48\linewidth]{tester_varres_inside.jpg}
   \caption{可変抵抗器（左：表面，右：内部）}
   \label{fig:tester-varres}
 \end{figure}
-
-可変抵抗器の内部では，\cref{fig:tester-varres}右のように，各ダイヤルのスイッチの周りに同じ値の抵抗器が並んでおり，ダイヤルの目盛の数だけ抵抗器が直列につながる仕組みになっています。
 
 \begin{caution}
 \begin{itemize}
