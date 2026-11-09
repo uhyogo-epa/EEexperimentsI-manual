@@ -239,8 +239,8 @@
 \begin{itemize}
   \item ファンクションジェネレータ（\chk{型番}）（1台/部屋）
   \item ファンクションジェネレータ（MCP SG1638B）（1台/班）
-  \item ディジタルオシロスコープ \SI{50}{MHz}（1台/班）
-  \item 同軸ケーブル（1本/班）
+  \item ディジタルオシロスコープ（KEYSIGHT EDUX1052A）（1台/班）
+  \item 同軸ケーブル（RG-58A/U）（1本/班）
   \item BNC T字分岐コネクタ（1個/班）
   \item 終端抵抗（1個/班）
 \end{itemize}
@@ -254,7 +254,7 @@
 \subsection{実験1：電気信号の進む速さを見てみよう！}
 
 \begin{procedure}[label=\textbf{(\arabic*)}, ref=(\arabic*), leftmargin=*, labelsep=0.8em]
-  \item オシロスコープのCH1にBNC T字分岐コネクタを，CH2に終端抵抗を接続します。次に，\cref{fig:voltagewave-circuit1}のように，ファンクションジェネレータの出力端子とCH1のT字分岐コネクタをBNCケーブルでつなぎます。さらに，T字分岐コネクタの残りの端子とCH2を測定用の同軸ケーブル（RG-58A/U）でつなぎます。
+  \item オシロスコープのCH1にBNC T字分岐コネクタを，CH2に終端抵抗を接続します。次に，\cref{fig:voltagewave-circuit1}のように，ファンクションジェネレータの出力端子とCH1のT字分岐コネクタをBNCケーブルでつなぎます。さらに，T字分岐コネクタの残りの端子とCH2を測定用の同軸ケーブルでつなぎます。
   \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.75\linewidth]{voltagewave_circuit1.png}
@@ -289,6 +289,7 @@
 実験1では，ケーブルの端に終端抵抗をつないでいました。ここでは，終端抵抗を外して端を開放にし，CH1とCH2の電圧波形がどのように変わるかを観察します。ファンクションジェネレータの設定は，実験中に変更しないでください。オシロスコープの電圧軸も，比較しやすいようにできるだけ同じ設定にしてください。
 
 \begin{figure}[!htb]
+  \vspace{5mm}
   \centering
   \begin{tikzpicture}[font=\sffamily\gtfamily\footnotesize,
       ch/.style={draw, minimum width=11mm, minimum height=6mm, fill=EGSub},
