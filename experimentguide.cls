@@ -81,6 +81,11 @@
   \RequirePackage{luatexja-fontspec}
   \setmainjfont{HaranoAjiMincho}
   \setsansjfont{HaranoAjiGothic}
+  % 和文の斜体（「斜体」という語そのものを斜体で見せるときなど）
+  \newjfontfamily\jslantfamily{HaranoAjiMincho}[FakeSlant=0.2]
+  \newcommand{\jitalic}[1]{{\jslantfamily #1}}
+\else
+  \newcommand{\jitalic}[1]{#1}
 \fi
 
 % ------------------------------------------------------------
