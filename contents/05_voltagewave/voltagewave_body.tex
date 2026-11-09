@@ -190,7 +190,7 @@
   \item BNC T字分岐コネクタ（1個/班）
   \item 終端抵抗（1個/班）
   \item \chk{BNC T字分岐コネクタ（CH2側で追加，1個/班）}
-  \item \chk{BNC短絡コネクタ（1個/班）}
+  \item \chk{BNC-ワニ口クリップケーブル（短絡用，1本/班）}
 \end{itemize}
 \end{equipment}
 
@@ -258,7 +258,7 @@
     \node[end, anchor=west] at (0.55,0) {\SI{50}{\ohm}\\終端抵抗};
     \draw[fill=white] (5.75,0) circle (0.07);
     \node[anchor=west, align=left] at (5.85,0) {何も\\つながない};
-    \node[end, anchor=west] at (10.95,0) {短絡\\コネクタ};
+    \node[end, anchor=west] at (10.95,0) {BNC-ワニ口クリップ\\ケーブル（クリップ\\どうしをはさむ）};
   \end{tikzpicture}
   \caption{実験2の終端の条件（CH2にT字分岐コネクタを付ける）}
   \label{fig:voltagewave-termination}
@@ -270,7 +270,7 @@
   \item ファンクションジェネレータの出力を止め，CH2の接続を\cref{fig:voltagewave-termination}(a)のようにします。
   \item 矩形波の周波数を\chk{\SI{500}{kHz}}，オシロスコープの時間軸を\chk{\SI{500}{ns}/Div}程度に設定して出力し，CH1とCH2の波形を観察します。それぞれのピークピーク値と波形の特徴を表2に記録します。
   \item 出力を止めて\cref{fig:voltagewave-termination}(b)の開放にし，再び出力して同じように記録します。\SI{50}{\ohm}終端のときと比べて，電圧はどう変わったでしょうか。
-  \item 出力を止めて\cref{fig:voltagewave-termination}(c)の短絡にし，再び出力して同じように記録します。開放のときと比べて，電圧はどう変わったでしょうか。
+  \item 出力を止め，CH2のT字分岐コネクタにBNC-ワニ口クリップケーブルをつなぎ，2つのクリップどうしをはさんで\cref{fig:voltagewave-termination}(c)の短絡にします。再び出力して同じように記録します。開放のときと比べて，電圧はどう変わったでしょうか。
 \end{procedure}
 
 \textbf{後半：反射波が戻ってくる様子を見る}
@@ -282,7 +282,7 @@
     開放のときの時間【　　　　】s
   \item 測定した時間を，実験1で測定した時間のずれ（片道の時間）と比べます。\\
     実験1の時間のずれに対する比【　　　　】倍
-  \item 出力を止め，CH2のT字分岐コネクタと短絡コネクタを外して，実験1の接続に戻します。
+  \item 出力を止め，CH2のT字分岐コネクタとBNC-ワニ口クリップケーブルを外して，実験1の接続に戻します。
 \end{procedure}
 
 \begin{kakunin}[考えてみよう]
