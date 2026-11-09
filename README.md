@@ -118,3 +118,17 @@ Overleaf では Main document に指定した1ファイルだけがコンパイ�
 
 Word の原本は Overleaf には置かず，取りまとめ担当のローカル（`原本wordファイル/`）で保管しています。
 - 長いコラムは `\begin{column}[コラム：○○] ... \end{column}` で書くと，補足の枠と同じ見た目で，ページをまたいで分割されます。
+
+## ウェブサイト（GitHub Pages）
+
+- 学生用：https://uhyogo-epa.github.io/EEexperimentsI-manual/
+- 教員用：https://uhyogo-epa.github.io/EEexperimentsI-manual/teacher/
+  （解答例，原本からの変更点，要確認箇所＝本文中の `\chk{}` と `% TODO` コメントの一覧）
+
+GitHub（https://github.com/uhyogo-epa/EEexperimentsI-manual）の `main` に push されると，
+GitHub Actions（`.github/workflows/site.yml`）が全テーマをコンパイルし，`site/build_site.py` でページを作って公開します。
+検索エンジンには載らない設定（noindex）にしてあります。
+
+- 説明資料（スライドの PDF など）は `slides/<テーマのファイル名>/` に PDF を置くと，学生用ページのテーマ欄に自動で載ります
+  （例：`slides/05_voltagewave/説明資料.pdf`）。
+- Overleaf と GitHub の両方に同じ履歴を push して同期します（`git push origin main` と `git push github main`）。
