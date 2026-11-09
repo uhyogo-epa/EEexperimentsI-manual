@@ -255,17 +255,14 @@
 % ------------------------------------------------------------
 \subsection{実験1：電気信号の進む速さを見てみよう！}
 
-\cref{fig:voltagewave-circuit1}の回路で，同軸ケーブルの入口（CH1）と出口（CH2）の電圧波形を比べ，信号が届くまでの時間のずれを測定します。
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.75\linewidth]{voltagewave_circuit1.png}
-  \caption{実験回路1}
-  \label{fig:voltagewave-circuit1}
-\end{figure}
-
 \begin{procedure}[label=\textbf{(\arabic*)}, ref=(\arabic*), leftmargin=*, labelsep=0.8em]
   \item オシロスコープのCH1にBNC T字分岐コネクタを，CH2に終端抵抗を接続します。\cref{fig:voltagewave-circuit1}のようにファンクションジェネレータ出力端とオシロスコープCH1のT字分岐コネクタの一端を同軸ケーブルで接続します。T字分岐コネクタのもう一端とオシロスコープのCH2を長さ【　　　　】mの同軸ケーブル（RG-58A/U）で接続します。
+  \begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.75\linewidth]{voltagewave_circuit1.png}
+    \caption{実験回路1}
+    \label{fig:voltagewave-circuit1}
+  \end{figure}
   \item ファンクションジェネレータの電源を入れます。
   \item ファンクションジェネレータの出力を矩形波に設定して周波数を【　　　　】Hzにします。
   \item 信号の時間のずれが発生するようにオシロスコープの時間軸を【　　　　】s/Divに調整し，時間のずれを観測します。\\
@@ -351,18 +348,15 @@
 % ------------------------------------------------------------
 \subsection{実験3：定在波を見てみよう！}
 
-\cref{fig:voltagewave-circuit2}のように各班の同軸ケーブルをつなぎ合わせて部屋で1本の長いケーブルを作り，場所によって電圧の大きさがどのように変わるかを調べます。
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.9\linewidth]{voltagewave_circuit2.png}
-  \caption{実験回路2}
-  \label{fig:voltagewave-circuit2}
-\end{figure}
-
 \begin{procedure}[label=\textbf{(\arabic*)}, ref=(\arabic*), leftmargin=*, labelsep=0.8em]
   \item 実験1でファンクションジェネレータにつないでいたBNCケーブルを外します。
   \item オシロスコープのCH2に接続していた同軸ケーブルの端子を\cref{fig:voltagewave-circuit2}のように他の班のオシロスコープの送電端（CH1）に接続し，部屋で1つのケーブルになるように接続します。
+  \begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\linewidth]{voltagewave_circuit2.png}
+    \caption{実験回路2}
+    \label{fig:voltagewave-circuit2}
+  \end{figure}
   \item 各班の同軸ケーブルの長さを表3に記録します。
   \item \label{item:voltagewave-freq} 各班の線の長さの合計【　　　　】mが波長になる周波数【　　　　】Hzを算出します。
   \item \label{item:voltagewave-table2} ファンクションジェネレータの電源を入れ，電圧値\SI{2}{V}，周波数\SI{100}{kHz}に設定し，周波数を徐々に上げます。電圧値が初めて\SI{0.5}{V}を下回った位置の同軸ケーブル長を記録します。そのときの各オシロスコープの電圧値を表3に記録します。\\
