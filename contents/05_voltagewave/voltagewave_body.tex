@@ -126,7 +126,37 @@
 \subsection{電気信号の反射}
 
 水面の波が壁に当たると跳ね返るように，電気信号もケーブルの端で跳ね返ることがあります。これを\important{反射}といいます。ケーブルの端に向かって進む波を\important{入射波}，端で跳ね返って戻ってくる波を\important{反射波}といいます。
-反射波が発生すると，入射波と反射波が重なり合うので，ケーブルの端で観測される電圧が変化します。また，反射波はケーブルを戻っていくので，入口側で観測される電圧にも影響を与えます。
+反射波が発生すると，入射波と反射波が重なり合うので，ケーブルの端で観測される電圧が変化します。また，反射波はケーブルを戻っていくので，入口側で観測される電圧にも影響を与えます（\cref{fig:voltagewave-reflection}）。
+
+\begin{figure}[htbp]
+  \centering
+  % 入射波と反射波のイメージ（TikZ で作成。原本にはない図）
+  % 実験2で予想させるため，反射波の形（向き・大きさ）は描かない
+  \begin{tikzpicture}[
+      lbl/.style={font=\sffamily\gtfamily\footnotesize, align=center},
+      cable/.style={line width=3pt, black!55},
+      go/.style={-{Latex[length=2mm,width=2mm]}, line width=1pt, EGMain},
+      back/.style={-{Latex[length=2mm,width=2mm]}, line width=1pt, EGWarn},
+      probe/.style={circle, fill=white, draw=black!70, line width=0.7pt, inner sep=1.6pt},
+    ]
+    % ケーブル
+    \draw[cable] (0,0) -- (9.0,0);
+    \node[probe, label={[lbl]below:入口}] at (0,0) {};
+    \node[draw=EGMain, fill=EGSub, rounded corners=2pt, lbl, inner sep=2pt, anchor=west] at (9.05,0) {ケーブルの端\\[-3pt]（つなぎ方）};
+    % 入射波（端に向かって進む）
+    \draw[EGMain, line width=1.2pt] (1.0,0.3) -- (2.6,0.3) -- (2.6,0.95) -- (3.5,0.95) -- (3.5,0.3) -- (4.6,0.3);
+    \draw[EGMain, line width=1pt] (3.8,0.75) -- node[above, lbl, text=EGMain] {入射波} (8.1,0.75);
+    % 反射波（端で跳ね返って入口へ戻る）：形は描かない
+    \draw[back] (8.1,-0.45) -- (1.2,-0.45);
+    \node[lbl, text=EGWarn, fill=white, inner sep=1.5pt] at (4.9,-0.45) {反射波（形は端のつなぎ方で変わる）};
+    \draw[EGWarn, line width=1pt] (8.1,0.75) arc[start angle=90, end angle=-90, radius=0.6];
+    % 重なりと入口への影響
+    \node[lbl, text=black!70, anchor=south] at (8.6,1.5) {端では入射波と\\[-2pt]反射波が重なる};
+    \node[lbl, text=black!70] at (1.2,-1.05) {入口の電圧にも影響する};
+  \end{tikzpicture}
+  \caption{ケーブルの端で起こる反射（入射波と反射波）}
+  \label{fig:voltagewave-reflection}
+\end{figure}
 
 反射の仕方は，ケーブルの端のつなぎ方によって変わります。本実験では，\SI{50}{\ohm}の抵抗をつないだ場合（\SI{50}{\ohm}終端），何もつながない場合（開放），中心の導体と外側の導体を直接つないだ場合（短絡）を比べます。ケーブルの端を変えると，電圧波形はどのように変わるのでしょうか。
 
