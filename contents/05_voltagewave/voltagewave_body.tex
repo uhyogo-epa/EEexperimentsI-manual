@@ -44,7 +44,7 @@
       \node[ttl] at (2.5,1.65) {実験2：端での反射};
       \draw[cable] (0.5,0) -- (3.7,0);
       \node[probe, label={[lbl]below:入口}] at (0.5,0) {};
-      \node[draw=EGMain, fill=EGSub, rounded corners=2pt, lbl, inner sep=2pt] at (4.25,0) {終端の\\[-3pt]条件};
+      \node[draw=EGMain, fill=EGSub, rounded corners=2pt, lbl, inner sep=2pt] at (4.25,0) {終端\\[-3pt]条件};
       \draw[EGMain, line width=1.2pt] (0.9,0.3) -- (1.5,0.3) -- (1.5,0.8) -- (2.1,0.8) -- (2.1,0.3) -- (2.7,0.3);
       \draw[go] (2.25,0.65) -- (3.0,0.65) node[right, lbl, text=EGMain] {入射波};
       \draw[back] (3.4,-0.33) -- (2.35,-0.33);
@@ -136,13 +136,13 @@
     % ケーブル
     \draw[cable] (0,0) -- (9.0,0);
     \node[probe, label={[lbl]below:入口}] at (0,0) {};
-    \node[draw=EGMain, fill=EGSub, rounded corners=2pt, lbl, inner sep=2pt, anchor=west] at (9.05,0) {ケーブルの端\\[-3pt]（終端の条件）};
+    \node[draw=EGMain, fill=EGSub, rounded corners=2pt, lbl, inner sep=2pt, anchor=west] at (9.05,0) {ケーブルの端\\[-3pt]（終端条件）};
     % 入射波（端に向かって進む）
     \draw[EGMain, line width=1.2pt] (1.0,0.3) -- (2.6,0.3) -- (2.6,0.95) -- (3.5,0.95) -- (3.5,0.3) -- (4.6,0.3);
     \draw[EGMain, line width=1pt] (3.8,0.75) -- node[above, lbl, text=EGMain] {入射波} (8.1,0.75);
     % 反射波（端で跳ね返って入口へ戻る）：形は描かない
     \draw[back] (8.1,-0.45) -- (1.2,-0.45);
-    \node[lbl, text=EGWarn, fill=white, inner sep=1.5pt] at (4.9,-0.45) {反射波（形は終端の条件で変わる）};
+    \node[lbl, text=EGWarn, fill=white, inner sep=1.5pt] at (4.9,-0.45) {反射波（形は終端条件で変わる）};
     \draw[EGWarn, line width=1pt] (8.1,0.75) arc[start angle=90, end angle=-90, radius=0.6];
     % 重なりと入口への影響
     \node[lbl, text=black!70, anchor=south] at (8.6,1.5) {端では入射波と\\[-2pt]反射波が重なる};
@@ -152,7 +152,7 @@
   \label{fig:voltagewave-reflection}
 \end{figure}
 
-反射の仕方は，ケーブルの端（\important{終端}）に何をつなぐかによって変わります。これを\important{終端条件}といいます。本実験では，\SI{50}{\ohm}の抵抗をつないだ場合（\SI{50}{\ohm}終端），何もつながない場合（開放），中心の導体と外側の導体を直接つないだ場合（短絡）の3つの条件を比べます。終端の条件を変えると，電圧波形はどのように変わるのでしょうか。
+反射の仕方は，ケーブルの端（\important{終端}）に何をつなぐかによって変わります。これを\important{終端条件}といいます。代表的な終端条件には，\SI{50}{\ohm}の抵抗をつないだ場合（\SI{50}{\ohm}終端），何もつながない場合（開放），中心の導体と外側の導体を直接つないだ場合（短絡）があります。本実験では，\SI{50}{\ohm}終端と開放を比べます。終端条件を変えると，電圧波形はどのように変わるのでしょうか。
 
 \begin{hosoku}[コラム：\SI{50}{\ohm}って何だろう？]
 電気信号が電磁波としてケーブルを一方向に進んでいくとき，各地点での電圧と電流の比は，ケーブルの太さや絶縁体の種類などの構造で決まる一定の値になります。この比を\important{特性インピーダンス}といいます。特性インピーダンスは伝送線路の種類ごとに決まっており，本実験で使用する同軸ケーブルでは\SI{50}{\ohm}です。これはケーブルの導体そのものの抵抗値ではありません。
@@ -243,7 +243,6 @@
   \item 同軸ケーブル（1本/班）
   \item BNC T字分岐コネクタ（1個/班）
   \item 終端抵抗（1個/班）
-  \item \chk{BNC-ワニ口クリップケーブル（短絡用）}
 \end{itemize}
 \end{equipment}
 
@@ -287,53 +286,53 @@
 % ------------------------------------------------------------
 \subsection{実験2：電気信号は跳ね返る？反射波を見てみよう！}
 
-実験1では，ケーブルの端に終端抵抗をつないでいました。ここでは，終端の条件を変えて，CH1とCH2の電圧波形がどのように変わるかを観察します。ファンクションジェネレータの設定は，実験中に変更しないでください。オシロスコープの電圧軸も，比較しやすいようにできるだけ同じ設定にしてください。
+実験1では，ケーブルの端に終端抵抗をつないでいました。ここでは，終端抵抗を外して端を開放にし，CH1とCH2の電圧波形がどのように変わるかを観察します。ファンクションジェネレータの設定は，実験中に変更しないでください。オシロスコープの電圧軸も，比較しやすいようにできるだけ同じ設定にしてください。
 
 \begin{figure}[!htb]
   \centering
   \begin{tikzpicture}[font=\sffamily\gtfamily\footnotesize,
       ch/.style={draw, minimum width=11mm, minimum height=6mm, fill=EGSub},
       end/.style={draw, minimum height=6mm, inner sep=2pt, align=center}]
-    \foreach \x/\lbl in {0/{(a) \SI{50}{\ohm}終端},5.2/{(b) 開放},10.4/{(c) 短絡}}{
-      \begin{scope}[shift={(\x,0)}]
-        \node[ch] (c) at (0,1.15) {CH2};
-        \draw[very thick] (-1.7,0) -- (0.55,0);
-        \draw[very thick] (0,0) -- (c.south);
-        \node[anchor=north] at (-1.0,-0.08) {同軸ケーブル};
-        \node[anchor=north] at (0.2,-0.6) {\lbl};
-      \end{scope}
-    }
-    \node[end, anchor=west] at (0.55,0) {\SI{50}{\ohm}\\終端抵抗};
-    \draw[fill=white] (5.75,0) circle (0.07);
-    \node[anchor=west, align=left] at (5.85,0) {何も\\つながない};
-    \node[end, anchor=west] at (10.95,0) {BNC-ワニ口クリップ\\ケーブル（クリップ\\どうしをはさむ）};
+    % (a) 50Ω終端：実験1と同じ（CH2に終端抵抗を付けてケーブルをつなぐ）
+    \draw[very thick] (-2.2,0) -- (0,0);
+    \node[end, anchor=west] (r) at (0,0) {\SI{50}{\ohm}\\終端抵抗};
+    \node[ch, anchor=west] at ([xshift=2mm]r.east) {CH2};
+    \draw[very thick] (r.east) -- ++(2mm,0);
+    \node[anchor=north] at (-1.1,-0.08) {同軸ケーブル};
+    \node[anchor=north] at (0.6,-0.75) {(a) \SI{50}{\ohm}終端（実験1と同じ）};
+    % (b) 開放：終端抵抗を外してCH2に直接つなぐ
+    \begin{scope}[shift={(6.6,0)}]
+      \draw[very thick] (-2.2,0) -- (0,0);
+      \node[ch, anchor=west] (c) at (0,0) {CH2};
+      \node[anchor=north] at (-1.1,-0.08) {同軸ケーブル};
+      \node[anchor=west, align=left, text=black!70] at ([xshift=1mm]c.east) {入力抵抗が大きいので\\ほぼ開放とみなせる};
+      \node[anchor=north] at (0.6,-0.75) {(b) 開放（終端抵抗を外す）};
+    \end{scope}
   \end{tikzpicture}
-  \caption{実験2の終端の条件（CH2にT字分岐コネクタを付ける）}
+  \caption{実験2の終端条件}
   \label{fig:voltagewave-termination}
 \end{figure}
 
-\textbf{前半：3つの終端の条件で波形を比べる}
+\textbf{前半：\SI{50}{\ohm}終端と開放で波形を比べる}
 
 \begin{procedure}[label=\textbf{(\arabic*)}, ref=(\arabic*), leftmargin=*, labelsep=0.8em]
-  \item ファンクションジェネレータの出力を止め，CH2の接続を\cref{fig:voltagewave-termination}(a)のようにします。
+  \item 実験1の接続（\cref{fig:voltagewave-termination}(a)）のままにします。
   \item 矩形波の周波数を\chk{\SI{500}{kHz}}，オシロスコープの時間軸を\chk{\SI{500}{ns}/Div}程度に設定して出力し，CH1とCH2の波形を観察します。それぞれのピークピーク値と波形の特徴を表2に記録します。
-  \item 出力を止めて\cref{fig:voltagewave-termination}(b)の開放にし，再び出力して同じように記録します。\SI{50}{\ohm}終端のときと比べて，電圧はどう変わったでしょうか。
-  \item 出力を止め，CH2のT字分岐コネクタにBNC-ワニ口クリップケーブルをつなぎ，2つのクリップどうしをはさんで\cref{fig:voltagewave-termination}(c)の短絡にします。再び出力して同じように記録します。開放のときと比べて，電圧はどう変わったでしょうか。
+  \item 出力を止め，CH2から終端抵抗を外して同軸ケーブルをCH2に直接つなぎ，\cref{fig:voltagewave-termination}(b)の開放にします。再び出力して同じように記録します。\SI{50}{\ohm}終端のときと比べて，電圧はどう変わったでしょうか。
 \end{procedure}
 
 \textbf{後半：反射波が戻ってくる様子を見る}
 
-\begin{procedure}[label=\textbf{(\arabic*)}, ref=(\arabic*), leftmargin=*, labelsep=0.8em, start=5]
-  \item 短絡のまま，時間軸を\chk{\SIrange{20}{50}{ns}/Div}程度に拡大し，CH1の波形が立ち上がるところを観察します。立ち上がってから波形がもう一度変化するまでの時間を測定し，記録します。
-  \item 出力を止めて開放にし，再び出力して同じように測定し，記録します。短絡のときと比べて，CH1の変化の向きはどう違うでしょうか。
+% TODO(担当者と相談): 短絡の観察（T字分岐コネクタが各班1個のため）をデモにするか実験3に入れるか
+\begin{procedure}[label=\textbf{(\arabic*)}, ref=(\arabic*), leftmargin=*, labelsep=0.8em, start=4]
+  \item 開放のまま，時間軸を\chk{\SIrange{20}{50}{ns}/Div}程度に拡大し，CH1の波形が立ち上がるところを観察します。立ち上がってから波形がもう一度変化するまでの時間を測定し，記録します。
   \item 測定した時間を，実験1で測定した時間のずれ（片道の時間）と比べ，何倍になっているかを求めます。
-  \item 出力を止め，CH2のT字分岐コネクタとBNC-ワニ口クリップケーブルを外して，実験1の接続に戻します。
+  \item 出力を止め，CH2に終端抵抗を付け直して，実験1の接続に戻します。
 \end{procedure}
 
 \begin{kakunin}[考えてみよう]
 \begin{itemize}
-  \item 開放と短絡のどちらでも信号は反射しているのに，CH2の電圧の変わり方が違うのはなぜでしょうか。
-  \item 短絡するとケーブルの端の電圧はほぼ\SI{0}{V}になります。送った信号はどこへ行ったのでしょうか。
+  \item 開放にすると，CH2の電圧は\SI{50}{\ohm}終端のときと比べてどう変わりましたか。入射波と反射波の重なりから考えてみましょう。
   \item CH1の波形が変化するまでの時間は，実験1の時間のずれの何倍になりましたか。その理由も考えてみましょう。
 \end{itemize}
 \end{kakunin}
