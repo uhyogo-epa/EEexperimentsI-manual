@@ -181,6 +181,60 @@
 \end{equation}
 と表せます。本実験では，各班の同軸ケーブルをつなぎ合わせて部屋で1本の長いケーブルを作り，場所によって電圧の大きさがどのように変わるかを調べます。
 
+本実験のようにケーブルの端を開放にした場合の定在波のようすを\cref{fig:voltagewave-standing}に示します。開放端では電流が\SI{0}{A}になり，電圧は入射波と反射波が強め合って振幅が最も大きくなります。このように振幅が最も大きくなる場所を\important{腹}，ほとんど0になる場所を\important{節}といいます。開放端から $\lambda/4$ だけ入口側に戻った位置には最初の節が現れ，そこから $\lambda/2$ ごとに節と腹が交互に並びます。電圧の振幅は時間がたっても場所ごとに決まっていて，波が進んでいくようには見えません。
+
+\begin{figure}[htbp]
+  \centering
+  % 開放端の定在波（TikZ で作成。原本にはない図）
+  % 横軸は開放端からの距離。λ = 5.6 cm（図上）として 1.5 波長分を描く
+  \begin{tikzpicture}[
+      lbl/.style={font=\sffamily\gtfamily\footnotesize, align=center},
+      cable/.style={line width=3pt, black!55},
+      dim/.style={latex-latex, black!60},
+    ]
+    \def\lam{5.6}% 図上の波長
+    \def\A{1.1}% 振幅
+    \def\L{8.4}% 描く長さ（1.5波長）
+    % 各時刻の電圧（細線）
+    \foreach \c/\op in {1/0.9,0.5/0.55,-0.5/0.55,-1/0.9}{
+      \draw[EGMain!60, line width=0.6pt, opacity=\op, domain=0:\L, samples=120, smooth]
+        plot (\x, {\c*\A*cos(360*(\L-\x)/\lam)});
+    }
+    % 振幅の包絡線（太線）
+    \draw[EGMain, line width=1.3pt, domain=0:\L, samples=160, smooth]
+      plot (\x, {\A*abs(cos(360*(\L-\x)/\lam))});
+    \draw[EGMain, line width=1.3pt, domain=0:\L, samples=160, smooth]
+      plot (\x, {-\A*abs(cos(360*(\L-\x)/\lam))});
+    % 電圧0の基準線
+    \draw[black!35, densely dotted] (0,0) -- (\L,0);
+    % 腹と節（開放端からの距離 d：腹 0, λ/2, λ ／ 節 λ/4, 3λ/4, 5λ/4）
+    \foreach \d in {0,0.5,1.0}{
+      \fill[EGWarn] ({\L-\d*\lam},\A) circle (2.2pt);
+      \node[lbl, text=EGWarn, above] at ({\L-\d*\lam},\A+0.05) {腹};
+    }
+    \foreach \d in {0.25,0.75,1.25}{
+      \draw[EGMain, fill=white, line width=0.9pt] ({\L-\d*\lam},0) circle (2.2pt);
+      \node[lbl, text=EGMain, above] at ({\L-\d*\lam},\A+0.05) {節};
+    }
+    % ケーブル
+    \draw[cable] (-0.3,-2.0) -- (\L,-2.0);
+    \draw[fill=white, draw=black!70, line width=0.7pt] (\L,-2.0) circle (2.2pt);
+    \node[lbl, anchor=west] at (\L+0.15,-2.0) {開放端};
+    \node[lbl, anchor=east] at (-0.4,-2.0) {入口側};
+    % 寸法
+    \draw[dim] ({\L-0.25*\lam},-1.5) -- node[lbl, above=-1pt] {$\lambda/4$} (\L,-1.5);
+    \draw[dim] ({\L-0.75*\lam},-1.5) -- node[lbl, above=-1pt] {$\lambda/2$} ({\L-0.25*\lam},-1.5);
+    \draw[dim] ({\L-1.25*\lam},-1.5) -- node[lbl, above=-1pt] {$\lambda/2$} ({\L-0.75*\lam},-1.5);
+    \foreach \d in {0.25,0.75,1.25} \draw[black!35, densely dashed] ({\L-\d*\lam},-0.05) -- ({\L-\d*\lam},-1.6);
+    \draw[black!35, densely dashed] (\L,-1.1) -- (\L,-1.6);
+    % 凡例
+    \draw[EGMain, line width=1.3pt] (-0.3,-2.75) -- (0.2,-2.75) node[lbl, right, text=black] {振幅（電圧の大きさ）};
+    \draw[EGMain!60, line width=0.6pt] (4.2,-2.75) -- (4.7,-2.75) node[lbl, right, text=black] {各時刻の電圧};
+  \end{tikzpicture}
+  \caption{開放端の場合の定在波（ケーブル上の位置と電圧）}
+  \label{fig:voltagewave-standing}
+\end{figure}
+
 % ============================================================
 \section{使用器具}
 
