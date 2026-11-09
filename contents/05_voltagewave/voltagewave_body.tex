@@ -44,7 +44,7 @@
       \node[ttl] at (2.5,1.65) {実験2：端での反射};
       \draw[cable] (0.5,0) -- (3.7,0);
       \node[probe, label={[lbl]below:入口}] at (0.5,0) {};
-      \node[draw=EGMain, fill=EGSub, rounded corners=2pt, lbl, inner sep=2pt] at (4.25,0) {端の\\[-3pt]つなぎ方};
+      \node[draw=EGMain, fill=EGSub, rounded corners=2pt, lbl, inner sep=2pt] at (4.25,0) {終端の\\[-3pt]条件};
       \draw[EGMain, line width=1.2pt] (0.9,0.3) -- (1.5,0.3) -- (1.5,0.8) -- (2.1,0.8) -- (2.1,0.3) -- (2.7,0.3);
       \draw[go] (2.25,0.65) -- (3.0,0.65) node[right, lbl, text=EGMain] {入射波};
       \draw[back] (3.4,-0.33) -- (2.35,-0.33);
@@ -142,13 +142,13 @@
     % ケーブル
     \draw[cable] (0,0) -- (9.0,0);
     \node[probe, label={[lbl]below:入口}] at (0,0) {};
-    \node[draw=EGMain, fill=EGSub, rounded corners=2pt, lbl, inner sep=2pt, anchor=west] at (9.05,0) {ケーブルの端\\[-3pt]（つなぎ方）};
+    \node[draw=EGMain, fill=EGSub, rounded corners=2pt, lbl, inner sep=2pt, anchor=west] at (9.05,0) {ケーブルの端\\[-3pt]（終端の条件）};
     % 入射波（端に向かって進む）
     \draw[EGMain, line width=1.2pt] (1.0,0.3) -- (2.6,0.3) -- (2.6,0.95) -- (3.5,0.95) -- (3.5,0.3) -- (4.6,0.3);
     \draw[EGMain, line width=1pt] (3.8,0.75) -- node[above, lbl, text=EGMain] {入射波} (8.1,0.75);
     % 反射波（端で跳ね返って入口へ戻る）：形は描かない
     \draw[back] (8.1,-0.45) -- (1.2,-0.45);
-    \node[lbl, text=EGWarn, fill=white, inner sep=1.5pt] at (4.9,-0.45) {反射波（形は端のつなぎ方で変わる）};
+    \node[lbl, text=EGWarn, fill=white, inner sep=1.5pt] at (4.9,-0.45) {反射波（形は終端の条件で変わる）};
     \draw[EGWarn, line width=1pt] (8.1,0.75) arc[start angle=90, end angle=-90, radius=0.6];
     % 重なりと入口への影響
     \node[lbl, text=black!70, anchor=south] at (8.6,1.5) {端では入射波と\\[-2pt]反射波が重なる};
@@ -158,7 +158,7 @@
   \label{fig:voltagewave-reflection}
 \end{figure}
 
-反射の仕方は，ケーブルの端のつなぎ方によって変わります。本実験では，\SI{50}{\ohm}の抵抗をつないだ場合（\SI{50}{\ohm}終端），何もつながない場合（開放），中心の導体と外側の導体を直接つないだ場合（短絡）を比べます。ケーブルの端を変えると，電圧波形はどのように変わるのでしょうか。
+反射の仕方は，ケーブルの端（\important{終端}）に何をつなぐかによって変わります。これを\important{終端の条件}といいます。本実験では，\SI{50}{\ohm}の抵抗をつないだ場合（\SI{50}{\ohm}終端），何もつながない場合（開放），中心の導体と外側の導体を直接つないだ場合（短絡）の3つの条件を比べます。終端の条件を変えると，電圧波形はどのように変わるのでしょうか。
 
 \begin{hosoku}[コラム：\SI{50}{\ohm}って何だろう？]
 同軸ケーブルには，信号が波として伝わるときの電圧と電流の関係から決まる\important{特性インピーダンス}という値があり，本実験で使用するケーブルでは\SI{50}{\ohm}です。これはケーブルの導体そのものの抵抗値ではありません。
@@ -239,7 +239,7 @@
 % ------------------------------------------------------------
 \subsection{実験2：電気信号は跳ね返る？反射波を見てみよう！}
 
-実験1では，ケーブルの端に終端抵抗をつないでいました。ここでは，端のつなぎ方を変えて，CH1とCH2の電圧波形がどのように変わるかを観察します。ファンクションジェネレータの設定は，実験中に変更しないでください。オシロスコープの電圧軸も，比較しやすいようにできるだけ同じ設定にしてください。
+実験1では，ケーブルの端に終端抵抗をつないでいました。ここでは，終端の条件を変えて，CH1とCH2の電圧波形がどのように変わるかを観察します。ファンクションジェネレータの設定は，実験中に変更しないでください。オシロスコープの電圧軸も，比較しやすいようにできるだけ同じ設定にしてください。
 
 \begin{figure}[!htb]
   \centering
@@ -260,11 +260,11 @@
     \node[anchor=west, align=left] at (5.85,0) {何も\\つながない};
     \node[end, anchor=west] at (10.95,0) {短絡\\コネクタ};
   \end{tikzpicture}
-  \caption{実験2のケーブルの端のつなぎ方（CH2にT字分岐コネクタを付ける）}
+  \caption{実験2の終端の条件（CH2にT字分岐コネクタを付ける）}
   \label{fig:voltagewave-termination}
 \end{figure}
 
-\textbf{前半：3つのつなぎ方で波形を比べる}
+\textbf{前半：3つの終端の条件で波形を比べる}
 
 \begin{procedure}[label=\textbf{(\arabic*)}, ref=(\arabic*), leftmargin=*, labelsep=0.8em]
   \item ファンクションジェネレータの出力を止め，CH2の接続を\cref{fig:voltagewave-termination}(a)のようにします。
