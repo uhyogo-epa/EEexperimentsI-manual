@@ -189,7 +189,7 @@
   \item 同軸ケーブル（1本/班）
   \item BNC T字分岐コネクタ（1個/班）
   \item 終端抵抗（1個/班）
-  \item \chk{BNC T字分岐コネクタ（ch2側で追加，1個/班）}
+  \item \chk{BNC T字分岐コネクタ（CH2側で追加，1個/班）}
   \item \chk{BNC短絡コネクタ（1個/班）}
 \end{itemize}
 \end{equipment}
@@ -210,7 +210,7 @@
 \end{figure}
 
 \begin{procedure}[label=\textbf{(\arabic*)}, ref=(\arabic*), leftmargin=*, labelsep=0.8em]
-  \item オシロスコープのch1にBNC T字分岐コネクタを，ch2に※終端抵抗を接続します。\cref{fig:voltagewave-circuit1}のようにファンクションジェネレータ出力端とオシロスコープch1のT字分岐コネクタの一端を同軸ケーブルで接続します。T字分岐コネクタのもう一端とオシロスコープのch2を長さ【　　　　】mの同軸ケーブル（RG-58A/U）で接続します。
+  \item オシロスコープのCH1にBNC T字分岐コネクタを，CH2に※終端抵抗を接続します。\cref{fig:voltagewave-circuit1}のようにファンクションジェネレータ出力端とオシロスコープCH1のT字分岐コネクタの一端を同軸ケーブルで接続します。T字分岐コネクタのもう一端とオシロスコープのCH2を長さ【　　　　】mの同軸ケーブル（RG-58A/U）で接続します。
   \item ファンクションジェネレータの電源を入れます。
   \item ファンクションジェネレータの出力を矩形波に設定して周波数を【　　　　】Hzにします。
   \item 信号の時間のずれが発生するようにオシロスコープの時間軸を【　　　　】s/Divに調整し，時間のずれを観測します。\\
@@ -239,7 +239,7 @@
 % ------------------------------------------------------------
 \subsection{実験2：電気信号は跳ね返る？反射波を見てみよう！}
 
-実験1では，ケーブルの端に終端抵抗をつないでいました。ここでは，端のつなぎ方を変えて，ch1とch2の電圧波形がどのように変わるかを観察します。ファンクションジェネレータの設定は，実験中に変更しないでください。オシロスコープの電圧軸も，比較しやすいようにできるだけ同じ設定にしてください。
+実験1では，ケーブルの端に終端抵抗をつないでいました。ここでは，端のつなぎ方を変えて，CH1とCH2の電圧波形がどのように変わるかを観察します。ファンクションジェネレータの設定は，実験中に変更しないでください。オシロスコープの電圧軸も，比較しやすいようにできるだけ同じ設定にしてください。
 
 \begin{figure}[!htb]
   \centering
@@ -248,7 +248,7 @@
       end/.style={draw, minimum height=6mm, inner sep=2pt, align=center}]
     \foreach \x/\lbl in {0/{(a) \SI{50}{\ohm}終端},5.2/{(b) 開放},10.4/{(c) 短絡}}{
       \begin{scope}[shift={(\x,0)}]
-        \node[ch] (c) at (0,1.15) {ch2};
+        \node[ch] (c) at (0,1.15) {CH2};
         \draw[very thick] (-1.7,0) -- (0.55,0);
         \draw[very thick] (0,0) -- (c.south);
         \node[anchor=north] at (-1.0,-0.08) {同軸ケーブル};
@@ -260,15 +260,15 @@
     \node[anchor=west, align=left] at (5.85,0) {何も\\つながない};
     \node[end, anchor=west] at (10.95,0) {短絡\\コネクタ};
   \end{tikzpicture}
-  \caption{実験2のケーブルの端のつなぎ方（ch2にT字分岐コネクタを付ける）}
+  \caption{実験2のケーブルの端のつなぎ方（CH2にT字分岐コネクタを付ける）}
   \label{fig:voltagewave-termination}
 \end{figure}
 
 \textbf{前半：3つのつなぎ方で波形を比べる}
 
 \begin{procedure}[label=\textbf{(\arabic*)}, ref=(\arabic*), leftmargin=*, labelsep=0.8em]
-  \item ファンクションジェネレータの出力を止め，ch2の接続を\cref{fig:voltagewave-termination}(a)のようにします。
-  \item 矩形波の周波数を\chk{\SI{500}{kHz}}，オシロスコープの時間軸を\chk{\SI{500}{ns}/Div}程度に設定して出力し，ch1とch2の波形を観察します。それぞれのピークピーク値と波形の特徴を表2に記録します。
+  \item ファンクションジェネレータの出力を止め，CH2の接続を\cref{fig:voltagewave-termination}(a)のようにします。
+  \item 矩形波の周波数を\chk{\SI{500}{kHz}}，オシロスコープの時間軸を\chk{\SI{500}{ns}/Div}程度に設定して出力し，CH1とCH2の波形を観察します。それぞれのピークピーク値と波形の特徴を表2に記録します。
   \item 出力を止めて\cref{fig:voltagewave-termination}(b)の開放にし，再び出力して同じように記録します。\SI{50}{\ohm}終端のときと比べて，電圧はどう変わったでしょうか。
   \item 出力を止めて\cref{fig:voltagewave-termination}(c)の短絡にし，再び出力して同じように記録します。開放のときと比べて，電圧はどう変わったでしょうか。
 \end{procedure}
@@ -276,20 +276,20 @@
 \textbf{後半：反射波が戻ってくる様子を見る}
 
 \begin{procedure}[label=\textbf{(\arabic*)}, ref=(\arabic*), leftmargin=*, labelsep=0.8em, start=5]
-  \item 短絡のまま，時間軸を\chk{\SIrange{20}{50}{ns}/Div}程度に拡大し，ch1の波形が立ち上がるところを観察します。立ち上がってから波形がもう一度変化するまでの時間を測定します。\\
+  \item 短絡のまま，時間軸を\chk{\SIrange{20}{50}{ns}/Div}程度に拡大し，CH1の波形が立ち上がるところを観察します。立ち上がってから波形がもう一度変化するまでの時間を測定します。\\
     短絡のときの時間【　　　　】s
-  \item 出力を止めて開放にし，再び出力して同じように測定します。短絡のときと比べて，ch1の変化の向きはどう違うでしょうか。\\
+  \item 出力を止めて開放にし，再び出力して同じように測定します。短絡のときと比べて，CH1の変化の向きはどう違うでしょうか。\\
     開放のときの時間【　　　　】s
   \item 測定した時間を，実験1で測定した時間のずれ（片道の時間）と比べます。\\
     実験1の時間のずれに対する比【　　　　】倍
-  \item 出力を止め，ch2のT字分岐コネクタと短絡コネクタを外して，実験1の接続に戻します。
+  \item 出力を止め，CH2のT字分岐コネクタと短絡コネクタを外して，実験1の接続に戻します。
 \end{procedure}
 
 \begin{kakunin}[考えてみよう]
 \begin{itemize}
-  \item 開放と短絡のどちらでも信号は反射しているのに，ch2の電圧の変わり方が違うのはなぜでしょうか。
+  \item 開放と短絡のどちらでも信号は反射しているのに，CH2の電圧の変わり方が違うのはなぜでしょうか。
   \item 短絡するとケーブルの端の電圧はほぼ\SI{0}{V}になります。送った信号はどこへ行ったのでしょうか。
-  \item ch1の波形が変化するまでの時間は，実験1の時間のずれの何倍になりましたか。その理由も考えてみましょう。
+  \item CH1の波形が変化するまでの時間は，実験1の時間のずれの何倍になりましたか。その理由も考えてみましょう。
 \end{itemize}
 \end{kakunin}
 
@@ -305,7 +305,7 @@
 
 \begin{procedure}[label=\textbf{(\arabic*)}, ref=(\arabic*), leftmargin=*, labelsep=0.8em]
   \item 実験1でファンクションジェネレータにつないでいたBNCケーブルを外します。
-  \item オシロスコープのch2に接続していた同軸ケーブルの端子を\cref{fig:voltagewave-circuit2}のように他の班のオシロスコープの送電端（ch1）に接続し，部屋で1つのケーブルになるように接続します。
+  \item オシロスコープのCH2に接続していた同軸ケーブルの端子を\cref{fig:voltagewave-circuit2}のように他の班のオシロスコープの送電端（CH1）に接続し，部屋で1つのケーブルになるように接続します。
   \item 各班の同軸ケーブルの長さを表3に記録します。
   \item \label{item:voltagewave-freq} 各班の線の長さの合計【　　　　】mが波長になる周波数【　　　　】Hzを算出します。
   \item \label{item:voltagewave-table2} ファンクションジェネレータの電源を入れ，電圧値\SI{2}{V}，周波数\SI{100}{kHz}に設定し，周波数を徐々に上げます。電圧値が初めて\SI{0.5}{V}を下回った位置の同軸ケーブル長を記録します。そのときの各オシロスコープの電圧値を表3に記録します。\\
