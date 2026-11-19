@@ -218,8 +218,19 @@
 %   \partpage{実験テーマ}{Experiments}
 %   表紙と同じ帯の上に見出しを置く
 %   ページ番号は表示しない
+%   \partpage* はページ数にも数えない（前後のページ番号を変えずに差し込むとき）
 % ------------------------------------------------------------
-\newcommand{\partpage}[2]{%
+\newcommand{\partpage}{\@ifstar{\eg@partpage@nocount}{\eg@partpage}}
+\newcommand{\eg@partpage@nocount}[2]{%
+  \clearpage
+  \edef\eg@savedpage{\the\value{page}}%
+  \let\eg@savedthepage\thepage
+  \def\thepage{part\arabic{page}}% PDF 内のページ名が前後のページと重ならないように
+  \eg@partpage{#1}{#2}%
+  \let\thepage\eg@savedthepage
+  \setcounter{page}{\eg@savedpage}%
+}
+\newcommand{\eg@partpage}[2]{%
   \clearpage
   \thispagestyle{empty}%
   \phantomsection
