@@ -70,7 +70,7 @@ Overleaf では Main document に指定した1ファイルだけがコンパイ�
   - `\coursename{...}`（科目名），`\courseenglish{...}`（英語名），`\academicyear{...}`（年度），`\organization{...}`（大学名など）
 - 目次は自動で作られます（テーマ名のみ。PDF のしおりには節まで出ます）。
 - 注意事項は `contents/00_introduction/introduction_body.tex` を編集してください。
-- 前付けと各テーマの間に，区切りのページ（「実験テーマ」とテーマの一覧）が入ります（`main.tex` の `\partpage`）。ページ番号は表示しません。
+- 前付けと各テーマの間に，区切りのページ（「実験テーマ」）が入ります（`main.tex` の `\partpage`）。ページ番号は表示しません。
 - ページ番号は，目次と注意事項がローマ数字（i, ii），各テーマが 1 からです。
 
 ## 表記ルール
