@@ -231,17 +231,13 @@ V = E - rI
 
 \begin{figure}[htbp]
   \centering
-  % ブレッドボードの図に，行の記号と導通の範囲を重ねている。座標は図の幅と高さを1としたときの位置
-  \begin{tikzpicture}[font=\sffamily\gtfamily\small]
-    \node[anchor=south west, inner sep=0] (bb) at (0,0) {\includegraphics[width=0.64\linewidth]{tester_breadboard.jpg}};
+  % ブレッドボードの図（上：穴の配置，下：つながっている範囲）の左に，行の記号を大きく添える
+  % 座標は図の幅と高さを1としたときの位置
+  \begin{tikzpicture}
+    \node[anchor=south west, inner sep=0] (bb) at (0,0) {\includegraphics[width=0.9\linewidth]{tester_breadboard.jpg}};
     \begin{scope}[x={(bb.south east)}, y={(bb.north west)}]
-      % 行の記号（a〜j）
-      \foreach \r/\y in {j/0.7525, i/0.705, h/0.6575, g/0.6075, f/0.56, e/0.4425, d/0.395, c/0.345, b/0.295, a/0.245}
-        \node[anchor=east, font=\sffamily\small, inner sep=1pt] at (-0.008,\y) {\r};
-      % 導通の範囲
-      \foreach \ya/\yb/\t in {0.9825/0.8325/{$+$，$-$：横方向に導通}, 0.77/0.54/{f〜j：縦方向に導通},
-                              0.465/0.23/{a〜e：縦方向に導通}, 0.17/0.0075/{$+$，$-$：横方向に導通}}
-        \draw[decorate, decoration={brace, amplitude=4pt}] (1.02,\ya) -- node[right=6pt, anchor=west] {\t} (1.02,\yb);
+      \foreach \r/\y in {j/0.8729, i/0.8506, h/0.8282, g/0.8047, f/0.7824, e/0.7259, d/0.7035, c/0.6812, b/0.6576, a/0.6353, j/0.3565, i/0.3341, h/0.3118, g/0.2882, f/0.2659, e/0.2106, d/0.1882, c/0.1647, b/0.1412, a/0.1176}
+        \node[anchor=east, font=\sffamily\footnotesize, inner sep=0pt] at (-0.006,\y) {\r};
     \end{scope}
   \end{tikzpicture}
   \caption{ブレッドボード}
