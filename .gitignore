@@ -8,3 +8,4 @@
 *.pdf
 !contents/**/figures/*.pdf
 !slides/**/*.pdf
+!examples/**/*.pdf
