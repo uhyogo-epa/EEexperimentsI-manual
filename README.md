@@ -131,6 +131,7 @@ GitHub Actions（`.github/workflows/site.yml`）が全テーマをコンパイ�
 
 - 説明資料は `slides/<回のフォルダ>/` に置きます。同じ名前の `.pptx` と `.pdf` は1行にまとまります（例：`slides/01_tester/直流回路_説明.pptx`，`slides/01_tester/直流回路_説明.pdf`）。
 - Word の様式などの配布物は `handouts/<回のフォルダ>/` に置きます。
+- レポート例は `examples/<回のフォルダ>/` に置きます（同じ名前の `.docx` と `.pdf` は1行にまとまります）。
 - 回のフォルダ名：`00_guidance`（11月23日），`01_tester`，`02_oscilloscope`，`00_report_check`（12月14日），`03_diode`，`04_transistor`，`05_voltagewave`，`00_summary`（1月25日）。
 - スケジュールは `site/build_site.py` の `SESSIONS` で変更します。
 - Overleaf と GitHub の両方に同じ履歴を push して同期します（`git push origin main` と `git push github main`）。

@@ -7,6 +7,7 @@
 各回の資料は，SESSIONS の key と同じ名前のフォルダに置くと自動で載る。
   slides/<key>/    説明資料。同じ名前の .pptx と .pdf は1行にまとまる
   handouts/<key>/  配布物（Word の様式など）
+  examples/<key>/  レポート例（同じ名前の .docx と .pdf は1行にまとまる）
   例: slides/01_tester/直流回路_説明.pptx，slides/01_tester/直流回路_説明.pdf
 """
 import argparse
@@ -222,6 +223,7 @@ def main():
                 if d:
                     docs.append(d)
             docs += site.folder("handouts", key, "配布物")
+            docs += site.folder("examples", key, "レポート例")
         if docs:
             tid = key.replace("_", "-")
             short = title.replace("を用いた電子回路", "").replace("実験レポート作成方法", "レポート作成方法")
