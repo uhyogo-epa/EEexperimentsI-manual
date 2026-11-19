@@ -370,29 +370,31 @@ V = E - rI
 % ------------------------------------------------------------
 \subsection{実験4：鉛筆で書いた線を曲げた際の抵抗値の変化を調べよう！}
 
-\begin{figure}[htbp]
-  \centering
-  % 左：コ字型の図形（TikZ。単位は mm で，実物の寸法の比に合わせている）
-  \begin{tikzpicture}[x=1mm, y=1mm, font=\sffamily\gtfamily\small, baseline=(base)]
-    \coordinate (base) at (0,0);
-    \definecolor{egpaper}{RGB}{189,215,238}
-    \fill[egpaper] (0,0) rectangle (70,40); \draw[blue!50!black] (0,0) rectangle (70,40);
-    \node[anchor=north east] at (69,39) {方眼紙};
-    % コ字（線の幅 10 mm，すき間 5 mm，長さ 3 cm）
-    \fill[black] (12,10) rectangle (42,35);
-    \fill[egpaper] (22,20) rectangle (42,25);
-    % 寸法
-    \draw[<->, >=stealth] (45,25) -- node[right=1pt] {幅10 mm} (45,35);
-    \draw[<->, >=stealth] (45,20) -- node[right=1pt] {5 mm程度} (45,25);
-    \draw[decorate, decoration={brace, mirror, amplitude=3pt}] (12,8) -- node[below=3pt] {3 cm} (42,8);
-  \end{tikzpicture}\hfill
-  \includegraphics[width=0.47\linewidth]{tester_expD_bend.png}
-  \caption{鉛筆で書いた線の曲げ方向と抵抗値の関係の実験}
-  \label{fig:tester-exp4}
-\end{figure}
-
 \begin{procedure}[label=\textbf{4-\arabic*}, ref=4-\arabic*, leftmargin=*, labelsep=0.8em]
   \item 方眼紙に鉛筆で，幅\SI{10}{mm}，間隔\SI{5}{mm}，長さ\SI{3}{cm}程度のコ字型の図形を書き，内部を塗りつぶします（\cref{fig:tester-exp4}左）。
+    % 図は手順4-1と4-2の間に置く（浮動させない）
+    \par\vspace{0.6\baselineskip}
+    \noindent\begin{minipage}{\linewidth}
+      \centering
+      % 左：コ字型の図形（TikZ。単位は mm で，実物の寸法の比に合わせている）
+      \begin{tikzpicture}[x=1mm, y=1mm, font=\sffamily\gtfamily\small, baseline=(base)]
+        \coordinate (base) at (0,0);
+        \definecolor{egpaper}{RGB}{189,215,238}
+        \fill[egpaper] (0,0) rectangle (70,40); \draw[blue!50!black] (0,0) rectangle (70,40);
+        \node[anchor=north east] at (69,39) {方眼紙};
+        % コ字（線の幅 10 mm，すき間 5 mm，長さ 3 cm）
+        \fill[black] (12,10) rectangle (42,35);
+        \fill[egpaper] (22,20) rectangle (42,25);
+        % 寸法
+        \draw[<->, >=stealth] (45,25) -- node[right=1pt] {幅10 mm} (45,35);
+        \draw[<->, >=stealth] (45,20) -- node[right=1pt] {5 mm程度} (45,25);
+        \draw[decorate, decoration={brace, mirror, amplitude=3pt}] (12,8) -- node[below=3pt] {3 cm} (42,8);
+      \end{tikzpicture}\hfill
+      \includegraphics[width=0.47\linewidth]{tester_expD_bend.png}
+      \captionof{figure}{鉛筆で書いた線の曲げ方向と抵抗値の関係の実験}
+      \label{fig:tester-exp4}
+    \end{minipage}
+    \vspace{0.3\baselineskip}
   \item コ字部分が入った部分を切り抜きます。
   \item コ字をまっすぐ伸ばし，コ字両端部で測定した抵抗値 $R_0$ を記録します。
   \item 次に，机の端や台などを使用して，コ字部分を上下方向に曲げられるようにして，上下に曲げた時の抵抗値 $R_1$，$R_2$ を測定します（\cref{fig:tester-exp4}右）。
