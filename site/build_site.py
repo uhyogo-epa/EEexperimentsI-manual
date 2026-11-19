@@ -181,9 +181,10 @@ def doc_rows(docs, selected):
     return "".join(rows)
 
 
-def docs_block(docs, missing_slides=False):
-    """資料の一覧と，PDF の埋め込み表示を作る。説明資料があれば最初に表示する"""
-    selected = next((d for d in docs if d["pdf"]), None)
+def docs_block(docs, missing_slides=False, prefer=None):
+    """資料の一覧と，PDF の埋め込み表示を作る。prefer（例：手引書）があればそれを，なければ一覧の最初の PDF を表示する"""
+    selected = next((d for d in docs if d["pdf"] and d["label"] == prefer), None) \
+        or next((d for d in docs if d["pdf"]), None)
     rows = doc_rows(docs, selected)
     if missing_slides:
         rows = '<tr><td class="none">説明資料：未登録</td><td></td></tr>' + rows
@@ -236,7 +237,7 @@ def main():
             heading = experiment_title(key) if is_theme else title
             panels.append(f'<section class="panel" id="p-{tid}" role="tabpanel" aria-labelledby="tab-{tid}">'
                           f'<h2><small>{esc(date)}</small>{esc(heading)}</h2>'
-                          f'{docs_block(docs, is_theme and not slides)}</section>')
+                          f'{docs_block(docs, is_theme and not slides, "手引書" if is_theme else None)}</section>')
             cell = f'<a href="#{tid}">{esc(title)}</a>'
         else:
             cell = esc(title)
