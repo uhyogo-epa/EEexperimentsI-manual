@@ -168,6 +168,7 @@
   \setcounter{equation}{0}%
   \phantomsection
   \addcontentsline{toc}{egexperiment}{#1}%
+  \addcontentsline{egp}{egpartitem}{#1}% 区切りのページのテーマ一覧用
   \eg@titleblock{#1}%
 }
 
@@ -211,6 +212,39 @@
     \setlength{\parskip}{0pt}% 目次の中は段落間の空きをなくして1ページに収める
     \@starttoc{toc}%
   \endgroup
+}
+
+% ------------------------------------------------------------
+% 区切りのページ（前付けと各テーマの間。main.tex のみ）
+%   \partpage{実験テーマ}{Experiments}
+%   表紙と同じ帯の上に見出しを置き，下にテーマ名とページを並べる（2回目のコンパイルで入る）
+%   ページ番号は表示しない
+% ------------------------------------------------------------
+\newcommand*{\l@egpartitem}[2]{%
+  \noindent{\sffamily\gtfamily\Large #1}%
+  \nobreak\hskip 1em{\color{black!40}\leaders\hbox to 0.9em{\hss.\hss}\hfill}%
+  \nobreak\hskip 1em{\sffamily\Large #2}\par\vskip 0.9\baselineskip
+}
+\newcommand{\partpage}[2]{%
+  \clearpage
+  \thispagestyle{empty}%
+  \phantomsection
+  \pdfbookmark[0]{#1}{egpart}%
+  \begin{tikzpicture}[remember picture, overlay]
+    \fill[EGMain] ([yshift=-62mm]current page.north west) rectangle ([yshift=-112mm]current page.north east);
+    \fill[EGMain!55] ([yshift=-112mm]current page.north west) rectangle ([yshift=-115mm]current page.north east);
+    \node[anchor=west, text=white, align=left, inner sep=0pt]
+      at ([xshift=24mm, yshift=-87mm]current page.north west)
+      {{\sffamily\gtfamily\bfseries\fontsize{34}{44}\selectfont #1}\\[4mm]
+       {\sffamily\large #2}};
+  \end{tikzpicture}%
+  \par\vspace*{95mm}%
+  \begingroup
+    \setlength{\parskip}{0pt}%
+    \leftskip=4mm \rightskip=4mm
+    \@starttoc{egp}%
+  \endgroup
+  \clearpage
 }
 
 % ------------------------------------------------------------
