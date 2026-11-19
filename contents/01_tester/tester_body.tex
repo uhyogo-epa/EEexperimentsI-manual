@@ -279,10 +279,10 @@ V = E - rI
 \begin{itemize}
   \item 第1帯（茶）＝1
   \item 第2帯（黒）＝0
-  \item 第3帯（赤）＝$\times 100$
+  \item 第3帯（赤）＝$\times 10^2$
   \item 第4帯（金）＝許容差 $\pm\SI{5}{\percent}$
 \end{itemize}
-となり，抵抗値は $10\times 100 = \SI{1000}{\ohm}$（\SI{1}{k\ohm}）$\pm\SI{5}{\percent}$ となります。実験では，\SI{100}{\ohm}，\SI{200}{\ohm}，\SI{1}{k\ohm}の抵抗を使用します。
+となり，抵抗値は $10\times 10^2 = \SI{1000}{\ohm}$（\SI{1}{k\ohm}）$\pm\SI{5}{\percent}$ となります。実験では，\SI{100}{\ohm}，\SI{200}{\ohm}，\SI{1}{k\ohm}の抵抗を使用します。
 
 \begin{figure}[!htb]
   \centering
@@ -296,7 +296,7 @@ V = E - rI
 
 本実験では，抵抗値をダイヤルで切り替えられる可変抵抗器（\cref{fig:tester-varres}）を使用します。3つのダイヤルはそれぞれ「×\SI{100}{\ohm}」「×\SI{10}{\ohm}」「×\SI{1}{\ohm}」の桁を表し，各ダイヤルを0～10に合わせることで，\SI{0}{\ohm}から\SI{1110}{\ohm}までの抵抗値を\SI{1}{\ohm}刻みで設定できます。2つの青い端子の間の抵抗値は，
 \begin{equation}
-  （抵抗値）= 100\times（×\SI{100}{\ohm}の目盛）+ 10\times（×\SI{10}{\ohm}の目盛）+ 1\times（×\SI{1}{\ohm}の目盛）\ \si{\ohm}
+  （抵抗値）= 100\times（\SI{100}{\ohm}の桁の目盛）+ 10\times（\SI{10}{\ohm}の桁の目盛）+ 1\times（\SI{1}{\ohm}の桁の目盛）\ \si{\ohm}
   \label{eq:tester-varres}
 \end{equation}
 となります。例えば，ダイヤルを左から2，0，5に合わせると，抵抗値は \SI{205}{\ohm} です。
