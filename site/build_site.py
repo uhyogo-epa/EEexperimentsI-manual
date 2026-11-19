@@ -140,7 +140,10 @@ class Site:
         src = ROOT / f"{base}.pdf"
         if not src.exists():
             return None
-        return {"label": label, "pdf": self.copy(src, f"pdf/{base}.pdf"), "files": []}
+        href = self.copy(src, f"pdf/{base}.pdf")
+        # 全体版以外は，ページ内の表示でしおり（アウトライン）の欄を開かない
+        view = href if base == "main" else href + "#pagemode=none&navpanes=0"
+        return {"label": label, "pdf": href, "view": view, "files": []}
 
     def folder(self, kind: str, key: str, prefix: str):
         """slides/ や handouts/ のファイルを，拡張子を除いた名前ごとにまとめる"""
@@ -151,12 +154,13 @@ class Site:
                 groups.setdefault(f.stem, []).append(f)
         docs = []
         for stem, files in groups.items():
-            doc = {"label": f"{prefix}：{stem}", "pdf": None, "files": []}
+            doc = {"label": f"{prefix}：{stem}", "pdf": None, "view": None, "files": []}
             for f in files:
                 href = self.copy(f, f"{kind}/{key}/{f.name}")
                 ext = f.suffix.lower().lstrip(".")
                 if ext == "pdf":
                     doc["pdf"] = href
+                    doc["view"] = href + "#pagemode=none&navpanes=0"
                 else:
                     doc["files"].append((ext.upper(), href, f.name))
             docs.append(doc)
@@ -168,7 +172,7 @@ def doc_rows(docs, selected):
     for d in docs:
         acts = []
         if d["pdf"]:
-            acts.append(f'<button class="btn" type="button" data-view="{esc(d["pdf"])}" data-name="{esc(d["label"])}">表示</button>')
+            acts.append(f'<button class="btn" type="button" data-view="{esc(d["view"])}" data-name="{esc(d["label"])}">表示</button>')
             acts.append(f'<a class="btn" href="{esc(d["pdf"])}">PDF</a>')
         for ext, href, name in d["files"]:
             acts.append(f'<a class="btn" href="{esc(href)}" download="{esc(name)}">{esc(ext)}</a>')
@@ -185,7 +189,7 @@ def docs_block(docs, missing_slides=False):
         rows = '<tr><td class="none">説明資料：未登録</td><td></td></tr>' + rows
     s = f'<table class="docs list">{rows}</table>'
     if selected:
-        s += (f'<div class="viewer"><iframe data-src="{esc(selected["pdf"])}" '
+        s += (f'<div class="viewer"><iframe data-src="{esc(selected["view"])}" '
               f'title="{esc(selected["label"])}" loading="lazy"></iframe></div>')
     return s
 
@@ -241,7 +245,7 @@ def main():
     overview = []
     d = site.built_pdf("main", "手引書（全テーマ・表紙と目次つき）")
     if d:
-        overview.append(f'<table class="docs list">{doc_rows([d], None)}</table><div class="viewer"><iframe data-src="{esc(d["pdf"])}" title="{esc(d["label"])}" hidden></iframe></div>')
+        overview.append(f'<table class="docs list">{doc_rows([d], None)}</table><div class="viewer"><iframe data-src="{esc(d["view"])}" title="{esc(d["label"])}" hidden></iframe></div>')
     overview.append(f'<h3>スケジュール</h3><table class="docs">{"".join(rows)}</table>')
     tabs.insert(0, '<a role="tab" id="tab-schedule" href="#schedule" aria-controls="p-schedule" aria-selected="false">'
                    '<small>全体</small>スケジュール</a>')

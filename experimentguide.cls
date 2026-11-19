@@ -563,7 +563,8 @@
   linkcolor=EGMain,
   urlcolor=EGMain,
   citecolor=EGMain,
-  pdfborder={0 0 0}
+  pdfborder={0 0 0},
+  pdfpagemode=UseNone% PDF を開いたときにしおり（アウトライン）を表示しない。全体版（main.tex）では表示する
 }
 
 \endinput
