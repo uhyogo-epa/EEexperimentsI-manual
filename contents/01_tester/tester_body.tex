@@ -231,7 +231,19 @@ V = E - rI
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.74\linewidth]{tester_breadboard.jpg}
+  % ブレッドボードの図に，行の記号と導通の範囲を重ねている。座標は図の幅と高さを1としたときの位置
+  \begin{tikzpicture}[font=\sffamily\gtfamily\small]
+    \node[anchor=south west, inner sep=0] (bb) at (0,0) {\includegraphics[width=0.64\linewidth]{tester_breadboard.jpg}};
+    \begin{scope}[x={(bb.south east)}, y={(bb.north west)}]
+      % 行の記号（a〜j）
+      \foreach \r/\y in {j/0.7525, i/0.705, h/0.6575, g/0.6075, f/0.56, e/0.4425, d/0.395, c/0.345, b/0.295, a/0.245}
+        \node[anchor=east, font=\sffamily\small, inner sep=1pt] at (-0.008,\y) {\r};
+      % 導通の範囲
+      \foreach \ya/\yb/\t in {0.9825/0.8325/{$+$，$-$：横方向に導通}, 0.77/0.54/{f〜j：縦方向に導通},
+                              0.465/0.23/{a〜e：縦方向に導通}, 0.17/0.0075/{$+$，$-$：横方向に導通}}
+        \draw[decorate, decoration={brace, amplitude=4pt}] (1.02,\ya) -- node[right=6pt, anchor=west] {\t} (1.02,\yb);
+    \end{scope}
+  \end{tikzpicture}
   \caption{ブレッドボード}
   \label{fig:tester-breadboard}
 \end{figure}

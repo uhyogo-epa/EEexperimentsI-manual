@@ -68,6 +68,7 @@
 \crefformat{subsubsection}{#2#1#3節}
 \Crefformat{subsubsection}{#2#1#3節}
 \RequirePackage{tikz}
+\usetikzlibrary{decorations.pathreplacing}% 波括弧（例：直流回路のブレッドボードの図）
 \RequirePackage{pgfplots}% グラフ用
 \pgfplotsset{compat=1.18}
 \RequirePackage[siunitx, european resistors, american inductors]{circuitikz}% 回路図用
