@@ -129,10 +129,10 @@
       \draw[-{Latex[length=3mm,width=3.2mm]}, line width=3.5pt, orange!85!yellow, opacity=0.9]
         ($(1.75,0.2)+(\o*-0.19,\o*0.98)$) -- ++(2.6,0.51);
     \node[text=orange!70!black, anchor=south] at (2.6,2.05) {電磁波が進む向き};
-    % 手前の面（断面と同じ描き方）
-    \fill[black!45] (0,0) circle (\R);
-    \fill[black!18] (0,0) circle (1.25);
-    \fill[EGSub] (0,0) circle (1.1);
+    % 手前の面（断面と同じ描き方。少し透かして，奥へ伸びる中心導体とつながって見えるようにする）
+    \fill[black!45, even odd rule, fill opacity=0.85] (0,0) circle (\R) (0,0) circle (1.25);
+    \fill[black!18, even odd rule, fill opacity=0.8] (0,0) circle (1.25) (0,0) circle (1.1);
+    \fill[EGSub, even odd rule, fill opacity=0.6] (0,0) circle (1.1) (0,0) circle (0.28);
     \fill[black!60] (0,0) circle (0.28);
     \foreach \a in {0,45,...,315}
       \draw[-latex, EGWarn, thick] (\a:0.32) -- (\a:1.06);
