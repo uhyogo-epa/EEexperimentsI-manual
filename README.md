@@ -87,6 +87,19 @@ Overleaf では Main document に指定した1ファイルだけがコンパイ�
 | 強調 | 太字は `\important{}`。特に重要な部分・安全上の注意は波線 `\wave{}` | `\wave{必ず電源を外した状態で行います。}`（長い文でも行末で折り返されます） |
 | 編集用のメモ | 気になる点などは `\chk{}` で青字のメモとして残す（配布前に削除） | `\chk{ここは担当の先生に確認}` |
 
+## 参考文献の入れ方
+
+本文で文献を引用するときは，`\cite{キー}` を句読点の前に書き，テーマの本文の最後に参考文献の一覧を置きます（番号はテーマごとに 1 から振られます）。キーはテーマ名で始めてください（1冊にまとめたときの重複防止）。書き方は「レポートの書き方」の参考文献の書き方に合わせます。例：`contents/05_voltagewave/voltagewave_body.tex`
+
+```latex
+……約\SI{0.5}{mm/s}で\cite{voltagewave-openstax}，……
+
+\begin{thebibliography}{9}
+  \bibitem{voltagewave-openstax}
+    著者名：書名，ページ，出版社（発行年），\url{URL}（閲覧日）
+\end{thebibliography}
+```
+
 ## 図の入れ方
 
 - 図ファイルは `contents/<番号>_<テーマ>/figures/` に置き，ファイル名はテーマ名で始める（例：`diode_rectifier.pdf`）
