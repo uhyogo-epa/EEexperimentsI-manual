@@ -35,7 +35,26 @@
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.7\linewidth]{oscilloscope_waveforms.png}
+  % 交流波形の例（TikZ）。各段は横 7.2 cm（2周期），振れ幅 ±0.6 cm
+  \begin{tikzpicture}[font=\sffamily\gtfamily\small, >=stealth]
+    \def\W{7.2}\def\H{0.6}
+    \foreach \k/\lab/\name in {0/(a)/正弦波, 1/(b)/三角波, 2/(c)/矩形波} {
+      \begin{scope}[yshift=-\k*2.5cm]
+        \node[anchor=east] at (-0.75,0) {\lab\ \name};
+        \draw[->] (0,-0.85) -- (0,0.95) node[above, font=\sffamily\gtfamily\scriptsize] {電圧};
+        \draw[->] (0,0) -- (\W+0.4,0) node[right, font=\sffamily\gtfamily\scriptsize] {時間};
+        \draw[densely dashed, black!60] (0,\H) -- (\W,\H) (0,-\H) -- (\W,-\H);
+        \node[left, font=\footnotesize] at (0,\H) {$+V$};
+        \node[left, font=\footnotesize] at (0,0) {$0$};
+        \node[left, font=\footnotesize] at (0,-\H) {$-V$};
+      \end{scope}
+    }
+    \draw[blue, thick, domain=0:\W, samples=100, smooth] plot (\x, {\H*sin(720*\x/\W)});
+    \draw[green!45!black, thick, yshift=-2.5cm]
+      (0,0) -- (\W/8,\H) -- (3*\W/8,-\H) -- (5*\W/8,\H) -- (7*\W/8,-\H) -- (\W,0);
+    \draw[red, thick, yshift=-5.0cm]
+      (0,\H) -- (\W/4,\H) -- (\W/4,-\H) -- (\W/2,-\H) -- (\W/2,\H) -- (3*\W/4,\H) -- (3*\W/4,-\H) -- (\W,-\H);
+  \end{tikzpicture}
   \caption{交流波形の例}
   \label{fig:oscilloscope-waveforms}
 \end{figure}
@@ -105,7 +124,17 @@ RCローパスフィルタは，低い周波数の信号を通し，高い周波
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.5\linewidth]{oscilloscope_lowpass_response.png}
+  % RCローパスフィルタの周波数特性 V_out/V_in = 1/sqrt(1+(f/f_c)^2)（横軸は対数。f は f_c を1とした値）
+  \begin{tikzpicture}
+    \begin{axis}[width=0.55\linewidth, height=0.42\linewidth, xmode=log, xmin=0.02, xmax=30, ymin=0, ymax=1.2,
+        xtick={1}, xticklabels={$f_\mathrm{c}$}, ytick={0,0.2,...,1.2},
+        yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=1},
+        xlabel={周波数 $f$}, ylabel={$V_\mathrm{out}/V_\mathrm{in}$},
+        tick align=inside, axis on top, label style={font=\sffamily\gtfamily\small}]
+      \addplot[orange!85!red, very thick, domain=0.02:30, samples=150] {1/sqrt(1+x^2)};
+      \draw[densely dotted] (axis cs:0.02,0.7071) -- (axis cs:1,0.7071) -- (axis cs:1,0);
+    \end{axis}
+  \end{tikzpicture}
   \caption{ローパスフィルタの周波数特性}
   \label{fig:oscilloscope-lowpass-response}
 \end{figure}
