@@ -192,14 +192,14 @@ BJTの最も基本的な使い方は，\cref{fig:transistor-ce}のようにBJT�
           to[R, l_=$R_\mathrm{C}$] (Q.C |- 0,5.0) -- (8.8,5.0)
           to[battery1, l=$V_\mathrm{CC}$] (8.8,0) -- (0,0);
     \draw (Q.E) -- (Q.E |- 0,0) node[circ] {} node[ground] {};
-    \draw (c) to[short, -o] (6.8,3.4) node[right] {$V_\mathrm{OUT}$};
+    \draw (c) to[short, -o] (6.8,3.4) node[right] {$V_\mathrm{out}$};
   \end{circuitikz}
   \caption{エミッタ接地増幅回路}
   \label{fig:transistor-ce}
 \end{figure}
 
 実際のBJTの電圧と電流の関係は複雑ですが，回路の基本的な動作を理解するためには，BJTの\important{理想的な動作}だけを考えれば十分です。理想的には，ベース–エミッタ間は約\SI{0.7}{V}で電流が流れ始めるダイオード，コレクタ–エミッタ間は $I_\mathrm{C}=\beta I_\mathrm{B}$ の電流を流す電流源とみなせます。このようにBJTを理想的な\important{等価回路}に置き換えると，\cref{fig:transistor-ce}の回路は\cref{fig:transistor-equiv}のように表せます。この等価回路から，$V_\mathrm{in}$ が\SI{0.7}{V}より大きいとき，$R_\mathrm{B}$ には $V_\mathrm{in}-0.7$\,Vの電圧がかかるので $I_\mathrm{B}=(V_\mathrm{in}-0.7)/R_\mathrm{B}$ となり，コレクタ電流は $I_\mathrm{C}=\beta I_\mathrm{B}$ と求められます。
-出力電圧 $V_\mathrm{OUT}$（コレクタとGNDの間の電圧）は，電源電圧 $V_\mathrm{CC}$ から $R_\mathrm{C}$ での電圧降下 $R_\mathrm{C}I_\mathrm{C}$ を引いた $V_\mathrm{OUT}=V_\mathrm{CC}-R_\mathrm{C}I_\mathrm{C}$ となります。したがって，入力電圧を大きくして $I_\mathrm{C}$ が増えると，出力電圧は小さくなります。これを\important{反転動作}といいます。ただし，$I_\mathrm{C}$ は $V_\mathrm{CC}/R_\mathrm{C}$ より大きくなることはできず，そのとき $V_\mathrm{OUT}$ はほぼ\SI{0}{V}になります（これを\important{飽和}といいます）。このとき $R_\mathrm{C}$（ファン）にはほぼ電源電圧 $V_\mathrm{CC}$ がかかり，ファンが回ります。
+出力電圧 $V_\mathrm{out}$（コレクタとGNDの間の電圧）は，電源電圧 $V_\mathrm{CC}$ から $R_\mathrm{C}$ での電圧降下 $R_\mathrm{C}I_\mathrm{C}$ を引いた $V_\mathrm{out}=V_\mathrm{CC}-R_\mathrm{C}I_\mathrm{C}$ となります。したがって，入力電圧を大きくして $I_\mathrm{C}$ が増えると，出力電圧は小さくなります。これを\important{反転動作}といいます。ただし，$I_\mathrm{C}$ は $V_\mathrm{CC}/R_\mathrm{C}$ より大きくなることはできず，そのとき $V_\mathrm{out}$ はほぼ\SI{0}{V}になります（これを\important{飽和}といいます）。このとき $R_\mathrm{C}$（ファン）にはほぼ電源電圧 $V_\mathrm{CC}$ がかかり，ファンが回ります。
 
 \begin{center}
   \begin{minipage}{\linewidth}
@@ -221,7 +221,7 @@ BJTの最も基本的な使い方は，\cref{fig:transistor-ce}のようにBJT�
           to[american controlled current source, l={$\beta I_\mathrm{B}$}] (6.4,0);
     \draw (c) node[left=2pt] {C};
     \draw (6.4,5.0) -- (8.8,5.0) to[battery1, l=$V_\mathrm{CC}$] (8.8,0) -- (0,0);
-    \draw (c) to[short, -o] (7.6,3.4) node[right] {$V_\mathrm{OUT}$};
+    \draw (c) to[short, -o] (7.6,3.4) node[right] {$V_\mathrm{out}$};
     \draw (5.2,0) node[circ] {} node[above=2pt] {E} node[ground] {};
   \end{circuitikz}
   \captionof{figure}{エミッタ接地増幅回路の（理想的な）等価回路}
@@ -444,7 +444,7 @@ npn型のBJTは，n型半導体，p型半導体，n型半導体の3つの層を�
     % ---- 出力側：コレクタ抵抗 R_c ----
     \draw (Q.C) -- (Q.C |- 0,2.8) node[circ] (nc) {}
           to[R, l_={$R_\mathrm{c}$（\SI{1}{k\ohm}）}] (Q.C |- 0,4.9) node[circ] (nt) {} -- (Q.C |- 0,5.6);
-    \draw (nc) to[short, -o] ($(nc)+(1.3,0)$) node[right] {$V_\mathrm{OUT}$};
+    \draw (nc) to[short, -o] ($(nc)+(1.3,0)$) node[right] {$V_\mathrm{out}$};
     % テスター（R_c の両端の電圧 V_Rc を測る）
     \begin{scope}[shift={($(Q.C |- 0,3.85)+(-2.5,0)$)}]
       \draw[fill=yellow!35, rounded corners=3pt] (-0.5,-0.75) rectangle (0.5,0.75);
@@ -479,5 +479,5 @@ npn型のBJTは，n型半導体，p型半導体，n型半導体の3つの層を�
     \end{minipage}
   \end{center}
   \item \label{item:transistor-graph}入力電圧$V_\mathrm{in}$ を\SI{0}{V}から\SI{1.0}{V}まで\SI{0.05}{V}ずつ変化させ，抵抗の両端電圧 $V_{R_\mathrm{c}}$ をテスターで測定します。横軸を $V_\mathrm{in}$，縦軸を $V_{R_\mathrm{c}}$ としてグラフを作成します。
-  \item 出力電圧 $V_\mathrm{OUT}$ を，コレクタ端子とGNDとの間の電圧として測定します。$V_\mathrm{in}$ を\SI{0}{V}から\SI{1.0}{V}まで\SI{0.05}{V}ずつ変化させ，横軸を $V_\mathrm{in}$，縦軸を $V_\mathrm{OUT}$ として，\ref{item:transistor-graph}で作成したグラフ上にプロットします。
+  \item 出力電圧 $V_\mathrm{out}$ を，コレクタ端子とGNDとの間の電圧として測定します。$V_\mathrm{in}$ を\SI{0}{V}から\SI{1.0}{V}まで\SI{0.05}{V}ずつ変化させ，横軸を $V_\mathrm{in}$，縦軸を $V_\mathrm{out}$ として，\ref{item:transistor-graph}で作成したグラフ上にプロットします。
 \end{procedure}
