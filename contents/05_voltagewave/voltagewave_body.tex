@@ -114,11 +114,13 @@
   \begin{tikzpicture}[font=\sffamily\gtfamily\small, scale=0.8, baseline=(current bounding box.center)]
     \def\R{1.45}
     \coordinate (d) at (3.8,0.75);
+    % 中心導体（奥へ伸びる棒。側面を半透明にして透かして見せる）
+    \fill[black!55] (101:0.28) -- ++(d) arc[start angle=101, end angle=-79, radius=0.28] -- (-79:0.28) -- cycle;
     % 側面（手前の面の上下の接点から，奥の面の外側の弧まで）
-    \fill[black!10] (101:\R) -- ++(d) arc[start angle=101, end angle=-79, radius=\R] -- (-79:\R) -- cycle;
+    \fill[black!10, fill opacity=0.6] (101:\R) -- ++(d) arc[start angle=101, end angle=-79, radius=\R] -- (-79:\R) -- cycle;
     \draw[black!50] (101:\R) -- ++(d) arc[start angle=101, end angle=-79, radius=\R] -- (-79:\R);
     % 電磁波が進む向き
-    \foreach \o in {0.75,0,-0.75}
+    \foreach \o in {0.72,-0.72}% 電磁波は2つの導体の間（絶縁体の中）を進む
       \draw[-{Latex[length=3mm,width=3.2mm]}, line width=3.5pt, orange!85!yellow, opacity=0.9]
         ($(1.75,0.2)+(\o*-0.19,\o*0.98)$) -- ++(2.6,0.51);
     \node[text=orange!70!black, anchor=south] at (2.6,2.05) {電磁波が進む向き};
