@@ -69,6 +69,7 @@
 \Crefformat{subsubsection}{#2#1#3節}
 \RequirePackage{tikz}
 \usetikzlibrary{decorations.pathreplacing}% 波括弧（例：直流回路のブレッドボードの図）
+\usetikzlibrary{arrows.meta, calc}% 矢印の形・座標の計算（例：電圧波の同軸ケーブルの図）
 \RequirePackage{pgfplots}% グラフ用
 \pgfplotsset{compat=1.18}
 \RequirePackage[siunitx, european resistors, american inductors]{circuitikz}% 回路図用

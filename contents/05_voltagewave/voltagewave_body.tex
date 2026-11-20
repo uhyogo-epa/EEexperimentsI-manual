@@ -110,7 +110,34 @@
     \node[anchor=east, text=EGWarn] at (-1.7,0.4) {電界（矢印）};
     \node[anchor=east, text=EGMain] at (-1.7,-0.4) {磁界（破線）};
   \end{tikzpicture}
-  \captionof{figure}{同軸ケーブルの断面と，電界・磁界のイメージ}
+  \par\vspace{2mm}
+  % 斜めから見た同軸ケーブル（TikZ）。手前の面に電界（矢印）と磁界（破線），ケーブルに沿って電磁波が進む向き
+  \begin{tikzpicture}[font=\sffamily\gtfamily\small, scale=0.85]
+    \def\R{1.45}
+    \coordinate (d) at (4.6,0.9);
+    % 側面（手前の面の上下の接点から，奥の面の外側の弧まで）
+    \fill[black!10] (101:\R) -- ++(d) arc[start angle=101, end angle=-79, radius=\R] -- (-79:\R) -- cycle;
+    \draw[black!50] (101:\R) -- ++(d) arc[start angle=101, end angle=-79, radius=\R] -- (-79:\R);
+    % 電磁波が進む向き
+    \foreach \o in {0.75,0,-0.75}
+      \draw[-{Latex[length=3mm,width=3.2mm]}, line width=3.5pt, orange!85!yellow, opacity=0.9]
+        ($(1.75,0.2)+(\o*-0.19,\o*0.98)$) -- ++(3.4,0.665);
+    \node[text=orange!70!black, anchor=south] at (3.3,2.25) {電磁波が進む向き};
+    % 手前の面（断面と同じ描き方）
+    \fill[black!45] (0,0) circle (\R);
+    \fill[black!18] (0,0) circle (1.25);
+    \fill[EGSub] (0,0) circle (1.1);
+    \fill[black!60] (0,0) circle (0.28);
+    \foreach \a in {0,45,...,315}
+      \draw[-latex, EGWarn, thick] (\a:0.32) -- (\a:1.06);
+    \draw[EGMain, densely dashed, thick] (0,0) circle (0.72);
+    \foreach \a in {30,150,270}
+      \draw[EGMain, thick, -latex] (\a:0.72) arc[start angle=\a, end angle=\a-14, radius=0.72];
+    % 電流（中心導体をケーブルの奥へ向かって流れる）
+    \draw[-{Latex[length=2.2mm]}, white, line width=1.4pt] (0,0) -- (0.55,0.11);
+    \node[anchor=north] at (0,-1.55) {電流は中心導体を奥へ流れる};
+  \end{tikzpicture}
+  \captionof{figure}{同軸ケーブルの断面（上）と斜めから見た図（下）。電界・磁界と，電磁波が進む向きのイメージ}
   \label{fig:voltagewave-coax}
 \end{center}
 
