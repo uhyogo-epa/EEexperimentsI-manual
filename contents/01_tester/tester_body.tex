@@ -163,15 +163,33 @@ V = E - rI
   \label{fig:tester-carbon}
 \end{figure}
 
-鉛筆の芯は，グラファイトと粘土を混ぜ合わせて焼き固めたものです。グラファイトの割合が多いほど芯は柔らかく（B系統），導電性も高くなります。逆に粘土の割合が多いと芯は硬く（H系統），導電性は低くなります。したがって，鉛筆の硬度によって電気の通りやすさが異なります。紙に鉛筆で線を引くと，グラファイトの微小片が紙の表面に付着し，それらが互いに接触して電流の通り道を形成します（\cref{fig:tester-pencil}）。この経路の長さが長くなれば抵抗は大きくなり，幅が広くなれば抵抗は小さくなります。また，塗り方の濃さや重ね塗り，紙の表面の形状の変化によっても，黒鉛片どうしのつながりが変化して抵抗値が変動します。
+鉛筆の芯は，主にグラファイト（黒鉛）と粘土を混ぜ合わせて焼き固めたもので，少量のロウ（ワックス）も含みます（\cref{tab:tester-pencil-composition}）。グラファイトの割合が多いほど芯は柔らかく（B系統），導電性も高くなります。逆に粘土の割合が多いと芯は硬く（H系統），導電性は低くなります。したがって，鉛筆の硬度によって電気の通りやすさが異なります。紙に鉛筆で線を引くと，グラファイトの微小片が紙の表面に付着し，それらが互いに接触して電流の通り道を形成します（\cref{fig:tester-pencil}）。この経路の長さが長くなれば抵抗は大きくなり，幅が広くなれば抵抗は小さくなります。また，塗り方の濃さや重ね塗り，紙の表面の形状の変化によっても，黒鉛片どうしのつながりが変化して抵抗値が変動します。
 
 \begin{figure}[htbp]
   \vspace{5mm}
   \centering
-  \includegraphics[width=0.5\linewidth]{tester_pencil_line.pdf}\hfill
-  \includegraphics[width=0.42\linewidth]{tester_pencil_composition.png}
-  \caption{鉛筆芯の特性}
-  \label{fig:tester-pencil}
+  \begin{minipage}[b]{0.52\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{tester_pencil_line.pdf}
+    \captionof{figure}{鉛筆の線を電気が通るようす}
+    \label{fig:tester-pencil}
+  \end{minipage}\hfill
+  \begin{minipage}[b]{0.44\linewidth}
+    \centering
+    \captionof{table}{鉛筆の芯の成分（質量の割合）~\cite{tester-sousa}}
+    \label{tab:tester-pencil-composition}
+    \begin{tabular}{cccc}
+      \toprule
+      硬さ & 黒鉛 & 粘土 & ロウ \\
+      \midrule
+      2H & 0.60 & 0.34 & 0.05 \\
+      HB & 0.68 & 0.26 & 0.05 \\
+      2B & 0.74 & 0.20 & 0.05 \\
+      4B & 0.79 & 0.15 & 0.05 \\
+      6B & 0.84 & 0.10 & 0.05 \\
+      \bottomrule
+    \end{tabular}
+  \end{minipage}
 \end{figure}
 
 
@@ -434,3 +452,10 @@ V = E - rI
 \subsection{感想}
 
 この実験を通して気付いたことや考えたこと（難しかった点，興味をもった点，もっと調べてみたいことなど）を，感想として書いてください。
+
+% ------------------------------------------------------------
+% 参考文献（キーはテーマ名で始める。番号はテーマごとに 1 から）
+\begin{thebibliography}{9}
+  \bibitem{tester-sousa}
+    M. C. Sousa, J. W. Buchanan：Observational Models of Graphite Pencil Materials，Computer Graphics Forum，Vol.~19，pp.~27--49（2000），Table~2より抜粋
+\end{thebibliography}
