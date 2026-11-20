@@ -45,7 +45,31 @@
 \begin{figure}[htbp]
   \centering
   \vspace{5mm}
-  \includegraphics[width=0.7\linewidth]{oscilloscope_instantaneous.png}
+  % 正弦波交流電圧（TikZ。添え字の m，pp は立体）。周期 P = 6.4 cm，最大値 A = 2.0 cm で描く
+  \begin{tikzpicture}[font=\sffamily\gtfamily\small, >=stealth]
+    \def\P{6.4}\def\A{2.0}\def\tx{0.7}
+    \draw[->] (0,-2.45) -- (0,2.75) node[above left=-1pt] {電圧 $v$};
+    \draw[->] (0,0) -- (8.6,0) node[right] {$t$（時間）};
+    \node[left] at (0,0) {$0$};
+    \draw[dashed] (0,\A) -- (1.25*\P,\A);
+    \draw[dashed] (0,-\A) -- (1.25*\P,-\A);
+    \node[left] at (0,\A) {$+V_\mathrm{m}$};
+    \node[left] at (0,-\A) {$-V_\mathrm{m}$};
+    \draw[blue, thick, domain=0:1.25*\P, samples=120, smooth] plot (\x, {\A*sin(360*\x/\P)});
+    % 瞬時値
+    \pgfmathsetmacro{\ty}{\A*sin(360*\tx/\P)}
+    \draw[red, densely dotted] (\tx,0) -- (\tx,-\A) node[below, text=black] {$t$};
+    \draw[red, <->, thick] (\tx,0) -- (\tx,\ty);
+    \fill[red] (\tx,\ty) circle (2pt);
+    \node[red, right, font=\sffamily\gtfamily\small\bfseries, inner sep=1pt] at (\tx+0.1,0.38*\ty) {瞬時値 $v(t)$};
+    % 最大値
+    \fill[blue] (\P/4,\A) circle (2pt);
+    \draw[blue, <-] (\P/4+0.08,\A+0.08) -- (\P/4+0.8,\A+0.6) node[right, font=\sffamily\gtfamily\small\bfseries] {最大値 $V_\mathrm{m}$};
+    % ピークピーク値
+    \draw[green!45!black, <->, thick] (0.83*\P,-\A) -- (0.83*\P,\A);
+    \node[green!45!black, align=left, anchor=west, font=\sffamily\gtfamily\small\bfseries] at (0.95*\P,-1.35)
+      {ピークピーク値\\$V_\mathrm{pp} = 2V_\mathrm{m}$};
+  \end{tikzpicture}
   \caption{正弦波交流電圧の瞬時値，最大値，ピークピーク値}
   \label{fig:oscilloscope-instantaneous}
 \end{figure}
