@@ -5,9 +5,10 @@
 % ============================================================
 
 \begin{center}
-  {\sffamily\gtfamily\bfseries\Large 電気電子工学実験I　電圧波の観測　記録用紙}
+  {\sffamily\gtfamily\bfseries\Large 電気電子工学実験I　電圧波の観測　記録用紙\ifanswer{（記入例）}{}}
 \end{center}
 
+\ifanswer{\begin{center}\small\textcolor{EGWarn}{赤字は設定値の目安（実験2）}\end{center}}{}
 \vspace{0.6\baselineskip}
 \begin{flushright}
   学籍番号：\underline{\hspace{12\zw}}\quad
@@ -15,7 +16,8 @@
 \end{flushright}
 \vspace{0.8\baselineskip}
 
-\newcommand{\fillin}{【\hspace{6\zw}】}
+% 記入欄。\fillin[値] と書くと，値が記入例版にだけ赤字で入る
+\newcommand{\fillin}[1][]{【\makebox[6\zw]{\answer{#1}}】}
 \renewcommand{\arraystretch}{1.22}% 1ページ目に実験1〜3の記入欄が収まるように
 
 \section*{実験1：電気信号の進む速さを見てみよう！}
@@ -32,8 +34,8 @@
 \section*{実験2：電気信号は跳ね返る？反射波を見てみよう！}
 
 \begin{tabular}{@{}ll@{}}
-  (1) 周波数 & \fillin\ Hz \\
-  \phantom{(1)} オシロスコープの時間軸 & \fillin\ s/Div \\
+  (1) 周波数 & \fillin[500 k]\ Hz \\
+  \phantom{(1)} オシロスコープの時間軸 & \fillin[500 n]\ s/Div \\
 \end{tabular}
 
 \setcounter{table}{1}
@@ -49,7 +51,7 @@
 \end{center}
 
 \begin{tabular}{@{}ll@{}}
-  (3) オシロスコープの時間軸 & \fillin\ s/Div \\
+  (3) オシロスコープの時間軸 & \fillin[20〜50 n]\ s/Div \\
   \phantom{(3)} CH1の波形がもう一度変化するまでの時間 & \fillin\ s \\
   (4) 実験1の時間のずれに対する比 & \fillin\ 倍 \\
 \end{tabular}

@@ -21,4 +21,5 @@ $lualatex = 'lualatex -interaction=nonstopmode -file-line-error -synctex=1 %O %S
   '04_transistor_worksheet.tex',
   '05_voltagewave.tex',
   '05_voltagewave_worksheet.tex',
+  '05_voltagewave_worksheet_answer.tex',
 );
